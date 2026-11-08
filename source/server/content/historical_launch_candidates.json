@@ -5,10 +5,15 @@
   "source_period": "Early Global roster inferred before first documented July 8, 2016 rate-up; exact post date not confirmed.",
   "notes": "Unit presence near launch does not prove a Rare Summon, Friend Point, or June 30 release date.",
   "summary": {
-    "native_identity_match_acquisition_unknown": 63,
+    "native_identity_match_acquisition_unknown": 26,
     "registration_candidate_not_rare": 1,
+    "reported_drawable_acquisition_unverified": 37,
     "story_candidate_not_rare": 3
   },
+  "draw_source_url": "https://www.ffxiah.com/forum/topic/48879/final-fantasy-brave-exvius/63/",
+  "draw_names_not_matched": [
+    "Klein"
+  ],
   "units": [
     {
       "source_name": "Rain",
@@ -88,7 +93,7 @@
       "master_name": "Garland",
       "base_rarity": "3",
       "acquisition": "unknown",
-      "status": "native_identity_match_acquisition_unknown",
+      "status": "reported_drawable_acquisition_unverified",
       "candidates": [
         {
           "base_unit_id": "201000203",
@@ -122,7 +127,7 @@
       "master_name": "Firion",
       "base_rarity": "3",
       "acquisition": "unknown",
-      "status": "native_identity_match_acquisition_unknown",
+      "status": "reported_drawable_acquisition_unverified",
       "candidates": [
         {
           "base_unit_id": "202000103",
@@ -140,7 +145,7 @@
       "master_name": "Maria",
       "base_rarity": "3",
       "acquisition": "unknown",
-      "status": "native_identity_match_acquisition_unknown",
+      "status": "reported_drawable_acquisition_unverified",
       "candidates": [
         {
           "base_unit_id": "202000203",
@@ -173,7 +178,7 @@
       "master_name": "Cloud of Darkness",
       "base_rarity": "3",
       "acquisition": "unknown",
-      "status": "native_identity_match_acquisition_unknown",
+      "status": "reported_drawable_acquisition_unverified",
       "candidates": [
         {
           "base_unit_id": "203000803",
@@ -191,7 +196,7 @@
       "master_name": "Cecil",
       "base_rarity": "3",
       "acquisition": "unknown",
-      "status": "native_identity_match_acquisition_unknown",
+      "status": "reported_drawable_acquisition_unverified",
       "candidates": [
         {
           "base_unit_id": "204000103",
@@ -209,7 +214,7 @@
       "master_name": "Kain",
       "base_rarity": "3",
       "acquisition": "unknown",
-      "status": "native_identity_match_acquisition_unknown",
+      "status": "reported_drawable_acquisition_unverified",
       "candidates": [
         {
           "base_unit_id": "204000203",
@@ -226,7 +231,7 @@
       "master_name": "Rydia",
       "base_rarity": "3",
       "acquisition": "unknown",
-      "status": "native_identity_match_acquisition_unknown",
+      "status": "reported_drawable_acquisition_unverified",
       "candidates": [
         {
           "base_unit_id": "204000403",
@@ -259,7 +264,7 @@
       "master_name": "Bartz",
       "base_rarity": "3",
       "acquisition": "unknown",
-      "status": "native_identity_match_acquisition_unknown",
+      "status": "reported_drawable_acquisition_unverified",
       "candidates": [
         {
           "base_unit_id": "205000103",
@@ -277,7 +282,7 @@
       "master_name": "Galuf",
       "base_rarity": "3",
       "acquisition": "unknown",
-      "status": "native_identity_match_acquisition_unknown",
+      "status": "reported_drawable_acquisition_unverified",
       "candidates": [
         {
           "base_unit_id": "205000303",
@@ -294,7 +299,7 @@
       "master_name": "Krile",
       "base_rarity": "3",
       "acquisition": "unknown",
-      "status": "native_identity_match_acquisition_unknown",
+      "status": "reported_drawable_acquisition_unverified",
       "candidates": [
         {
           "base_unit_id": "205000503",
@@ -311,7 +316,7 @@
       "master_name": "Exdeath",
       "base_rarity": "3",
       "acquisition": "unknown",
-      "status": "native_identity_match_acquisition_unknown",
+      "status": "reported_drawable_acquisition_unverified",
       "candidates": [
         {
           "base_unit_id": "205000703",
@@ -329,7 +334,7 @@
       "master_name": "Terra",
       "base_rarity": "3",
       "acquisition": "unknown",
-      "status": "native_identity_match_acquisition_unknown",
+      "status": "reported_drawable_acquisition_unverified",
       "candidates": [
         {
           "base_unit_id": "206000103",
@@ -347,7 +352,7 @@
       "master_name": "Edgar",
       "base_rarity": "3",
       "acquisition": "unknown",
-      "status": "native_identity_match_acquisition_unknown",
+      "status": "reported_drawable_acquisition_unverified",
       "candidates": [
         {
           "base_unit_id": "206000303",
@@ -363,7 +368,7 @@
       "master_name": "Sabin",
       "base_rarity": "3",
       "acquisition": "unknown",
-      "status": "native_identity_match_acquisition_unknown",
+      "status": "reported_drawable_acquisition_unverified",
       "candidates": [
         {
           "base_unit_id": "206000403",
@@ -379,7 +384,7 @@
       "master_name": "Shadow",
       "base_rarity": "3",
       "acquisition": "unknown",
-      "status": "native_identity_match_acquisition_unknown",
+      "status": "reported_drawable_acquisition_unverified",
       "candidates": [
         {
           "base_unit_id": "206000503",
@@ -395,7 +400,7 @@
       "master_name": "Cyan",
       "base_rarity": "3",
       "acquisition": "unknown",
-      "status": "native_identity_match_acquisition_unknown",
+      "status": "reported_drawable_acquisition_unverified",
       "candidates": [
         {
           "base_unit_id": "206000603",
@@ -411,7 +416,7 @@
       "master_name": "Celes",
       "base_rarity": "3",
       "acquisition": "unknown",
-      "status": "native_identity_match_acquisition_unknown",
+      "status": "reported_drawable_acquisition_unverified",
       "candidates": [
         {
           "base_unit_id": "206000703",
@@ -460,7 +465,7 @@
       "master_name": "Leo",
       "base_rarity": "3",
       "acquisition": "unknown",
-      "status": "native_identity_match_acquisition_unknown",
+      "status": "reported_drawable_acquisition_unverified",
       "candidates": [
         {
           "base_unit_id": "206001803",
@@ -477,7 +482,7 @@
       "master_name": "Zidane",
       "base_rarity": "3",
       "acquisition": "unknown",
-      "status": "native_identity_match_acquisition_unknown",
+      "status": "reported_drawable_acquisition_unverified",
       "candidates": [
         {
           "base_unit_id": "209000103",
@@ -495,7 +500,7 @@
       "master_name": "Vivi",
       "base_rarity": "3",
       "acquisition": "unknown",
-      "status": "native_identity_match_acquisition_unknown",
+      "status": "reported_drawable_acquisition_unverified",
       "candidates": [
         {
           "base_unit_id": "209000203",
@@ -513,7 +518,7 @@
       "master_name": "Kuja",
       "base_rarity": "3",
       "acquisition": "unknown",
-      "status": "native_identity_match_acquisition_unknown",
+      "status": "reported_drawable_acquisition_unverified",
       "candidates": [
         {
           "base_unit_id": "209001003",
@@ -531,7 +536,7 @@
       "master_name": "Shantotto",
       "base_rarity": "3",
       "acquisition": "unknown",
-      "status": "native_identity_match_acquisition_unknown",
+      "status": "reported_drawable_acquisition_unverified",
       "candidates": [
         {
           "base_unit_id": "211000103",
@@ -548,7 +553,7 @@
       "master_name": "Vaan",
       "base_rarity": "3",
       "acquisition": "unknown",
-      "status": "native_identity_match_acquisition_unknown",
+      "status": "reported_drawable_acquisition_unverified",
       "candidates": [
         {
           "base_unit_id": "212000103",
@@ -566,7 +571,7 @@
       "master_name": "Fran",
       "base_rarity": "3",
       "acquisition": "unknown",
-      "status": "native_identity_match_acquisition_unknown",
+      "status": "reported_drawable_acquisition_unverified",
       "candidates": [
         {
           "base_unit_id": "212000603",
@@ -582,7 +587,7 @@
       "master_name": "Penelo",
       "base_rarity": "3",
       "acquisition": "unknown",
-      "status": "native_identity_match_acquisition_unknown",
+      "status": "reported_drawable_acquisition_unverified",
       "candidates": [
         {
           "base_unit_id": "212000403",
@@ -919,7 +924,7 @@
       "master_name": "Anzelm",
       "base_rarity": "3",
       "acquisition": "unknown",
-      "status": "native_identity_match_acquisition_unknown",
+      "status": "reported_drawable_acquisition_unverified",
       "candidates": [
         {
           "base_unit_id": "100002203",
@@ -935,7 +940,7 @@
       "master_name": "Clyne",
       "base_rarity": "3",
       "acquisition": "unknown",
-      "status": "native_identity_match_acquisition_unknown",
+      "status": "reported_drawable_acquisition_unverified",
       "candidates": [
         {
           "base_unit_id": "100002103",
@@ -951,7 +956,7 @@
       "master_name": "Luna",
       "base_rarity": "3",
       "acquisition": "unknown",
-      "status": "native_identity_match_acquisition_unknown",
+      "status": "reported_drawable_acquisition_unverified",
       "candidates": [
         {
           "base_unit_id": "100002303",
@@ -967,7 +972,7 @@
       "master_name": "Bedile",
       "base_rarity": "3",
       "acquisition": "unknown",
-      "status": "native_identity_match_acquisition_unknown",
+      "status": "reported_drawable_acquisition_unverified",
       "candidates": [
         {
           "base_unit_id": "100002403",
@@ -983,7 +988,7 @@
       "master_name": "Russell",
       "base_rarity": "3",
       "acquisition": "unknown",
-      "status": "native_identity_match_acquisition_unknown",
+      "status": "reported_drawable_acquisition_unverified",
       "candidates": [
         {
           "base_unit_id": "100003703",
@@ -999,7 +1004,7 @@
       "master_name": "Xiao",
       "base_rarity": "3",
       "acquisition": "unknown",
-      "status": "native_identity_match_acquisition_unknown",
+      "status": "reported_drawable_acquisition_unverified",
       "candidates": [
         {
           "base_unit_id": "100004003",
@@ -1017,7 +1022,7 @@
       "master_name": "Roselia",
       "base_rarity": "3",
       "acquisition": "unknown",
-      "status": "native_identity_match_acquisition_unknown",
+      "status": "reported_drawable_acquisition_unverified",
       "candidates": [
         {
           "base_unit_id": "100002703",
@@ -1035,7 +1040,7 @@
       "master_name": "Rakshasa",
       "base_rarity": "3",
       "acquisition": "unknown",
-      "status": "native_identity_match_acquisition_unknown",
+      "status": "reported_drawable_acquisition_unverified",
       "candidates": [
         {
           "base_unit_id": "100004103",
@@ -1052,7 +1057,7 @@
       "master_name": "Duane",
       "base_rarity": "3",
       "acquisition": "unknown",
-      "status": "native_identity_match_acquisition_unknown",
+      "status": "reported_drawable_acquisition_unverified",
       "candidates": [
         {
           "base_unit_id": "100002503",
@@ -1069,7 +1074,7 @@
       "master_name": "Miyuki",
       "base_rarity": "3",
       "acquisition": "unknown",
-      "status": "native_identity_match_acquisition_unknown",
+      "status": "reported_drawable_acquisition_unverified",
       "candidates": [
         {
           "base_unit_id": "100003803",
@@ -1087,7 +1092,7 @@
       "master_name": "Gilbert",
       "base_rarity": "3",
       "acquisition": "unknown",
-      "status": "native_identity_match_acquisition_unknown",
+      "status": "reported_drawable_acquisition_unverified",
       "candidates": [
         {
           "base_unit_id": "100003903",
@@ -1123,7 +1128,7 @@
       "master_name": "Cerius",
       "base_rarity": "3",
       "acquisition": "unknown",
-      "status": "native_identity_match_acquisition_unknown",
+      "status": "reported_drawable_acquisition_unverified",
       "candidates": [
         {
           "base_unit_id": "100002603",
@@ -1138,7 +1143,7 @@
     }
   ],
   "sources_sha256": {
-    "snapshot": "e23822c181b6e844e9549ddfb6ee7d38998bb80f17b890a65be52c86376b059f",
+    "snapshot": "7fa7e0e06c8f539065f35a58d6f1b0ecab4bfcfb4620765a7a75757f12f74da5",
     "master": "e5c6920421a08519107954978e271a7d6520f3522b6d1424bcd90d4c314549d6",
     "names": "decbcc5c6e69a56a44e7e810e32d57ce6573ee041b18490c702da75314144858"
   }

@@ -203,3 +203,21 @@ and early dated rarity awakenings. Even with the native ID match complete,
 **do not mark all 67 as June Rare Summon units** and do not auto-enable the
 missing `historical_unit_releases.json` file until the gating coverage is
 complete and the verified release index has been audited.
+
+### Second contemporary corroboration
+
+A contemporaneous [2016 Global summon discussion](https://www.ffxiah.com/forum/topic/48879/final-fantasy-brave-exvius/63/)
+independently identifies 38 character names as available to draw at the time.
+**37** are exact or explicitly aliased matches among the 67 native-ID launch
+candidates. The remaining mention, **Klein**, is unresolved and deliberately
+left unmapped. As of this review, launch candidate classifications are:
+
+- 37 `reported_drawable_acquisition_unverified`: the independent source says
+  drawable but does **not** prove Rare Summon vs Standard/Friend Point.
+- 26 `native_identity_match_acquisition_unknown`: reported in the early roster
+  but not corroborated by the independent drawable list.
+- 3 `story_candidate_not_rare`, 1 `registration_candidate_not_rare`.
+
+The audit keeps all 67 as non-authoritative candidates and **does not generate
+the playable release index**. Confirm the exact summon category, initial 2016
+available rarities, and reference date before activating the June baseline.

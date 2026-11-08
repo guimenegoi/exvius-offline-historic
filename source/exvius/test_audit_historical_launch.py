@@ -48,6 +48,17 @@ class LaunchAuditTests(unittest.TestCase):
         self.assertEqual(audit["status"], "AUDIT_ONLY_NOT_AN_UNLOCK_CATALOGUE")
         self.assertNotIn("release", audit["units"][0])
 
+    def test_second_source_is_corrobating_evidence_not_a_rare_summon_flag(self):
+        self.snapshot["draw_source_url"] = "https://example.invalid/second"
+        self.snapshot["draw_reported_names"] = ["Cecil", "Klein"]
+        report = audit_snapshot(self.snapshot, self.master, self.text)
+        self.assertEqual(report["units"][0]["status"],
+                         "reported_drawable_acquisition_unverified")
+        self.assertEqual(report["draw_names_not_matched"], ["Klein"])
+        self.assertEqual(report["units"][1]["status"], "story_candidate_not_rare")
+        self.assertNotIn("historical_month", report)
+        self.assertEqual(report["status"], "AUDIT_ONLY_NOT_AN_UNLOCK_CATALOGUE")
+
     def test_wrong_base_rarity_is_not_accepted(self):
         self.snapshot["units"][0]["base_rarity"] = "5"
         report = audit_snapshot(self.snapshot, self.master, self.text)
