@@ -45,16 +45,25 @@ def current_month(player_data: dict) -> str:
     return month
 
 
-def advance_month(player, latest_month: str) -> str:
-    """Advance exactly one month. The caller persists PlayerState atomically."""
+def advance_to_month(player, target: str, latest_month: str) -> str:
+    """Select a later available month, never reversing historical progression.
+
+    Supports a quick next-update button or a jump-forward month selector. The
+    caller confirms the choice in the UI and persists PlayerState atomically.
+    """
     current = current_month(player.data)
+    _month_parts(target)
     _month_parts(latest_month)
-    target = next_month(current)
-    if target > latest_month:
-        raise ValueError("No further audited historical month is available.")
+    if target <= current or target > latest_month:
+        raise ValueError("Choose a future month within the audited historical timeline.")
     player.data.setdefault("meta", {})["historical_month"] = target
     player.dirty = True
     return target
+
+
+def advance_month(player, latest_month: str) -> str:
+    """Advance exactly one month using the same validated progression policy."""
+    return advance_to_month(player, next_month(current_month(player.data)), latest_month)
 
 
 def is_released(release: str | None, month: str) -> bool:

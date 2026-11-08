@@ -33,6 +33,14 @@ class HistoricalProgressionTests(unittest.TestCase):
             history.advance_month(player, "2016-07")
         self.assertEqual(player.data["meta"]["historical_month"], "2016-07")
 
+    def test_jump_forward_without_rewind(self):
+        player = FakePlayer()
+        self.assertEqual(history.advance_to_month(player, "2019-07", "2024-10"), "2019-07")
+        for target in ("2016-06", "2019-06", "2025-01", "all"):
+            with self.subTest(target=target), self.assertRaises(ValueError):
+                history.advance_to_month(player, target, "2024-10")
+        self.assertEqual(history.current_month(player.data), "2019-07")
+
     def test_corrupt_save_never_disables_gate(self):
         with self.assertRaises(ValueError):
             history.current_month({"meta": {"historical_month": "all"}})

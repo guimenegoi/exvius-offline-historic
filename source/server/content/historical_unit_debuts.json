@@ -1,0 +1,8649 @@
+{
+  "version": 1,
+  "source": {
+    "kind": "user-curated-global-chronology",
+    "reference": "https://exvius.fandom.com/wiki/Update_Schedule",
+    "sha256": "f52e4ffb99aa50db4a5afcbe11970c75d81ac8aba006eebfe1193f295c7a488e",
+    "scope": "reported Global unit debut names, not client unit-ID unlocks"
+  },
+  "debuts": [
+    {
+      "name": "Chizuru",
+      "release": "2016-07-08",
+      "rarity": "4~5★",
+      "access": "unqualified",
+      "note_line": 113
+    },
+    {
+      "name": "Golbez",
+      "release": "2016-07-08",
+      "rarity": "3~5★",
+      "access": "unqualified",
+      "note_line": 113
+    },
+    {
+      "name": "Kefka",
+      "release": "2016-07-08",
+      "rarity": "3~5★",
+      "access": "unqualified",
+      "note_line": 113
+    },
+    {
+      "name": "Artemios",
+      "release": "2016-07-22",
+      "rarity": "3~5★",
+      "access": "unqualified",
+      "note_line": 116
+    },
+    {
+      "name": "Hayate",
+      "release": "2016-07-22",
+      "rarity": "3~5★",
+      "access": "unqualified",
+      "note_line": 116
+    },
+    {
+      "name": "Locke",
+      "release": "2016-07-22",
+      "rarity": "3~5★",
+      "access": "unqualified",
+      "note_line": 116
+    },
+    {
+      "name": "Lenna",
+      "release": "2016-08-05",
+      "rarity": "3~5★",
+      "access": "unqualified",
+      "note_line": 124
+    },
+    {
+      "name": "Tellah",
+      "release": "2016-08-05",
+      "rarity": "3~5★",
+      "access": "unqualified",
+      "note_line": 124
+    },
+    {
+      "name": "Warrior of Light",
+      "release": "2016-08-05",
+      "rarity": "4~5★",
+      "access": "unqualified",
+      "note_line": 124
+    },
+    {
+      "name": "Amarant",
+      "release": "2016-08-19",
+      "rarity": "3~5★",
+      "access": "unqualified",
+      "note_line": 128
+    },
+    {
+      "name": "Lani",
+      "release": "2016-08-19",
+      "rarity": "3~4★",
+      "access": "unqualified",
+      "note_line": 128
+    },
+    {
+      "name": "Freya",
+      "release": "2016-08-26",
+      "rarity": "3~5★",
+      "access": "unqualified",
+      "note_line": 132
+    },
+    {
+      "name": "Garnet",
+      "release": "2016-08-26",
+      "rarity": "4~5★",
+      "access": "unqualified",
+      "note_line": 132
+    },
+    {
+      "name": "Fencer",
+      "release": "2016-09-09",
+      "rarity": "4~5★",
+      "access": "unqualified",
+      "note_line": 139
+    },
+    {
+      "name": "Juggler",
+      "release": "2016-09-09",
+      "rarity": "4~5★",
+      "access": "unqualified",
+      "note_line": 139
+    },
+    {
+      "name": "Thief",
+      "release": "2016-09-09",
+      "rarity": "4~5★",
+      "access": "unqualified",
+      "note_line": 139
+    },
+    {
+      "name": "Charlotte",
+      "release": "2016-09-23",
+      "rarity": "3~5★",
+      "access": "unqualified",
+      "note_line": 144
+    },
+    {
+      "name": "Lid",
+      "release": "2016-09-23",
+      "rarity": "3~5★",
+      "access": "unqualified",
+      "note_line": 144
+    },
+    {
+      "name": "Lightning",
+      "release": "2016-09-23",
+      "rarity": "5~6★",
+      "access": "unqualified",
+      "note_line": 144
+    },
+    {
+      "name": "Ludmille",
+      "release": "2016-09-23",
+      "rarity": "3~5★",
+      "access": "unqualified",
+      "note_line": 144
+    },
+    {
+      "name": "Alma",
+      "release": "2016-09-30",
+      "rarity": "3~5★",
+      "access": "unqualified",
+      "note_line": 150
+    },
+    {
+      "name": "Delita",
+      "release": "2016-09-30",
+      "rarity": "5~6★",
+      "access": "unqualified",
+      "note_line": 150
+    },
+    {
+      "name": "Gaffgarion",
+      "release": "2016-09-30",
+      "rarity": "4~5★",
+      "access": "unqualified",
+      "note_line": 150
+    },
+    {
+      "name": "Agrias",
+      "release": "2016-10-07",
+      "rarity": "4~5★",
+      "access": "unqualified",
+      "note_line": 155
+    },
+    {
+      "name": "Mustadio",
+      "release": "2016-10-07",
+      "rarity": "3~5★",
+      "access": "unqualified",
+      "note_line": 155
+    },
+    {
+      "name": "Ramza",
+      "release": "2016-10-07",
+      "rarity": "5~6★",
+      "access": "unqualified",
+      "note_line": 155
+    },
+    {
+      "name": "Dark Knight Cecil",
+      "release": "2016-10-14",
+      "rarity": "5~6★",
+      "access": "unqualified",
+      "note_line": 158
+    },
+    {
+      "name": "Edge",
+      "release": "2016-10-14",
+      "rarity": "3~5★",
+      "access": "unqualified",
+      "note_line": 158
+    },
+    {
+      "name": "Rosa",
+      "release": "2016-10-14",
+      "rarity": "4~5★",
+      "access": "unqualified",
+      "note_line": 158
+    },
+    {
+      "name": "Black Cat Lid",
+      "release": "2016-10-21",
+      "rarity": "3~5★",
+      "access": "unqualified",
+      "note_line": 162
+    },
+    {
+      "name": "Demon Rain",
+      "release": "2016-10-21",
+      "rarity": "5~6★",
+      "access": "unqualified",
+      "note_line": 162
+    },
+    {
+      "name": "Dracu Lasswell",
+      "release": "2016-10-21",
+      "rarity": "5~6★",
+      "access": "unqualified",
+      "note_line": 162
+    },
+    {
+      "name": "White Witch Fina",
+      "release": "2016-10-21",
+      "rarity": "4~6★",
+      "access": "unqualified",
+      "note_line": 162
+    },
+    {
+      "name": "Arc",
+      "release": "2016-11-04",
+      "rarity": "3~5★",
+      "access": "unqualified",
+      "note_line": 170
+    },
+    {
+      "name": "Ingus",
+      "release": "2016-11-04",
+      "rarity": "3~5★",
+      "access": "unqualified",
+      "note_line": 170
+    },
+    {
+      "name": "Luneth",
+      "release": "2016-11-04",
+      "rarity": "5~6★",
+      "access": "unqualified",
+      "note_line": 170
+    },
+    {
+      "name": "Refia",
+      "release": "2016-11-04",
+      "rarity": "4~5★",
+      "access": "unqualified",
+      "note_line": 170
+    },
+    {
+      "name": "Elza",
+      "release": "2016-11-11",
+      "rarity": "5~6★",
+      "access": "unqualified",
+      "note_line": 175
+    },
+    {
+      "name": "Karl",
+      "release": "2016-11-11",
+      "rarity": "4~5★",
+      "access": "unqualified",
+      "note_line": 175
+    },
+    {
+      "name": "Seria",
+      "release": "2016-11-11",
+      "rarity": "4~5★",
+      "access": "unqualified",
+      "note_line": 175
+    },
+    {
+      "name": "Tilith",
+      "release": "2016-11-11",
+      "rarity": "4~5★",
+      "access": "unqualified",
+      "note_line": 175
+    },
+    {
+      "name": "Maxwell",
+      "release": "2016-11-18",
+      "rarity": "5★",
+      "access": "unqualified",
+      "note_line": 178
+    },
+    {
+      "name": "Faris",
+      "release": "2016-11-24",
+      "rarity": "3~5★",
+      "access": "unqualified",
+      "note_line": 181
+    },
+    {
+      "name": "Gilgamesh (FFV)",
+      "release": "2016-11-24",
+      "rarity": "5~6★",
+      "access": "unqualified",
+      "note_line": 181
+    },
+    {
+      "name": "Nichol",
+      "release": "2016-11-24",
+      "rarity": "3~5★",
+      "access": "unqualified",
+      "note_line": 182
+    },
+    {
+      "name": "Sazh",
+      "release": "2016-12-02",
+      "rarity": "3~5★",
+      "access": "unqualified",
+      "note_line": 192
+    },
+    {
+      "name": "Snow",
+      "release": "2016-12-02",
+      "rarity": "4~6★",
+      "access": "unqualified",
+      "note_line": 192
+    },
+    {
+      "name": "Vanille",
+      "release": "2016-12-02",
+      "rarity": "4~5★",
+      "access": "unqualified",
+      "note_line": 192
+    },
+    {
+      "name": "Fang",
+      "release": "2016-12-09",
+      "rarity": "3~5★",
+      "access": "unqualified",
+      "note_line": 196
+    },
+    {
+      "name": "Hope",
+      "release": "2016-12-09",
+      "rarity": "4~5★",
+      "access": "unqualified",
+      "note_line": 196
+    },
+    {
+      "name": "Mercedes",
+      "release": "2016-12-16",
+      "rarity": "4~6★",
+      "access": "unqualified",
+      "note_line": 198
+    },
+    {
+      "name": "Noctis",
+      "release": "2016-12-16",
+      "rarity": "5~6★",
+      "access": "unqualified",
+      "note_line": 198
+    },
+    {
+      "name": "Santa Roselia",
+      "release": "2016-12-23",
+      "rarity": "4~6★",
+      "access": "unqualified",
+      "note_line": 203
+    },
+    {
+      "name": "White Knight Noel",
+      "release": "2016-12-23",
+      "rarity": "5~6★",
+      "access": "unqualified",
+      "note_line": 203
+    },
+    {
+      "name": "Dark Fina",
+      "release": "2017-01-06",
+      "rarity": "5~6★",
+      "access": "unqualified",
+      "note_line": 213
+    },
+    {
+      "name": "Elle",
+      "release": "2017-01-06",
+      "rarity": "3~5★",
+      "access": "unqualified",
+      "note_line": 213
+    },
+    {
+      "name": "Luka",
+      "release": "2017-01-06",
+      "rarity": "4~6★",
+      "access": "unqualified",
+      "note_line": 213
+    },
+    {
+      "name": "Ace",
+      "release": "2017-01-13",
+      "rarity": "5~6★",
+      "access": "unqualified",
+      "note_line": 216
+    },
+    {
+      "name": "Jack",
+      "release": "2017-01-13",
+      "rarity": "3~5★",
+      "access": "unqualified",
+      "note_line": 216
+    },
+    {
+      "name": "Seven",
+      "release": "2017-01-13",
+      "rarity": "4~6★",
+      "access": "unqualified",
+      "note_line": 216
+    },
+    {
+      "name": "Trey",
+      "release": "2017-01-13",
+      "rarity": "3~5★",
+      "access": "unqualified",
+      "note_line": 216
+    },
+    {
+      "name": "Dangerous Ariana",
+      "release": "2017-01-19",
+      "rarity": "4~6★",
+      "access": "unqualified",
+      "note_line": 221
+    },
+    {
+      "name": "Ling",
+      "release": "2017-01-27",
+      "rarity": "4~6★",
+      "access": "unqualified",
+      "note_line": 224
+    },
+    {
+      "name": "Yun",
+      "release": "2017-01-27",
+      "rarity": "5~6★",
+      "access": "unqualified",
+      "note_line": 224
+    },
+    {
+      "name": "Popoi",
+      "release": "2017-02-03",
+      "rarity": "3~5★",
+      "access": "unqualified",
+      "note_line": 231
+    },
+    {
+      "name": "Primm",
+      "release": "2017-02-03",
+      "rarity": "4~6★",
+      "access": "unqualified",
+      "note_line": 231
+    },
+    {
+      "name": "Randi",
+      "release": "2017-02-03",
+      "rarity": "5~6★",
+      "access": "unqualified",
+      "note_line": 231
+    },
+    {
+      "name": "Cupid Artemios",
+      "release": "2017-02-10",
+      "rarity": "4~6★",
+      "access": "unqualified",
+      "note_line": 234
+    },
+    {
+      "name": "Cupid Luna",
+      "release": "2017-02-10",
+      "rarity": "3~5★",
+      "access": "unqualified",
+      "note_line": 234
+    },
+    {
+      "name": "Marie",
+      "release": "2017-02-10",
+      "rarity": "5~6★",
+      "access": "unqualified",
+      "note_line": 234
+    },
+    {
+      "name": "Emperor",
+      "release": "2017-02-17",
+      "rarity": "5~6★",
+      "access": "unqualified",
+      "note_line": 237
+    },
+    {
+      "name": "Guy",
+      "release": "2017-02-17",
+      "rarity": "3~5★",
+      "access": "unqualified",
+      "note_line": 237
+    },
+    {
+      "name": "Leon",
+      "release": "2017-02-17",
+      "rarity": "4~5★",
+      "access": "unqualified",
+      "note_line": 237
+    },
+    {
+      "name": "Jake",
+      "release": "2017-02-23",
+      "rarity": "3~5★",
+      "access": "unqualified",
+      "note_line": 241
+    },
+    {
+      "name": "Olive",
+      "release": "2017-02-23",
+      "rarity": "5~6★",
+      "access": "unqualified",
+      "note_line": 241
+    },
+    {
+      "name": "Shera",
+      "release": "2017-02-23",
+      "rarity": "3~5★",
+      "access": "unqualified",
+      "note_line": 241
+    },
+    {
+      "name": "Shine",
+      "release": "2017-02-23",
+      "rarity": "4~6★",
+      "access": "unqualified",
+      "note_line": 241
+    },
+    {
+      "name": "Cinque",
+      "release": "2017-03-03",
+      "rarity": "3~5★",
+      "access": "unqualified",
+      "note_line": 249
+    },
+    {
+      "name": "Eight",
+      "release": "2017-03-03",
+      "rarity": "3~5★",
+      "access": "unqualified",
+      "note_line": 249
+    },
+    {
+      "name": "Nine",
+      "release": "2017-03-03",
+      "rarity": "4~6★",
+      "access": "unqualified",
+      "note_line": 249
+    },
+    {
+      "name": "Queen",
+      "release": "2017-03-03",
+      "rarity": "5~6★",
+      "access": "unqualified",
+      "note_line": 249
+    },
+    {
+      "name": "Minfilia",
+      "release": "2017-03-17",
+      "rarity": "4~6★",
+      "access": "unqualified",
+      "note_line": 254
+    },
+    {
+      "name": "Thancred",
+      "release": "2017-03-17",
+      "rarity": "3~5★",
+      "access": "unqualified",
+      "note_line": 254
+    },
+    {
+      "name": "Y'shtola",
+      "release": "2017-03-17",
+      "rarity": "5~6★",
+      "access": "unqualified",
+      "note_line": 254
+    },
+    {
+      "name": "Lawrence",
+      "release": "2017-03-24",
+      "rarity": "3~5★",
+      "access": "unqualified",
+      "note_line": 257
+    },
+    {
+      "name": "Orlandeau",
+      "release": "2017-03-24",
+      "rarity": "5~6★",
+      "access": "unqualified",
+      "note_line": 257
+    },
+    {
+      "name": "Ovelia",
+      "release": "2017-03-24",
+      "rarity": "3~5★",
+      "access": "unqualified",
+      "note_line": 257
+    },
+    {
+      "name": "Soleil",
+      "release": "2017-03-24",
+      "rarity": "4~6★",
+      "access": "unqualified",
+      "note_line": 257
+    },
+    {
+      "name": "Aiden",
+      "release": "2017-04-06",
+      "rarity": "3~5★",
+      "access": "unqualified",
+      "note_line": 265
+    },
+    {
+      "name": "Fryevia",
+      "release": "2017-04-06",
+      "rarity": "5~6★",
+      "access": "unqualified",
+      "note_line": 265
+    },
+    {
+      "name": "Xon",
+      "release": "2017-04-06",
+      "rarity": "4~6★",
+      "access": "unqualified",
+      "note_line": 265
+    },
+    {
+      "name": "Gau",
+      "release": "2017-04-20",
+      "rarity": "3~5★",
+      "access": "unqualified",
+      "note_line": 273
+    },
+    {
+      "name": "Setzer",
+      "release": "2017-04-20",
+      "rarity": "4~6★",
+      "access": "unqualified",
+      "note_line": 273
+    },
+    {
+      "name": "Trance Terra",
+      "release": "2017-04-20",
+      "rarity": "5~6★",
+      "access": "unqualified",
+      "note_line": 273
+    },
+    {
+      "name": "Sakura",
+      "release": "2017-04-27",
+      "rarity": "3~5★",
+      "access": "unqualified",
+      "note_line": 277
+    },
+    {
+      "name": "Aileen",
+      "release": "2017-05-05",
+      "rarity": "5~6★",
+      "access": "unqualified",
+      "note_line": 284
+    },
+    {
+      "name": "Heltich",
+      "release": "2017-05-05",
+      "rarity": "3~5★",
+      "access": "unqualified",
+      "note_line": 284
+    },
+    {
+      "name": "Sozhe",
+      "release": "2017-05-05",
+      "rarity": "4~6★",
+      "access": "unqualified",
+      "note_line": 284
+    },
+    {
+      "name": "Ulrica",
+      "release": "2017-05-05",
+      "rarity": "3~5★",
+      "access": "unqualified",
+      "note_line": 284
+    },
+    {
+      "name": "Reberta",
+      "release": "2017-05-12",
+      "rarity": null,
+      "access": "unqualified",
+      "note_line": 289
+    },
+    {
+      "name": "Zyrus",
+      "release": "2017-05-12",
+      "rarity": null,
+      "access": "unqualified",
+      "note_line": 289
+    },
+    {
+      "name": "King",
+      "release": "2017-05-19",
+      "rarity": "4~6★",
+      "access": "unqualified",
+      "note_line": 293
+    },
+    {
+      "name": "Rem",
+      "release": "2017-05-19",
+      "rarity": "5~6★",
+      "access": "unqualified",
+      "note_line": 293
+    },
+    {
+      "name": "Sice",
+      "release": "2017-05-19",
+      "rarity": "3~5★",
+      "access": "unqualified",
+      "note_line": 293
+    },
+    {
+      "name": "Abel",
+      "release": "2017-05-26",
+      "rarity": "3~5★",
+      "access": "unqualified",
+      "note_line": 298
+    },
+    {
+      "name": "Grace",
+      "release": "2017-05-26",
+      "rarity": "4~6★",
+      "access": "unqualified",
+      "note_line": 298
+    },
+    {
+      "name": "Jean",
+      "release": "2017-05-26",
+      "rarity": "3~5★",
+      "access": "unqualified",
+      "note_line": 298
+    },
+    {
+      "name": "Wilhelm",
+      "release": "2017-05-26",
+      "rarity": "5~6★",
+      "access": "unqualified",
+      "note_line": 298
+    },
+    {
+      "name": "Kelsus",
+      "release": "2017-06-01",
+      "rarity": "5~6★",
+      "access": "conditional",
+      "note_line": 302,
+      "annotation": "(Shard summon, not immediately available)"
+    },
+    {
+      "name": "Papalymo",
+      "release": "2017-06-02",
+      "rarity": "4~6★",
+      "access": "unqualified",
+      "note_line": 305
+    },
+    {
+      "name": "Yda",
+      "release": "2017-06-02",
+      "rarity": "4~6★",
+      "access": "unqualified",
+      "note_line": 305
+    },
+    {
+      "name": "Amelia",
+      "release": "2017-06-09",
+      "rarity": "4~6★",
+      "access": "unqualified",
+      "note_line": 311
+    },
+    {
+      "name": "Camille",
+      "release": "2017-06-09",
+      "rarity": "3~5★",
+      "access": "unqualified",
+      "note_line": 311
+    },
+    {
+      "name": "Fohlen",
+      "release": "2017-06-09",
+      "rarity": "5~6★",
+      "access": "unqualified",
+      "note_line": 311
+    },
+    {
+      "name": "Ilias",
+      "release": "2017-06-09",
+      "rarity": "4~6★",
+      "access": "unqualified",
+      "note_line": 311
+    },
+    {
+      "name": "Vargas",
+      "release": "2017-06-16",
+      "rarity": "5~6★",
+      "access": "unqualified",
+      "note_line": 315
+    },
+    {
+      "name": "Beach Time Fina",
+      "release": "2017-06-23",
+      "rarity": "4~6★",
+      "access": "unqualified",
+      "note_line": 324
+    },
+    {
+      "name": "Seabreeze Dark Fina",
+      "release": "2017-06-23",
+      "rarity": "5~6★",
+      "access": "unqualified",
+      "note_line": 324
+    },
+    {
+      "name": "Summer Lid",
+      "release": "2017-06-23",
+      "rarity": "3~5★",
+      "access": "unqualified",
+      "note_line": 324
+    },
+    {
+      "name": "Moogle",
+      "release": "2017-06-29",
+      "rarity": "4~6★",
+      "access": "unqualified",
+      "note_line": 328
+    },
+    {
+      "name": "Rikku",
+      "release": "2017-06-29",
+      "rarity": "4~6★",
+      "access": "unqualified",
+      "note_line": 329
+    },
+    {
+      "name": "Tidus",
+      "release": "2017-06-29",
+      "rarity": "5~6★",
+      "access": "unqualified",
+      "note_line": 329
+    },
+    {
+      "name": "Wakka",
+      "release": "2017-06-29",
+      "rarity": "3~5★",
+      "access": "unqualified",
+      "note_line": 329
+    },
+    {
+      "name": "Ashe",
+      "release": "2017-07-07",
+      "rarity": "4~6★",
+      "access": "unqualified",
+      "note_line": 338
+    },
+    {
+      "name": "Rasler",
+      "release": "2017-07-07",
+      "rarity": "4~6★",
+      "access": "unqualified",
+      "note_line": 338
+    },
+    {
+      "name": "Zargabaath",
+      "release": "2017-07-07",
+      "rarity": "5~6★",
+      "access": "unqualified",
+      "note_line": 338
+    },
+    {
+      "name": "Artisan Lid",
+      "release": "2017-07-08",
+      "rarity": "4~5★",
+      "access": "conditional",
+      "note_line": 339,
+      "annotation": "(exclusive Paris Fan Festa 2017 unit)"
+    },
+    {
+      "name": "Bran",
+      "release": "2017-07-14",
+      "rarity": "4~6★",
+      "access": "unqualified",
+      "note_line": 343
+    },
+    {
+      "name": "Helena",
+      "release": "2017-07-14",
+      "rarity": "4~6★",
+      "access": "unqualified",
+      "note_line": 343
+    },
+    {
+      "name": "Lunera",
+      "release": "2017-07-14",
+      "rarity": "5~6★",
+      "access": "unqualified",
+      "note_line": 343
+    },
+    {
+      "name": "Ruggles",
+      "release": "2017-07-14",
+      "rarity": "3~5★",
+      "access": "unqualified",
+      "note_line": 343
+    },
+    {
+      "name": "Knight Delita",
+      "release": "2017-07-28",
+      "rarity": "5~6★",
+      "access": "unqualified",
+      "note_line": 352
+    },
+    {
+      "name": "Meliadoul",
+      "release": "2017-07-28",
+      "rarity": "4~6★",
+      "access": "unqualified",
+      "note_line": 352
+    },
+    {
+      "name": "Mercenary Ramza",
+      "release": "2017-07-28",
+      "rarity": "5~6★",
+      "access": "unqualified",
+      "note_line": 352
+    },
+    {
+      "name": "Orran",
+      "release": "2017-07-28",
+      "rarity": "4~6★",
+      "access": "unqualified",
+      "note_line": 352
+    },
+    {
+      "name": "Timothy",
+      "release": "2017-08-04",
+      "rarity": "3~5★",
+      "access": "unqualified",
+      "note_line": 359
+    },
+    {
+      "name": "Veritas of the Dark",
+      "release": "2017-08-04",
+      "rarity": "5~6★",
+      "access": "unqualified",
+      "note_line": 359
+    },
+    {
+      "name": "Veritas of the Earth",
+      "release": "2017-08-04",
+      "rarity": "4~6★",
+      "access": "unqualified",
+      "note_line": 359
+    },
+    {
+      "name": "Veritas of the Flame",
+      "release": "2017-08-04",
+      "rarity": "5~6★",
+      "access": "unqualified",
+      "note_line": 359
+    },
+    {
+      "name": "Victoria",
+      "release": "2017-08-04",
+      "rarity": "4~6★",
+      "access": "unqualified",
+      "note_line": 359
+    },
+    {
+      "name": "21O",
+      "release": "2017-08-11",
+      "rarity": "3~5★",
+      "access": "unqualified",
+      "note_line": 363
+    },
+    {
+      "name": "2B",
+      "release": "2017-08-11",
+      "rarity": "5~6★",
+      "access": "unqualified",
+      "note_line": 363
+    },
+    {
+      "name": "9S",
+      "release": "2017-08-11",
+      "rarity": "4~6★",
+      "access": "unqualified",
+      "note_line": 363
+    },
+    {
+      "name": "A2",
+      "release": "2017-08-11",
+      "rarity": "5~6★",
+      "access": "unqualified",
+      "note_line": 363
+    },
+    {
+      "name": "Adam",
+      "release": "2017-08-11",
+      "rarity": "4~6★",
+      "access": "unqualified",
+      "note_line": 363
+    },
+    {
+      "name": "Eve",
+      "release": "2017-08-11",
+      "rarity": "4~6★",
+      "access": "unqualified",
+      "note_line": 363
+    },
+    {
+      "name": "Chic Ariana",
+      "release": "2017-08-17",
+      "rarity": "4~6★",
+      "access": "unqualified",
+      "note_line": 365
+    },
+    {
+      "name": "Veritas of the Heavens",
+      "release": "2017-08-25",
+      "rarity": "4~6★",
+      "access": "unqualified",
+      "note_line": 373
+    },
+    {
+      "name": "Veritas of the Light",
+      "release": "2017-08-25",
+      "rarity": "5~6★",
+      "access": "unqualified",
+      "note_line": 373
+    },
+    {
+      "name": "Veritas of the Waters",
+      "release": "2017-08-25",
+      "rarity": "4~6★",
+      "access": "unqualified",
+      "note_line": 373
+    },
+    {
+      "name": "Aria",
+      "release": "2017-09-01",
+      "rarity": "4~6★",
+      "access": "unqualified",
+      "note_line": 381
+    },
+    {
+      "name": "Desch",
+      "release": "2017-09-01",
+      "rarity": "4~6★",
+      "access": "unqualified",
+      "note_line": 381
+    },
+    {
+      "name": "Onion Knight",
+      "release": "2017-09-01",
+      "rarity": "5~6★",
+      "access": "unqualified",
+      "note_line": 381
+    },
+    {
+      "name": "Sara",
+      "release": "2017-09-01",
+      "rarity": "3~5★",
+      "access": "unqualified",
+      "note_line": 381
+    },
+    {
+      "name": "Kupipi",
+      "release": "2017-09-15",
+      "rarity": "3~5★",
+      "access": "unqualified",
+      "note_line": 388
+    },
+    {
+      "name": "Prishe",
+      "release": "2017-09-15",
+      "rarity": "5~6★",
+      "access": "unqualified",
+      "note_line": 388
+    },
+    {
+      "name": "Werei",
+      "release": "2017-09-15",
+      "rarity": "4~6★",
+      "access": "unqualified",
+      "note_line": 388
+    },
+    {
+      "name": "Ayaka",
+      "release": "2017-10-06",
+      "rarity": "5~6★",
+      "access": "unqualified",
+      "note_line": 400
+    },
+    {
+      "name": "Goken",
+      "release": "2017-10-06",
+      "rarity": "4~6★",
+      "access": "unqualified",
+      "note_line": 400
+    },
+    {
+      "name": "Kamui",
+      "release": "2017-10-06",
+      "rarity": "3~5★",
+      "access": "unqualified",
+      "note_line": 400
+    },
+    {
+      "name": "Silvia",
+      "release": "2017-10-06",
+      "rarity": "4~6★",
+      "access": "unqualified",
+      "note_line": 400
+    },
+    {
+      "name": "Crowe",
+      "release": "2017-10-13",
+      "rarity": "4~6★",
+      "access": "unqualified",
+      "note_line": 403
+    },
+    {
+      "name": "Glauca",
+      "release": "2017-10-13",
+      "rarity": "4~6★",
+      "access": "unqualified",
+      "note_line": 403
+    },
+    {
+      "name": "Libertus",
+      "release": "2017-10-13",
+      "rarity": "3~5★",
+      "access": "unqualified",
+      "note_line": 403
+    },
+    {
+      "name": "Nyx",
+      "release": "2017-10-13",
+      "rarity": "5~6★",
+      "access": "unqualified",
+      "note_line": 403
+    },
+    {
+      "name": "Grim Lord Sakura",
+      "release": "2017-10-20",
+      "rarity": "5~6★",
+      "access": "unqualified",
+      "note_line": 409
+    },
+    {
+      "name": "Illusionist Nichol",
+      "release": "2017-10-20",
+      "rarity": "4~6★",
+      "access": "unqualified",
+      "note_line": 409
+    },
+    {
+      "name": "Pirate Jake",
+      "release": "2017-10-20",
+      "rarity": "4~6★",
+      "access": "unqualified",
+      "note_line": 409
+    },
+    {
+      "name": "Amy",
+      "release": "2017-11-03",
+      "rarity": "3~5★",
+      "access": "unqualified",
+      "note_line": 419
+    },
+    {
+      "name": "Chloe",
+      "release": "2017-11-03",
+      "rarity": "4~6★",
+      "access": "unqualified",
+      "note_line": 419
+    },
+    {
+      "name": "Loren",
+      "release": "2017-11-03",
+      "rarity": "5~6★",
+      "access": "unqualified",
+      "note_line": 419
+    },
+    {
+      "name": "Barbariccia",
+      "release": "2017-11-10",
+      "rarity": "5~6★",
+      "access": "unqualified",
+      "note_line": 422
+    },
+    {
+      "name": "Cagnazzo",
+      "release": "2017-11-10",
+      "rarity": "4~6★",
+      "access": "unqualified",
+      "note_line": 422
+    },
+    {
+      "name": "Rubicante",
+      "release": "2017-11-10",
+      "rarity": "4~6★",
+      "access": "unqualified",
+      "note_line": 422
+    },
+    {
+      "name": "Scarmiglione",
+      "release": "2017-11-10",
+      "rarity": "3~5★",
+      "access": "unqualified",
+      "note_line": 422
+    },
+    {
+      "name": "Charming Kitty Ariana",
+      "release": "2017-11-17",
+      "rarity": "5~6★",
+      "access": "unqualified",
+      "note_line": 428
+    },
+    {
+      "name": "Cor",
+      "release": "2017-11-24",
+      "rarity": "4~6★",
+      "access": "unqualified",
+      "note_line": 433
+    },
+    {
+      "name": "Gladiolus",
+      "release": "2017-11-24",
+      "rarity": "5~6★",
+      "access": "unqualified",
+      "note_line": 433
+    },
+    {
+      "name": "Iris",
+      "release": "2017-11-24",
+      "rarity": "3~5★",
+      "access": "unqualified",
+      "note_line": 433
+    },
+    {
+      "name": "Charie",
+      "release": "2017-12-01",
+      "rarity": "3~5★",
+      "access": "unqualified",
+      "note_line": 441
+    },
+    {
+      "name": "Duke",
+      "release": "2017-12-01",
+      "rarity": "5~6★",
+      "access": "unqualified",
+      "note_line": 441
+    },
+    {
+      "name": "Mystea",
+      "release": "2017-12-01",
+      "rarity": "4~6★",
+      "access": "unqualified",
+      "note_line": 441
+    },
+    {
+      "name": "Olif",
+      "release": "2017-12-01",
+      "rarity": "4~6★",
+      "access": "unqualified",
+      "note_line": 441
+    },
+    {
+      "name": "Ryunan",
+      "release": "2017-12-01",
+      "rarity": "3~5★",
+      "access": "unqualified",
+      "note_line": 441
+    },
+    {
+      "name": "Ashteroze",
+      "release": "2017-12-08",
+      "rarity": "4~6★",
+      "access": "unqualified",
+      "note_line": 446
+    },
+    {
+      "name": "Aura",
+      "release": "2017-12-08",
+      "rarity": "4~6★",
+      "access": "unqualified",
+      "note_line": 447
+    },
+    {
+      "name": "Grinfield",
+      "release": "2017-12-08",
+      "rarity": "4~6★",
+      "access": "unqualified",
+      "note_line": 446
+    },
+    {
+      "name": "Guromu",
+      "release": "2017-12-08",
+      "rarity": "3~5★",
+      "access": "unqualified",
+      "note_line": 447
+    },
+    {
+      "name": "Kupolkan",
+      "release": "2017-12-08",
+      "rarity": "4~6★",
+      "access": "unqualified",
+      "note_line": 446
+    },
+    {
+      "name": "Nyalu",
+      "release": "2017-12-08",
+      "rarity": "4~6★",
+      "access": "unqualified",
+      "note_line": 446
+    },
+    {
+      "name": "Roy",
+      "release": "2017-12-08",
+      "rarity": "5~6★",
+      "access": "unqualified",
+      "note_line": 447
+    },
+    {
+      "name": "Sandee",
+      "release": "2017-12-08",
+      "rarity": "4~6★",
+      "access": "unqualified",
+      "note_line": 446
+    },
+    {
+      "name": "Cowboy Jake",
+      "release": "2017-12-09",
+      "rarity": "4~5★",
+      "access": "conditional",
+      "note_line": 448,
+      "annotation": "(exclusive Los Angeles Fan Festa 2017 unit)"
+    },
+    {
+      "name": "Cloud",
+      "release": "2017-12-15",
+      "rarity": "5~6★",
+      "access": "unqualified",
+      "note_line": 451
+    },
+    {
+      "name": "Conrad",
+      "release": "2017-12-15",
+      "rarity": "3~5★",
+      "access": "unqualified",
+      "note_line": 451
+    },
+    {
+      "name": "Elfreeda",
+      "release": "2017-12-15",
+      "rarity": "5~6★",
+      "access": "unqualified",
+      "note_line": 451
+    },
+    {
+      "name": "William",
+      "release": "2017-12-15",
+      "rarity": "4~6★",
+      "access": "unqualified",
+      "note_line": 451
+    },
+    {
+      "name": "Christine",
+      "release": "2017-12-22",
+      "rarity": "5~6★",
+      "access": "unqualified",
+      "note_line": 458
+    },
+    {
+      "name": "Kryla",
+      "release": "2017-12-22",
+      "rarity": "5~6★",
+      "access": "unqualified",
+      "note_line": 458
+    },
+    {
+      "name": "Tinkerer Carrie",
+      "release": "2017-12-22",
+      "rarity": "4~6★",
+      "access": "unqualified",
+      "note_line": 458
+    },
+    {
+      "name": "Barusa",
+      "release": "2018-01-05",
+      "rarity": "4~6★",
+      "access": "unqualified",
+      "note_line": 468
+    },
+    {
+      "name": "Kaliva",
+      "release": "2018-01-05",
+      "rarity": "4~6★",
+      "access": "unqualified",
+      "note_line": 468
+    },
+    {
+      "name": "Ray Jack",
+      "release": "2018-01-05",
+      "rarity": "5~6★",
+      "access": "unqualified",
+      "note_line": 468
+    },
+    {
+      "name": "Toby",
+      "release": "2018-01-05",
+      "rarity": "3~5★",
+      "access": "conditional",
+      "note_line": 468,
+      "annotation": "(King's Knight WoDD) *Global Edition"
+    },
+    {
+      "name": "Jiraiya",
+      "release": "2018-01-12",
+      "rarity": "5~6★",
+      "access": "unqualified",
+      "note_line": 473
+    },
+    {
+      "name": "Kaede",
+      "release": "2018-01-12",
+      "rarity": "4~6★",
+      "access": "unqualified",
+      "note_line": 473
+    },
+    {
+      "name": "Ohga",
+      "release": "2018-01-12",
+      "rarity": "4~6★",
+      "access": "unqualified",
+      "note_line": 473
+    },
+    {
+      "name": "Otogiri",
+      "release": "2018-01-12",
+      "rarity": "3~5★",
+      "access": "unqualified",
+      "note_line": 473
+    },
+    {
+      "name": "Pyro Glacial Lasswell",
+      "release": "2018-01-12",
+      "rarity": "5~6★",
+      "access": "unqualified",
+      "note_line": 473
+    },
+    {
+      "name": "Balthier",
+      "release": "2018-01-19",
+      "rarity": "5~6★",
+      "access": "unqualified",
+      "note_line": 477
+    },
+    {
+      "name": "Basch",
+      "release": "2018-01-19",
+      "rarity": "5~6★",
+      "access": "unqualified",
+      "note_line": 477
+    },
+    {
+      "name": "Drace",
+      "release": "2018-01-19",
+      "rarity": "4~6★",
+      "access": "unqualified",
+      "note_line": 477
+    },
+    {
+      "name": "Larsa",
+      "release": "2018-01-19",
+      "rarity": "3~5★",
+      "access": "unqualified",
+      "note_line": 477
+    },
+    {
+      "name": "Vayne",
+      "release": "2018-01-19",
+      "rarity": "4~6★",
+      "access": "unqualified",
+      "note_line": 477
+    },
+    {
+      "name": "Blossom Sage Sakura",
+      "release": "2018-02-02",
+      "rarity": "5~6★",
+      "access": "unqualified",
+      "note_line": 490
+    },
+    {
+      "name": "Cedona",
+      "release": "2018-02-02",
+      "rarity": "4~6★",
+      "access": "unqualified",
+      "note_line": 490
+    },
+    {
+      "name": "Verun",
+      "release": "2018-02-02",
+      "rarity": "4~6★",
+      "access": "unqualified",
+      "note_line": 490
+    },
+    {
+      "name": "Ang",
+      "release": "2018-02-09",
+      "rarity": "5~6★",
+      "access": "unqualified",
+      "note_line": 495
+    },
+    {
+      "name": "Chow",
+      "release": "2018-02-09",
+      "rarity": "5~6★",
+      "access": "unqualified",
+      "note_line": 495
+    },
+    {
+      "name": "Yan",
+      "release": "2018-02-09",
+      "rarity": "4~6★",
+      "access": "unqualified",
+      "note_line": 495
+    },
+    {
+      "name": "Aranea",
+      "release": "2018-02-23",
+      "rarity": "5~6★",
+      "access": "unqualified",
+      "note_line": 503
+    },
+    {
+      "name": "Prompto",
+      "release": "2018-02-23",
+      "rarity": "5~6★",
+      "access": "unqualified",
+      "note_line": 503
+    },
+    {
+      "name": "Beatrix",
+      "release": "2018-03-02",
+      "rarity": "5~6★",
+      "access": "unqualified",
+      "note_line": 511
+    },
+    {
+      "name": "Black Waltz 3",
+      "release": "2018-03-02",
+      "rarity": "3~5★",
+      "access": "unqualified",
+      "note_line": 511
+    },
+    {
+      "name": "Eiko",
+      "release": "2018-03-02",
+      "rarity": "5~6★",
+      "access": "unqualified",
+      "note_line": 511
+    },
+    {
+      "name": "Steiner",
+      "release": "2018-03-02",
+      "rarity": "4~6★",
+      "access": "unqualified",
+      "note_line": 511
+    },
+    {
+      "name": "Divine Soleil",
+      "release": "2018-03-09",
+      "rarity": "4~6★",
+      "access": "unqualified",
+      "note_line": 516
+    },
+    {
+      "name": "Explorer Aileen",
+      "release": "2018-03-09",
+      "rarity": "5~6★",
+      "access": "unqualified",
+      "note_line": 516
+    },
+    {
+      "name": "Lara Croft",
+      "release": "2018-03-09",
+      "rarity": "5~6★",
+      "access": "unqualified",
+      "note_line": 516
+    },
+    {
+      "name": "Pharaoh Abel",
+      "release": "2018-03-09",
+      "rarity": "3~5★",
+      "access": "unqualified",
+      "note_line": 516
+    },
+    {
+      "name": "Erwin",
+      "release": "2018-03-23",
+      "rarity": "3~5★",
+      "access": "unqualified",
+      "note_line": 527
+    },
+    {
+      "name": "Kunshira",
+      "release": "2018-03-23",
+      "rarity": "5~6★",
+      "access": "unqualified",
+      "note_line": 527
+    },
+    {
+      "name": "Lotus Mage Fina",
+      "release": "2018-03-23",
+      "rarity": "5~6★",
+      "access": "unqualified",
+      "note_line": 527
+    },
+    {
+      "name": "Wadow",
+      "release": "2018-03-23",
+      "rarity": "4~6★",
+      "access": "unqualified",
+      "note_line": 527
+    },
+    {
+      "name": "Lulu",
+      "release": "2018-04-06",
+      "rarity": "5~6★",
+      "access": "unqualified",
+      "note_line": 540
+    },
+    {
+      "name": "Seymour",
+      "release": "2018-04-06",
+      "rarity": "4~6★",
+      "access": "unqualified",
+      "note_line": 540
+    },
+    {
+      "name": "Yuna",
+      "release": "2018-04-06",
+      "rarity": "5~6★",
+      "access": "unqualified",
+      "note_line": 540
+    },
+    {
+      "name": "Emperor Shera",
+      "release": "2018-04-13",
+      "rarity": "5~6★",
+      "access": "unqualified",
+      "note_line": 546
+    },
+    {
+      "name": "Nameless Gunner Jake",
+      "release": "2018-04-13",
+      "rarity": "5~6★",
+      "access": "unqualified",
+      "note_line": 546
+    },
+    {
+      "name": "Ozetta",
+      "release": "2018-04-13",
+      "rarity": "4~6★",
+      "access": "unqualified",
+      "note_line": 546
+    },
+    {
+      "name": "Riley",
+      "release": "2018-04-13",
+      "rarity": "3~5★",
+      "access": "unqualified",
+      "note_line": 546
+    },
+    {
+      "name": "Dragonlord",
+      "release": "2018-04-27",
+      "rarity": "5~6★",
+      "access": "unqualified",
+      "note_line": 556
+    },
+    {
+      "name": "Golem",
+      "release": "2018-04-27",
+      "rarity": "3~5★",
+      "access": "unqualified",
+      "note_line": 556
+    },
+    {
+      "name": "Killing Machine",
+      "release": "2018-04-27",
+      "rarity": "4~5★",
+      "access": "unqualified",
+      "note_line": 556
+    },
+    {
+      "name": "Liquid Metal Slime",
+      "release": "2018-04-27",
+      "rarity": "4~5★",
+      "access": "unqualified",
+      "note_line": 556
+    },
+    {
+      "name": "Orochi",
+      "release": "2018-04-27",
+      "rarity": "4~6★",
+      "access": "unqualified",
+      "note_line": 556
+    },
+    {
+      "name": "Robbin' 'Ood",
+      "release": "2018-04-27",
+      "rarity": "3~5★",
+      "access": "unqualified",
+      "note_line": 556
+    },
+    {
+      "name": "Slime",
+      "release": "2018-04-27",
+      "rarity": "3~5★",
+      "access": "unqualified",
+      "note_line": 556
+    },
+    {
+      "name": "Lila",
+      "release": "2018-05-11",
+      "rarity": "5~6★",
+      "access": "unqualified",
+      "note_line": 567
+    },
+    {
+      "name": "Mim",
+      "release": "2018-05-11",
+      "rarity": "3~5★",
+      "access": "unqualified",
+      "note_line": 567
+    },
+    {
+      "name": "Sephiroth",
+      "release": "2018-05-11",
+      "rarity": "5~6★",
+      "access": "unqualified",
+      "note_line": 567
+    },
+    {
+      "name": "Shylt",
+      "release": "2018-05-11",
+      "rarity": "4~6★",
+      "access": "unqualified",
+      "note_line": 567
+    },
+    {
+      "name": "Heavenly Technician Lid",
+      "release": "2018-05-18",
+      "rarity": "5~6★",
+      "access": "unqualified",
+      "note_line": 575
+    },
+    {
+      "name": "Killian",
+      "release": "2018-05-18",
+      "rarity": "4~6★",
+      "access": "unqualified",
+      "note_line": 575
+    },
+    {
+      "name": "Ukiyo",
+      "release": "2018-05-25",
+      "rarity": "5~6★",
+      "access": "unqualified",
+      "note_line": 582
+    },
+    {
+      "name": "Atoning Dragoon Kain",
+      "release": "2018-06-08",
+      "rarity": "5~6★",
+      "access": "unqualified",
+      "note_line": 593
+    },
+    {
+      "name": "Edward",
+      "release": "2018-06-08",
+      "rarity": "3~5★",
+      "access": "unqualified",
+      "note_line": 593
+    },
+    {
+      "name": "Pure Summoner Rydia",
+      "release": "2018-06-08",
+      "rarity": "5~6★",
+      "access": "unqualified",
+      "note_line": 593
+    },
+    {
+      "name": "Yang",
+      "release": "2018-06-08",
+      "rarity": "4~6★",
+      "access": "unqualified",
+      "note_line": 593
+    },
+    {
+      "name": "Elbis",
+      "release": "2018-06-15",
+      "rarity": "4~6★",
+      "access": "unqualified",
+      "note_line": 603
+    },
+    {
+      "name": "Lexa",
+      "release": "2018-06-15",
+      "rarity": "4~6★",
+      "access": "unqualified",
+      "note_line": 603
+    },
+    {
+      "name": "Maritime Strategist Nichol",
+      "release": "2018-06-15",
+      "rarity": "5~6★",
+      "access": "unqualified",
+      "note_line": 603
+    },
+    {
+      "name": "Merald",
+      "release": "2018-06-15",
+      "rarity": "3~5★",
+      "access": "unqualified",
+      "note_line": 603
+    },
+    {
+      "name": "Annika Svennson",
+      "release": "2018-06-22",
+      "rarity": "3~5★",
+      "access": "unqualified",
+      "note_line": 608
+    },
+    {
+      "name": "Mario Frigo",
+      "release": "2018-06-22",
+      "rarity": "4~6★",
+      "access": "unqualified",
+      "note_line": 608
+    },
+    {
+      "name": "Rico Rodriguez",
+      "release": "2018-06-22",
+      "rarity": "5~6★",
+      "access": "unqualified",
+      "note_line": 608
+    },
+    {
+      "name": "Teo",
+      "release": "2018-06-22",
+      "rarity": "3~5★",
+      "access": "unqualified",
+      "note_line": 608
+    },
+    {
+      "name": "Lucille",
+      "release": "2018-07-13",
+      "rarity": "3~5★",
+      "access": "unqualified",
+      "note_line": 634
+    },
+    {
+      "name": "Raegen",
+      "release": "2018-07-13",
+      "rarity": "5~6★",
+      "access": "unqualified",
+      "note_line": 634
+    },
+    {
+      "name": "Ryumynui",
+      "release": "2018-07-13",
+      "rarity": "4~6★",
+      "access": "unqualified",
+      "note_line": 634
+    },
+    {
+      "name": "Zile",
+      "release": "2018-07-13",
+      "rarity": "4~6★",
+      "access": "unqualified",
+      "note_line": 634
+    },
+    {
+      "name": "Vagrant Knight Rain",
+      "release": "2018-07-18",
+      "rarity": "5~6★",
+      "access": "unqualified",
+      "note_line": 635
+    },
+    {
+      "name": "Awakened Rain",
+      "release": "2018-07-20",
+      "rarity": "5~6★",
+      "access": "unqualified",
+      "note_line": 641
+    },
+    {
+      "name": "Mediena",
+      "release": "2018-07-20",
+      "rarity": "5~6★",
+      "access": "unqualified",
+      "note_line": 641
+    },
+    {
+      "name": "Fayt",
+      "release": "2018-07-27",
+      "rarity": "5~6★",
+      "access": "unqualified",
+      "note_line": 646
+    },
+    {
+      "name": "Fidel",
+      "release": "2018-07-27",
+      "rarity": "4~6★",
+      "access": "unqualified",
+      "note_line": 646
+    },
+    {
+      "name": "Reimi",
+      "release": "2018-07-27",
+      "rarity": "4~6★",
+      "access": "unqualified",
+      "note_line": 646
+    },
+    {
+      "name": "Rena",
+      "release": "2018-07-27",
+      "rarity": "5~6★",
+      "access": "unqualified",
+      "note_line": 646
+    },
+    {
+      "name": "Roddick",
+      "release": "2018-07-27",
+      "rarity": "3~5★",
+      "access": "unqualified",
+      "note_line": 646
+    },
+    {
+      "name": "Ramira",
+      "release": "2018-08-03",
+      "rarity": "3~5★",
+      "access": "unqualified",
+      "note_line": 656
+    },
+    {
+      "name": "Rinoa",
+      "release": "2018-08-03",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 656
+    },
+    {
+      "name": "Squall",
+      "release": "2018-08-03",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 656
+    },
+    {
+      "name": "Zell",
+      "release": "2018-08-03",
+      "rarity": "4~6★",
+      "access": "unqualified",
+      "note_line": 656
+    },
+    {
+      "name": "Nalu",
+      "release": "2018-08-10",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 660
+    },
+    {
+      "name": "Pecciotta",
+      "release": "2018-08-10",
+      "rarity": "4~6★",
+      "access": "unqualified",
+      "note_line": 660
+    },
+    {
+      "name": "Ryuka",
+      "release": "2018-08-10",
+      "rarity": "3~5★",
+      "access": "unqualified",
+      "note_line": 660
+    },
+    {
+      "name": "Shinju",
+      "release": "2018-08-10",
+      "rarity": "4~6★",
+      "access": "unqualified",
+      "note_line": 660
+    },
+    {
+      "name": "Adam Jensen",
+      "release": "2018-08-24",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 674
+    },
+    {
+      "name": "Frank Pritchard",
+      "release": "2018-08-24",
+      "rarity": "3~5★",
+      "access": "unqualified",
+      "note_line": 674
+    },
+    {
+      "name": "Viktor Marchenko",
+      "release": "2018-08-24",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 674
+    },
+    {
+      "name": "Václav Koller",
+      "release": "2018-08-24",
+      "rarity": "4~6★",
+      "access": "unqualified",
+      "note_line": 674
+    },
+    {
+      "name": "Joachim",
+      "release": "2018-08-31",
+      "rarity": "4~6★",
+      "access": "unqualified",
+      "note_line": 683
+    },
+    {
+      "name": "Livid Shantotto",
+      "release": "2018-08-31",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 683
+    },
+    {
+      "name": "Shadow Lord",
+      "release": "2018-08-31",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 683
+    },
+    {
+      "name": "Dracky",
+      "release": "2018-09-07",
+      "rarity": "3~5★",
+      "access": "unqualified",
+      "note_line": 694
+    },
+    {
+      "name": "Estark",
+      "release": "2018-09-07",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 694
+    },
+    {
+      "name": "Marquis de Léon",
+      "release": "2018-09-07",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 694
+    },
+    {
+      "name": "Slime Knight",
+      "release": "2018-09-07",
+      "rarity": "4~6★",
+      "access": "unqualified",
+      "note_line": 694
+    },
+    {
+      "name": "Überkilling Machine",
+      "release": "2018-09-07",
+      "rarity": "4~6★",
+      "access": "unqualified",
+      "note_line": 694
+    },
+    {
+      "name": "Domino",
+      "release": "2018-09-14",
+      "rarity": "3~5★",
+      "access": "unqualified",
+      "note_line": 700
+    },
+    {
+      "name": "Hyoh",
+      "release": "2018-09-14",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 700
+    },
+    {
+      "name": "Shatal",
+      "release": "2018-09-14",
+      "rarity": "4~6★",
+      "access": "unqualified",
+      "note_line": 700
+    },
+    {
+      "name": "Aloha Lasswell",
+      "release": "2018-09-21",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 705
+    },
+    {
+      "name": "Seaside Nichol",
+      "release": "2018-09-21",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 705
+    },
+    {
+      "name": "Summertime Luka",
+      "release": "2018-09-21",
+      "rarity": "4~6★",
+      "access": "unqualified",
+      "note_line": 705
+    },
+    {
+      "name": "Tide Rider Skaha",
+      "release": "2018-09-21",
+      "rarity": "3~5★",
+      "access": "unqualified",
+      "note_line": 705
+    },
+    {
+      "name": "Circe",
+      "release": "2018-09-28",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 715
+    },
+    {
+      "name": "Malphasie",
+      "release": "2018-09-28",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 715
+    },
+    {
+      "name": "Ignis",
+      "release": "2018-10-05",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 724
+    },
+    {
+      "name": "Ravus",
+      "release": "2018-10-05",
+      "rarity": "4~6★",
+      "access": "unqualified",
+      "note_line": 724
+    },
+    {
+      "name": "Citra",
+      "release": "2018-10-12",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 731
+    },
+    {
+      "name": "Lotti",
+      "release": "2018-10-12",
+      "rarity": "3~5★",
+      "access": "unqualified",
+      "note_line": 731
+    },
+    {
+      "name": "Macmedi",
+      "release": "2018-10-12",
+      "rarity": "4~6★",
+      "access": "unqualified",
+      "note_line": 731
+    },
+    {
+      "name": "Lilith",
+      "release": "2018-10-19",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 741
+    },
+    {
+      "name": "Lucius",
+      "release": "2018-10-19",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 741
+    },
+    {
+      "name": "Arngrim",
+      "release": "2018-10-26",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 749
+    },
+    {
+      "name": "Freya (VP)",
+      "release": "2018-10-26",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 749
+    },
+    {
+      "name": "Jelanda",
+      "release": "2018-10-26",
+      "rarity": "3~5★",
+      "access": "unqualified",
+      "note_line": 749
+    },
+    {
+      "name": "Lenneth",
+      "release": "2018-10-26",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 749
+    },
+    {
+      "name": "Lucian",
+      "release": "2018-10-26",
+      "rarity": "4~6★",
+      "access": "unqualified",
+      "note_line": 749
+    },
+    {
+      "name": "Cater",
+      "release": "2018-11-02",
+      "rarity": "3~5★",
+      "access": "unqualified",
+      "note_line": 756
+    },
+    {
+      "name": "Deuce",
+      "release": "2018-11-02",
+      "rarity": "4~6★",
+      "access": "unqualified",
+      "note_line": 756
+    },
+    {
+      "name": "Kurasame",
+      "release": "2018-11-02",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 756
+    },
+    {
+      "name": "Machina",
+      "release": "2018-11-02",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 756
+    },
+    {
+      "name": "Elephim",
+      "release": "2018-11-09",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 762
+    },
+    {
+      "name": "Forelsket",
+      "release": "2018-11-09",
+      "rarity": "3~5★",
+      "access": "unqualified",
+      "note_line": 762
+    },
+    {
+      "name": "Leopold",
+      "release": "2018-11-09",
+      "rarity": "4~6★",
+      "access": "unqualified",
+      "note_line": 762
+    },
+    {
+      "name": "Magna",
+      "release": "2018-11-09",
+      "rarity": "4~6★",
+      "access": "unqualified",
+      "note_line": 762
+    },
+    {
+      "name": "Beryl",
+      "release": "2018-11-16",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 766
+    },
+    {
+      "name": "Ellesperis",
+      "release": "2018-11-16",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 766
+    },
+    {
+      "name": "Cannon",
+      "release": "2018-12-07",
+      "rarity": "3~5★",
+      "access": "unqualified",
+      "note_line": 785
+    },
+    {
+      "name": "Dietlinde",
+      "release": "2018-12-07",
+      "rarity": "4~6★",
+      "access": "unqualified",
+      "note_line": 785
+    },
+    {
+      "name": "Sieghard",
+      "release": "2018-12-07",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 785
+    },
+    {
+      "name": "Theobald",
+      "release": "2018-12-07",
+      "rarity": "4~6★",
+      "access": "unqualified",
+      "note_line": 785
+    },
+    {
+      "name": "Aurora Fryevia",
+      "release": "2018-12-08",
+      "rarity": "5-7★",
+      "access": "conditional",
+      "note_line": 787,
+      "annotation": "(Unit for purchasing Fan Festa Ticket, will be available to everyone else as rare gacha at a later date)"
+    },
+    {
+      "name": "Popstar Katy",
+      "release": "2018-12-12",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 790
+    },
+    {
+      "name": "Felix",
+      "release": "2018-12-21",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 799
+    },
+    {
+      "name": "Tiana",
+      "release": "2018-12-21",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 799
+    },
+    {
+      "name": "Cloud (KH)",
+      "release": "2018-12-28",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 805
+    },
+    {
+      "name": "Sora",
+      "release": "2018-12-28",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 805
+    },
+    {
+      "name": "Barret",
+      "release": "2019-01-11",
+      "rarity": "4~6★",
+      "access": "unqualified",
+      "note_line": 815
+    },
+    {
+      "name": "Cait Sith",
+      "release": "2019-01-11",
+      "rarity": "3~5★",
+      "access": "unqualified",
+      "note_line": 815
+    },
+    {
+      "name": "Tifa",
+      "release": "2019-01-11",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 815
+    },
+    {
+      "name": "Vincent",
+      "release": "2019-01-11",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 815
+    },
+    {
+      "name": "Folka",
+      "release": "2019-01-18",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 821
+    },
+    {
+      "name": "Ichor",
+      "release": "2019-01-18",
+      "rarity": "3~5★",
+      "access": "unqualified",
+      "note_line": 821
+    },
+    {
+      "name": "Kihana",
+      "release": "2019-01-18",
+      "rarity": "4~6★",
+      "access": "unqualified",
+      "note_line": 821
+    },
+    {
+      "name": "Yubel",
+      "release": "2019-01-18",
+      "rarity": "4~6★",
+      "access": "unqualified",
+      "note_line": 821
+    },
+    {
+      "name": "Sophia",
+      "release": "2019-01-25",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 826
+    },
+    {
+      "name": "Auron",
+      "release": "2019-02-01",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 841
+    },
+    {
+      "name": "Belgemine",
+      "release": "2019-02-01",
+      "rarity": "4~6★",
+      "access": "unqualified",
+      "note_line": 841
+    },
+    {
+      "name": "Brother",
+      "release": "2019-02-01",
+      "rarity": "3~5★",
+      "access": "unqualified",
+      "note_line": 841
+    },
+    {
+      "name": "Jecht",
+      "release": "2019-02-01",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 841
+    },
+    {
+      "name": "Bai Hu & Zhu Que",
+      "release": "2019-02-08",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 847
+    },
+    {
+      "name": "Qin",
+      "release": "2019-02-08",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 847
+    },
+    {
+      "name": "Ignacio",
+      "release": "2019-02-15",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 854
+    },
+    {
+      "name": "PNK-2",
+      "release": "2019-02-15",
+      "rarity": "4~6★",
+      "access": "unqualified",
+      "note_line": 854
+    },
+    {
+      "name": "Suzume",
+      "release": "2019-02-15",
+      "rarity": "4~6★",
+      "access": "unqualified",
+      "note_line": 854
+    },
+    {
+      "name": "Wayhem",
+      "release": "2019-02-15",
+      "rarity": "3~5★",
+      "access": "unqualified",
+      "note_line": 854
+    },
+    {
+      "name": "Aurora Fryevia",
+      "release": "2019-02-22",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 857
+    },
+    {
+      "name": "Myra",
+      "release": "2019-02-22",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 857
+    },
+    {
+      "name": "Dark Knight Luneth",
+      "release": "2019-03-08",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 869
+    },
+    {
+      "name": "Doga",
+      "release": "2019-03-08",
+      "rarity": "4~6★",
+      "access": "unqualified",
+      "note_line": 869
+    },
+    {
+      "name": "Onion Knight Refia",
+      "release": "2019-03-08",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 869
+    },
+    {
+      "name": "Unei",
+      "release": "2019-03-08",
+      "rarity": "3~5★",
+      "access": "unqualified",
+      "note_line": 869
+    },
+    {
+      "name": "Cid",
+      "release": "2019-03-15",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 875
+    },
+    {
+      "name": "Falma",
+      "release": "2019-03-15",
+      "rarity": "3~5★",
+      "access": "unqualified",
+      "note_line": 875
+    },
+    {
+      "name": "Melete",
+      "release": "2019-03-15",
+      "rarity": "4~6★",
+      "access": "unqualified",
+      "note_line": 875
+    },
+    {
+      "name": "Nagflar",
+      "release": "2019-03-15",
+      "rarity": "4~6★",
+      "access": "unqualified",
+      "note_line": 875
+    },
+    {
+      "name": "Franis",
+      "release": "2019-03-22",
+      "rarity": "4~6★",
+      "access": "unqualified",
+      "note_line": 882
+    },
+    {
+      "name": "Ishil",
+      "release": "2019-03-22",
+      "rarity": "3~5★",
+      "access": "unqualified",
+      "note_line": 882
+    },
+    {
+      "name": "Karlette",
+      "release": "2019-03-22",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 882
+    },
+    {
+      "name": "Yuraisha",
+      "release": "2019-03-22",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 882
+    },
+    {
+      "name": "Bart",
+      "release": "2019-03-29",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 888
+    },
+    {
+      "name": "Chu-Chu",
+      "release": "2019-03-29",
+      "rarity": "3-5★",
+      "access": "unqualified",
+      "note_line": 888
+    },
+    {
+      "name": "Elly",
+      "release": "2019-03-29",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 888
+    },
+    {
+      "name": "Emeralda",
+      "release": "2019-03-29",
+      "rarity": "4~6★",
+      "access": "unqualified",
+      "note_line": 888
+    },
+    {
+      "name": "Fei",
+      "release": "2019-03-29",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 888
+    },
+    {
+      "name": "Rico",
+      "release": "2019-03-29",
+      "rarity": "3-5★",
+      "access": "unqualified",
+      "note_line": 888
+    },
+    {
+      "name": "Beowulf",
+      "release": "2019-04-05",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 897
+    },
+    {
+      "name": "Construct 8",
+      "release": "2019-04-05",
+      "rarity": "3~5★",
+      "access": "unqualified",
+      "note_line": 897
+    },
+    {
+      "name": "High Seraph Ultima",
+      "release": "2019-04-05",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 897
+    },
+    {
+      "name": "Reis",
+      "release": "2019-04-05",
+      "rarity": "4~6★",
+      "access": "unqualified",
+      "note_line": 897
+    },
+    {
+      "name": "Crimson",
+      "release": "2019-04-12",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 902
+    },
+    {
+      "name": "Kyanos",
+      "release": "2019-04-12",
+      "rarity": "4~6★",
+      "access": "unqualified",
+      "note_line": 902
+    },
+    {
+      "name": "Mirfas",
+      "release": "2019-04-12",
+      "rarity": "3~5★",
+      "access": "unqualified",
+      "note_line": 902
+    },
+    {
+      "name": "Esther",
+      "release": "2019-04-19",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 908
+    },
+    {
+      "name": "Sylvie",
+      "release": "2019-04-19",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 908
+    },
+    {
+      "name": "Billy",
+      "release": "2019-04-26",
+      "rarity": "4~6★",
+      "access": "unqualified",
+      "note_line": 913
+    },
+    {
+      "name": "Citan",
+      "release": "2019-04-26",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 913
+    },
+    {
+      "name": "Maria (Xenogears)",
+      "release": "2019-04-26",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 913
+    },
+    {
+      "name": "Black Mage Golbez",
+      "release": "2019-05-03",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 921
+    },
+    {
+      "name": "Akstar",
+      "release": "2019-05-10",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 927
+    },
+    {
+      "name": "Gravey",
+      "release": "2019-05-10",
+      "rarity": "4~6★",
+      "access": "unqualified",
+      "note_line": 927
+    },
+    {
+      "name": "Majora",
+      "release": "2019-05-10",
+      "rarity": "3~5★",
+      "access": "unqualified",
+      "note_line": 927
+    },
+    {
+      "name": "Tomoe",
+      "release": "2019-05-10",
+      "rarity": "4~6★",
+      "access": "unqualified",
+      "note_line": 927
+    },
+    {
+      "name": "Zeno of the Beta Star",
+      "release": "2019-05-10",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 927
+    },
+    {
+      "name": "Galas",
+      "release": "2019-05-17",
+      "rarity": "3~5★",
+      "access": "unqualified",
+      "note_line": 932
+    },
+    {
+      "name": "Nagi",
+      "release": "2019-05-17",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 932
+    },
+    {
+      "name": "Yego",
+      "release": "2019-05-17",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 932
+    },
+    {
+      "name": "Zolulu & Delulu",
+      "release": "2019-05-17",
+      "rarity": "4~6★",
+      "access": "unqualified",
+      "note_line": 932
+    },
+    {
+      "name": "King Edgar of Figaro",
+      "release": "2019-05-24",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 938
+    },
+    {
+      "name": "Monk Sabin of Kolts",
+      "release": "2019-05-24",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 938
+    },
+    {
+      "name": "Summer Fina & Lid",
+      "release": "2019-05-31",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 947
+    },
+    {
+      "name": "Summer Folka & Citra",
+      "release": "2019-05-31",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 947
+    },
+    {
+      "name": "Amber",
+      "release": "2019-06-07",
+      "rarity": "4~6★",
+      "access": "unqualified",
+      "note_line": 953
+    },
+    {
+      "name": "Krowa",
+      "release": "2019-06-07",
+      "rarity": "3~5★",
+      "access": "unqualified",
+      "note_line": 953
+    },
+    {
+      "name": "Regina",
+      "release": "2019-06-07",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 953
+    },
+    {
+      "name": "Vesvia",
+      "release": "2019-06-07",
+      "rarity": "4~6★",
+      "access": "unqualified",
+      "note_line": 953
+    },
+    {
+      "name": "Aerith",
+      "release": "2019-06-12",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 958
+    },
+    {
+      "name": "Immortal Flame Katy",
+      "release": "2019-06-12",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 959
+    },
+    {
+      "name": "Red XIII",
+      "release": "2019-06-12",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 958
+    },
+    {
+      "name": "Flammie",
+      "release": "2019-06-21",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 967
+    },
+    {
+      "name": "Rabite",
+      "release": "2019-06-21",
+      "rarity": "3~5★",
+      "access": "unqualified",
+      "note_line": 967
+    },
+    {
+      "name": "Dressy Aileen",
+      "release": "2019-06-28",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 975
+    },
+    {
+      "name": "Kimono Ayaka",
+      "release": "2019-06-28",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 975
+    },
+    {
+      "name": "Chocobo Rain",
+      "release": "2019-06-30",
+      "rarity": "4-6★",
+      "access": "unqualified",
+      "note_line": 977
+    },
+    {
+      "name": "Friese",
+      "release": "2019-07-05",
+      "rarity": "4~6★",
+      "access": "unqualified",
+      "note_line": 988
+    },
+    {
+      "name": "Sacred Shield Charlotte",
+      "release": "2019-07-05",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 988
+    },
+    {
+      "name": "Shepard",
+      "release": "2019-07-05",
+      "rarity": "3~5★",
+      "access": "unqualified",
+      "note_line": 988
+    },
+    {
+      "name": "Yuffie",
+      "release": "2019-07-12",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 994
+    },
+    {
+      "name": "Zack",
+      "release": "2019-07-12",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 994
+    },
+    {
+      "name": "Elena",
+      "release": "2019-07-19",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1003
+    },
+    {
+      "name": "Morgana",
+      "release": "2019-07-19",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1003
+    },
+    {
+      "name": "Rivera",
+      "release": "2019-07-26",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1014
+    },
+    {
+      "name": "Neverending Hope",
+      "release": "2019-07-31",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1020
+    },
+    {
+      "name": "Radiant Lightning",
+      "release": "2019-07-31",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1020
+    },
+    {
+      "name": "Kaito",
+      "release": "2019-08-16",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1032
+    },
+    {
+      "name": "Tsukiko",
+      "release": "2019-08-16",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1032
+    },
+    {
+      "name": "Olberic",
+      "release": "2019-08-23",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1036
+    },
+    {
+      "name": "Primrose",
+      "release": "2019-08-23",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1036
+    },
+    {
+      "name": "Therion",
+      "release": "2019-08-23",
+      "rarity": "4~6★",
+      "access": "unqualified",
+      "note_line": 1036
+    },
+    {
+      "name": "Tressa",
+      "release": "2019-08-23",
+      "rarity": "3~5★",
+      "access": "unqualified",
+      "note_line": 1036
+    },
+    {
+      "name": "Kimono Fina",
+      "release": "2019-08-26",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1039
+    },
+    {
+      "name": "Atlie",
+      "release": "2019-08-30",
+      "rarity": "4~6★",
+      "access": "unqualified",
+      "note_line": 1049
+    },
+    {
+      "name": "Tessen",
+      "release": "2019-08-30",
+      "rarity": "3~5★",
+      "access": "unqualified",
+      "note_line": 1049
+    },
+    {
+      "name": "Warrior of Light Bartz",
+      "release": "2019-08-30",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1049
+    },
+    {
+      "name": "Warrior of Light Lenna",
+      "release": "2019-08-30",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1049
+    },
+    {
+      "name": "Eclipsa",
+      "release": "2019-09-13",
+      "rarity": "4~6★",
+      "access": "unqualified",
+      "note_line": 1063
+    },
+    {
+      "name": "Heliarc",
+      "release": "2019-09-13",
+      "rarity": "4~6★",
+      "access": "unqualified",
+      "note_line": 1063
+    },
+    {
+      "name": "Pertira",
+      "release": "2019-09-13",
+      "rarity": "3~5★",
+      "access": "unqualified",
+      "note_line": 1063
+    },
+    {
+      "name": "Sol",
+      "release": "2019-09-13",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1063
+    },
+    {
+      "name": "A.I. Katy",
+      "release": "2019-09-19",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1065
+    },
+    {
+      "name": "Lovely Katy",
+      "release": "2019-09-19",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1065
+    },
+    {
+      "name": "Riku",
+      "release": "2019-09-20",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1069
+    },
+    {
+      "name": "Sephiroth (KH)",
+      "release": "2019-09-20",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1069
+    },
+    {
+      "name": "Eleven",
+      "release": "2019-09-27",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1076
+    },
+    {
+      "name": "Great Dragon",
+      "release": "2019-09-27",
+      "rarity": "4~6★",
+      "access": "unqualified",
+      "note_line": 1076
+    },
+    {
+      "name": "Mordegon",
+      "release": "2019-09-27",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1076
+    },
+    {
+      "name": "Serena",
+      "release": "2019-09-27",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1076
+    },
+    {
+      "name": "Veronica",
+      "release": "2019-09-27",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1076
+    },
+    {
+      "name": "Dark Knight Leon",
+      "release": "2019-10-04",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1085
+    },
+    {
+      "name": "Wild Rose Firion",
+      "release": "2019-10-04",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1085
+    },
+    {
+      "name": "Dark Mage Exdeath",
+      "release": "2019-10-11",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1091
+    },
+    {
+      "name": "Warrior of Dawn Galuf",
+      "release": "2019-10-11",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1091
+    },
+    {
+      "name": "Warrior of Light Krile",
+      "release": "2019-10-11",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1091
+    },
+    {
+      "name": "Chocobo Fina",
+      "release": "2019-10-17",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1096
+    },
+    {
+      "name": "Godrea",
+      "release": "2019-10-24",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1102
+    },
+    {
+      "name": "Karten",
+      "release": "2019-10-24",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1102
+    },
+    {
+      "name": "Archmage Kefka",
+      "release": "2019-10-31",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1109
+    },
+    {
+      "name": "Assassin Shadow",
+      "release": "2019-10-31",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1109
+    },
+    {
+      "name": "Aldore King Rain",
+      "release": "2019-11-07",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1120
+    },
+    {
+      "name": "Diezell",
+      "release": "2019-11-07",
+      "rarity": "4~6★",
+      "access": "unqualified",
+      "note_line": 1120
+    },
+    {
+      "name": "Maisie",
+      "release": "2019-11-07",
+      "rarity": "3~5★",
+      "access": "unqualified",
+      "note_line": 1120
+    },
+    {
+      "name": "Adventurer Locke",
+      "release": "2019-11-14",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1127
+    },
+    {
+      "name": "Latyl",
+      "release": "2019-11-14",
+      "rarity": "3~5★",
+      "access": "unqualified",
+      "note_line": 1127
+    },
+    {
+      "name": "Magitek Warrior Terra",
+      "release": "2019-11-14",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1127
+    },
+    {
+      "name": "Neisha",
+      "release": "2019-11-14",
+      "rarity": "4~6★",
+      "access": "unqualified",
+      "note_line": 1127
+    },
+    {
+      "name": "Erik",
+      "release": "2019-11-21",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1133
+    },
+    {
+      "name": "Jade",
+      "release": "2019-11-21",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1133
+    },
+    {
+      "name": "Jasper Unbound",
+      "release": "2019-11-21",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1133
+    },
+    {
+      "name": "Rab",
+      "release": "2019-11-21",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1133
+    },
+    {
+      "name": "Sylvando",
+      "release": "2019-11-21",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1133
+    },
+    {
+      "name": "The Lord of Shadows",
+      "release": "2019-11-21",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1133
+    },
+    {
+      "name": "Agent Olive",
+      "release": "2019-11-28",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1139
+    },
+    {
+      "name": "Doctor Aiden",
+      "release": "2019-11-28",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1139
+    },
+    {
+      "name": "Mastermind Xon",
+      "release": "2019-11-28",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1139
+    },
+    {
+      "name": "Operative Zyrus",
+      "release": "2019-11-28",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1139
+    },
+    {
+      "name": "Gudon of the Xi Star",
+      "release": "2019-12-05",
+      "rarity": "3~5★",
+      "access": "unqualified",
+      "note_line": 1152
+    },
+    {
+      "name": "Juraga of the Nu Star",
+      "release": "2019-12-05",
+      "rarity": "4~6★",
+      "access": "unqualified",
+      "note_line": 1152
+    },
+    {
+      "name": "Physalis",
+      "release": "2019-12-05",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1152
+    },
+    {
+      "name": "Crown Prince Noctis",
+      "release": "2019-12-12",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1156
+    },
+    {
+      "name": "Gentiana",
+      "release": "2019-12-12",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1156
+    },
+    {
+      "name": "Kenny Crow",
+      "release": "2019-12-12",
+      "rarity": "4~6★",
+      "access": "unqualified",
+      "note_line": 1156
+    },
+    {
+      "name": "Lunafreya",
+      "release": "2019-12-12",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1156
+    },
+    {
+      "name": "Levinson",
+      "release": "2019-12-19",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1162
+    },
+    {
+      "name": "Lucas",
+      "release": "2019-12-19",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1162
+    },
+    {
+      "name": "Holy Night Amelia & Emilia",
+      "release": "2019-12-23",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1167
+    },
+    {
+      "name": "White Lily Dark Fina",
+      "release": "2019-12-26",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1173
+    },
+    {
+      "name": "Awakened Warrior of Light",
+      "release": "2020-01-02",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1183
+    },
+    {
+      "name": "Immortal Knight Garland",
+      "release": "2020-01-02",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1183
+    },
+    {
+      "name": "Ardyn",
+      "release": "2020-01-09",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1187
+    },
+    {
+      "name": "Regis",
+      "release": "2020-01-09",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1187
+    },
+    {
+      "name": "Hess King Lasswell",
+      "release": "2020-01-16",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1193
+    },
+    {
+      "name": "Scartio",
+      "release": "2020-01-16",
+      "rarity": "4~6★",
+      "access": "unqualified",
+      "note_line": 1193
+    },
+    {
+      "name": "Sister",
+      "release": "2020-01-16",
+      "rarity": "3~5★",
+      "access": "unqualified",
+      "note_line": 1193
+    },
+    {
+      "name": "Emperor Foo",
+      "release": "2020-01-23",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1197
+    },
+    {
+      "name": "Xuan Wu & Qing Long",
+      "release": "2020-01-23",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1197
+    },
+    {
+      "name": "Blue Mage Fina",
+      "release": "2020-01-30",
+      "rarity": "5★",
+      "access": "unqualified",
+      "note_line": 1203
+    },
+    {
+      "name": "Cid (FFIV)",
+      "release": "2020-02-06",
+      "rarity": "4~6★",
+      "access": "unqualified",
+      "note_line": 1216
+    },
+    {
+      "name": "Paladin Cecil",
+      "release": "2020-02-06",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1216
+    },
+    {
+      "name": "Palom & Porom",
+      "release": "2020-02-06",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1216
+    },
+    {
+      "name": "White Mage Rosa",
+      "release": "2020-02-06",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1216
+    },
+    {
+      "name": "Sakura & Ayaka",
+      "release": "2020-02-13",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1220
+    },
+    {
+      "name": "Sieghard & Ignacio",
+      "release": "2020-02-13",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1220
+    },
+    {
+      "name": "Sweet Luka",
+      "release": "2020-02-13",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1220
+    },
+    {
+      "name": "Sweet Nichol",
+      "release": "2020-02-13",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1220
+    },
+    {
+      "name": "Awakened Onion Knight",
+      "release": "2020-02-20",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1227
+    },
+    {
+      "name": "Hein",
+      "release": "2020-02-20",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1227
+    },
+    {
+      "name": "Xande",
+      "release": "2020-02-20",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1227
+    },
+    {
+      "name": "Almaz",
+      "release": "2020-02-27",
+      "rarity": "4~6★",
+      "access": "unqualified",
+      "note_line": 1234
+    },
+    {
+      "name": "Madam Edel",
+      "release": "2020-02-27",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1234
+    },
+    {
+      "name": "Winkel",
+      "release": "2020-02-27",
+      "rarity": "3~5★",
+      "access": "unqualified",
+      "note_line": 1234
+    },
+    {
+      "name": "Lilisette",
+      "release": "2020-03-05",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1247
+    },
+    {
+      "name": "Wizardess Shantotto",
+      "release": "2020-03-05",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1247
+    },
+    {
+      "name": "Zeid",
+      "release": "2020-03-05",
+      "rarity": "4~6★",
+      "access": "unqualified",
+      "note_line": 1247
+    },
+    {
+      "name": "Isaaru",
+      "release": "2020-03-12",
+      "rarity": "4~6★",
+      "access": "unqualified",
+      "note_line": 1253
+    },
+    {
+      "name": "Kimahri",
+      "release": "2020-03-12",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1253
+    },
+    {
+      "name": "Star Player Tidus",
+      "release": "2020-03-12",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1253
+    },
+    {
+      "name": "Yunalesca",
+      "release": "2020-03-12",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1253
+    },
+    {
+      "name": "Paine",
+      "release": "2020-03-19",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1259
+    },
+    {
+      "name": "Rikku (FFX-2)",
+      "release": "2020-03-19",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1259
+    },
+    {
+      "name": "Yuna (FFX-2)",
+      "release": "2020-03-19",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1259
+    },
+    {
+      "name": "Alphonse Elric",
+      "release": "2020-03-26",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1265
+    },
+    {
+      "name": "Edward Elric",
+      "release": "2020-03-26",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1265
+    },
+    {
+      "name": "Riza Hawkeye",
+      "release": "2020-03-26",
+      "rarity": "4~6★",
+      "access": "unqualified",
+      "note_line": 1265
+    },
+    {
+      "name": "Winry Rockbell",
+      "release": "2020-03-26",
+      "rarity": "3~5★",
+      "access": "unqualified",
+      "note_line": 1265
+    },
+    {
+      "name": "King Bradley",
+      "release": "2020-03-30",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1268
+    },
+    {
+      "name": "Roy Mustang",
+      "release": "2020-03-30",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1268
+    },
+    {
+      "name": "Black Mage Vivi",
+      "release": "2020-04-02",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1276
+    },
+    {
+      "name": "Court Jesters Zorn & Thorn",
+      "release": "2020-04-02",
+      "rarity": "4~6★",
+      "access": "unqualified",
+      "note_line": 1276
+    },
+    {
+      "name": "Dragon Knight Freya",
+      "release": "2020-04-02",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1276
+    },
+    {
+      "name": "Rakish Thief Zidane",
+      "release": "2020-04-02",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1276
+    },
+    {
+      "name": "Sir Iron-tail Fratley",
+      "release": "2020-04-02",
+      "rarity": "4~6★",
+      "access": "unqualified",
+      "note_line": 1276
+    },
+    {
+      "name": "Strange Gourmand Quina",
+      "release": "2020-04-02",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1276
+    },
+    {
+      "name": "Caroline",
+      "release": "2020-04-09",
+      "rarity": "3~5★",
+      "access": "unqualified",
+      "note_line": 1280
+    },
+    {
+      "name": "Colundo",
+      "release": "2020-04-09",
+      "rarity": "4~6★",
+      "access": "unqualified",
+      "note_line": 1280
+    },
+    {
+      "name": "Nichol of the Epsilon Star",
+      "release": "2020-04-09",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1280
+    },
+    {
+      "name": "Sakura of the Delta Star",
+      "release": "2020-04-09",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1280
+    },
+    {
+      "name": "Gilgamesh (WOTV FFBE)",
+      "release": "2020-04-13",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1286
+    },
+    {
+      "name": "Dark Spirit Sol",
+      "release": "2020-04-16",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1291
+    },
+    {
+      "name": "Draconian Princess Fina",
+      "release": "2020-04-16",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1291
+    },
+    {
+      "name": "Infernal Fire Rain",
+      "release": "2020-04-16",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1291
+    },
+    {
+      "name": "Supreme Deva Akstar",
+      "release": "2020-04-16",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1291
+    },
+    {
+      "name": "Y'shtola",
+      "release": "2020-04-23",
+      "rarity": null,
+      "access": "unqualified",
+      "note_line": 1297
+    },
+    {
+      "name": "the Sorceress",
+      "release": "2020-04-23",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1297
+    },
+    {
+      "name": "Aelia",
+      "release": "2020-04-30",
+      "rarity": "4~6★",
+      "access": "unqualified",
+      "note_line": 1302
+    },
+    {
+      "name": "Lezard Valeth",
+      "release": "2020-04-30",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1302
+    },
+    {
+      "name": "Mystina",
+      "release": "2020-04-30",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1302
+    },
+    {
+      "name": "Vermilion Blade Ardyn",
+      "release": "2020-05-06",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 1309
+    },
+    {
+      "name": "Cloud (FFVII: AC)",
+      "release": "2020-05-07",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1316
+    },
+    {
+      "name": "Kadaj",
+      "release": "2020-05-07",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1316
+    },
+    {
+      "name": "Tifa (FFVII: AC)",
+      "release": "2020-05-07",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1316
+    },
+    {
+      "name": "Yazoo & Loz",
+      "release": "2020-05-07",
+      "rarity": "4~6★",
+      "access": "unqualified",
+      "note_line": 1316
+    },
+    {
+      "name": "Hallowed Aegis Charlotte",
+      "release": "2020-05-14",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1324
+    },
+    {
+      "name": "Mystical Ice Lasswell",
+      "release": "2020-05-14",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1324
+    },
+    {
+      "name": "Four Winds Physalis",
+      "release": "2020-05-21",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1328
+    },
+    {
+      "name": "Untamed Wolf Edel",
+      "release": "2020-05-21",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1328
+    },
+    {
+      "name": "War Hero Raegen",
+      "release": "2020-05-21",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1328
+    },
+    {
+      "name": "Daughter of Destiny Vanille",
+      "release": "2020-05-28",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1335
+    },
+    {
+      "name": "Graceful Champion Fang",
+      "release": "2020-05-28",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1335
+    },
+    {
+      "name": "Hope (FFXIII-2)",
+      "release": "2020-06-03",
+      "rarity": "4~6★",
+      "access": "unqualified",
+      "note_line": 1343
+    },
+    {
+      "name": "Lightning (FFXIII-2)",
+      "release": "2020-06-03",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1343
+    },
+    {
+      "name": "Noel",
+      "release": "2020-06-03",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1343
+    },
+    {
+      "name": "Serah",
+      "release": "2020-06-03",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1343
+    },
+    {
+      "name": "Fujin & Raijin",
+      "release": "2020-06-18",
+      "rarity": "4~6★",
+      "access": "unqualified",
+      "note_line": 1355
+    },
+    {
+      "name": "Lone Lion Squall",
+      "release": "2020-06-18",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1355
+    },
+    {
+      "name": "Quistis",
+      "release": "2020-06-18",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1355
+    },
+    {
+      "name": "Seifer",
+      "release": "2020-06-18",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1355
+    },
+    {
+      "name": "Edea",
+      "release": "2020-06-25",
+      "rarity": "4~6★",
+      "access": "unqualified",
+      "note_line": 1361
+    },
+    {
+      "name": "Irvine",
+      "release": "2020-06-25",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1361
+    },
+    {
+      "name": "Selphie",
+      "release": "2020-06-25",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1361
+    },
+    {
+      "name": "Kitone",
+      "release": "2020-07-02",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1372
+    },
+    {
+      "name": "Mont Leonis",
+      "release": "2020-07-02",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1372
+    },
+    {
+      "name": "Sterne Leonis",
+      "release": "2020-07-02",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1372
+    },
+    {
+      "name": "Benevolent Beauty Rem",
+      "release": "2020-07-09",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1378
+    },
+    {
+      "name": "Celestia",
+      "release": "2020-07-09",
+      "rarity": "4~6★",
+      "access": "unqualified",
+      "note_line": 1378
+    },
+    {
+      "name": "Steadfast Soldier Machina",
+      "release": "2020-07-09",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1378
+    },
+    {
+      "name": "Wild Card Ace",
+      "release": "2020-07-09",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1378
+    },
+    {
+      "name": "Lord of the Seas Nichol",
+      "release": "2020-07-15",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 1380
+    },
+    {
+      "name": "Nerine",
+      "release": "2020-07-15",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1380
+    },
+    {
+      "name": "Flame of Rebirth Jake",
+      "release": "2020-07-16",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1385
+    },
+    {
+      "name": "Healing Avatar Lid",
+      "release": "2020-07-16",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1385
+    },
+    {
+      "name": "Umbral Dragon Dark Fina",
+      "release": "2020-07-16",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1385
+    },
+    {
+      "name": "Blue Sky Belle Fran",
+      "release": "2020-07-23",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1390
+    },
+    {
+      "name": "Dancing Heart Penelo",
+      "release": "2020-07-23",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1390
+    },
+    {
+      "name": "Reks",
+      "release": "2020-07-23",
+      "rarity": "4~6★",
+      "access": "unqualified",
+      "note_line": 1390
+    },
+    {
+      "name": "Seeker of Freedom Vaan",
+      "release": "2020-07-23",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1390
+    },
+    {
+      "name": "Fina & Dark Fina",
+      "release": "2020-07-30",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1397
+    },
+    {
+      "name": "Zenaida",
+      "release": "2020-07-30",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1397
+    },
+    {
+      "name": "Angel of Death Kuja",
+      "release": "2020-08-06",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1406
+    },
+    {
+      "name": "Garland (FFIX)",
+      "release": "2020-08-06",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1406
+    },
+    {
+      "name": "Knight of Pluto Zidane",
+      "release": "2020-08-06",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1406
+    },
+    {
+      "name": "Mikoto",
+      "release": "2020-08-06",
+      "rarity": "4~6★",
+      "access": "unqualified",
+      "note_line": 1406
+    },
+    {
+      "name": "Bergan",
+      "release": "2020-08-13",
+      "rarity": "4~6★",
+      "access": "unqualified",
+      "note_line": 1413
+    },
+    {
+      "name": "Dethroned Heroine Ashe",
+      "release": "2020-08-13",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1413
+    },
+    {
+      "name": "Vossler",
+      "release": "2020-08-13",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1413
+    },
+    {
+      "name": "Barret (FFVII REMAKE)",
+      "release": "2020-08-20",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1425
+    },
+    {
+      "name": "Cloud (FFVII REMAKE)",
+      "release": "2020-08-20",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 1425
+    },
+    {
+      "name": "Reno (FFVII REMAKE)",
+      "release": "2020-08-20",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1425
+    },
+    {
+      "name": "Bruce",
+      "release": "2020-08-27",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1434
+    },
+    {
+      "name": "Rain -Neo Vision-",
+      "release": "2020-08-27",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 1434
+    },
+    {
+      "name": "Rinora",
+      "release": "2020-08-27",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1434
+    },
+    {
+      "name": "Tyro",
+      "release": "2020-08-27",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1434
+    },
+    {
+      "name": "Aerith (FFVII REMAKE)",
+      "release": "2020-09-03",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 1445
+    },
+    {
+      "name": "Rufus Shinra (FFVII REMAKE)",
+      "release": "2020-09-03",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1445
+    },
+    {
+      "name": "Awakened Dragon Akstar",
+      "release": "2020-09-10",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 1452
+    },
+    {
+      "name": "Lively Steward Shinju",
+      "release": "2020-09-10",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1452
+    },
+    {
+      "name": "Stylish Steward Pecciotta",
+      "release": "2020-09-10",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1452
+    },
+    {
+      "name": "Itachi",
+      "release": "2020-09-17",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1460
+    },
+    {
+      "name": "Yoshikiri",
+      "release": "2020-09-17",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 1460
+    },
+    {
+      "name": "Starlight Elena",
+      "release": "2020-09-24",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 1468
+    },
+    {
+      "name": "Gabranth -Neo Vision-",
+      "release": "2020-10-01",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 1479
+    },
+    {
+      "name": "Ray of Hope Larsa",
+      "release": "2020-10-01",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1479
+    },
+    {
+      "name": "Firion -Neo Vision-",
+      "release": "2020-10-08",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 1489
+    },
+    {
+      "name": "Minwu",
+      "release": "2020-10-08",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1489
+    },
+    {
+      "name": "Thoughtful Sister Maria",
+      "release": "2020-10-08",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1489
+    },
+    {
+      "name": "Blossomed Mage Lexa",
+      "release": "2020-10-15",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1496
+    },
+    {
+      "name": "Madam Edel -Neo Vision-",
+      "release": "2020-10-15",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 1496
+    },
+    {
+      "name": "Relentless Might Elbis",
+      "release": "2020-10-15",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1496
+    },
+    {
+      "name": "Ibara",
+      "release": "2020-10-22",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 1504
+    },
+    {
+      "name": "Alhena",
+      "release": "2020-11-05",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1519
+    },
+    {
+      "name": "Sol -Neo Vision-",
+      "release": "2020-11-05",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 1519
+    },
+    {
+      "name": "Mineur",
+      "release": "2020-11-12",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1526
+    },
+    {
+      "name": "Shoreline Fina & Daisy",
+      "release": "2020-11-12",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 1526
+    },
+    {
+      "name": "Black Mage Arc",
+      "release": "2020-11-19",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1534
+    },
+    {
+      "name": "Onion Knight -Neo Vision-",
+      "release": "2020-11-19",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 1534
+    },
+    {
+      "name": "Kairi (KHIII)",
+      "release": "2020-11-26",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 1544
+    },
+    {
+      "name": "Riku (KHIII)",
+      "release": "2020-11-26",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 1544
+    },
+    {
+      "name": "Sora (KHIII)",
+      "release": "2020-11-26",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 1544
+    },
+    {
+      "name": "Young Xehanort",
+      "release": "2020-11-26",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1544
+    },
+    {
+      "name": "Knightly Paragon Lawrence",
+      "release": "2020-12-03",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1553
+    },
+    {
+      "name": "Physalis -Neo Vision-",
+      "release": "2020-12-03",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 1553
+    },
+    {
+      "name": "Relm",
+      "release": "2020-12-10",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1563
+    },
+    {
+      "name": "Strago",
+      "release": "2020-12-10",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1563
+    },
+    {
+      "name": "Terra -Neo Vision-",
+      "release": "2020-12-10",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 1563
+    },
+    {
+      "name": "Dashing Gambler Setzer",
+      "release": "2020-12-17",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1571
+    },
+    {
+      "name": "Locke -Neo Vision-",
+      "release": "2020-12-17",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 1571
+    },
+    {
+      "name": "Eldryn",
+      "release": "2020-12-24",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 1579
+    },
+    {
+      "name": "Hess Sage Rowen",
+      "release": "2021-01-14",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1595
+    },
+    {
+      "name": "Lasswell -Neo Vision-",
+      "release": "2021-01-14",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 1595
+    },
+    {
+      "name": "Rain & Fina",
+      "release": "2021-01-21",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 1604
+    },
+    {
+      "name": "Lasswell & Raegen",
+      "release": "2021-01-28",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 1616
+    },
+    {
+      "name": "Charlotte & Physalis",
+      "release": "2021-02-01",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 1621
+    },
+    {
+      "name": "Dark Fina & Sol",
+      "release": "2021-02-04",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 1625
+    },
+    {
+      "name": "Shui Yu",
+      "release": "2021-02-11",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 1632
+    },
+    {
+      "name": "Akstar & Cleome",
+      "release": "2021-02-18",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 1636
+    },
+    {
+      "name": "Lumina",
+      "release": "2021-02-25",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1645
+    },
+    {
+      "name": "Savior of Souls Lightning",
+      "release": "2021-02-25",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 1645
+    },
+    {
+      "name": "Mazurka",
+      "release": "2021-03-04",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 1658
+    },
+    {
+      "name": "Trot",
+      "release": "2021-03-04",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1658
+    },
+    {
+      "name": "Solitary Patron Snow",
+      "release": "2021-03-11",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 1666
+    },
+    {
+      "name": "Faris -Neo Vision-",
+      "release": "2021-03-18",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 1673
+    },
+    {
+      "name": "Xezat",
+      "release": "2021-03-18",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1673
+    },
+    {
+      "name": "Vinera Fennes",
+      "release": "2021-03-26",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 1684
+    },
+    {
+      "name": "Melia",
+      "release": "2021-04-01",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 1691
+    },
+    {
+      "name": "Freesia",
+      "release": "2021-04-08",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1697
+    },
+    {
+      "name": "Melo",
+      "release": "2021-04-08",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 1697
+    },
+    {
+      "name": "Cindy",
+      "release": "2021-04-15",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1707
+    },
+    {
+      "name": "Cobalt Blade Noctis",
+      "release": "2021-04-15",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 1707
+    },
+    {
+      "name": "King Behemy",
+      "release": "2021-04-22",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 1717
+    },
+    {
+      "name": "Poppy",
+      "release": "2021-04-22",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1717
+    },
+    {
+      "name": "Oracle Maiden Lunafreya",
+      "release": "2021-04-29",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 1723
+    },
+    {
+      "name": "Edward & Alphonse Elric",
+      "release": "2021-05-13",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 1732
+    },
+    {
+      "name": "Envy",
+      "release": "2021-05-13",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1732
+    },
+    {
+      "name": "Greed",
+      "release": "2021-05-13",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1732
+    },
+    {
+      "name": "Lightning-Fast Zidane",
+      "release": "2021-05-20",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 1739
+    },
+    {
+      "name": "Kaktiria",
+      "release": "2021-05-27",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 1749
+    },
+    {
+      "name": "Kalmia",
+      "release": "2021-05-27",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1749
+    },
+    {
+      "name": "Loyal Knight Steiner",
+      "release": "2021-06-03",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1755
+    },
+    {
+      "name": "Pure-Hearted Vivi",
+      "release": "2021-06-03",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 1755
+    },
+    {
+      "name": "Chorale",
+      "release": "2021-06-10",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 1761
+    },
+    {
+      "name": "Conche",
+      "release": "2021-06-10",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1761
+    },
+    {
+      "name": "Diverti",
+      "release": "2021-06-10",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 1761
+    },
+    {
+      "name": "Daisy",
+      "release": "2021-06-17",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1766
+    },
+    {
+      "name": "Noppy",
+      "release": "2021-06-17",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 1766
+    },
+    {
+      "name": "Royal Puppeteer Aphmau",
+      "release": "2021-06-24",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 1772
+    },
+    {
+      "name": "Louise",
+      "release": "2021-07-01",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 1784
+    },
+    {
+      "name": "White Dragon Ling",
+      "release": "2021-07-01",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 1784
+    },
+    {
+      "name": "Emperor Vlad",
+      "release": "2021-07-08",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 1792
+    },
+    {
+      "name": "Guardian Blade Charlotte",
+      "release": "2021-07-08",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 1792
+    },
+    {
+      "name": "Avalanche's Jessie",
+      "release": "2021-07-22",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1802
+    },
+    {
+      "name": "Cetra Descendant Aerith",
+      "release": "2021-07-22",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 1802
+    },
+    {
+      "name": "Avalanche's Tifa",
+      "release": "2021-07-29",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 1808
+    },
+    {
+      "name": "Avalanche's Biggs & Wedge",
+      "release": "2021-08-05",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1819
+    },
+    {
+      "name": "Legendary Hero Sephiroth",
+      "release": "2021-08-05",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 1819
+    },
+    {
+      "name": "Skye",
+      "release": "2021-08-12",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 1826
+    },
+    {
+      "name": "Moogle of Narshe Mog",
+      "release": "2021-08-19",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1832
+    },
+    {
+      "name": "Triumphant General Celes",
+      "release": "2021-08-19",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 1832
+    },
+    {
+      "name": "Yeti of Narshe Umaro",
+      "release": "2021-08-19",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1832
+    },
+    {
+      "name": "Cleome",
+      "release": "2021-08-26",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1840
+    },
+    {
+      "name": "Ygni",
+      "release": "2021-08-26",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 1840
+    },
+    {
+      "name": "Doma Samurai Cyan",
+      "release": "2021-09-02",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 1847
+    },
+    {
+      "name": "Bulwark & the Melodic Mascots",
+      "release": "2021-09-09",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 1854
+    },
+    {
+      "name": "Cressnik",
+      "release": "2021-09-09",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 1854
+    },
+    {
+      "name": "Ice Reaper Kurasame",
+      "release": "2021-09-16",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 1858
+    },
+    {
+      "name": "Sage of Thunder Sakura",
+      "release": "2021-09-23",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 1869
+    },
+    {
+      "name": "Lara Croft -Neo Vision-",
+      "release": "2021-09-30",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 1875
+    },
+    {
+      "name": "Roca",
+      "release": "2021-10-07",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 1887
+    },
+    {
+      "name": "Paus",
+      "release": "2021-10-14",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 1891
+    },
+    {
+      "name": "Olivera",
+      "release": "2021-10-21",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 1902
+    },
+    {
+      "name": "Full Moon Karten",
+      "release": "2021-10-28",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 1910
+    },
+    {
+      "name": "Angela",
+      "release": "2021-11-04",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 1919
+    },
+    {
+      "name": "Ninja Master Hawkeye",
+      "release": "2021-11-04",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 1919
+    },
+    {
+      "name": "Duran",
+      "release": "2021-11-11",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 1925
+    },
+    {
+      "name": "Riesz",
+      "release": "2021-11-11",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 1925
+    },
+    {
+      "name": "Maeve",
+      "release": "2021-11-18",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 1931
+    },
+    {
+      "name": "Summoner Yuna",
+      "release": "2021-11-25",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 1940
+    },
+    {
+      "name": "Al Bhed Girl Rikku",
+      "release": "2021-11-29",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 1947
+    },
+    {
+      "name": "High Summoner Braska",
+      "release": "2021-12-02",
+      "rarity": "5~7★",
+      "access": "unqualified",
+      "note_line": 1957
+    },
+    {
+      "name": "Legendary Guardian Auron",
+      "release": "2021-12-02",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 1957
+    },
+    {
+      "name": "Beach Buoy Shinju",
+      "release": "2021-12-09",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 1966
+    },
+    {
+      "name": "Magic Mermaid Freesia",
+      "release": "2021-12-09",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 1966
+    },
+    {
+      "name": "Summer Sniper Physalis",
+      "release": "2021-12-09",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 1966
+    },
+    {
+      "name": "Alena & Marquis de Léon",
+      "release": "2021-12-16",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 1970
+    },
+    {
+      "name": "King of Destruction Zoma",
+      "release": "2021-12-16",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 1970
+    },
+    {
+      "name": "Whimsical Winter Tiana",
+      "release": "2021-12-23",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 1978
+    },
+    {
+      "name": "Taivas",
+      "release": "2022-01-06",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 1993
+    },
+    {
+      "name": "Tulien",
+      "release": "2022-01-13",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 1998
+    },
+    {
+      "name": "Summoner Lenna",
+      "release": "2022-01-20",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2003
+    },
+    {
+      "name": "Warrior of Dawn Dorgann",
+      "release": "2022-01-20",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2003
+    },
+    {
+      "name": "Divine Beast Chow",
+      "release": "2022-01-27",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2012
+    },
+    {
+      "name": "Grahf",
+      "release": "2022-02-10",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2020
+    },
+    {
+      "name": "Id",
+      "release": "2022-02-10",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2020
+    },
+    {
+      "name": "Dragoon Kain",
+      "release": "2022-02-17",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2028
+    },
+    {
+      "name": "Summoner Rydia",
+      "release": "2022-02-17",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2028
+    },
+    {
+      "name": "Storm Seeker Esther",
+      "release": "2022-02-24",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2036
+    },
+    {
+      "name": "Ninja Edge",
+      "release": "2022-03-03",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2046
+    },
+    {
+      "name": "Haveh",
+      "release": "2022-03-10",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2053
+    },
+    {
+      "name": "Lehftia",
+      "release": "2022-03-10",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2053
+    },
+    {
+      "name": "Runda",
+      "release": "2022-03-10",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2053
+    },
+    {
+      "name": "Dark Rain",
+      "release": "2022-03-17",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2060
+    },
+    {
+      "name": "Golden Rizer",
+      "release": "2022-03-17",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2060
+    },
+    {
+      "name": "Raegen -The Return-",
+      "release": "2022-03-17",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2060
+    },
+    {
+      "name": "Reberta & Ignitos",
+      "release": "2022-03-24",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2068
+    },
+    {
+      "name": "Akstar -The Return-",
+      "release": "2022-03-31",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2070
+    },
+    {
+      "name": "Fina -The Return-",
+      "release": "2022-04-07",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2080
+    },
+    {
+      "name": "Nichol -The Return-",
+      "release": "2022-04-14",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2087
+    },
+    {
+      "name": "Sakura -The Return-",
+      "release": "2022-04-14",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2087
+    },
+    {
+      "name": "Frostblade Fryevia",
+      "release": "2022-04-21",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2094
+    },
+    {
+      "name": "Knights of Grandshelt",
+      "release": "2022-04-28",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2100
+    },
+    {
+      "name": "Rinoa & Angelo",
+      "release": "2022-04-28",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2100
+    },
+    {
+      "name": "Kiros & Ward",
+      "release": "2022-05-06",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2110
+    },
+    {
+      "name": "Laguna",
+      "release": "2022-05-06",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2110
+    },
+    {
+      "name": "King of Leonis Mont",
+      "release": "2022-05-12",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2118
+    },
+    {
+      "name": "Fledgling Warrior",
+      "release": "2022-05-19",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2128
+    },
+    {
+      "name": "Marilith",
+      "release": "2022-05-19",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2128
+    },
+    {
+      "name": "Tide Bringer Kaito",
+      "release": "2022-05-26",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2139
+    },
+    {
+      "name": "Beast King Crocodine",
+      "release": "2022-06-02",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2148
+    },
+    {
+      "name": "Hero Dai",
+      "release": "2022-06-02",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2148
+    },
+    {
+      "name": "Mage Popp",
+      "release": "2022-06-02",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2148
+    },
+    {
+      "name": "Martial Artist Maam",
+      "release": "2022-06-02",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2148
+    },
+    {
+      "name": "Dragon Knight Baran",
+      "release": "2022-06-09",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2153
+    },
+    {
+      "name": "Immortal Hyunckel",
+      "release": "2022-06-09",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2153
+    },
+    {
+      "name": "Superior Being Hadlar",
+      "release": "2022-06-09",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2153
+    },
+    {
+      "name": "Emperor of Palamecia",
+      "release": "2022-06-16",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2158
+    },
+    {
+      "name": "Ricard & Wyvern",
+      "release": "2022-06-16",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2158
+    },
+    {
+      "name": "Ilmatalle",
+      "release": "2022-06-23",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2167
+    },
+    {
+      "name": "Kall",
+      "release": "2022-06-23",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2167
+    },
+    {
+      "name": "Yshe",
+      "release": "2022-06-23",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2167
+    },
+    {
+      "name": "Paladin Sylvie",
+      "release": "2022-06-30",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2178
+    },
+    {
+      "name": "Wylk",
+      "release": "2022-06-30",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2178
+    },
+    {
+      "name": "Dark Fina -Warrior's Prayer-",
+      "release": "2022-07-07",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2194
+    },
+    {
+      "name": "Rain -Warrior's Prayer-",
+      "release": "2022-07-07",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2194
+    },
+    {
+      "name": "Lasswell -FFIV Form-",
+      "release": "2022-07-14",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2199
+    },
+    {
+      "name": "Lehftia -Warrior's Prayer-",
+      "release": "2022-07-14",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2199
+    },
+    {
+      "name": "Poppy -Warrior's Prayer-",
+      "release": "2022-07-14",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2199
+    },
+    {
+      "name": "Samurai Chizuru",
+      "release": "2022-07-21",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2208
+    },
+    {
+      "name": "Neilikka",
+      "release": "2022-07-28",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2213
+    },
+    {
+      "name": "Rhus",
+      "release": "2022-07-28",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2213
+    },
+    {
+      "name": "Dynast-King's Scion Ashe",
+      "release": "2022-08-04",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2222
+    },
+    {
+      "name": "Fleetfooted Sky Pirate Balthier",
+      "release": "2022-08-04",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2222
+    },
+    {
+      "name": "Rain -FFI Form-",
+      "release": "2022-08-12",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2230
+    },
+    {
+      "name": "Youth from Rabanastre Vaan",
+      "release": "2022-08-12",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2230
+    },
+    {
+      "name": "Beach Blaster Olive",
+      "release": "2022-08-18",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2242
+    },
+    {
+      "name": "Besaid Mage Lulu",
+      "release": "2022-08-25",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2250
+    },
+    {
+      "name": "New Guardian Tidus",
+      "release": "2022-08-25",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2250
+    },
+    {
+      "name": "Fabled Guardian Jecht",
+      "release": "2022-09-01",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2259
+    },
+    {
+      "name": "Ronso Warrior Kimahri",
+      "release": "2022-09-08",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2266
+    },
+    {
+      "name": "Shrine Maiden Tsukiko",
+      "release": "2022-09-15",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2274
+    },
+    {
+      "name": "Berserker Rikku",
+      "release": "2022-09-22",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2281
+    },
+    {
+      "name": "Dark Knight Paine",
+      "release": "2022-09-22",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2281
+    },
+    {
+      "name": "Songstress Yuna",
+      "release": "2022-09-22",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2281
+    },
+    {
+      "name": "Determined Dagger",
+      "release": "2022-09-29",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2289
+    },
+    {
+      "name": "Planet Destroyer Kuja",
+      "release": "2022-09-29",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2289
+    },
+    {
+      "name": "Elazul",
+      "release": "2022-10-06",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2298
+    },
+    {
+      "name": "Lord of Light",
+      "release": "2022-10-06",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2298
+    },
+    {
+      "name": "Pearl",
+      "release": "2022-10-06",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2298
+    },
+    {
+      "name": "Ihana",
+      "release": "2022-10-13",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2304
+    },
+    {
+      "name": "Ultimate Regina",
+      "release": "2022-10-13",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2304
+    },
+    {
+      "name": "Vanharma",
+      "release": "2022-10-13",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2304
+    },
+    {
+      "name": "The Red Wings's Cecil",
+      "release": "2022-10-20",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2310
+    },
+    {
+      "name": "White Mage of Benediction Rosa",
+      "release": "2022-10-20",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2310
+    },
+    {
+      "name": "Elegant Temptress Lilith",
+      "release": "2022-10-27",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2319
+    },
+    {
+      "name": "Kid",
+      "release": "2022-11-04",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2331
+    },
+    {
+      "name": "Lynx",
+      "release": "2022-11-04",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2331
+    },
+    {
+      "name": "Serge",
+      "release": "2022-11-04",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2331
+    },
+    {
+      "name": "Red Mage Ingus",
+      "release": "2022-11-10",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2336
+    },
+    {
+      "name": "Embracer of Duty Edgar",
+      "release": "2022-11-17",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2349
+    },
+    {
+      "name": "Embracer of Freedom Sabin",
+      "release": "2022-11-17",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2349
+    },
+    {
+      "name": "2B -Neo Vision-",
+      "release": "2022-11-24",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2356
+    },
+    {
+      "name": "A2 -Neo Vision-",
+      "release": "2022-11-24",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2356
+    },
+    {
+      "name": "Taivas & Yshe",
+      "release": "2022-12-01",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2367
+    },
+    {
+      "name": "Holy Mother Reborn Elly",
+      "release": "2022-12-08",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2372
+    },
+    {
+      "name": "The Emperor's Emissary Citan",
+      "release": "2022-12-08",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2372
+    },
+    {
+      "name": "Avalanche's Barret",
+      "release": "2022-12-15",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2379
+    },
+    {
+      "name": "Cloud Strife",
+      "release": "2022-12-15",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2379
+    },
+    {
+      "name": "Cheerful Caroler Ayaka",
+      "release": "2022-12-22",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2388
+    },
+    {
+      "name": "Silent Knight Charlotte",
+      "release": "2022-12-29",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2396
+    },
+    {
+      "name": "Materia Hunter Yuffie",
+      "release": "2023-01-12",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2408
+    },
+    {
+      "name": "Sonon",
+      "release": "2023-01-12",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2408
+    },
+    {
+      "name": "Lunar Festival Cleome",
+      "release": "2023-01-19",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2416
+    },
+    {
+      "name": "White Mage Krile",
+      "release": "2023-01-26",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2425
+    },
+    {
+      "name": "World Wayfarer Bartz",
+      "release": "2023-01-26",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2425
+    },
+    {
+      "name": "Marine-Type Runda",
+      "release": "2023-02-02",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2437
+    },
+    {
+      "name": "Vacation Voyager Fina",
+      "release": "2023-02-02",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2437
+    },
+    {
+      "name": "Kelger",
+      "release": "2023-02-09",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2445
+    },
+    {
+      "name": "World's Hero Gilgamesh",
+      "release": "2023-02-09",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2445
+    },
+    {
+      "name": "Master Machinist Abigail",
+      "release": "2023-02-16",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2454
+    },
+    {
+      "name": "Mid",
+      "release": "2023-02-23",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2458
+    },
+    {
+      "name": "Curse of Immunity Melissa",
+      "release": "2023-03-02",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2471
+    },
+    {
+      "name": "Lady Shantotto",
+      "release": "2023-03-09",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2476
+    },
+    {
+      "name": "Lion",
+      "release": "2023-03-09",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2476
+    },
+    {
+      "name": "Blade of Vengeance Ibara",
+      "release": "2023-03-16",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2485
+    },
+    {
+      "name": "Dioxus",
+      "release": "2023-03-23",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2491
+    },
+    {
+      "name": "Lasswell -Dark Lineage-",
+      "release": "2023-03-30",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2501
+    },
+    {
+      "name": "Raegen -Dark Lineage-",
+      "release": "2023-03-30",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2501
+    },
+    {
+      "name": "Roca -Dark Lineage-",
+      "release": "2023-03-30",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2501
+    },
+    {
+      "name": "Sakura -Dark Lineage-",
+      "release": "2023-04-06",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2511
+    },
+    {
+      "name": "Veritas of the Frost",
+      "release": "2023-04-06",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2511
+    },
+    {
+      "name": "Fina -Dark Lineage-",
+      "release": "2023-04-13",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2520
+    },
+    {
+      "name": "Flaring Aether Rain",
+      "release": "2023-04-13",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2520
+    },
+    {
+      "name": "Dark Knight Duane",
+      "release": "2023-04-20",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2526
+    },
+    {
+      "name": "Cissnei",
+      "release": "2023-04-27",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2532
+    },
+    {
+      "name": "Genesis",
+      "release": "2023-04-27",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2532
+    },
+    {
+      "name": "Angeal",
+      "release": "2023-05-04",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2543
+    },
+    {
+      "name": "Young Hero Zack",
+      "release": "2023-05-04",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2543
+    },
+    {
+      "name": "Blades of Black Flame Raegen",
+      "release": "2023-05-11",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2553
+    },
+    {
+      "name": "Red-Eyed Sage Sol",
+      "release": "2023-05-11",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2553
+    },
+    {
+      "name": "Ruin Explorer Nora",
+      "release": "2023-05-18",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2560
+    },
+    {
+      "name": "Expert Sharpshooter Irvine",
+      "release": "2023-05-25",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2566
+    },
+    {
+      "name": "Sorceress of the Present Edea",
+      "release": "2023-05-25",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2566
+    },
+    {
+      "name": "SeeD's Blue Mage Quistis",
+      "release": "2023-06-01",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2577
+    },
+    {
+      "name": "Sorceress's Knight Squall",
+      "release": "2023-06-01",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2577
+    },
+    {
+      "name": "Serafina",
+      "release": "2023-06-08",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2586
+    },
+    {
+      "name": "Shiloh",
+      "release": "2023-06-08",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2586
+    },
+    {
+      "name": "Radiant Smile Addison Rae",
+      "release": "2023-06-15",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2597
+    },
+    {
+      "name": "Vermilion Class Zero Ace",
+      "release": "2023-06-15",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2597
+    },
+    {
+      "name": "Vermilion Class Zero Deuce",
+      "release": "2023-06-15",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2597
+    },
+    {
+      "name": "Qator",
+      "release": "2023-06-22",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2608
+    },
+    {
+      "name": "Vermilion Class Zero Trey",
+      "release": "2023-06-22",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2608
+    },
+    {
+      "name": "Eternal Radiance Elena",
+      "release": "2023-06-29",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2618
+    },
+    {
+      "name": "Richt",
+      "release": "2023-06-29",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2618
+    },
+    {
+      "name": "Riddar",
+      "release": "2023-07-06",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2635
+    },
+    {
+      "name": "Snovlinka",
+      "release": "2023-07-06",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2635
+    },
+    {
+      "name": "Little Summoner Eiko",
+      "release": "2023-07-13",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2645
+    },
+    {
+      "name": "Thief of Tantalus Zidane",
+      "release": "2023-07-13",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2645
+    },
+    {
+      "name": "Wings of Midnight Malphasie",
+      "release": "2023-07-20",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2654
+    },
+    {
+      "name": "Gastronomist Quina",
+      "release": "2023-07-27",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2667
+    },
+    {
+      "name": "Knights of Pluto Captain Steiner",
+      "release": "2023-07-27",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2667
+    },
+    {
+      "name": "Flagbearer of Reform Glaciela",
+      "release": "2023-08-03",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2678
+    },
+    {
+      "name": "Jayden Rundall",
+      "release": "2023-08-03",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2678
+    },
+    {
+      "name": "Arcane Scholar Kir",
+      "release": "2023-08-10",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2685
+    },
+    {
+      "name": "Challenger of Fate Hope",
+      "release": "2023-08-17",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2692
+    },
+    {
+      "name": "Wondrous Flash Lightning",
+      "release": "2023-08-17",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2692
+    },
+    {
+      "name": "Blood Dancer Ellesperis",
+      "release": "2023-08-24",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2699
+    },
+    {
+      "name": "Grand Couture Ayaka",
+      "release": "2023-08-31",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2704
+    },
+    {
+      "name": "Sheratan",
+      "release": "2023-08-31",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2704
+    },
+    {
+      "name": "Cool Moves Addison Rae",
+      "release": "2023-09-07",
+      "rarity": null,
+      "access": "unqualified",
+      "note_line": 2717
+    },
+    {
+      "name": "Cid Raines",
+      "release": "2023-09-14",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2723
+    },
+    {
+      "name": "Denial of Focus Vanille",
+      "release": "2023-09-14",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2723
+    },
+    {
+      "name": "Loving Father Sazh",
+      "release": "2023-09-14",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2723
+    },
+    {
+      "name": "Aya Brea",
+      "release": "2023-09-21",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2731
+    },
+    {
+      "name": "Cursebringer Neilikka",
+      "release": "2023-09-28",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2740
+    },
+    {
+      "name": "Dark Dragon Buffon",
+      "release": "2023-09-28",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2740
+    },
+    {
+      "name": "Voidmage Roca",
+      "release": "2023-09-28",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2740
+    },
+    {
+      "name": "Deity of War Taivas",
+      "release": "2023-10-05",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2754
+    },
+    {
+      "name": "Petite Jewel Lehftia",
+      "release": "2023-10-05",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2754
+    },
+    {
+      "name": "Bewitching Warrior Yshe",
+      "release": "2023-10-12",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2762
+    },
+    {
+      "name": "Dragonlord Rhus",
+      "release": "2023-10-12",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2762
+    },
+    {
+      "name": "Evoker",
+      "release": "2023-10-19",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2770
+    },
+    {
+      "name": "Princess of Cornelia Sarah",
+      "release": "2023-10-19",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2770
+    },
+    {
+      "name": "Guardian of the Underworld Chow",
+      "release": "2023-10-26",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2778
+    },
+    {
+      "name": "Land Rider Larhart",
+      "release": "2023-11-02",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2787
+    },
+    {
+      "name": "Legendary Hero Avan",
+      "release": "2023-11-02",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2787
+    },
+    {
+      "name": "Soul Heritor Hym",
+      "release": "2023-11-02",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2787
+    },
+    {
+      "name": "Disciple of Avan Leona",
+      "release": "2023-11-09",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2793
+    },
+    {
+      "name": "True Dark King Vearn",
+      "release": "2023-11-09",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2793
+    },
+    {
+      "name": "Twin Dragon Crests Dai",
+      "release": "2023-11-09",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2793
+    },
+    {
+      "name": "Hyoh & Panthera Ultimus",
+      "release": "2023-11-23",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2796
+    },
+    {
+      "name": "Solitary Warrior Veritas of the Frost",
+      "release": "2023-11-23",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2796
+    },
+    {
+      "name": "King of Bal Galuf",
+      "release": "2023-11-30",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2799
+    },
+    {
+      "name": "Treasure Hunter Locke",
+      "release": "2023-11-30",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2799
+    },
+    {
+      "name": "Steadfast Knight Agrias",
+      "release": "2023-12-07",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2809
+    },
+    {
+      "name": "Unsung Hero Ramza",
+      "release": "2023-12-07",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2809
+    },
+    {
+      "name": "Argath",
+      "release": "2023-12-14",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2818
+    },
+    {
+      "name": "Sword Saint Orlandeau",
+      "release": "2023-12-14",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2818
+    },
+    {
+      "name": "Ghost of Winter Past Beryl",
+      "release": "2023-12-21",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2824
+    },
+    {
+      "name": "True King Noctis",
+      "release": "2024-01-04",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2834
+    },
+    {
+      "name": "Chosen King's Friend Prompto",
+      "release": "2024-01-11",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2844
+    },
+    {
+      "name": "Chosen King's Shield Gladiolus",
+      "release": "2024-01-18",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2848
+    },
+    {
+      "name": "Chosen King's Tactician Ignis",
+      "release": "2024-01-18",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2848
+    },
+    {
+      "name": "Chains of Fate Mirei",
+      "release": "2024-01-25",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2854
+    },
+    {
+      "name": "Fastest in the Skies Setzer",
+      "release": "2024-02-01",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2867
+    },
+    {
+      "name": "Magic Markswoman Physalis",
+      "release": "2024-02-08",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2870
+    },
+    {
+      "name": "Metze",
+      "release": "2024-02-08",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2870
+    },
+    {
+      "name": "Divine Archer Ang",
+      "release": "2024-02-15",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2873
+    },
+    {
+      "name": "Mana Sword Hero Randi",
+      "release": "2024-02-22",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2881
+    },
+    {
+      "name": "Spirited Heart Primm",
+      "release": "2024-02-22",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2881
+    },
+    {
+      "name": "Little Great Mage Popoi",
+      "release": "2024-02-29",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2886
+    },
+    {
+      "name": "Fina -Esper of Destruction-",
+      "release": "2024-03-07",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2894
+    },
+    {
+      "name": "Rain -Esper of Destruction-",
+      "release": "2024-03-07",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2894
+    },
+    {
+      "name": "Lasswell -Esper of Destruction-",
+      "release": "2024-03-14",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2898
+    },
+    {
+      "name": "Blood Mage Zyrus",
+      "release": "2024-03-21",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2902
+    },
+    {
+      "name": "Charlotte -Esper of Destruction-",
+      "release": "2024-03-28",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2905
+    },
+    {
+      "name": "Dark Fina -Esper of Destruction-",
+      "release": "2024-03-28",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2905
+    },
+    {
+      "name": "Sophie",
+      "release": "2024-04-04",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2916
+    },
+    {
+      "name": "Wing of Destiny Sterne",
+      "release": "2024-04-11",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2918
+    },
+    {
+      "name": "Winged Officer Celeste",
+      "release": "2024-04-18",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2920
+    },
+    {
+      "name": "Dunefaring King Bart",
+      "release": "2024-04-25",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2922
+    },
+    {
+      "name": "Steel Wings of Bonds Maria",
+      "release": "2024-04-25",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2922
+    },
+    {
+      "name": "Slayer of God Fei",
+      "release": "2024-05-09",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2928
+    },
+    {
+      "name": "Distant Promise Emeralda",
+      "release": "2024-05-16",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2930
+    },
+    {
+      "name": "Phantom Thief Xon",
+      "release": "2024-05-23",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2933
+    },
+    {
+      "name": "Bewitching Black Mage Lulu",
+      "release": "2024-05-30",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2935
+    },
+    {
+      "name": "Spirited Friend Penelo",
+      "release": "2024-05-30",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2935
+    },
+    {
+      "name": "Blitzball Legend Jecht",
+      "release": "2024-06-06",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2941
+    },
+    {
+      "name": "Devoted Summoner Yuna",
+      "release": "2024-06-13",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2942
+    },
+    {
+      "name": "Princess of Liberty Ashe",
+      "release": "2024-06-13",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2942
+    },
+    {
+      "name": "Eithne",
+      "release": "2024-06-27",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2948
+    },
+    {
+      "name": "Fundamental Force",
+      "release": "2024-06-27",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2948
+    },
+    {
+      "name": "Clive Rosfield",
+      "release": "2024-07-11",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2959
+    },
+    {
+      "name": "Jill Warrick",
+      "release": "2024-07-11",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2959
+    },
+    {
+      "name": "Benedikta Harman",
+      "release": "2024-07-18",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2961
+    },
+    {
+      "name": "Cidolfus Telamon",
+      "release": "2024-07-18",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2961
+    },
+    {
+      "name": "Imperial Shield Wilhelm",
+      "release": "2024-07-25",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2965
+    },
+    {
+      "name": "Crimson Knight Rain",
+      "release": "2024-08-01",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2972
+    },
+    {
+      "name": "Hero Resurrected Taivas",
+      "release": "2024-08-01",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2972
+    },
+    {
+      "name": "Azure Knight Lasswell",
+      "release": "2024-08-08",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2975
+    },
+    {
+      "name": "Azure and Crimson Blades Rhus",
+      "release": "2024-08-15",
+      "rarity": "NV",
+      "access": "unqualified",
+      "note_line": 2978
+    }
+  ],
+  "ambiguous_names": [
+    {
+      "name": "Aurora Fryevia",
+      "dates": [
+        "2018-12-08",
+        "2019-02-22"
+      ]
+    },
+    {
+      "name": "Y'shtola",
+      "dates": [
+        "2017-03-17",
+        "2020-04-23"
+      ]
+    }
+  ],
+  "parse_warnings": [
+    {
+      "line": 400,
+      "release": "2017-10-06",
+      "text": "Yuri 3~5★ Cheerleader Fina 4~5★ (exclusive New York Fan Festa 2017 unit)",
+      "reason": "multiple-units-in-entry"
+    },
+    {
+      "line": 428,
+      "release": "2017-11-17",
+      "text": "Sportive Ariana 4~6★ Maiden Sakura 4~5★ (exclusive South Korea Fan Festa 2017 unit)",
+      "reason": "multiple-units-in-entry"
+    }
+  ],
+  "community_audit": {
+    "banner_count": 369,
+    "matched_name_date_pairs": 701,
+    "matched_distinct_unit_ids": 601,
+    "colliding_unit_ids": [
+      {
+        "unit_id": "100000315",
+        "names": [
+          "Barbariccia",
+          "Blossom Sage Sakura",
+          "Luka",
+          "Orlandeau",
+          "Sol -Neo Vision-"
+        ]
+      },
+      {
+        "unit_id": "100002803",
+        "names": [
+          "Lightning",
+          "Santa Roselia"
+        ]
+      },
+      {
+        "unit_id": "100003903",
+        "names": [
+          "Christine",
+          "Felix",
+          "Kryla",
+          "White Knight Noel"
+        ]
+      },
+      {
+        "unit_id": "100004303",
+        "names": [
+          "Ludmille",
+          "Noctis",
+          "Veritas of the Light"
+        ]
+      },
+      {
+        "unit_id": "100004604",
+        "names": [
+          "Chizuru",
+          "Gilgamesh",
+          "Kefka",
+          "Lotus Mage Fina",
+          "Mercedes",
+          "Noctis",
+          "Pyro Glacial Lasswell"
+        ]
+      },
+      {
+        "unit_id": "100004703",
+        "names": [
+          "Locke",
+          "Veritas of the Heavens"
+        ]
+      },
+      {
+        "unit_id": "100005004",
+        "names": [
+          "Ayaka",
+          "Elle",
+          "Orlandeau"
+        ]
+      },
+      {
+        "unit_id": "100005104",
+        "names": [
+          "Chizuru",
+          "Mercedes"
+        ]
+      },
+      {
+        "unit_id": "100005304",
+        "names": [
+          "Soleil",
+          "Trance Terra"
+        ]
+      },
+      {
+        "unit_id": "100005703",
+        "names": [
+          "Heavenly Technician Lid",
+          "Sozhe"
+        ]
+      },
+      {
+        "unit_id": "100005805",
+        "names": [
+          "Ayaka",
+          "Dark Knight Cecil",
+          "Marie"
+        ]
+      },
+      {
+        "unit_id": "100005905",
+        "names": [
+          "Barbariccia",
+          "Firion -Neo Vision-",
+          "Heltich",
+          "Loren",
+          "Olive"
+        ]
+      },
+      {
+        "unit_id": "100006003",
+        "names": [
+          "Killian",
+          "Ulrica"
+        ]
+      },
+      {
+        "unit_id": "100006105",
+        "names": [
+          "Awakened Rain",
+          "Basch",
+          "Gilgamesh",
+          "Wilhelm"
+        ]
+      },
+      {
+        "unit_id": "100006303",
+        "names": [
+          "Abel",
+          "Chizuru"
+        ]
+      },
+      {
+        "unit_id": "100006603",
+        "names": [
+          "Fohlen",
+          "Nameless Gunner Jake"
+        ]
+      },
+      {
+        "unit_id": "100006805",
+        "names": [
+          "Amelia",
+          "Pyro Glacial Lasswell"
+        ]
+      },
+      {
+        "unit_id": "100007205",
+        "names": [
+          "Beach Time Fina",
+          "Dark Fina",
+          "Luneth"
+        ]
+      },
+      {
+        "unit_id": "100007505",
+        "names": [
+          "Bran",
+          "Fohlen",
+          "Veritas of the Light"
+        ]
+      },
+      {
+        "unit_id": "100007603",
+        "names": [
+          "Helena",
+          "Verun"
+        ]
+      },
+      {
+        "unit_id": "100007705",
+        "names": [
+          "Rain -Neo Vision-",
+          "Veritas of the Dark",
+          "Veritas of the Flame",
+          "Zargabaath"
+        ]
+      },
+      {
+        "unit_id": "100007804",
+        "names": [
+          "Veritas of the Light",
+          "Veritas of the Waters"
+        ]
+      },
+      {
+        "unit_id": "100007904",
+        "names": [
+          "Charlotte",
+          "Veritas of the Flame"
+        ]
+      },
+      {
+        "unit_id": "100008005",
+        "names": [
+          "Aileen",
+          "Prishe",
+          "Veritas of the Earth"
+        ]
+      },
+      {
+        "unit_id": "100008104",
+        "names": [
+          "Veritas of the Earth",
+          "Victoria"
+        ]
+      },
+      {
+        "unit_id": "100008205",
+        "names": [
+          "Eiko",
+          "Hayate",
+          "Lunera",
+          "Veritas of the Heavens"
+        ]
+      },
+      {
+        "unit_id": "100008605",
+        "names": [
+          "Aerith",
+          "Goken",
+          "Reberta",
+          "Rem"
+        ]
+      },
+      {
+        "unit_id": "100008703",
+        "names": [
+          "Lotus Mage Fina",
+          "Nameless Gunner Jake",
+          "Ramza",
+          "Timothy"
+        ]
+      },
+      {
+        "unit_id": "100009105",
+        "names": [
+          "Loren",
+          "Lunera",
+          "Prishe",
+          "Starlight Elena"
+        ]
+      },
+      {
+        "unit_id": "100009805",
+        "names": [
+          "Aileen",
+          "Balthier",
+          "Cloud"
+        ]
+      },
+      {
+        "unit_id": "100010005",
+        "names": [
+          "Lila",
+          "Mazurka",
+          "Raegen"
+        ]
+      },
+      {
+        "unit_id": "100010303",
+        "names": [
+          "Chow",
+          "Yuri"
+        ]
+      },
+      {
+        "unit_id": "100010405",
+        "names": [
+          "Fryevia",
+          "Guromu"
+        ]
+      },
+      {
+        "unit_id": "100010805",
+        "names": [
+          "Aileen",
+          "Duke"
+        ]
+      },
+      {
+        "unit_id": "100011103",
+        "names": [
+          "Charie",
+          "Maritime Strategist Nichol"
+        ]
+      },
+      {
+        "unit_id": "100011305",
+        "names": [
+          "Jiraiya",
+          "Raegen",
+          "Trance Terra"
+        ]
+      },
+      {
+        "unit_id": "100011705",
+        "names": [
+          "Awakened Dragon Akstar",
+          "Loren",
+          "Miyuki",
+          "Nameless Gunner Jake",
+          "Pyro Glacial Lasswell"
+        ]
+      },
+      {
+        "unit_id": "100011805",
+        "names": [
+          "Aranea",
+          "Blossom Sage Sakura",
+          "Chizuru",
+          "Lotus Mage Fina",
+          "Physalis -Neo Vision-"
+        ]
+      },
+      {
+        "unit_id": "100011905",
+        "names": [
+          "Heavenly Technician Lid",
+          "Maritime Strategist Nichol",
+          "Mediena",
+          "Ulrica"
+        ]
+      },
+      {
+        "unit_id": "100012005",
+        "names": [
+          "Blossom Sage Sakura",
+          "Emperor Shera",
+          "Maritime Strategist Nichol",
+          "Pure Summoner Rydia"
+        ]
+      },
+      {
+        "unit_id": "100012405",
+        "names": [
+          "Barbariccia",
+          "Blossom Sage Sakura",
+          "Cedona",
+          "Chizuru",
+          "Dark Fina",
+          "Timothy"
+        ]
+      },
+      {
+        "unit_id": "100012505",
+        "names": [
+          "Emperor Shera",
+          "Erwin",
+          "Heavenly Technician Lid",
+          "Lexa"
+        ]
+      },
+      {
+        "unit_id": "100012605",
+        "names": [
+          "Kunshira",
+          "Lasswell -Neo Vision-",
+          "Prompto"
+        ]
+      },
+      {
+        "unit_id": "100013203",
+        "names": [
+          "Erwin",
+          "Vanille"
+        ]
+      },
+      {
+        "unit_id": "100013305",
+        "names": [
+          "Maritime Strategist Nichol",
+          "Riley"
+        ]
+      },
+      {
+        "unit_id": "100013504",
+        "names": [
+          "Awakened Rain",
+          "Sephiroth"
+        ]
+      },
+      {
+        "unit_id": "100013805",
+        "names": [
+          "Jiraiya",
+          "Lila"
+        ]
+      },
+      {
+        "unit_id": "100014005",
+        "names": [
+          "Atoning Dragoon Kain",
+          "Mediena",
+          "Sakura -The Return-"
+        ]
+      },
+      {
+        "unit_id": "100015405",
+        "names": [
+          "Madam Edel -Neo Vision-",
+          "Nalu"
+        ]
+      },
+      {
+        "unit_id": "100015805",
+        "names": [
+          "Shylt",
+          "Sieghard"
+        ]
+      },
+      {
+        "unit_id": "100016905",
+        "names": [
+          "Lotti",
+          "Sage of Thunder Sakura"
+        ]
+      },
+      {
+        "unit_id": "100017605",
+        "names": [
+          "Sylvie",
+          "Yuraisha"
+        ]
+      },
+      {
+        "unit_id": "100017905",
+        "names": [
+          "Sieghard",
+          "Skye",
+          "Wilhelm"
+        ]
+      },
+      {
+        "unit_id": "100018305",
+        "names": [
+          "Folka",
+          "Youth from Rabanastre Vaan"
+        ]
+      },
+      {
+        "unit_id": "100018705",
+        "names": [
+          "Ignacio",
+          "Melo"
+        ]
+      },
+      {
+        "unit_id": "100019105",
+        "names": [
+          "High Seraph Ultima",
+          "Nagi",
+          "Queen"
+        ]
+      },
+      {
+        "unit_id": "100019205",
+        "names": [
+          "Beowulf",
+          "Yego"
+        ]
+      },
+      {
+        "unit_id": "100019505",
+        "names": [
+          "Cid",
+          "Yshe"
+        ]
+      },
+      {
+        "unit_id": "100019905",
+        "names": [
+          "Ishil",
+          "Nagi"
+        ]
+      },
+      {
+        "unit_id": "100020005",
+        "names": [
+          "Akstar",
+          "Crimson"
+        ]
+      },
+      {
+        "unit_id": "100020505",
+        "names": [
+          "Esther",
+          "Shoreline Fina & Daisy",
+          "Summer Fina & Lid",
+          "Zargabaath"
+        ]
+      },
+      {
+        "unit_id": "100020605",
+        "names": [
+          "Crimson",
+          "Sylvie"
+        ]
+      },
+      {
+        "unit_id": "100020905",
+        "names": [
+          "Black Mage Golbez",
+          "Summer Fina & Lid",
+          "Summer Folka & Citra"
+        ]
+      },
+      {
+        "unit_id": "100027105",
+        "names": [
+          "Infernal Fire Rain",
+          "Lasswell & Raegen"
+        ]
+      },
+      {
+        "unit_id": "100027205",
+        "names": [
+          "Akstar & Cleome",
+          "Draconian Princess Fina"
+        ]
+      },
+      {
+        "unit_id": "100029305",
+        "names": [
+          "King Behemy",
+          "Ronso Warrior Kimahri"
+        ]
+      },
+      {
+        "unit_id": "100030205",
+        "names": [
+          "Lord of the Seas Nichol",
+          "Rhus"
+        ]
+      },
+      {
+        "unit_id": "100030705",
+        "names": [
+          "Daisy",
+          "Ygni"
+        ]
+      },
+      {
+        "unit_id": "100031907",
+        "names": [
+          "Nalu",
+          "Starlight Elena"
+        ]
+      },
+      {
+        "unit_id": "201000104",
+        "names": [
+          "Lenna",
+          "Warrior of Light"
+        ]
+      },
+      {
+        "unit_id": "202000103",
+        "names": [
+          "Emperor",
+          "Reberta"
+        ]
+      },
+      {
+        "unit_id": "202000303",
+        "names": [
+          "Dark Knight Leon",
+          "Emperor of Palamecia",
+          "Leon"
+        ]
+      },
+      {
+        "unit_id": "202000505",
+        "names": [
+          "Emperor",
+          "Firion",
+          "Fryevia",
+          "Thoughtful Sister Maria"
+        ]
+      },
+      {
+        "unit_id": "202001705",
+        "names": [
+          "Emperor",
+          "Guy"
+        ]
+      },
+      {
+        "unit_id": "203000105",
+        "names": [
+          "Balthier",
+          "Onion Knight",
+          "Trance Terra"
+        ]
+      },
+      {
+        "unit_id": "203000205",
+        "names": [
+          "Lightning",
+          "Luneth"
+        ]
+      },
+      {
+        "unit_id": "203000404",
+        "names": [
+          "Arc",
+          "Dark Knight Cecil",
+          "Gilgamesh",
+          "Luka"
+        ]
+      },
+      {
+        "unit_id": "203000704",
+        "names": [
+          "Crowe",
+          "Desch"
+        ]
+      },
+      {
+        "unit_id": "203000803",
+        "names": [
+          "Cloud of Darkness",
+          "Soleil"
+        ]
+      },
+      {
+        "unit_id": "203001305",
+        "names": [
+          "Dark Knight Luneth",
+          "Onion Knight -Neo Vision-"
+        ]
+      },
+      {
+        "unit_id": "203001405",
+        "names": [
+          "Dark Knight Luneth",
+          "Doga"
+        ]
+      },
+      {
+        "unit_id": "203001605",
+        "names": [
+          "Awakened Onion Knight",
+          "Red Mage Ingus"
+        ]
+      },
+      {
+        "unit_id": "204000103",
+        "names": [
+          "Chizuru",
+          "Dark Knight Cecil",
+          "Refia"
+        ]
+      },
+      {
+        "unit_id": "204000115",
+        "names": [
+          "Garland",
+          "Rosa",
+          "Wilhelm"
+        ]
+      },
+      {
+        "unit_id": "204001505",
+        "names": [
+          "Nameless Gunner Jake",
+          "Yang"
+        ]
+      },
+      {
+        "unit_id": "204001605",
+        "names": [
+          "Edward",
+          "Heavenly Technician Lid"
+        ]
+      },
+      {
+        "unit_id": "204001705",
+        "names": [
+          "Akstar",
+          "Black Mage Golbez",
+          "The Red Wings's Cecil"
+        ]
+      },
+      {
+        "unit_id": "205000103",
+        "names": [
+          "Gilgamesh",
+          "Ramza"
+        ]
+      },
+      {
+        "unit_id": "205000203",
+        "names": [
+          "Kefka",
+          "Tellah"
+        ]
+      },
+      {
+        "unit_id": "205000703",
+        "names": [
+          "Agrias",
+          "Exdeath",
+          "Luka"
+        ]
+      },
+      {
+        "unit_id": "205001005",
+        "names": [
+          "Summoner Lenna",
+          "Warrior of Dawn Galuf"
+        ]
+      },
+      {
+        "unit_id": "205001105",
+        "names": [
+          "Atlie",
+          "Faris -Neo Vision-"
+        ]
+      },
+      {
+        "unit_id": "206000103",
+        "names": [
+          "Leo",
+          "Trance Terra"
+        ]
+      },
+      {
+        "unit_id": "206000125",
+        "names": [
+          "Dark Fina",
+          "Fryevia",
+          "Kefka",
+          "Queen",
+          "Setzer"
+        ]
+      },
+      {
+        "unit_id": "206000203",
+        "names": [
+          "Artemios",
+          "Terra"
+        ]
+      },
+      {
+        "unit_id": "206000703",
+        "names": [
+          "Celes",
+          "King Edgar of Figaro"
+        ]
+      },
+      {
+        "unit_id": "206000804",
+        "names": [
+          "Gau",
+          "Monk Sabin of Kolts"
+        ]
+      },
+      {
+        "unit_id": "206001103",
+        "names": [
+          "Embracer of Duty Edgar",
+          "Terra"
+        ]
+      },
+      {
+        "unit_id": "206001703",
+        "names": [
+          "Chizuru",
+          "Cloud of Darkness",
+          "Kefka",
+          "Lenna"
+        ]
+      },
+      {
+        "unit_id": "206001905",
+        "names": [
+          "Locke -Neo Vision-",
+          "Setzer",
+          "Zeno of the Beta Star"
+        ]
+      },
+      {
+        "unit_id": "206002005",
+        "names": [
+          "Celes",
+          "King Edgar of Figaro",
+          "Nagi"
+        ]
+      },
+      {
+        "unit_id": "207000105",
+        "names": [
+          "Aerith (FFVII REMAKE)",
+          "Conrad"
+        ]
+      },
+      {
+        "unit_id": "207000204",
+        "names": [
+          "Aerith",
+          "Tifa",
+          "Yuffie"
+        ]
+      },
+      {
+        "unit_id": "207000305",
+        "names": [
+          "Tifa",
+          "Vincent"
+        ]
+      },
+      {
+        "unit_id": "207000405",
+        "names": [
+          "Ayaka",
+          "Red XIII"
+        ]
+      },
+      {
+        "unit_id": "207000505",
+        "names": [
+          "Barret",
+          "Rufus Shinra (FFVII REMAKE)"
+        ]
+      },
+      {
+        "unit_id": "207000703",
+        "names": [
+          "Barret",
+          "Cait Sith"
+        ]
+      },
+      {
+        "unit_id": "207001205",
+        "names": [
+          "Avalanche's Tifa",
+          "Cloud"
+        ]
+      },
+      {
+        "unit_id": "207002105",
+        "names": [
+          "Barret (FFVII REMAKE)",
+          "Legendary Hero Sephiroth"
+        ]
+      },
+      {
+        "unit_id": "208000404",
+        "names": [
+          "Laguna",
+          "Ramira"
+        ]
+      },
+      {
+        "unit_id": "208001505",
+        "names": [
+          "Rinoa & Angelo",
+          "Seifer"
+        ]
+      },
+      {
+        "unit_id": "209000103",
+        "names": [
+          "Kuja",
+          "Refia"
+        ]
+      },
+      {
+        "unit_id": "209000705",
+        "names": [
+          "Beatrix",
+          "Eiko",
+          "Rem"
+        ]
+      },
+      {
+        "unit_id": "209000803",
+        "names": [
+          "Determined Dagger",
+          "Freya",
+          "Zidane"
+        ]
+      },
+      {
+        "unit_id": "209001105",
+        "names": [
+          "Lightning-Fast Zidane",
+          "Reberta",
+          "Steiner",
+          "Veritas of the Dark"
+        ]
+      },
+      {
+        "unit_id": "210000205",
+        "names": [
+          "Lulu",
+          "Yuna"
+        ]
+      },
+      {
+        "unit_id": "210000303",
+        "names": [
+          "Besaid Mage Lulu",
+          "Lulu",
+          "New Guardian Tidus",
+          "Rikku",
+          "Summoner Yuna"
+        ]
+      },
+      {
+        "unit_id": "210000405",
+        "names": [
+          "Basch",
+          "Seymour"
+        ]
+      },
+      {
+        "unit_id": "210000605",
+        "names": [
+          "Auron",
+          "Yuraisha"
+        ]
+      },
+      {
+        "unit_id": "210000704",
+        "names": [
+          "Rikku",
+          "Timothy",
+          "Wakka"
+        ]
+      },
+      {
+        "unit_id": "210000905",
+        "names": [
+          "Star Player Tidus",
+          "Yunalesca"
+        ]
+      },
+      {
+        "unit_id": "210001005",
+        "names": [
+          "Jecht",
+          "Legendary Guardian Auron"
+        ]
+      },
+      {
+        "unit_id": "210001805",
+        "names": [
+          "Isaaru",
+          "Star Player Tidus"
+        ]
+      },
+      {
+        "unit_id": "211000103",
+        "names": [
+          "Prishe",
+          "Shantotto"
+        ]
+      },
+      {
+        "unit_id": "211000204",
+        "names": [
+          "Veritas of the Waters",
+          "Werei"
+        ]
+      },
+      {
+        "unit_id": "211000303",
+        "names": [
+          "Kupipi",
+          "Livid Shantotto"
+        ]
+      },
+      {
+        "unit_id": "211000405",
+        "names": [
+          "Elfreeda",
+          "Prishe",
+          "Shantotto",
+          "Werei"
+        ]
+      },
+      {
+        "unit_id": "212000505",
+        "names": [
+          "Balthier",
+          "Elfreeda",
+          "Onion Knight"
+        ]
+      },
+      {
+        "unit_id": "212000905",
+        "names": [
+          "Basch",
+          "Mercenary Ramza",
+          "Wilhelm",
+          "Yuna"
+        ]
+      },
+      {
+        "unit_id": "212001204",
+        "names": [
+          "Drace",
+          "Folka"
+        ]
+      },
+      {
+        "unit_id": "213000105",
+        "names": [
+          "Charlotte",
+          "Lightning",
+          "Olive",
+          "Savior of Souls Lightning",
+          "Seven"
+        ]
+      },
+      {
+        "unit_id": "213000204",
+        "names": [
+          "Radiant Lightning",
+          "Snow"
+        ]
+      },
+      {
+        "unit_id": "213000304",
+        "names": [
+          "Rikku",
+          "Vanille"
+        ]
+      },
+      {
+        "unit_id": "213000403",
+        "names": [
+          "Neverending Hope",
+          "Sazh"
+        ]
+      },
+      {
+        "unit_id": "213001005",
+        "names": [
+          "Radiant Lightning",
+          "Snow"
+        ]
+      },
+      {
+        "unit_id": "214000203",
+        "names": [
+          "Minfilia",
+          "Yda"
+        ]
+      },
+      {
+        "unit_id": "214000304",
+        "names": [
+          "Papalymo",
+          "Thancred"
+        ]
+      },
+      {
+        "unit_id": "215000105",
+        "names": [
+          "Charlotte",
+          "Noctis",
+          "Zidane"
+        ]
+      },
+      {
+        "unit_id": "215000205",
+        "names": [
+          "Basch",
+          "Gladiolus",
+          "Oracle Maiden Lunafreya"
+        ]
+      },
+      {
+        "unit_id": "215000304",
+        "names": [
+          "Aranea",
+          "Cor"
+        ]
+      },
+      {
+        "unit_id": "215000403",
+        "names": [
+          "Iris",
+          "Prompto"
+        ]
+      },
+      {
+        "unit_id": "215000505",
+        "names": [
+          "Gladiolus",
+          "Ignis"
+        ]
+      },
+      {
+        "unit_id": "215000605",
+        "names": [
+          "Cor",
+          "Kunshira",
+          "Vermilion Blade Ardyn"
+        ]
+      },
+      {
+        "unit_id": "215000705",
+        "names": [
+          "Ignis",
+          "Iris",
+          "Lotus Mage Fina"
+        ]
+      },
+      {
+        "unit_id": "215001105",
+        "names": [
+          "Cobalt Blade Noctis",
+          "Nyx"
+        ]
+      },
+      {
+        "unit_id": "215001304",
+        "names": [
+          "Desch",
+          "Glauca"
+        ]
+      },
+      {
+        "unit_id": "250000105",
+        "names": [
+          "Serah",
+          "Solitary Patron Snow"
+        ]
+      },
+      {
+        "unit_id": "253000105",
+        "names": [
+          "Exdeath",
+          "Ramza",
+          "Timothy"
+        ]
+      },
+      {
+        "unit_id": "253000115",
+        "names": [
+          "Gladiolus",
+          "Mercenary Ramza"
+        ]
+      },
+      {
+        "unit_id": "253000205",
+        "names": [
+          "Delita",
+          "Seabreeze Dark Fina",
+          "Zargabaath"
+        ]
+      },
+      {
+        "unit_id": "253000215",
+        "names": [
+          "Ace",
+          "Beatrix",
+          "Knight Delita"
+        ]
+      },
+      {
+        "unit_id": "253000304",
+        "names": [
+          "Agrias",
+          "Bartz",
+          "Meliadoul"
+        ]
+      },
+      {
+        "unit_id": "253000403",
+        "names": [
+          "Gaffgarion",
+          "Orran"
+        ]
+      },
+      {
+        "unit_id": "253000504",
+        "names": [
+          "Agrias",
+          "Alma",
+          "Duane"
+        ]
+      },
+      {
+        "unit_id": "253000805",
+        "names": [
+          "Dark Fina",
+          "Exdeath",
+          "Ovelia"
+        ]
+      },
+      {
+        "unit_id": "253001005",
+        "names": [
+          "Auron",
+          "Beowulf",
+          "Yego"
+        ]
+      },
+      {
+        "unit_id": "253001305",
+        "names": [
+          "King Edgar of Figaro",
+          "Reis"
+        ]
+      },
+      {
+        "unit_id": "254000105",
+        "names": [
+          "Ace",
+          "Delita",
+          "Knight Delita"
+        ]
+      },
+      {
+        "unit_id": "254000205",
+        "names": [
+          "Ice Reaper Kurasame",
+          "Karlette",
+          "Marie",
+          "Onion Knight",
+          "Queen"
+        ]
+      },
+      {
+        "unit_id": "254000704",
+        "names": [
+          "Medius",
+          "Trey"
+        ]
+      },
+      {
+        "unit_id": "254000905",
+        "names": [
+          "Eiko",
+          "Queen",
+          "Refia",
+          "Rem"
+        ]
+      },
+      {
+        "unit_id": "254001805",
+        "names": [
+          "Kurasame",
+          "Queen"
+        ]
+      },
+      {
+        "unit_id": "302000104",
+        "names": [
+          "Elza",
+          "Vargas"
+        ]
+      },
+      {
+        "unit_id": "302000204",
+        "names": [
+          "Elza",
+          "Tilith"
+        ]
+      },
+      {
+        "unit_id": "302000304",
+        "names": [
+          "Seria",
+          "Tilith"
+        ]
+      },
+      {
+        "unit_id": "302000605",
+        "names": [
+          "Karl",
+          "Seria"
+        ]
+      },
+      {
+        "unit_id": "302000705",
+        "names": [
+          "Christine",
+          "Eldryn",
+          "Santa Roselia",
+          "Tiana",
+          "Whimsical Winter Tiana",
+          "White Knight Noel"
+        ]
+      },
+      {
+        "unit_id": "302000804",
+        "names": [
+          "Eldryn",
+          "Gilbert",
+          "Kryla",
+          "Medius",
+          "White Knight Noel"
+        ]
+      },
+      {
+        "unit_id": "302000905",
+        "names": [
+          "Divine Beast Chow",
+          "Ling",
+          "Qin",
+          "Shui Yu",
+          "Yun"
+        ]
+      },
+      {
+        "unit_id": "302001004",
+        "names": [
+          "Ang",
+          "Bai Hu & Zhu Que",
+          "Emperor Foo",
+          "Ling",
+          "Shui Yu",
+          "Xiao"
+        ]
+      },
+      {
+        "unit_id": "302001104",
+        "names": [
+          "Cupid Artemios",
+          "Ling"
+        ]
+      },
+      {
+        "unit_id": "302001203",
+        "names": [
+          "Cupid Luna",
+          "Yan"
+        ]
+      },
+      {
+        "unit_id": "302001305",
+        "names": [
+          "Delita",
+          "Knight Delita",
+          "Olive",
+          "Shera"
+        ]
+      },
+      {
+        "unit_id": "302001405",
+        "names": [
+          "Fryevia",
+          "Jiraiya",
+          "Roy",
+          "Trance Terra"
+        ]
+      },
+      {
+        "unit_id": "302001504",
+        "names": [
+          "Esther",
+          "Xon"
+        ]
+      },
+      {
+        "unit_id": "302001603",
+        "names": [
+          "Aiden",
+          "Sylvie"
+        ]
+      },
+      {
+        "unit_id": "304000204",
+        "names": [
+          "Flammie",
+          "Primm"
+        ]
+      },
+      {
+        "unit_id": "304000303",
+        "names": [
+          "Popoi",
+          "Primm"
+        ]
+      },
+      {
+        "unit_id": "306000105",
+        "names": [
+          "Dragonlord",
+          "King of Destruction Zoma"
+        ]
+      },
+      {
+        "unit_id": "306000204",
+        "names": [
+          "Alena & Marquis de Léon",
+          "Orochi"
+        ]
+      },
+      {
+        "unit_id": "306000303",
+        "names": [
+          "Dragonlord",
+          "Estark",
+          "Liquid Metal Slime"
+        ]
+      },
+      {
+        "unit_id": "306000404",
+        "names": [
+          "Estark",
+          "Killing Machine"
+        ]
+      },
+      {
+        "unit_id": "306000503",
+        "names": [
+          "Golem (Unit)",
+          "Überkilling Machine"
+        ]
+      },
+      {
+        "unit_id": "306000804",
+        "names": [
+          "Robbin' 'Ood",
+          "Slime Knight"
+        ]
+      },
+      {
+        "unit_id": "306000905",
+        "names": [
+          "Orochi",
+          "Slime Knight"
+        ]
+      },
+      {
+        "unit_id": "306001104",
+        "names": [
+          "Dracky",
+          "Liquid Metal Slime"
+        ]
+      },
+      {
+        "unit_id": "306001204",
+        "names": [
+          "Golem (Unit)",
+          "Killing Machine"
+        ]
+      },
+      {
+        "unit_id": "310000204",
+        "names": [
+          "2B -Neo Vision-",
+          "A2"
+        ]
+      },
+      {
+        "unit_id": "310000403",
+        "names": [
+          "A2 -Neo Vision-",
+          "Eve"
+        ]
+      },
+      {
+        "unit_id": "316000103",
+        "names": [
+          "Fayt",
+          "Sophia"
+        ]
+      },
+      {
+        "unit_id": "317000105",
+        "names": [
+          "Fayt",
+          "Rena"
+        ]
+      },
+      {
+        "unit_id": "318000105",
+        "names": [
+          "Fidel",
+          "Rena"
+        ]
+      },
+      {
+        "unit_id": "320000104",
+        "names": [
+          "Fidel",
+          "Roddick"
+        ]
+      },
+      {
+        "unit_id": "330000105",
+        "names": [
+          "Lenneth",
+          "Lezard Valeth"
+        ]
+      },
+      {
+        "unit_id": "330000205",
+        "names": [
+          "Freya (VP)",
+          "Mystina"
+        ]
+      },
+      {
+        "unit_id": "330000404",
+        "names": [
+          "Freya (VP)",
+          "Lucian"
+        ]
+      },
+      {
+        "unit_id": "330000503",
+        "names": [
+          "Jelanda",
+          "Lenneth"
+        ]
+      },
+      {
+        "unit_id": "331000105",
+        "names": [
+          "Citan",
+          "Fei",
+          "Id"
+        ]
+      },
+      {
+        "unit_id": "331000205",
+        "names": [
+          "Elly",
+          "Grahf",
+          "Maria (Xenogears)"
+        ]
+      },
+      {
+        "unit_id": "331000304",
+        "names": [
+          "Bart",
+          "Fei"
+        ]
+      },
+      {
+        "unit_id": "331000405",
+        "names": [
+          "Elly",
+          "Emeralda"
+        ]
+      },
+      {
+        "unit_id": "331000503",
+        "names": [
+          "Bart",
+          "Rico"
+        ]
+      },
+      {
+        "unit_id": "331000705",
+        "names": [
+          "Billy",
+          "Citan"
+        ]
+      },
+      {
+        "unit_id": "331000805",
+        "names": [
+          "Emeralda",
+          "Maria (Xenogears)"
+        ]
+      },
+      {
+        "unit_id": "331000904",
+        "names": [
+          "Billy",
+          "Rico"
+        ]
+      },
+      {
+        "unit_id": "335000105",
+        "names": [
+          "Sora",
+          "Sora (KHIII)"
+        ]
+      },
+      {
+        "unit_id": "335000205",
+        "names": [
+          "Cloud (KH)",
+          "Riku (KHIII)"
+        ]
+      },
+      {
+        "unit_id": "335000305",
+        "names": [
+          "Kairi (KHIII)",
+          "Riku"
+        ]
+      },
+      {
+        "unit_id": "335000405",
+        "names": [
+          "Sephiroth (KH)",
+          "Sora"
+        ]
+      },
+      {
+        "unit_id": "337000505",
+        "names": [
+          "Mordegon",
+          "The Lord of Shadows"
+        ]
+      },
+      {
+        "unit_id": "337000704",
+        "names": [
+          "Great Dragon",
+          "Mordegon"
+        ]
+      },
+      {
+        "unit_id": "338000305",
+        "names": [
+          "King Bradley",
+          "Roy Mustang"
+        ]
+      },
+      {
+        "unit_id": "338000404",
+        "names": [
+          "Greed",
+          "Roy Mustang"
+        ]
+      },
+      {
+        "unit_id": "338000503",
+        "names": [
+          "Envy",
+          "Riza Hawkeye"
+        ]
+      },
+      {
+        "unit_id": "339000105",
+        "names": [
+          "Gilgamesh (WOTV FFBE)",
+          "Sterne Leonis",
+          "Vinera Fennes"
+        ]
+      },
+      {
+        "unit_id": "339000305",
+        "names": [
+          "King of Leonis Mont",
+          "Kitone",
+          "Sterne Leonis"
+        ]
+      },
+      {
+        "unit_id": "339000405",
+        "names": [
+          "Gilgamesh (WOTV FFBE)",
+          "Kitone"
+        ]
+      },
+      {
+        "unit_id": "401000205",
+        "names": [
+          "Demon Rain",
+          "Elegant Temptress Lilith",
+          "Full Moon Karten",
+          "Grim Lord Sakura",
+          "Ibara",
+          "Lilith"
+        ]
+      },
+      {
+        "unit_id": "401000305",
+        "names": [
+          "Dracu Lasswell",
+          "Grim Lord Sakura",
+          "Lucius"
+        ]
+      },
+      {
+        "unit_id": "401000404",
+        "names": [
+          "Dracu Lasswell",
+          "Grim Lord Sakura",
+          "Karten",
+          "Lilith",
+          "Lucius",
+          "White Witch Fina"
+        ]
+      },
+      {
+        "unit_id": "401000503",
+        "names": [
+          "Black Cat Lid",
+          "Demon Rain",
+          "Godrea",
+          "Grim Lord Sakura",
+          "Lilith",
+          "White Witch Fina"
+        ]
+      },
+      {
+        "unit_id": "401001105",
+        "names": [
+          "Ace",
+          "Summer Fina & Lid",
+          "Vaan",
+          "Veritas of the Light"
+        ]
+      },
+      {
+        "unit_id": "401001304",
+        "names": [
+          "21O",
+          "9S"
+        ]
+      },
+      {
+        "unit_id": "401001405",
+        "names": [
+          "Barbariccia",
+          "Beach Blaster Olive",
+          "Emperor",
+          "Seabreeze Dark Fina",
+          "Veritas of the Flame"
+        ]
+      },
+      {
+        "unit_id": "401001705",
+        "names": [
+          "Ayaka",
+          "Duke",
+          "Firion",
+          "Reberta"
+        ]
+      },
+      {
+        "unit_id": "401002005",
+        "names": [
+          "Demon Rain",
+          "Dracu Lasswell",
+          "Grim Lord Sakura",
+          "Illusionist Nichol",
+          "Pirate Jake"
+        ]
+      },
+      {
+        "unit_id": "401002104",
+        "names": [
+          "Dracu Lasswell",
+          "Illusionist Nichol",
+          "Karten",
+          "Pirate Jake",
+          "White Witch Fina"
+        ]
+      },
+      {
+        "unit_id": "401002204",
+        "names": [
+          "Black Cat Lid",
+          "Godrea",
+          "Karten",
+          "Pirate Jake"
+        ]
+      },
+      {
+        "unit_id": "401002605",
+        "names": [
+          "Christine",
+          "Kryla",
+          "Tinkerer Carrie"
+        ]
+      },
+      {
+        "unit_id": "401002705",
+        "names": [
+          "Christine",
+          "Levinson",
+          "Santa Roselia",
+          "Tinkerer Carrie",
+          "White Knight Noel"
+        ]
+      },
+      {
+        "unit_id": "401002804",
+        "names": [
+          "Gilbert",
+          "Levinson",
+          "Lucas",
+          "Tinkerer Carrie"
+        ]
+      },
+      {
+        "unit_id": "401003704",
+        "names": [
+          "Ang",
+          "Chow",
+          "Xuan Wu & Qing Long",
+          "Yuri"
+        ]
+      },
+      {
+        "unit_id": "401003805",
+        "names": [
+          "Cupid Artemios",
+          "Emperor Foo",
+          "Qin",
+          "Yan",
+          "Yun"
+        ]
+      },
+      {
+        "unit_id": "401003905",
+        "names": [
+          "Ang",
+          "Bai Hu & Zhu Que",
+          "Cupid Luna",
+          "Qin",
+          "Yuri"
+        ]
+      },
+      {
+        "unit_id": "401005305",
+        "names": [
+          "Aloha Lasswell",
+          "Barbariccia"
+        ]
+      },
+      {
+        "unit_id": "401005504",
+        "names": [
+          "Kaito",
+          "Summertime Luka"
+        ]
+      },
+      {
+        "unit_id": "401005603",
+        "names": [
+          "Tide Rider Skaha",
+          "Tsukiko"
+        ]
+      },
+      {
+        "unit_id": "401005705",
+        "names": [
+          "Felix",
+          "Levinson",
+          "Lucas"
+        ]
+      },
+      {
+        "unit_id": "401005905",
+        "names": [
+          "Godrea",
+          "Illusionist Nichol",
+          "Lilith",
+          "White Witch Fina"
+        ]
+      },
+      {
+        "unit_id": "401006005",
+        "names": [
+          "Black Cat Lid",
+          "Karten",
+          "Lucius",
+          "Pirate Jake",
+          "White Witch Fina"
+        ]
+      },
+      {
+        "unit_id": "401006105",
+        "names": [
+          "Felix",
+          "Santa Roselia",
+          "Tiana"
+        ]
+      },
+      {
+        "unit_id": "401006205",
+        "names": [
+          "Gilbert",
+          "Tiana",
+          "White Knight Noel"
+        ]
+      },
+      {
+        "unit_id": "401006605",
+        "names": [
+          "Bai Hu & Zhu Que",
+          "Chow",
+          "Ling",
+          "Qin"
+        ]
+      },
+      {
+        "unit_id": "401006705",
+        "names": [
+          "Bai Hu & Zhu Que",
+          "Chow",
+          "Yan",
+          "Yun"
+        ]
+      },
+      {
+        "unit_id": "401006805",
+        "names": [
+          "Esther",
+          "Melia",
+          "Monk Sabin of Kolts",
+          "Xon"
+        ]
+      },
+      {
+        "unit_id": "401006905",
+        "names": [
+          "Aiden",
+          "Beowulf",
+          "Esther",
+          "Summer Fina & Lid"
+        ]
+      },
+      {
+        "unit_id": "401007205",
+        "names": [
+          "Godrea",
+          "Illusionist Nichol",
+          "Pirate Jake"
+        ]
+      },
+      {
+        "unit_id": "401007605",
+        "names": [
+          "Majora",
+          "Summer Folka & Citra",
+          "Zeno of the Beta Star"
+        ]
+      },
+      {
+        "unit_id": "401007705",
+        "names": [
+          "Olivera",
+          "Rivera"
+        ]
+      },
+      {
+        "unit_id": "401008305",
+        "names": [
+          "Lucas",
+          "Tinkerer Carrie",
+          "White Knight Noel"
+        ]
+      },
+      {
+        "unit_id": "401008405",
+        "names": [
+          "Louise",
+          "Morgana"
+        ]
+      },
+      {
+        "unit_id": "401008605",
+        "names": [
+          "Black Cat Lid",
+          "Demon Rain",
+          "Illusionist Nichol"
+        ]
+      },
+      {
+        "unit_id": "401008705",
+        "names": [
+          "Ang",
+          "Emperor Foo",
+          "Yun"
+        ]
+      },
+      {
+        "unit_id": "401008805",
+        "names": [
+          "Ang",
+          "Ling",
+          "Xuan Wu & Qing Long"
+        ]
+      },
+      {
+        "unit_id": "401009907",
+        "names": [
+          "Loren",
+          "Madam Edel -Neo Vision-"
+        ]
+      },
+      {
+        "unit_id": "401010107",
+        "names": [
+          "Black Cat Lid",
+          "Ibara"
+        ]
+      },
+      {
+        "unit_id": "401010207",
+        "names": [
+          "Santa Roselia",
+          "Tinkerer Carrie"
+        ]
+      },
+      {
+        "unit_id": "401011207",
+        "names": [
+          "Ling",
+          "Yan"
+        ]
+      },
+      {
+        "unit_id": "401011407",
+        "names": [
+          "Gilgamesh (WOTV FFBE)",
+          "Sterne Leonis"
+        ]
+      },
+      {
+        "unit_id": "401012807",
+        "names": [
+          "Paladin Sylvie",
+          "Storm Seeker Esther"
+        ]
+      }
+    ],
+    "warning": "Community banner unit IDs are not authoritative: verify against original Global F_UNIT_MST and English text tables."
+  }
+}
