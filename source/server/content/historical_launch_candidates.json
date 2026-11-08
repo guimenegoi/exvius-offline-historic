@@ -1,0 +1,1145 @@
+{
+  "schema": 1,
+  "status": "AUDIT_ONLY_NOT_AN_UNLOCK_CATALOGUE",
+  "source_url": "https://gamefaqs.gamespot.com/boards/182206-final-fantasy-brave-exvius/73963629",
+  "source_period": "Early Global roster inferred before first documented July 8, 2016 rate-up; exact post date not confirmed.",
+  "notes": "Unit presence near launch does not prove a Rare Summon, Friend Point, or June 30 release date.",
+  "summary": {
+    "native_identity_match_acquisition_unknown": 63,
+    "registration_candidate_not_rare": 1,
+    "story_candidate_not_rare": 3
+  },
+  "units": [
+    {
+      "source_name": "Rain",
+      "master_name": "Rain",
+      "base_rarity": "2",
+      "acquisition": "story",
+      "status": "story_candidate_not_rare",
+      "candidates": [
+        {
+          "base_unit_id": "100000102",
+          "form_ids": [
+            "100000102",
+            "100000103",
+            "100000104",
+            "100000105",
+            "100000106"
+          ]
+        }
+      ]
+    },
+    {
+      "source_name": "Lasswell",
+      "master_name": "Lasswell",
+      "base_rarity": "2",
+      "acquisition": "story",
+      "status": "story_candidate_not_rare",
+      "candidates": [
+        {
+          "base_unit_id": "100000202",
+          "form_ids": [
+            "100000202",
+            "100000203",
+            "100000204",
+            "100000205",
+            "100000206"
+          ]
+        }
+      ]
+    },
+    {
+      "source_name": "Fina",
+      "master_name": "Fina",
+      "base_rarity": "2",
+      "acquisition": "story",
+      "status": "story_candidate_not_rare",
+      "candidates": [
+        {
+          "base_unit_id": "100000302",
+          "form_ids": [
+            "100000302",
+            "100000303",
+            "100000304",
+            "100000305",
+            "100000306"
+          ]
+        }
+      ]
+    },
+    {
+      "source_name": "Magitek Armor Terra",
+      "master_name": "Magitek Armor Terra",
+      "base_rarity": "3",
+      "acquisition": "pre_registration",
+      "status": "registration_candidate_not_rare",
+      "candidates": [
+        {
+          "base_unit_id": "206000113",
+          "form_ids": [
+            "206000113",
+            "206000114"
+          ]
+        }
+      ]
+    },
+    {
+      "source_name": "Garland",
+      "master_name": "Garland",
+      "base_rarity": "3",
+      "acquisition": "unknown",
+      "status": "native_identity_match_acquisition_unknown",
+      "candidates": [
+        {
+          "base_unit_id": "201000203",
+          "form_ids": [
+            "201000203",
+            "201000204",
+            "201000205",
+            "201000206"
+          ]
+        }
+      ]
+    },
+    {
+      "source_name": "Princess Sarah",
+      "master_name": "Sarah",
+      "base_rarity": "2",
+      "acquisition": "unknown",
+      "status": "native_identity_match_acquisition_unknown",
+      "candidates": [
+        {
+          "base_unit_id": "201000302",
+          "form_ids": [
+            "201000302",
+            "201000303"
+          ]
+        }
+      ]
+    },
+    {
+      "source_name": "Firion",
+      "master_name": "Firion",
+      "base_rarity": "3",
+      "acquisition": "unknown",
+      "status": "native_identity_match_acquisition_unknown",
+      "candidates": [
+        {
+          "base_unit_id": "202000103",
+          "form_ids": [
+            "202000103",
+            "202000104",
+            "202000105",
+            "202000106"
+          ]
+        }
+      ]
+    },
+    {
+      "source_name": "Maria",
+      "master_name": "Maria",
+      "base_rarity": "3",
+      "acquisition": "unknown",
+      "status": "native_identity_match_acquisition_unknown",
+      "candidates": [
+        {
+          "base_unit_id": "202000203",
+          "form_ids": [
+            "202000203",
+            "202000204",
+            "202000205"
+          ]
+        }
+      ]
+    },
+    {
+      "source_name": "Paul",
+      "master_name": "Paul",
+      "base_rarity": "2",
+      "acquisition": "unknown",
+      "status": "native_identity_match_acquisition_unknown",
+      "candidates": [
+        {
+          "base_unit_id": "202001402",
+          "form_ids": [
+            "202001402",
+            "202001403"
+          ]
+        }
+      ]
+    },
+    {
+      "source_name": "Cloud of Darkness",
+      "master_name": "Cloud of Darkness",
+      "base_rarity": "3",
+      "acquisition": "unknown",
+      "status": "native_identity_match_acquisition_unknown",
+      "candidates": [
+        {
+          "base_unit_id": "203000803",
+          "form_ids": [
+            "203000803",
+            "203000804",
+            "203000805",
+            "203000806"
+          ]
+        }
+      ]
+    },
+    {
+      "source_name": "Paladin Cecil",
+      "master_name": "Cecil",
+      "base_rarity": "3",
+      "acquisition": "unknown",
+      "status": "native_identity_match_acquisition_unknown",
+      "candidates": [
+        {
+          "base_unit_id": "204000103",
+          "form_ids": [
+            "204000103",
+            "204000104",
+            "204000105",
+            "204000106"
+          ]
+        }
+      ]
+    },
+    {
+      "source_name": "Kain",
+      "master_name": "Kain",
+      "base_rarity": "3",
+      "acquisition": "unknown",
+      "status": "native_identity_match_acquisition_unknown",
+      "candidates": [
+        {
+          "base_unit_id": "204000203",
+          "form_ids": [
+            "204000203",
+            "204000204",
+            "204000205"
+          ]
+        }
+      ]
+    },
+    {
+      "source_name": "Rydia",
+      "master_name": "Rydia",
+      "base_rarity": "3",
+      "acquisition": "unknown",
+      "status": "native_identity_match_acquisition_unknown",
+      "candidates": [
+        {
+          "base_unit_id": "204000403",
+          "form_ids": [
+            "204000403",
+            "204000404",
+            "204000405"
+          ]
+        }
+      ]
+    },
+    {
+      "source_name": "King Giott",
+      "master_name": "King Giott",
+      "base_rarity": "2",
+      "acquisition": "unknown",
+      "status": "native_identity_match_acquisition_unknown",
+      "candidates": [
+        {
+          "base_unit_id": "204001302",
+          "form_ids": [
+            "204001302",
+            "204001303"
+          ]
+        }
+      ]
+    },
+    {
+      "source_name": "Bartz",
+      "master_name": "Bartz",
+      "base_rarity": "3",
+      "acquisition": "unknown",
+      "status": "native_identity_match_acquisition_unknown",
+      "candidates": [
+        {
+          "base_unit_id": "205000103",
+          "form_ids": [
+            "205000103",
+            "205000104",
+            "205000105",
+            "205000106"
+          ]
+        }
+      ]
+    },
+    {
+      "source_name": "Galuf",
+      "master_name": "Galuf",
+      "base_rarity": "3",
+      "acquisition": "unknown",
+      "status": "native_identity_match_acquisition_unknown",
+      "candidates": [
+        {
+          "base_unit_id": "205000303",
+          "form_ids": [
+            "205000303",
+            "205000304",
+            "205000305"
+          ]
+        }
+      ]
+    },
+    {
+      "source_name": "Krile",
+      "master_name": "Krile",
+      "base_rarity": "3",
+      "acquisition": "unknown",
+      "status": "native_identity_match_acquisition_unknown",
+      "candidates": [
+        {
+          "base_unit_id": "205000503",
+          "form_ids": [
+            "205000503",
+            "205000504",
+            "205000505"
+          ]
+        }
+      ]
+    },
+    {
+      "source_name": "Exdeath",
+      "master_name": "Exdeath",
+      "base_rarity": "3",
+      "acquisition": "unknown",
+      "status": "native_identity_match_acquisition_unknown",
+      "candidates": [
+        {
+          "base_unit_id": "205000703",
+          "form_ids": [
+            "205000703",
+            "205000704",
+            "205000705",
+            "205000706"
+          ]
+        }
+      ]
+    },
+    {
+      "source_name": "Terra",
+      "master_name": "Terra",
+      "base_rarity": "3",
+      "acquisition": "unknown",
+      "status": "native_identity_match_acquisition_unknown",
+      "candidates": [
+        {
+          "base_unit_id": "206000103",
+          "form_ids": [
+            "206000103",
+            "206000104",
+            "206000105",
+            "206000106"
+          ]
+        }
+      ]
+    },
+    {
+      "source_name": "Edgar",
+      "master_name": "Edgar",
+      "base_rarity": "3",
+      "acquisition": "unknown",
+      "status": "native_identity_match_acquisition_unknown",
+      "candidates": [
+        {
+          "base_unit_id": "206000303",
+          "form_ids": [
+            "206000303",
+            "206000304"
+          ]
+        }
+      ]
+    },
+    {
+      "source_name": "Sabin",
+      "master_name": "Sabin",
+      "base_rarity": "3",
+      "acquisition": "unknown",
+      "status": "native_identity_match_acquisition_unknown",
+      "candidates": [
+        {
+          "base_unit_id": "206000403",
+          "form_ids": [
+            "206000403",
+            "206000404"
+          ]
+        }
+      ]
+    },
+    {
+      "source_name": "Shadow",
+      "master_name": "Shadow",
+      "base_rarity": "3",
+      "acquisition": "unknown",
+      "status": "native_identity_match_acquisition_unknown",
+      "candidates": [
+        {
+          "base_unit_id": "206000503",
+          "form_ids": [
+            "206000503",
+            "206000504"
+          ]
+        }
+      ]
+    },
+    {
+      "source_name": "Cyan",
+      "master_name": "Cyan",
+      "base_rarity": "3",
+      "acquisition": "unknown",
+      "status": "native_identity_match_acquisition_unknown",
+      "candidates": [
+        {
+          "base_unit_id": "206000603",
+          "form_ids": [
+            "206000603",
+            "206000604"
+          ]
+        }
+      ]
+    },
+    {
+      "source_name": "Celes",
+      "master_name": "Celes",
+      "base_rarity": "3",
+      "acquisition": "unknown",
+      "status": "native_identity_match_acquisition_unknown",
+      "candidates": [
+        {
+          "base_unit_id": "206000703",
+          "form_ids": [
+            "206000703",
+            "206000704",
+            "206000705"
+          ]
+        }
+      ]
+    },
+    {
+      "source_name": "Biggs",
+      "master_name": "Biggs",
+      "base_rarity": "2",
+      "acquisition": "unknown",
+      "status": "native_identity_match_acquisition_unknown",
+      "candidates": [
+        {
+          "base_unit_id": "206001602",
+          "form_ids": [
+            "206001602",
+            "206001603"
+          ]
+        }
+      ]
+    },
+    {
+      "source_name": "Wedge",
+      "master_name": "Wedge",
+      "base_rarity": "2",
+      "acquisition": "unknown",
+      "status": "native_identity_match_acquisition_unknown",
+      "candidates": [
+        {
+          "base_unit_id": "206001502",
+          "form_ids": [
+            "206001502",
+            "206001503"
+          ]
+        }
+      ]
+    },
+    {
+      "source_name": "General Leo",
+      "master_name": "Leo",
+      "base_rarity": "3",
+      "acquisition": "unknown",
+      "status": "native_identity_match_acquisition_unknown",
+      "candidates": [
+        {
+          "base_unit_id": "206001803",
+          "form_ids": [
+            "206001803",
+            "206001804",
+            "206001805"
+          ]
+        }
+      ]
+    },
+    {
+      "source_name": "Zidane",
+      "master_name": "Zidane",
+      "base_rarity": "3",
+      "acquisition": "unknown",
+      "status": "native_identity_match_acquisition_unknown",
+      "candidates": [
+        {
+          "base_unit_id": "209000103",
+          "form_ids": [
+            "209000103",
+            "209000104",
+            "209000105",
+            "209000106"
+          ]
+        }
+      ]
+    },
+    {
+      "source_name": "Vivi",
+      "master_name": "Vivi",
+      "base_rarity": "3",
+      "acquisition": "unknown",
+      "status": "native_identity_match_acquisition_unknown",
+      "candidates": [
+        {
+          "base_unit_id": "209000203",
+          "form_ids": [
+            "209000203",
+            "209000204",
+            "209000205",
+            "209000206"
+          ]
+        }
+      ]
+    },
+    {
+      "source_name": "Kuja",
+      "master_name": "Kuja",
+      "base_rarity": "3",
+      "acquisition": "unknown",
+      "status": "native_identity_match_acquisition_unknown",
+      "candidates": [
+        {
+          "base_unit_id": "209001003",
+          "form_ids": [
+            "209001003",
+            "209001004",
+            "209001005",
+            "209001006"
+          ]
+        }
+      ]
+    },
+    {
+      "source_name": "Shantotto",
+      "master_name": "Shantotto",
+      "base_rarity": "3",
+      "acquisition": "unknown",
+      "status": "native_identity_match_acquisition_unknown",
+      "candidates": [
+        {
+          "base_unit_id": "211000103",
+          "form_ids": [
+            "211000103",
+            "211000104",
+            "211000105"
+          ]
+        }
+      ]
+    },
+    {
+      "source_name": "Vaan",
+      "master_name": "Vaan",
+      "base_rarity": "3",
+      "acquisition": "unknown",
+      "status": "native_identity_match_acquisition_unknown",
+      "candidates": [
+        {
+          "base_unit_id": "212000103",
+          "form_ids": [
+            "212000103",
+            "212000104",
+            "212000105",
+            "212000106"
+          ]
+        }
+      ]
+    },
+    {
+      "source_name": "Fran",
+      "master_name": "Fran",
+      "base_rarity": "3",
+      "acquisition": "unknown",
+      "status": "native_identity_match_acquisition_unknown",
+      "candidates": [
+        {
+          "base_unit_id": "212000603",
+          "form_ids": [
+            "212000603",
+            "212000604"
+          ]
+        }
+      ]
+    },
+    {
+      "source_name": "Penelo",
+      "master_name": "Penelo",
+      "base_rarity": "3",
+      "acquisition": "unknown",
+      "status": "native_identity_match_acquisition_unknown",
+      "candidates": [
+        {
+          "base_unit_id": "212000403",
+          "form_ids": [
+            "212000403",
+            "212000404",
+            "212000405"
+          ]
+        }
+      ]
+    },
+    {
+      "source_name": "Gran Kiltias Anastasis",
+      "master_name": "Anastasis",
+      "base_rarity": "2",
+      "acquisition": "unknown",
+      "status": "native_identity_match_acquisition_unknown",
+      "candidates": [
+        {
+          "base_unit_id": "212000702",
+          "form_ids": [
+            "212000702",
+            "212000703"
+          ]
+        }
+      ]
+    },
+    {
+      "source_name": "Rizer",
+      "master_name": "Rizer",
+      "base_rarity": "1",
+      "acquisition": "unknown",
+      "status": "native_identity_match_acquisition_unknown",
+      "candidates": [
+        {
+          "base_unit_id": "100000901",
+          "form_ids": [
+            "100000901",
+            "100000902"
+          ]
+        }
+      ]
+    },
+    {
+      "source_name": "Eldin",
+      "master_name": "Eldin",
+      "base_rarity": "1",
+      "acquisition": "unknown",
+      "status": "native_identity_match_acquisition_unknown",
+      "candidates": [
+        {
+          "base_unit_id": "100001201",
+          "form_ids": [
+            "100001201",
+            "100001202"
+          ]
+        }
+      ]
+    },
+    {
+      "source_name": "Baurg",
+      "master_name": "Baurg",
+      "base_rarity": "1",
+      "acquisition": "unknown",
+      "status": "native_identity_match_acquisition_unknown",
+      "candidates": [
+        {
+          "base_unit_id": "100001301",
+          "form_ids": [
+            "100001301",
+            "100001302"
+          ]
+        }
+      ]
+    },
+    {
+      "source_name": "Tronn",
+      "master_name": "Tronn",
+      "base_rarity": "1",
+      "acquisition": "unknown",
+      "status": "native_identity_match_acquisition_unknown",
+      "candidates": [
+        {
+          "base_unit_id": "100001101",
+          "form_ids": [
+            "100001101",
+            "100001102"
+          ]
+        }
+      ]
+    },
+    {
+      "source_name": "Leah",
+      "master_name": "Leah",
+      "base_rarity": "1",
+      "acquisition": "unknown",
+      "status": "native_identity_match_acquisition_unknown",
+      "candidates": [
+        {
+          "base_unit_id": "100001001",
+          "form_ids": [
+            "100001001",
+            "100001002"
+          ]
+        }
+      ]
+    },
+    {
+      "source_name": "Gimlee",
+      "master_name": "Gimlee",
+      "base_rarity": "1",
+      "acquisition": "unknown",
+      "status": "native_identity_match_acquisition_unknown",
+      "candidates": [
+        {
+          "base_unit_id": "100001401",
+          "form_ids": [
+            "100001401",
+            "100001402"
+          ]
+        }
+      ]
+    },
+    {
+      "source_name": "Liza",
+      "master_name": "Liza",
+      "base_rarity": "1",
+      "acquisition": "unknown",
+      "status": "native_identity_match_acquisition_unknown",
+      "candidates": [
+        {
+          "base_unit_id": "100001601",
+          "form_ids": [
+            "100001601",
+            "100001602"
+          ]
+        }
+      ]
+    },
+    {
+      "source_name": "Sarai",
+      "master_name": "Sarai",
+      "base_rarity": "1",
+      "acquisition": "unknown",
+      "status": "native_identity_match_acquisition_unknown",
+      "candidates": [
+        {
+          "base_unit_id": "100002901",
+          "form_ids": [
+            "100002901",
+            "100002902"
+          ]
+        }
+      ]
+    },
+    {
+      "source_name": "Maxell",
+      "master_name": "Maxell",
+      "base_rarity": "1",
+      "acquisition": "unknown",
+      "status": "native_identity_match_acquisition_unknown",
+      "candidates": [
+        {
+          "base_unit_id": "100001501",
+          "form_ids": [
+            "100001501",
+            "100001502"
+          ]
+        }
+      ]
+    },
+    {
+      "source_name": "Kenyu",
+      "master_name": "Kenyu",
+      "base_rarity": "2",
+      "acquisition": "unknown",
+      "status": "native_identity_match_acquisition_unknown",
+      "candidates": [
+        {
+          "base_unit_id": "100003202",
+          "form_ids": [
+            "100003202",
+            "100003203"
+          ]
+        }
+      ]
+    },
+    {
+      "source_name": "Paula",
+      "master_name": "Paula",
+      "base_rarity": "2",
+      "acquisition": "unknown",
+      "status": "native_identity_match_acquisition_unknown",
+      "candidates": [
+        {
+          "base_unit_id": "100003002",
+          "form_ids": [
+            "100003002",
+            "100003003"
+          ]
+        }
+      ]
+    },
+    {
+      "source_name": "Skaha",
+      "master_name": "Skaha",
+      "base_rarity": "2",
+      "acquisition": "unknown",
+      "status": "native_identity_match_acquisition_unknown",
+      "candidates": [
+        {
+          "base_unit_id": "100003502",
+          "form_ids": [
+            "100003502",
+            "100003503"
+          ]
+        }
+      ]
+    },
+    {
+      "source_name": "Shiki",
+      "master_name": "Shiki",
+      "base_rarity": "2",
+      "acquisition": "unknown",
+      "status": "native_identity_match_acquisition_unknown",
+      "candidates": [
+        {
+          "base_unit_id": "100001702",
+          "form_ids": [
+            "100001702",
+            "100001703"
+          ]
+        }
+      ]
+    },
+    {
+      "source_name": "Ronaldo",
+      "master_name": "Ronaldo",
+      "base_rarity": "2",
+      "acquisition": "unknown",
+      "status": "native_identity_match_acquisition_unknown",
+      "candidates": [
+        {
+          "base_unit_id": "100001902",
+          "form_ids": [
+            "100001902",
+            "100001903"
+          ]
+        }
+      ]
+    },
+    {
+      "source_name": "Mel",
+      "master_name": "Mel",
+      "base_rarity": "2",
+      "acquisition": "unknown",
+      "status": "native_identity_match_acquisition_unknown",
+      "candidates": [
+        {
+          "base_unit_id": "100002002",
+          "form_ids": [
+            "100002002",
+            "100002003"
+          ]
+        }
+      ]
+    },
+    {
+      "source_name": "Ollie",
+      "master_name": "Ollie",
+      "base_rarity": "2",
+      "acquisition": "unknown",
+      "status": "native_identity_match_acquisition_unknown",
+      "candidates": [
+        {
+          "base_unit_id": "100003302",
+          "form_ids": [
+            "100003302",
+            "100003303"
+          ]
+        }
+      ]
+    },
+    {
+      "source_name": "Mizell",
+      "master_name": "Mizell",
+      "base_rarity": "2",
+      "acquisition": "unknown",
+      "status": "native_identity_match_acquisition_unknown",
+      "candidates": [
+        {
+          "base_unit_id": "100001802",
+          "form_ids": [
+            "100001802",
+            "100001803"
+          ]
+        }
+      ]
+    },
+    {
+      "source_name": "Carrie",
+      "master_name": "Carrie",
+      "base_rarity": "2",
+      "acquisition": "unknown",
+      "status": "native_identity_match_acquisition_unknown",
+      "candidates": [
+        {
+          "base_unit_id": "100003402",
+          "form_ids": [
+            "100003402",
+            "100003403"
+          ]
+        }
+      ]
+    },
+    {
+      "source_name": "Montana",
+      "master_name": "Montana",
+      "base_rarity": "2",
+      "acquisition": "unknown",
+      "status": "native_identity_match_acquisition_unknown",
+      "candidates": [
+        {
+          "base_unit_id": "100003602",
+          "form_ids": [
+            "100003602",
+            "100003603"
+          ]
+        }
+      ]
+    },
+    {
+      "source_name": "Anzelm",
+      "master_name": "Anzelm",
+      "base_rarity": "3",
+      "acquisition": "unknown",
+      "status": "native_identity_match_acquisition_unknown",
+      "candidates": [
+        {
+          "base_unit_id": "100002203",
+          "form_ids": [
+            "100002203",
+            "100002204"
+          ]
+        }
+      ]
+    },
+    {
+      "source_name": "Clyne",
+      "master_name": "Clyne",
+      "base_rarity": "3",
+      "acquisition": "unknown",
+      "status": "native_identity_match_acquisition_unknown",
+      "candidates": [
+        {
+          "base_unit_id": "100002103",
+          "form_ids": [
+            "100002103",
+            "100002104"
+          ]
+        }
+      ]
+    },
+    {
+      "source_name": "Luna",
+      "master_name": "Luna",
+      "base_rarity": "3",
+      "acquisition": "unknown",
+      "status": "native_identity_match_acquisition_unknown",
+      "candidates": [
+        {
+          "base_unit_id": "100002303",
+          "form_ids": [
+            "100002303",
+            "100002304"
+          ]
+        }
+      ]
+    },
+    {
+      "source_name": "Bedile",
+      "master_name": "Bedile",
+      "base_rarity": "3",
+      "acquisition": "unknown",
+      "status": "native_identity_match_acquisition_unknown",
+      "candidates": [
+        {
+          "base_unit_id": "100002403",
+          "form_ids": [
+            "100002403",
+            "100002404"
+          ]
+        }
+      ]
+    },
+    {
+      "source_name": "Russell",
+      "master_name": "Russell",
+      "base_rarity": "3",
+      "acquisition": "unknown",
+      "status": "native_identity_match_acquisition_unknown",
+      "candidates": [
+        {
+          "base_unit_id": "100003703",
+          "form_ids": [
+            "100003703",
+            "100003704"
+          ]
+        }
+      ]
+    },
+    {
+      "source_name": "Xiao",
+      "master_name": "Xiao",
+      "base_rarity": "3",
+      "acquisition": "unknown",
+      "status": "native_identity_match_acquisition_unknown",
+      "candidates": [
+        {
+          "base_unit_id": "100004003",
+          "form_ids": [
+            "100004003",
+            "100004004",
+            "100004005",
+            "100004006"
+          ]
+        }
+      ]
+    },
+    {
+      "source_name": "Roselia",
+      "master_name": "Roselia",
+      "base_rarity": "3",
+      "acquisition": "unknown",
+      "status": "native_identity_match_acquisition_unknown",
+      "candidates": [
+        {
+          "base_unit_id": "100002703",
+          "form_ids": [
+            "100002703",
+            "100002704",
+            "100002705",
+            "100002706"
+          ]
+        }
+      ]
+    },
+    {
+      "source_name": "Rakshasa",
+      "master_name": "Rakshasa",
+      "base_rarity": "3",
+      "acquisition": "unknown",
+      "status": "native_identity_match_acquisition_unknown",
+      "candidates": [
+        {
+          "base_unit_id": "100004103",
+          "form_ids": [
+            "100004103",
+            "100004104",
+            "100004105"
+          ]
+        }
+      ]
+    },
+    {
+      "source_name": "Duane",
+      "master_name": "Duane",
+      "base_rarity": "3",
+      "acquisition": "unknown",
+      "status": "native_identity_match_acquisition_unknown",
+      "candidates": [
+        {
+          "base_unit_id": "100002503",
+          "form_ids": [
+            "100002503",
+            "100002504",
+            "100002505"
+          ]
+        }
+      ]
+    },
+    {
+      "source_name": "Miyuki",
+      "master_name": "Miyuki",
+      "base_rarity": "3",
+      "acquisition": "unknown",
+      "status": "native_identity_match_acquisition_unknown",
+      "candidates": [
+        {
+          "base_unit_id": "100003803",
+          "form_ids": [
+            "100003803",
+            "100003804",
+            "100003805",
+            "100003806"
+          ]
+        }
+      ]
+    },
+    {
+      "source_name": "Gilbert",
+      "master_name": "Gilbert",
+      "base_rarity": "3",
+      "acquisition": "unknown",
+      "status": "native_identity_match_acquisition_unknown",
+      "candidates": [
+        {
+          "base_unit_id": "100003903",
+          "form_ids": [
+            "100003903",
+            "100003904",
+            "100003905",
+            "100003906"
+          ]
+        }
+      ]
+    },
+    {
+      "source_name": "Medius",
+      "master_name": "Medius",
+      "base_rarity": "3",
+      "acquisition": "unknown",
+      "status": "native_identity_match_acquisition_unknown",
+      "candidates": [
+        {
+          "base_unit_id": "100002803",
+          "form_ids": [
+            "100002803",
+            "100002804",
+            "100002805",
+            "100002806"
+          ]
+        }
+      ]
+    },
+    {
+      "source_name": "Cerius",
+      "master_name": "Cerius",
+      "base_rarity": "3",
+      "acquisition": "unknown",
+      "status": "native_identity_match_acquisition_unknown",
+      "candidates": [
+        {
+          "base_unit_id": "100002603",
+          "form_ids": [
+            "100002603",
+            "100002604",
+            "100002605",
+            "100002606"
+          ]
+        }
+      ]
+    }
+  ],
+  "sources_sha256": {
+    "snapshot": "e23822c181b6e844e9549ddfb6ee7d38998bb80f17b890a65be52c86376b059f",
+    "master": "e5c6920421a08519107954978e271a7d6520f3522b6d1424bcd90d4c314549d6",
+    "names": "decbcc5c6e69a56a44e7e810e32d57ce6573ee041b18490c702da75314144858"
+  }
+}

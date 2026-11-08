@@ -166,3 +166,40 @@ bonus choices, index schema and a successful one-charge/one-unit transaction.
 unit awakenings, other non-`roll_gacha` paths, visibility of banners and
 events, and the title menu. These must be checked before labeling an APK as
 historically playable. The pre-July launch unit pool is not approved yet.
+
+## Early Global launch-roster evidence (fifth audit)
+
+An archived [GameFAQs early-Global character list](https://gamefaqs.gamespot.com/boards/182206-final-fantasy-brave-exvius/73963629)
+lists characters then present in the English client. Because it omits all three
+new July 8, 2016 featured units, it appears to predate that update, but its
+exact posting date has **not** been independently verified. It is thus useful
+as a **launch-period candidate roster**, not proof of availability on June 30.
+The special Magitek Armor Terra prerelase reward is corroborated by
+[contemporary registration coverage](https://novacrystallis.com/2016/05/final-fantasy-brave-exvius-heads-west/).
+
+- `historical_launch_snapshot.json` keeps 67 hand-transcribed character
+  names and reported initial rarities with source URL and explicit uncertainty.
+- `audit_historical_launch.py` matches those against the original Global
+  `F_UNIT_MST` and English-name files using the existing
+  `original_global_index` helper.
+- **All 67** match one native base-unit ID with the indicated starting rarity.
+- **3** are campaign characters, **1** is a pre-registration reward.
+- **63** remain **unverified by acquisition method**; their presence in the
+  roster does not establish Rare Summon vs Friend Point vs reward.
+- `historical_launch_candidates.json` is a generated review report and
+  is **not** consumed by the live summon gate.
+- Kefka and Chizuru (July 8) and Hayate and Locke (July 22) are absent from
+  the initial candidate roster, consistent with progressive releases.
+
+Regenerate:
+
+```bash
+python3 source/exvius/fetch_historical_tables.py
+python3 source/exvius/audit_historical_launch.py
+```
+
+Next investigate the 63 acquisition methods, original June 2016 summon pools
+and early dated rarity awakenings. Even with the native ID match complete,
+**do not mark all 67 as June Rare Summon units** and do not auto-enable the
+missing `historical_unit_releases.json` file until the gating coverage is
+complete and the verified release index has been audited.

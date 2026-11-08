@@ -1,0 +1,349 @@
+{
+  "schema": 1,
+  "status": "unverified_launch_snapshot",
+  "source_url": "https://gamefaqs.gamespot.com/boards/182206-final-fantasy-brave-exvius/73963629",
+  "related_prereg_url": "https://novacrystallis.com/2016/05/final-fantasy-brave-exvius-heads-west/",
+  "source_period": "Early Global roster inferred before first documented July 8, 2016 rate-up; exact post date not confirmed.",
+  "acquisition_caveat": "Presence in the source is not proof a unit is obtainable through Rare Summon or Friend Point. Story and preregistration are indicated only when independently supported.",
+  "units": [
+    {
+      "source_name": "Rain",
+      "base_rarity": "2",
+      "acquisition": "story"
+    },
+    {
+      "source_name": "Lasswell",
+      "base_rarity": "2",
+      "acquisition": "story"
+    },
+    {
+      "source_name": "Fina",
+      "base_rarity": "2",
+      "acquisition": "story"
+    },
+    {
+      "source_name": "Magitek Armor Terra",
+      "base_rarity": "3",
+      "acquisition": "pre_registration"
+    },
+    {
+      "source_name": "Garland",
+      "base_rarity": "3",
+      "acquisition": "unknown"
+    },
+    {
+      "source_name": "Princess Sarah",
+      "master_name": "Sarah",
+      "base_rarity": "2",
+      "acquisition": "unknown"
+    },
+    {
+      "source_name": "Firion",
+      "base_rarity": "3",
+      "acquisition": "unknown"
+    },
+    {
+      "source_name": "Maria",
+      "base_rarity": "3",
+      "acquisition": "unknown"
+    },
+    {
+      "source_name": "Paul",
+      "base_rarity": "2",
+      "acquisition": "unknown"
+    },
+    {
+      "source_name": "Cloud of Darkness",
+      "base_rarity": "3",
+      "acquisition": "unknown"
+    },
+    {
+      "source_name": "Paladin Cecil",
+      "master_name": "Cecil",
+      "base_rarity": "3",
+      "acquisition": "unknown"
+    },
+    {
+      "source_name": "Kain",
+      "base_rarity": "3",
+      "acquisition": "unknown"
+    },
+    {
+      "source_name": "Rydia",
+      "base_rarity": "3",
+      "acquisition": "unknown"
+    },
+    {
+      "source_name": "King Giott",
+      "base_rarity": "2",
+      "acquisition": "unknown"
+    },
+    {
+      "source_name": "Bartz",
+      "base_rarity": "3",
+      "acquisition": "unknown"
+    },
+    {
+      "source_name": "Galuf",
+      "base_rarity": "3",
+      "acquisition": "unknown"
+    },
+    {
+      "source_name": "Krile",
+      "base_rarity": "3",
+      "acquisition": "unknown"
+    },
+    {
+      "source_name": "Exdeath",
+      "base_rarity": "3",
+      "acquisition": "unknown"
+    },
+    {
+      "source_name": "Terra",
+      "base_rarity": "3",
+      "acquisition": "unknown"
+    },
+    {
+      "source_name": "Edgar",
+      "base_rarity": "3",
+      "acquisition": "unknown"
+    },
+    {
+      "source_name": "Sabin",
+      "base_rarity": "3",
+      "acquisition": "unknown"
+    },
+    {
+      "source_name": "Shadow",
+      "base_rarity": "3",
+      "acquisition": "unknown"
+    },
+    {
+      "source_name": "Cyan",
+      "base_rarity": "3",
+      "acquisition": "unknown"
+    },
+    {
+      "source_name": "Celes",
+      "base_rarity": "3",
+      "acquisition": "unknown"
+    },
+    {
+      "source_name": "Biggs",
+      "base_rarity": "2",
+      "acquisition": "unknown"
+    },
+    {
+      "source_name": "Wedge",
+      "base_rarity": "2",
+      "acquisition": "unknown"
+    },
+    {
+      "source_name": "General Leo",
+      "master_name": "Leo",
+      "base_rarity": "3",
+      "acquisition": "unknown"
+    },
+    {
+      "source_name": "Zidane",
+      "base_rarity": "3",
+      "acquisition": "unknown"
+    },
+    {
+      "source_name": "Vivi",
+      "base_rarity": "3",
+      "acquisition": "unknown"
+    },
+    {
+      "source_name": "Kuja",
+      "base_rarity": "3",
+      "acquisition": "unknown"
+    },
+    {
+      "source_name": "Shantotto",
+      "base_rarity": "3",
+      "acquisition": "unknown"
+    },
+    {
+      "source_name": "Vaan",
+      "base_rarity": "3",
+      "acquisition": "unknown"
+    },
+    {
+      "source_name": "Fran",
+      "base_rarity": "3",
+      "acquisition": "unknown"
+    },
+    {
+      "source_name": "Penelo",
+      "base_rarity": "3",
+      "acquisition": "unknown"
+    },
+    {
+      "source_name": "Gran Kiltias Anastasis",
+      "master_name": "Anastasis",
+      "base_rarity": "2",
+      "acquisition": "unknown"
+    },
+    {
+      "source_name": "Rizer",
+      "base_rarity": "1",
+      "acquisition": "unknown"
+    },
+    {
+      "source_name": "Eldin",
+      "base_rarity": "1",
+      "acquisition": "unknown"
+    },
+    {
+      "source_name": "Baurg",
+      "base_rarity": "1",
+      "acquisition": "unknown"
+    },
+    {
+      "source_name": "Tronn",
+      "base_rarity": "1",
+      "acquisition": "unknown"
+    },
+    {
+      "source_name": "Leah",
+      "base_rarity": "1",
+      "acquisition": "unknown"
+    },
+    {
+      "source_name": "Gimlee",
+      "base_rarity": "1",
+      "acquisition": "unknown"
+    },
+    {
+      "source_name": "Liza",
+      "base_rarity": "1",
+      "acquisition": "unknown"
+    },
+    {
+      "source_name": "Sarai",
+      "base_rarity": "1",
+      "acquisition": "unknown"
+    },
+    {
+      "source_name": "Maxell",
+      "base_rarity": "1",
+      "acquisition": "unknown"
+    },
+    {
+      "source_name": "Kenyu",
+      "base_rarity": "2",
+      "acquisition": "unknown"
+    },
+    {
+      "source_name": "Paula",
+      "base_rarity": "2",
+      "acquisition": "unknown"
+    },
+    {
+      "source_name": "Skaha",
+      "base_rarity": "2",
+      "acquisition": "unknown"
+    },
+    {
+      "source_name": "Shiki",
+      "base_rarity": "2",
+      "acquisition": "unknown"
+    },
+    {
+      "source_name": "Ronaldo",
+      "base_rarity": "2",
+      "acquisition": "unknown"
+    },
+    {
+      "source_name": "Mel",
+      "base_rarity": "2",
+      "acquisition": "unknown"
+    },
+    {
+      "source_name": "Ollie",
+      "base_rarity": "2",
+      "acquisition": "unknown"
+    },
+    {
+      "source_name": "Mizell",
+      "base_rarity": "2",
+      "acquisition": "unknown"
+    },
+    {
+      "source_name": "Carrie",
+      "base_rarity": "2",
+      "acquisition": "unknown"
+    },
+    {
+      "source_name": "Montana",
+      "base_rarity": "2",
+      "acquisition": "unknown"
+    },
+    {
+      "source_name": "Anzelm",
+      "base_rarity": "3",
+      "acquisition": "unknown"
+    },
+    {
+      "source_name": "Clyne",
+      "base_rarity": "3",
+      "acquisition": "unknown"
+    },
+    {
+      "source_name": "Luna",
+      "base_rarity": "3",
+      "acquisition": "unknown"
+    },
+    {
+      "source_name": "Bedile",
+      "base_rarity": "3",
+      "acquisition": "unknown"
+    },
+    {
+      "source_name": "Russell",
+      "base_rarity": "3",
+      "acquisition": "unknown"
+    },
+    {
+      "source_name": "Xiao",
+      "base_rarity": "3",
+      "acquisition": "unknown"
+    },
+    {
+      "source_name": "Roselia",
+      "base_rarity": "3",
+      "acquisition": "unknown"
+    },
+    {
+      "source_name": "Rakshasa",
+      "base_rarity": "3",
+      "acquisition": "unknown"
+    },
+    {
+      "source_name": "Duane",
+      "base_rarity": "3",
+      "acquisition": "unknown"
+    },
+    {
+      "source_name": "Miyuki",
+      "base_rarity": "3",
+      "acquisition": "unknown"
+    },
+    {
+      "source_name": "Gilbert",
+      "base_rarity": "3",
+      "acquisition": "unknown"
+    },
+    {
+      "source_name": "Medius",
+      "base_rarity": "3",
+      "acquisition": "unknown"
+    },
+    {
+      "source_name": "Cerius",
+      "base_rarity": "3",
+      "acquisition": "unknown"
+    }
+  ]
+}
