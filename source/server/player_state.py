@@ -4254,11 +4254,13 @@ class PlayerState:
         # The provisional name/rarity crosswalk is NEVER an unlock catalogue.
         if 'historical_month' in (self.data.get('meta') or {}):
             from historical_progression import current_month, UnavailableContent
-            from historical_summons import load_verified_unit_releases, prepare_historical_summon
+            from historical_summons import (load_verified_unit_releases, prepare_historical_summon,
+                                            summon_channel)
             try:
                 pool, guaranteed_pool, extra_slots, guarantee = prepare_historical_summon(
                     current_month(self.data), load_verified_unit_releases(),
-                    pool, guaranteed_pool, extra_slots, guarantee, bonus_rewards, choices)
+                    pool, guaranteed_pool, extra_slots, guarantee, bonus_rewards, choices,
+                    channel=summon_channel(banner, cost))
             except (UnavailableContent, ValueError, TypeError) as error:
                 print(f'    gacha refused: historical availability: {error}', flush=True)
                 return None

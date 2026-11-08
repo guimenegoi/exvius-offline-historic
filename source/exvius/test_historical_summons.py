@@ -12,14 +12,17 @@ ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "source/server"))
 
 from historical_progression import UnavailableContent
-from historical_summons import load_verified_unit_releases, prepare_historical_summon
+from historical_summons import load_verified_unit_releases, prepare_historical_summon, summon_channel
 
 
 class HistoricalSummonTests(unittest.TestCase):
     RELEASES = {
-        "101": {"base_rarity": "3", "rarities": {
+        "101": {"base_rarity": "3", "channels": ["rare"], "rarities": {
             "3": "2016-07-08", "6": "2016-09-01"}},
-        "102": {"base_rarity": "3", "rarities": {"3": "2016-08-05"}},
+        "102": {"base_rarity": "3", "channels": ["rare"],
+                "rarities": {"3": "2016-08-05"}},
+        "103": {"base_rarity": "2", "channels": ["friend"],
+                "rarities": {"2": "2016-06-30"}},
     }
 
     def prepare(self, **kw):
@@ -29,7 +32,7 @@ class HistoricalSummonTests(unittest.TestCase):
                      {"unit_id": "102", "rarity": 3, "rate": 0.4},
                      {"unit_id": "999", "rarity": 3, "rate": 0.2}],
             "guaranteed_pool": [], "extra_slots": [], "guarantee": {},
-            "bonus_rewards": [], "bonus_choices": [],
+            "bonus_rewards": [], "bonus_choices": [], "channel": "rare",
         }
         defaults.update(kw)
         return prepare_historical_summon(**defaults)
@@ -39,6 +42,29 @@ class HistoricalSummonTests(unittest.TestCase):
         self.assertEqual([r["unit_id"] for r in pool], ["101"])
         self.assertAlmostEqual(pool[0]["rate"], 1.0)
         self.assertEqual(self.RELEASES["102"]["rarities"]["3"], "2016-08-05")
+
+    def test_channel_restriction_separates_rare_from_friend(self):
+        rows = [{"unit_id": "101", "rarity": 3, "rate": 0.6},
+                {"unit_id": "103", "rarity": 2, "rate": 0.4}]
+        rare, _, _, _ = self.prepare(pool=rows, channel="rare")
+        friend, _, _, _ = self.prepare(pool=rows, channel="friend")
+        self.assertEqual([row["unit_id"] for row in rare], ["101"])
+        self.assertEqual([row["unit_id"] for row in friend], ["103"])
+        with self.assertRaises(UnavailableContent):
+            self.prepare(pool=rows[:1], channel="friend")
+        with self.assertRaises(UnavailableContent):
+            self.prepare(pool=rows, channel="other")
+
+    def test_purchase_channel_fails_closed(self):
+        self.assertEqual(summon_channel({"type": "friend"}, {"kind": "friend_point"}), "friend")
+        self.assertEqual(summon_channel({"type": "normal"}, {"kind": "lapis"}), "rare")
+        self.assertEqual(summon_channel({"ticket_group_id": 10010}, {}), "rare")
+        for banner, cost in (({}, {"kind": "free"}),
+                             ({"type": "friend"}, {"kind": "lapis"}),
+                             ({"type": "friend", "ticket_group_id": 1},
+                              {"kind": "friend_point"})):
+            with self.subTest(banner=banner, cost=cost), self.assertRaises(UnavailableContent):
+                summon_channel(banner, cost)
 
     def test_future_awakening_rarity_does_not_unlock_with_unit(self):
         pool, _, _, _ = self.prepare(pool=[
@@ -95,7 +121,9 @@ class HistoricalSummonTests(unittest.TestCase):
                 ("verified", {"101": {"base_rarity": "3", "rarities": {"3": "unverified"}}}),
                 ("verified", {"101": {"base_rarity": "3", "rarities": {"6": "2016-09-01"}}}),
                 ("verified", {"101": {"base_rarity": "3", "rarities": {
-                    "3": "2016-07-08", "12": "2016-07-08"}}}),
+                    "3": "2016-07-08", "12": "2016-07-08"}, "channels": ["rare"]}}),
+                ("verified", {"101": {"base_rarity": "3", "rarities": {
+                    "3": "2016-07-08"}}}),
             ):
                 path.write_text(json.dumps({"schema": 1, "status": status,
                                             "sources": ["Global chronology"], "units": units}))
@@ -195,6 +223,13 @@ class HistoricalSummonTests(unittest.TestCase):
             before = copy.deepcopy(player.data)
             denied = player.roll_gacha(banner({"unit_id": "102"}))
             self.assertIsNone(denied)
+            self.assertEqual(player.data, before)
+            self.assertEqual(player.spend_count, 1)
+            # Friend-point summons must not award Rare-only units, nor charge.
+            friend_only = banner()
+            friend_only["type"] = "friend"
+            friend_only["cost"] = {"kind": "friend_point", "amount": 200}
+            self.assertIsNone(player.roll_gacha(friend_only))
             self.assertEqual(player.data, before)
             self.assertEqual(player.spend_count, 1)
 

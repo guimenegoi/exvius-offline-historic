@@ -140,6 +140,7 @@ shipped**. This future manually audited allowlist must use the following shape:
   "units": {
     "206001703": {
       "base_rarity": "3",
+      "channels": ["rare"],
       "rarities": {
         "3": "2016-07-08",
         "4": "2016-07-08",
@@ -154,7 +155,10 @@ shipped**. This future manually audited allowlist must use the following shape:
 The entry above illustrates Kefka's published debut/6★ awakening periods,
 but is a **format example, not a released or approved catalogue**. An exact ID
 must be checked against `F_UNIT_MST`; each granted rarity must have its own
-effective unlock date. `historical_unit_candidates.json` is audit-only and
+effective unlock date. Each unit must also declare its audited summon channels:
+`rare` (Lapis/tickets) or `friend` (Friend Points). Unknown acquisition types
+are refused before purchase; the provisional launch-category report cannot
+be substituted for these verified channel permissions. `historical_unit_candidates.json` is audit-only and
 does not satisfy the verified-index contract.
 
 Asset-free test coverage:

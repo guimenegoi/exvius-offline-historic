@@ -2,7 +2,7 @@
 
 No candidate or release dates inferred from the final Global master are trusted
 as historic unlocks. The live gate requires a separate, manually verified exact
-unit ID -> Global debut mapping, not yet shipped with this fork.
+unit ID -> rarity/date/channel mapping, not yet shipped with this fork.
 """
 from __future__ import annotations
 
@@ -14,7 +14,7 @@ from historical_progression import UnavailableContent, eligible_pool, is_release
 VERIFIED_INDEX = Path(__file__).resolve().parent / "content/historical_unit_releases.json"
 
 
-def load_verified_unit_releases(path: Path = VERIFIED_INDEX) -> dict[str, str]:
+def load_verified_unit_releases(path: Path = VERIFIED_INDEX) -> dict[str, dict]:
     """Never load the provisional candidate crosswalk as the playable allowlist."""
     try:
         document = json.loads(path.read_text(encoding="utf-8"))
@@ -30,6 +30,11 @@ def load_verified_unit_releases(path: Path = VERIFIED_INDEX) -> dict[str, str]:
             raise UnavailableContent("Verified unit IDs must be numeric Global master IDs.")
         if not isinstance(spec, dict) or not isinstance(spec.get("rarities"), dict):
             raise UnavailableContent("Missing exact-rarity historical release data.")
+        channels = spec.get("channels")
+        if (not isinstance(channels, list) or not channels or
+                not all(isinstance(item, str) and item in ("rare", "friend") for item in channels) or
+                len(channels) != len(set(channels))):
+            raise UnavailableContent("Verified units require explicit Rare/Friend channels.")
         base, rarities = str(spec.get("base_rarity", "")), spec["rarities"]
         if base not in rarities:
             raise UnavailableContent("Unit's original rarity is not dated.")
@@ -41,6 +46,20 @@ def load_verified_unit_releases(path: Path = VERIFIED_INDEX) -> dict[str, str]:
     return document["units"]
 
 
+def summon_channel(banner: dict, cost: dict) -> str:
+    """Resolve the existing offer's summon channel before charging anything."""
+    kind = str((cost or {}).get("kind") or "")
+    friend_type = str(banner.get("type") or "").lower() == "friend" or \
+        str(banner.get("exe_type") or "").lower() == "friend"
+    if kind == "friend_point" and not banner.get("ticket_group_id"):
+        return "friend"
+    if friend_type:
+        raise UnavailableContent("Friend summon with an unverified purchase method.")
+    if kind in ("lapis", "ticket") or (not kind and banner.get("ticket_group_id")):
+        return "rare"
+    raise UnavailableContent("Summon purchase method is not historically classified.")
+
+
 def _unit_allowed(unit_id, releases: dict, month: str, rarity=None) -> bool:
     spec = releases.get(str(unit_id))
     if not isinstance(spec, dict):
@@ -49,7 +68,7 @@ def _unit_allowed(unit_id, releases: dict, month: str, rarity=None) -> bool:
     return is_released((spec.get("rarities") or {}).get(granted_rarity), month)
 
 
-def _check_rewards(rewards, releases: dict[str, str], month: str) -> None:
+def _check_rewards(rewards, releases: dict[str, dict], month: str) -> None:
     """Conservative until non-unit bonus rewards get their own date sources."""
     for row in rewards:
         if not isinstance(row, dict) or int(row.get("kind", -1)) != 10:
@@ -60,13 +79,14 @@ def _check_rewards(rewards, releases: dict[str, str], month: str) -> None:
 
 def prepare_historical_summon(
     month: str,
-    releases: dict[str, str],
+    releases: dict[str, dict],
     pool: list[dict],
     guaranteed_pool: list[dict],
     extra_slots: list[tuple[int, list[dict]]],
     guarantee: dict,
     bonus_rewards: list[dict],
     bonus_choices: list[dict],
+    channel: str,
 ) -> tuple[list[dict], list[dict], list[tuple[int, list[dict]]], dict]:
     """Restrict *every possible* unit grant before Lapis or tickets are spent.
 
@@ -75,8 +95,12 @@ def prepare_historical_summon(
     future guarantees and unverified bonus paths fail before the purchase.
     """
     month_cutoff(month)
+    if channel not in ("rare", "friend"):
+        raise UnavailableContent("Unknown historical summon channel.")
+    releases = {unit_id: spec for unit_id, spec in releases.items()
+                if isinstance(spec, dict) and channel in spec.get("channels", ())}
     if not releases:
-        raise UnavailableContent("There are no verified Global summon units.")
+        raise UnavailableContent("There are no verified Global summon units for this channel.")
     _check_rewards(bonus_rewards, releases, month)
     for choice in bonus_choices:
         _check_rewards(choice.get("rewards") or [], releases, month)
