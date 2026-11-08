@@ -28,7 +28,7 @@ This fork remains narrowly based on Elvlin/exvius-offline. `main` tracks the ups
 
 ## First isolated implementation
 
-`server/historical_progression.py` contains pure month progression, strict date checks, banner selection and pool filtering helpers. These are **not connected to gameplay yet**: current release dates and guaranteed/bonus routes must be covered before activation. Unit launch metadata must be verified and explicit, not inferred from a unit ID or an undated banner. Unit tests are asset-free.
+`server/historical_progression.py` contains month progression, strict date checks, banner selection and pool filtering helpers. `server/historical_summons.py` now connects the summon filter to `PlayerState.roll_gacha` with a 12-line guarded pre-charge hook. This hook is active only for a save containing an explicit `meta.historical_month`; normal legacy saves remain unchanged until the June 2016 baseline and UI are ready. An intentionally absent verified catalogue makes marked saves refuse summons rather than leak future content. The provisional evidence and candidate JSON files are never accepted as verified summon unlocks.
 
 ## Compatibility rule
 
@@ -118,3 +118,51 @@ Next: reconstruct the exact June 2016 baseline, resolve ambiguous base IDs,
 limit awakening access by historic dates, audit the guaranteed / bonus /
 item-reward paths, and only then enable the title-screen month selector.
 Never silently fall back to all content.
+
+## Summon transaction gate (fourth implementation)
+
+`source/server/historical_summons.py` validates historical availability at
+`PlayerState.roll_gacha` **before** Lapis or tickets are charged. It filters
+regular pools, separate guaranteed pools and guaranteed slots; excludes unknown
+units, future bonus-choice results and future fixed guarantee awards. Non-unit
+summon bonuses and mixed item pools are currently refused in marked saves until
+their own historic provenance is audited. Existing unmarked saves retain
+upstream behaviour, and the APK is not yet a historical-mode build.
+
+`source/server/content/historical_unit_releases.json` is intentionally **not
+shipped**. This future manually audited allowlist must use the following shape:
+
+```json
+{
+  "schema": 1,
+  "status": "verified",
+  "sources": ["historical evidence and original Global unit tables"],
+  "units": {
+    "206001703": {
+      "base_rarity": "3",
+      "rarities": {
+        "3": "2016-07-08",
+        "4": "2016-07-08",
+        "5": "2016-07-08",
+        "6": "2016-09-01"
+      }
+    }
+  }
+}
+```
+
+The entry above illustrates Kefka's published debut/6★ awakening periods,
+but is a **format example, not a released or approved catalogue**. An exact ID
+must be checked against `F_UNIT_MST`; each granted rarity must have its own
+effective unlock date. `historical_unit_candidates.json` is audit-only and
+does not satisfy the verified-index contract.
+
+Asset-free test coverage:
+`test_historical_summons.py` validates declined purchases, future/undated
+units, rarity-based gating, guaranteed pools, fixed guarantees, special slots,
+bonus choices, index schema and a successful one-charge/one-unit transaction.
+
+**Still outside this hook:** tutorial summons, story/mail/event grants,
+unit awakenings, other non-`roll_gacha` paths, visibility of banners and
+events, and the title menu. These must be checked before labeling an APK as
+historically playable. The pre-July launch unit pool is not approved yet.

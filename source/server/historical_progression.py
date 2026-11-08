@@ -99,8 +99,16 @@ def eligible_pool(rows: list[dict], global_unit_release: dict[str, str], month: 
     authored bonus awards or non-summon rewards.
     """
     month_cutoff(month)
-    eligible = [dict(row) for row in rows if
-                is_released(global_unit_release.get(str(row.get("unit_id"))), month)]
+
+    def release_of(row: dict):
+        entry = global_unit_release.get(str(row.get("unit_id")))
+        if isinstance(entry, dict):
+            # Verified catalogues gate the exact grant rarity, not just the
+            # character's initial release. An awakening cannot arrive early.
+            return (entry.get("rarities") or {}).get(str(row.get("rarity")))
+        return entry  # Kept for the earlier audit-only, ID/date tests.
+
+    eligible = [dict(row) for row in rows if is_released(release_of(row), month)]
     original_weight = sum(max(0.0, float(row.get("rate", 0))) for row in rows)
     kept_weight = sum(max(0.0, float(row.get("rate", 0))) for row in eligible)
     if not eligible or kept_weight <= 0:
