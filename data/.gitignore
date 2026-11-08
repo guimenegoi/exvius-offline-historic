@@ -1,0 +1,3 @@
+# Original extracted master tables stay local; never publish their raw bytes.
+/mst_decoded/
+/text_decoded/
