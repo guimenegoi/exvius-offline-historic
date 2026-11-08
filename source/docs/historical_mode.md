@@ -225,3 +225,14 @@ left unmapped. As of this review, launch candidate classifications are:
 The audit keeps all 67 as non-authoritative candidates and **does not generate
 the playable release index**. Confirm the exact summon category, initial 2016
 available rarities, and reference date before activating the June baseline.
+
+### Acquisition category audit (not a release gate)
+
+The [Global Unit List](https://exvius.fandom.com/wiki/Unit_List)
+is an end-of-service record of acquisition channels, not a June 2016 time capsule.
+The 67 launch-period candidates are now classified as **38 Rare Summon**, **25
+Standard/Friend Point**, **3 Story** and **1 special reward**. The imported
+category is stored separately from historical debut and initial-rarity evidence.
+The audit report retains status AUDIT_ONLY; it cannot satisfy
+historical_summons.load_verified_unit_releases. Early presence, exact day of
+availability, maximum 2016 awakening and original rates still require proof.

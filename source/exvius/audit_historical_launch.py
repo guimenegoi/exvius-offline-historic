@@ -22,7 +22,7 @@ def audit_snapshot(snapshot: dict, mst: list[dict], texts: list[dict]) -> dict:
         raise ValueError("Only a traceable unverified launch snapshot can be audited.")
     by_name, _by_id, base_rarities = original_global_index(mst, texts)
     corroborated = set(snapshot.get("draw_reported_names") or [])
-    rows, summary = [], Counter()
+    rows, summary, channels = [], Counter(), Counter()
     for source in snapshot["units"]:
         name = source["source_name"]
         master_name = source.get("master_name", name)
@@ -43,10 +43,13 @@ def audit_snapshot(snapshot: dict, mst: list[dict], texts: list[dict]) -> dict:
         else:
             status = "native_identity_match_acquisition_unknown"
         summary[status] += 1
+        acquisition = source.get("catalogue_acquisition", "unclassified")
+        channels[acquisition] += 1
         rows.append({
             "source_name": name, "master_name": master_name,
             "base_rarity": rarity,
             "acquisition": source.get("acquisition", "unknown"),
+            "catalogue_acquisition": acquisition,
             "status": status,
             "candidates": [
                 {"base_unit_id": root, "form_ids": sorted(forms)}
@@ -60,6 +63,8 @@ def audit_snapshot(snapshot: dict, mst: list[dict], texts: list[dict]) -> dict:
         "source_period": snapshot["source_period"],
         "notes": "Unit presence near launch does not prove a Rare Summon, Friend Point, or June 30 release date.",
         "summary": dict(sorted(summary.items())),
+        "catalogue_source_url": snapshot.get("catalogue_source_url"),
+        "acquisition_summary": dict(sorted(channels.items())),
         "draw_source_url": snapshot.get("draw_source_url"),
         "draw_names_not_matched": sorted(
             corroborated - {row["master_name"] for row in rows}),

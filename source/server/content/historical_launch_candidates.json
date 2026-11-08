@@ -10,6 +10,13 @@
     "reported_drawable_acquisition_unverified": 37,
     "story_candidate_not_rare": 3
   },
+  "catalogue_source_url": "https://exvius.fandom.com/wiki/Unit_List",
+  "acquisition_summary": {
+    "friend": 25,
+    "rare": 38,
+    "reward": 1,
+    "story": 3
+  },
   "draw_source_url": "https://www.ffxiah.com/forum/topic/48879/final-fantasy-brave-exvius/63/",
   "draw_names_not_matched": [
     "Klein"
@@ -20,6 +27,7 @@
       "master_name": "Rain",
       "base_rarity": "2",
       "acquisition": "story",
+      "catalogue_acquisition": "story",
       "status": "story_candidate_not_rare",
       "candidates": [
         {
@@ -39,6 +47,7 @@
       "master_name": "Lasswell",
       "base_rarity": "2",
       "acquisition": "story",
+      "catalogue_acquisition": "story",
       "status": "story_candidate_not_rare",
       "candidates": [
         {
@@ -58,6 +67,7 @@
       "master_name": "Fina",
       "base_rarity": "2",
       "acquisition": "story",
+      "catalogue_acquisition": "story",
       "status": "story_candidate_not_rare",
       "candidates": [
         {
@@ -77,6 +87,7 @@
       "master_name": "Magitek Armor Terra",
       "base_rarity": "3",
       "acquisition": "pre_registration",
+      "catalogue_acquisition": "reward",
       "status": "registration_candidate_not_rare",
       "candidates": [
         {
@@ -93,6 +104,7 @@
       "master_name": "Garland",
       "base_rarity": "3",
       "acquisition": "unknown",
+      "catalogue_acquisition": "rare",
       "status": "reported_drawable_acquisition_unverified",
       "candidates": [
         {
@@ -111,6 +123,7 @@
       "master_name": "Sarah",
       "base_rarity": "2",
       "acquisition": "unknown",
+      "catalogue_acquisition": "friend",
       "status": "native_identity_match_acquisition_unknown",
       "candidates": [
         {
@@ -127,6 +140,7 @@
       "master_name": "Firion",
       "base_rarity": "3",
       "acquisition": "unknown",
+      "catalogue_acquisition": "rare",
       "status": "reported_drawable_acquisition_unverified",
       "candidates": [
         {
@@ -145,6 +159,7 @@
       "master_name": "Maria",
       "base_rarity": "3",
       "acquisition": "unknown",
+      "catalogue_acquisition": "rare",
       "status": "reported_drawable_acquisition_unverified",
       "candidates": [
         {
@@ -162,6 +177,7 @@
       "master_name": "Paul",
       "base_rarity": "2",
       "acquisition": "unknown",
+      "catalogue_acquisition": "friend",
       "status": "native_identity_match_acquisition_unknown",
       "candidates": [
         {
@@ -178,6 +194,7 @@
       "master_name": "Cloud of Darkness",
       "base_rarity": "3",
       "acquisition": "unknown",
+      "catalogue_acquisition": "rare",
       "status": "reported_drawable_acquisition_unverified",
       "candidates": [
         {
@@ -196,6 +213,7 @@
       "master_name": "Cecil",
       "base_rarity": "3",
       "acquisition": "unknown",
+      "catalogue_acquisition": "rare",
       "status": "reported_drawable_acquisition_unverified",
       "candidates": [
         {
@@ -214,6 +232,7 @@
       "master_name": "Kain",
       "base_rarity": "3",
       "acquisition": "unknown",
+      "catalogue_acquisition": "rare",
       "status": "reported_drawable_acquisition_unverified",
       "candidates": [
         {
@@ -231,6 +250,7 @@
       "master_name": "Rydia",
       "base_rarity": "3",
       "acquisition": "unknown",
+      "catalogue_acquisition": "rare",
       "status": "reported_drawable_acquisition_unverified",
       "candidates": [
         {
@@ -248,6 +268,7 @@
       "master_name": "King Giott",
       "base_rarity": "2",
       "acquisition": "unknown",
+      "catalogue_acquisition": "friend",
       "status": "native_identity_match_acquisition_unknown",
       "candidates": [
         {
@@ -264,6 +285,7 @@
       "master_name": "Bartz",
       "base_rarity": "3",
       "acquisition": "unknown",
+      "catalogue_acquisition": "rare",
       "status": "reported_drawable_acquisition_unverified",
       "candidates": [
         {
@@ -282,6 +304,7 @@
       "master_name": "Galuf",
       "base_rarity": "3",
       "acquisition": "unknown",
+      "catalogue_acquisition": "rare",
       "status": "reported_drawable_acquisition_unverified",
       "candidates": [
         {
@@ -299,6 +322,7 @@
       "master_name": "Krile",
       "base_rarity": "3",
       "acquisition": "unknown",
+      "catalogue_acquisition": "rare",
       "status": "reported_drawable_acquisition_unverified",
       "candidates": [
         {
@@ -316,6 +340,7 @@
       "master_name": "Exdeath",
       "base_rarity": "3",
       "acquisition": "unknown",
+      "catalogue_acquisition": "rare",
       "status": "reported_drawable_acquisition_unverified",
       "candidates": [
         {
@@ -334,6 +359,7 @@
       "master_name": "Terra",
       "base_rarity": "3",
       "acquisition": "unknown",
+      "catalogue_acquisition": "rare",
       "status": "reported_drawable_acquisition_unverified",
       "candidates": [
         {
@@ -352,6 +378,7 @@
       "master_name": "Edgar",
       "base_rarity": "3",
       "acquisition": "unknown",
+      "catalogue_acquisition": "rare",
       "status": "reported_drawable_acquisition_unverified",
       "candidates": [
         {
@@ -368,6 +395,7 @@
       "master_name": "Sabin",
       "base_rarity": "3",
       "acquisition": "unknown",
+      "catalogue_acquisition": "rare",
       "status": "reported_drawable_acquisition_unverified",
       "candidates": [
         {
@@ -384,6 +412,7 @@
       "master_name": "Shadow",
       "base_rarity": "3",
       "acquisition": "unknown",
+      "catalogue_acquisition": "rare",
       "status": "reported_drawable_acquisition_unverified",
       "candidates": [
         {
@@ -400,6 +429,7 @@
       "master_name": "Cyan",
       "base_rarity": "3",
       "acquisition": "unknown",
+      "catalogue_acquisition": "rare",
       "status": "reported_drawable_acquisition_unverified",
       "candidates": [
         {
@@ -416,6 +446,7 @@
       "master_name": "Celes",
       "base_rarity": "3",
       "acquisition": "unknown",
+      "catalogue_acquisition": "rare",
       "status": "reported_drawable_acquisition_unverified",
       "candidates": [
         {
@@ -433,6 +464,7 @@
       "master_name": "Biggs",
       "base_rarity": "2",
       "acquisition": "unknown",
+      "catalogue_acquisition": "friend",
       "status": "native_identity_match_acquisition_unknown",
       "candidates": [
         {
@@ -449,6 +481,7 @@
       "master_name": "Wedge",
       "base_rarity": "2",
       "acquisition": "unknown",
+      "catalogue_acquisition": "friend",
       "status": "native_identity_match_acquisition_unknown",
       "candidates": [
         {
@@ -465,6 +498,7 @@
       "master_name": "Leo",
       "base_rarity": "3",
       "acquisition": "unknown",
+      "catalogue_acquisition": "rare",
       "status": "reported_drawable_acquisition_unverified",
       "candidates": [
         {
@@ -482,6 +516,7 @@
       "master_name": "Zidane",
       "base_rarity": "3",
       "acquisition": "unknown",
+      "catalogue_acquisition": "rare",
       "status": "reported_drawable_acquisition_unverified",
       "candidates": [
         {
@@ -500,6 +535,7 @@
       "master_name": "Vivi",
       "base_rarity": "3",
       "acquisition": "unknown",
+      "catalogue_acquisition": "rare",
       "status": "reported_drawable_acquisition_unverified",
       "candidates": [
         {
@@ -518,6 +554,7 @@
       "master_name": "Kuja",
       "base_rarity": "3",
       "acquisition": "unknown",
+      "catalogue_acquisition": "rare",
       "status": "reported_drawable_acquisition_unverified",
       "candidates": [
         {
@@ -536,6 +573,7 @@
       "master_name": "Shantotto",
       "base_rarity": "3",
       "acquisition": "unknown",
+      "catalogue_acquisition": "rare",
       "status": "reported_drawable_acquisition_unverified",
       "candidates": [
         {
@@ -553,6 +591,7 @@
       "master_name": "Vaan",
       "base_rarity": "3",
       "acquisition": "unknown",
+      "catalogue_acquisition": "rare",
       "status": "reported_drawable_acquisition_unverified",
       "candidates": [
         {
@@ -571,6 +610,7 @@
       "master_name": "Fran",
       "base_rarity": "3",
       "acquisition": "unknown",
+      "catalogue_acquisition": "rare",
       "status": "reported_drawable_acquisition_unverified",
       "candidates": [
         {
@@ -587,6 +627,7 @@
       "master_name": "Penelo",
       "base_rarity": "3",
       "acquisition": "unknown",
+      "catalogue_acquisition": "rare",
       "status": "reported_drawable_acquisition_unverified",
       "candidates": [
         {
@@ -604,6 +645,7 @@
       "master_name": "Anastasis",
       "base_rarity": "2",
       "acquisition": "unknown",
+      "catalogue_acquisition": "friend",
       "status": "native_identity_match_acquisition_unknown",
       "candidates": [
         {
@@ -620,6 +662,7 @@
       "master_name": "Rizer",
       "base_rarity": "1",
       "acquisition": "unknown",
+      "catalogue_acquisition": "friend",
       "status": "native_identity_match_acquisition_unknown",
       "candidates": [
         {
@@ -636,6 +679,7 @@
       "master_name": "Eldin",
       "base_rarity": "1",
       "acquisition": "unknown",
+      "catalogue_acquisition": "friend",
       "status": "native_identity_match_acquisition_unknown",
       "candidates": [
         {
@@ -652,6 +696,7 @@
       "master_name": "Baurg",
       "base_rarity": "1",
       "acquisition": "unknown",
+      "catalogue_acquisition": "friend",
       "status": "native_identity_match_acquisition_unknown",
       "candidates": [
         {
@@ -668,6 +713,7 @@
       "master_name": "Tronn",
       "base_rarity": "1",
       "acquisition": "unknown",
+      "catalogue_acquisition": "friend",
       "status": "native_identity_match_acquisition_unknown",
       "candidates": [
         {
@@ -684,6 +730,7 @@
       "master_name": "Leah",
       "base_rarity": "1",
       "acquisition": "unknown",
+      "catalogue_acquisition": "friend",
       "status": "native_identity_match_acquisition_unknown",
       "candidates": [
         {
@@ -700,6 +747,7 @@
       "master_name": "Gimlee",
       "base_rarity": "1",
       "acquisition": "unknown",
+      "catalogue_acquisition": "friend",
       "status": "native_identity_match_acquisition_unknown",
       "candidates": [
         {
@@ -716,6 +764,7 @@
       "master_name": "Liza",
       "base_rarity": "1",
       "acquisition": "unknown",
+      "catalogue_acquisition": "friend",
       "status": "native_identity_match_acquisition_unknown",
       "candidates": [
         {
@@ -732,6 +781,7 @@
       "master_name": "Sarai",
       "base_rarity": "1",
       "acquisition": "unknown",
+      "catalogue_acquisition": "friend",
       "status": "native_identity_match_acquisition_unknown",
       "candidates": [
         {
@@ -748,6 +798,7 @@
       "master_name": "Maxell",
       "base_rarity": "1",
       "acquisition": "unknown",
+      "catalogue_acquisition": "friend",
       "status": "native_identity_match_acquisition_unknown",
       "candidates": [
         {
@@ -764,6 +815,7 @@
       "master_name": "Kenyu",
       "base_rarity": "2",
       "acquisition": "unknown",
+      "catalogue_acquisition": "friend",
       "status": "native_identity_match_acquisition_unknown",
       "candidates": [
         {
@@ -780,6 +832,7 @@
       "master_name": "Paula",
       "base_rarity": "2",
       "acquisition": "unknown",
+      "catalogue_acquisition": "friend",
       "status": "native_identity_match_acquisition_unknown",
       "candidates": [
         {
@@ -796,6 +849,7 @@
       "master_name": "Skaha",
       "base_rarity": "2",
       "acquisition": "unknown",
+      "catalogue_acquisition": "friend",
       "status": "native_identity_match_acquisition_unknown",
       "candidates": [
         {
@@ -812,6 +866,7 @@
       "master_name": "Shiki",
       "base_rarity": "2",
       "acquisition": "unknown",
+      "catalogue_acquisition": "friend",
       "status": "native_identity_match_acquisition_unknown",
       "candidates": [
         {
@@ -828,6 +883,7 @@
       "master_name": "Ronaldo",
       "base_rarity": "2",
       "acquisition": "unknown",
+      "catalogue_acquisition": "friend",
       "status": "native_identity_match_acquisition_unknown",
       "candidates": [
         {
@@ -844,6 +900,7 @@
       "master_name": "Mel",
       "base_rarity": "2",
       "acquisition": "unknown",
+      "catalogue_acquisition": "friend",
       "status": "native_identity_match_acquisition_unknown",
       "candidates": [
         {
@@ -860,6 +917,7 @@
       "master_name": "Ollie",
       "base_rarity": "2",
       "acquisition": "unknown",
+      "catalogue_acquisition": "friend",
       "status": "native_identity_match_acquisition_unknown",
       "candidates": [
         {
@@ -876,6 +934,7 @@
       "master_name": "Mizell",
       "base_rarity": "2",
       "acquisition": "unknown",
+      "catalogue_acquisition": "friend",
       "status": "native_identity_match_acquisition_unknown",
       "candidates": [
         {
@@ -892,6 +951,7 @@
       "master_name": "Carrie",
       "base_rarity": "2",
       "acquisition": "unknown",
+      "catalogue_acquisition": "friend",
       "status": "native_identity_match_acquisition_unknown",
       "candidates": [
         {
@@ -908,6 +968,7 @@
       "master_name": "Montana",
       "base_rarity": "2",
       "acquisition": "unknown",
+      "catalogue_acquisition": "friend",
       "status": "native_identity_match_acquisition_unknown",
       "candidates": [
         {
@@ -924,6 +985,7 @@
       "master_name": "Anzelm",
       "base_rarity": "3",
       "acquisition": "unknown",
+      "catalogue_acquisition": "rare",
       "status": "reported_drawable_acquisition_unverified",
       "candidates": [
         {
@@ -940,6 +1002,7 @@
       "master_name": "Clyne",
       "base_rarity": "3",
       "acquisition": "unknown",
+      "catalogue_acquisition": "rare",
       "status": "reported_drawable_acquisition_unverified",
       "candidates": [
         {
@@ -956,6 +1019,7 @@
       "master_name": "Luna",
       "base_rarity": "3",
       "acquisition": "unknown",
+      "catalogue_acquisition": "rare",
       "status": "reported_drawable_acquisition_unverified",
       "candidates": [
         {
@@ -972,6 +1036,7 @@
       "master_name": "Bedile",
       "base_rarity": "3",
       "acquisition": "unknown",
+      "catalogue_acquisition": "rare",
       "status": "reported_drawable_acquisition_unverified",
       "candidates": [
         {
@@ -988,6 +1053,7 @@
       "master_name": "Russell",
       "base_rarity": "3",
       "acquisition": "unknown",
+      "catalogue_acquisition": "rare",
       "status": "reported_drawable_acquisition_unverified",
       "candidates": [
         {
@@ -1004,6 +1070,7 @@
       "master_name": "Xiao",
       "base_rarity": "3",
       "acquisition": "unknown",
+      "catalogue_acquisition": "rare",
       "status": "reported_drawable_acquisition_unverified",
       "candidates": [
         {
@@ -1022,6 +1089,7 @@
       "master_name": "Roselia",
       "base_rarity": "3",
       "acquisition": "unknown",
+      "catalogue_acquisition": "rare",
       "status": "reported_drawable_acquisition_unverified",
       "candidates": [
         {
@@ -1040,6 +1108,7 @@
       "master_name": "Rakshasa",
       "base_rarity": "3",
       "acquisition": "unknown",
+      "catalogue_acquisition": "rare",
       "status": "reported_drawable_acquisition_unverified",
       "candidates": [
         {
@@ -1057,6 +1126,7 @@
       "master_name": "Duane",
       "base_rarity": "3",
       "acquisition": "unknown",
+      "catalogue_acquisition": "rare",
       "status": "reported_drawable_acquisition_unverified",
       "candidates": [
         {
@@ -1074,6 +1144,7 @@
       "master_name": "Miyuki",
       "base_rarity": "3",
       "acquisition": "unknown",
+      "catalogue_acquisition": "rare",
       "status": "reported_drawable_acquisition_unverified",
       "candidates": [
         {
@@ -1092,6 +1163,7 @@
       "master_name": "Gilbert",
       "base_rarity": "3",
       "acquisition": "unknown",
+      "catalogue_acquisition": "rare",
       "status": "reported_drawable_acquisition_unverified",
       "candidates": [
         {
@@ -1110,6 +1182,7 @@
       "master_name": "Medius",
       "base_rarity": "3",
       "acquisition": "unknown",
+      "catalogue_acquisition": "rare",
       "status": "native_identity_match_acquisition_unknown",
       "candidates": [
         {
@@ -1128,6 +1201,7 @@
       "master_name": "Cerius",
       "base_rarity": "3",
       "acquisition": "unknown",
+      "catalogue_acquisition": "rare",
       "status": "reported_drawable_acquisition_unverified",
       "candidates": [
         {
@@ -1143,7 +1217,7 @@
     }
   ],
   "sources_sha256": {
-    "snapshot": "7fa7e0e06c8f539065f35a58d6f1b0ecab4bfcfb4620765a7a75757f12f74da5",
+    "snapshot": "f8dfd21541a06b755864728e5ef1c41544cfd52cfb72da34de2c1fc953c95653",
     "master": "e5c6920421a08519107954978e271a7d6520f3522b6d1424bcd90d4c314549d6",
     "names": "decbcc5c6e69a56a44e7e810e32d57ce6573ee041b18490c702da75314144858"
   }

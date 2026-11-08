@@ -59,6 +59,17 @@ class LaunchAuditTests(unittest.TestCase):
         self.assertNotIn("historical_month", report)
         self.assertEqual(report["status"], "AUDIT_ONLY_NOT_AN_UNLOCK_CATALOGUE")
 
+    def test_acquisition_categories_are_evidence_not_release_approval(self):
+        self.snapshot["units"][0]["catalogue_acquisition"] = "rare"
+        self.snapshot["units"][1]["catalogue_acquisition"] = "story"
+        self.snapshot["units"][2]["catalogue_acquisition"] = "reward"
+        report = audit_snapshot(self.snapshot, self.master, self.text)
+        self.assertEqual(report["acquisition_summary"],
+                         {"rare": 1, "reward": 1, "story": 1})
+        self.assertEqual(report["units"][0]["catalogue_acquisition"], "rare")
+        self.assertEqual(report["status"], "AUDIT_ONLY_NOT_AN_UNLOCK_CATALOGUE")
+        self.assertNotIn("release", report["units"][0])
+
     def test_wrong_base_rarity_is_not_accepted(self):
         self.snapshot["units"][0]["base_rarity"] = "5"
         report = audit_snapshot(self.snapshot, self.master, self.text)
