@@ -8,6 +8,9 @@ from __future__ import annotations
 
 import calendar
 from datetime import date
+from functools import lru_cache
+import json
+import pkgutil
 import re
 
 LAUNCH_MONTH = "2016-06"
@@ -188,6 +191,52 @@ def historical_reward_allowed(row: dict, player_data: dict) -> bool:
         return feature_available("modern_unit_growth", player_data)
     return True
 
+
+
+@lru_cache(maxsize=1)
+def historical_commerce_catalogue() -> dict:
+    """One evidence-backed Global economic index, both on disk and in app.imy.
+
+    The APK builder embeds this JSON in the Chaquopy archive. A missing
+    resource must fail closed, never fall through to the final-client shop.
+    """
+    raw = pkgutil.get_data(__name__, "content/historical_commerce.json")
+    if not raw:
+        raise UnavailableContent("The historical Global commerce index is missing.")
+    catalogue = json.loads(raw.decode("utf-8"))
+    if catalogue.get("schema") != 1 or catalogue.get("region") != "GL":
+        raise UnavailableContent("Wrong historical commerce catalogue.")
+    return catalogue
+
+
+def historical_town_purchase_allowed(player_data: dict, town_id, products: list[dict]) -> bool:
+    """Check the entire original town-shop basket before any gil is spent.
+
+    Each product must have its own sourced GL stock/price tuple; an undated
+    row in the preserved final client's F_STORE_ITEM_MST is not proof that
+    this town sold the item in 2016. Ordinary, unmarked saves are unchanged.
+    """
+    if not (player_data.get("meta") or {}).get("historical_preview"):
+        return True
+    month = current_month(player_data)
+    catalogue = historical_commerce_catalogue()
+    if not products:
+        return False
+    approved = {
+        (str(row["town_id"]), int(row["kind"]), str(row["item_id"])): row
+        for row in catalogue["town_stock"]
+        if row.get("status") == "approved" and row.get("source")
+    }
+    for product in products:
+        row = approved.get((str(town_id), int(product["kind"]), str(product["id"])))
+        if not row or not is_released(row.get("from"), month):
+            return False
+        # The cutoff is exclusive; no premature persistence of retired stock.
+        if row.get("until_exclusive") and is_released(row["until_exclusive"], month):
+            return False
+        if int(product["price_gil"]) != int(row["price_gil"]):
+            return False
+    return True
 
 def historical_colosseum_orb_cap(player_data: dict) -> int | None:
     """Global launch cap 3; Arena debut in November 2016 raised it to 5.

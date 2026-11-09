@@ -1,0 +1,48 @@
+{
+  "schema": 1,
+  "region": "GL",
+  "status": "partial-evidence-first",
+  "description": "Sourced individual town-shop stock; never extrapolate the final client's stock to earlier months.",
+  "town_stock": [
+    {
+      "town_id": "1101",
+      "town": "Town of Mitra",
+      "kind": 20,
+      "item_id": "101000100",
+      "name": "Potion",
+      "price_gil": 100,
+      "from": "2016-06",
+      "until_exclusive": null,
+      "status": "approved",
+      "source": "https://playerassist.com/ffbe-town-of-mitra-quest-guide/",
+      "source_type": "contemporary-Global-guide",
+      "note": "2016 guide identifies the Town of Mitra item shop, Potion and 100 gil. Town ID and item ID are native Global client IDs. Other products remain unverified."
+    }
+  ],
+  "limited_bundles": [],
+  "awakening_material_shops": [],
+  "unit_awakening_steps": [],
+  "item_release_dates": [],
+  "system_milestones": [
+    {
+      "id": "special-shops-and-gil-awakening-materials",
+      "date": "2020-08-20",
+      "source": "https://na.finalfantasy.com/topics/183",
+      "note": "Square Enix's Global fourth-anniversary announcement confirms new special shops and a gil awakening-material shop, but not individual stock master IDs or recurrent schedules."
+    },
+    {
+      "id": "neo-vision-ex-awakening",
+      "date": "2020-08-20",
+      "source": "https://na.finalfantasy.com/news/1462",
+      "note": "Global Neo Vision and EX Awakening introduced, separate from pre-existing unit rarity awakening."
+    }
+  ],
+  "unresolved": [
+    "Town stock in other locations and later shop inventory revisions",
+    "Global Premium Bundles: names, reward composition, cost, daily/once limits and exact start/end dates",
+    "Unit awakening: each target form, rarity date, source master and material/gil cost version",
+    "Item, recipe, equipment and materia release dates and acquisition channels",
+    "Past King Mog, trust, medal and exchange-shop schedules and expiration",
+    "Mid-month events need a day-level clock; monthly preview is not proof of day-specific availability"
+  ]
+}

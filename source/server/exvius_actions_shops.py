@@ -335,6 +335,7 @@ def item_buy(spec, req):
     selected = _triples(n.get("j9NS0H15"))
     _require(0 < len(selected) <= 20, "empty/oversize purchase")
     total, books = 0, set()
+    historic_basket = []
     for row in selected:
         kind, iid = row["kind"], str(row["id"])
         _require((kind, iid) in products, "product is not sold in this town")
@@ -347,7 +348,12 @@ def item_buy(spec, req):
             books.add(iid)
         # GameUtils::getItemBuyGil selects RecipeBookMst's gil member for kind 60.
         price_key = '7UR4J2SE' if kind == 60 else 'E61qF5Lp'
-        total += _int(product.get(price_key)) * row["count"]
+        price = _int(product.get(price_key))
+        total += price * row["count"]
+        historic_basket.append({"kind": kind, "id": iid, "price_gil": price})
+    from historical_progression import historical_town_purchase_allowed
+    _require(historical_town_purchase_allowed(State.player.data, town, historic_basket),
+             "town shop stock or price is not certified for this Global period")
     _require(_int(n.get("U1uaXph4")) == total, "client gil preview does not match master price")
     _rewards(selected)
     _pay(gil=total)

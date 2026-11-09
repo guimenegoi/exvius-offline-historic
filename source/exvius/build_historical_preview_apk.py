@@ -39,6 +39,10 @@ ADDED = {
     "historical_preview_data.pyc": "source/server/historical_preview_data.py",
     "historical_login_preview.pyc": "source/server/historical_login_preview.py",
 }
+# These are read through pkgutil.get_data from Chaquopy's ZIP, never Path(__file__).
+RESOURCE_FILES = {
+    "content/historical_commerce.json": "source/server/content/historical_commerce.json",
+}
 EXPECTED_MAGIC = bytes.fromhex("6f0d0d0a")  # Python 3.10 Chaquopy runtime
 
 
@@ -127,6 +131,8 @@ def package(base: Path, compiled: Path, js: Path, destination: Path, version_cod
             raise ValueError(f"Wrong Python bytecode version: {pyc}")
         updates[archive_name] = blob
     assert len(updates) == len(files)
+    for archive_name, source in RESOURCE_FILES.items():
+        updates[archive_name] = (ROOT / source).read_bytes()
 
     with ZipFile(base) as original:
         original_members = set(original.namelist())
