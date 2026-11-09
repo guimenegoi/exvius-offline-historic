@@ -227,6 +227,7 @@ def historical_premium_bundle_ids(player_data: dict) -> set[str] | None:
             and isinstance(row.get("contents"), list) and row["contents"]
             and is_released(row.get("available_from"), month)}
 
+
 def historical_colosseum_orb_cap(player_data: dict) -> int | None:
     """Global launch cap 3; Arena debut in November 2016 raised it to 5.
 
@@ -238,13 +239,6 @@ def historical_colosseum_orb_cap(player_data: dict) -> int | None:
         return None
     month = current_month(player_data)
     return 5 if is_released("2016-11-10", month) else 3
-
-
-def available_banners(banners: list[dict], month: str) -> list[dict]:
-    """Exclude undated and future campaigns; permanent banners need a separately audited allowlist."""
-    month_cutoff(month)
-    return [banner for banner in banners if is_released(
-        (banner.get("community") or {}).get("release") or banner.get("release"), month)]
 
 
 def eligible_pool(rows: list[dict], global_unit_release: dict[str, str], month: str) -> list[dict]:

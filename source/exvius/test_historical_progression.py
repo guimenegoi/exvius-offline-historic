@@ -52,14 +52,6 @@ class HistoricalProgressionTests(unittest.TestCase):
         for value in (None, "", "unknown", "2016-99-01", "2020-01-01"):
             self.assertFalse(history.is_released(value, "2016-06"))
 
-    def test_banner_selection_excludes_undated_and_future(self):
-        banners = [
-            {"id": "a", "community": {"release": "2016-07-14"}},
-            {"id": "b", "release": "2016-08-03"},
-            {"id": "c"},
-        ]
-        self.assertEqual(history.available_banners(banners, "2016-07"), banners[:1])
-
     def test_pool_filters_all_future_units_including_standard(self):
         rows = [{"unit_id": "old", "rate": 0.2, "rarity": 3},
                 {"unit_id": "future", "rate": 0.7, "rarity": 5},

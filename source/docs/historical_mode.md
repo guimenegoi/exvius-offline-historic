@@ -1,6 +1,51 @@
-# Historical Global mode — fork implementation plan
+# Historical Global mode — development contract and evidence
 
 This fork remains narrowly based on Elvlin/exvius-offline. `main` tracks the upstream source; development is in `feature/historical-progression`.
+
+## Current contract (2026-11-09)
+
+This section is the **current implementation contract**. The audits below
+record earlier investigation stages and sometimes describe work that has
+since been implemented; do not treat an old "next" or "not yet shipped"
+note as the latest status.
+
+- **Scope:** authentic FFBE **Global 2016–2024**, including real UI
+  snapshots, events, summon banners, real-money Premium Shop bundles,
+  unit/ability awakenings, item acquisition and story updates. The
+  playable historical **preview currently covers June–July 2016**;
+  2016 is a starting point, not the final target.
+- **Unlock rule:** an event, summon banner or paid Shop bundle becomes
+  available at its **Global start date** and remains accessible afterward.
+  The original offline event/Summons dropdowns remain in use; no
+  historical live-service expiry or removal dates are simulated.
+  The original offline purchase limits still apply.
+- **Town shops are different:** their inventories come from the original
+  town/store masters; the game's story progression controls which towns
+  players can reach. Server-side verification of all historical story
+  unlocks is still pending. No invented Potion-by-Potion date whitelist.
+- **Source of truth:** `historical_progression.py` supplies month and
+  feature policy; `historical_summons.py` handles active banner
+  eligibility; `event_archive.py` handles persistent Vortex content;
+  `ffbe_player.py` handles Premium Shop offers via the approved,
+  start-date-only `content/historical_commerce.json` catalogue.
+  **No real-money bundles have been approved in that catalogue yet.**
+  Approval needs the original Global identity, release date, source, cash
+  price/currency, artwork and exact contents. The offline purchase route
+  may convert real-money prices into Lapis, as it already does upstream;
+  this does not change the source's original cash price.
+  Month-level selection uses the month-end cutoff; any later day-level
+  precision must change only the first unlock, never impose an expiry.
+- **UI evidence:** `historical_ui_snapshots.md` and
+  `content/historical_ui_snapshots.json` catalog references, not finished
+  renderers. An announcement is not a pixel-accurate screenshot.
+- **Working copies:** the emulator checkout contains ongoing uncommitted
+  Frida/Waydroid experiments; the other historical checkout contains
+  separate uncommitted launch-roster research. Reconcile **by reviewed
+  commits/diffs**, never by blind directory copying or simultaneous
+  editing. Unverified native offsets are pinned to Global 9.0.0.
+- **Release gate:** do not announce an APK as fully historical until
+  server data and native UI have been tested together on Android.
+  Preserve existing save files and upstream nonhistorical behavior.
 
 ## Player experience
 
