@@ -32,6 +32,14 @@ class HistoricCapabilities(TestCase):
         self.assertTrue(historical_features(preview("2016-09"))["ability_awakening"])
         self.assertTrue(historical_features(preview("2016-11"))["arena"])
         self.assertFalse(historical_features(preview("2016-11"))["expedition"])
+        # VC inventory arrived in 2020, but the decorative Home button and
+        # attached BGM belong to the GL UI update on September 22, 2022.
+        self.assertFalse(historical_features(preview("2020-07"))["vision_cards"])
+        self.assertTrue(historical_features(preview("2020-08"))["vision_cards"])
+        self.assertFalse(historical_features(preview("2020-08"))["home_vision_card_ornament"])
+        self.assertTrue(historical_features(preview("2022-08"))["vision_cards"])
+        self.assertFalse(historical_features(preview("2022-08"))["home_vision_card_ornament"])
+        self.assertTrue(historical_features(preview("2022-09"))["home_vision_card_ornament"])
         self.assertTrue(historical_features(preview("2017-06"))["expedition"])
         self.assertFalse(historical_features(preview("2017-06"))["panel_quest"])
         self.assertTrue(feature_available("not-in-matrix", {"meta": {}}))

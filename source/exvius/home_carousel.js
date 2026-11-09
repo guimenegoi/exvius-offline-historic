@@ -76,10 +76,9 @@ export function installHomeCarousel(module, note, retained, bridge = null) {
   const nodeType = module.getExportByName('_ZTIN7cocos2d4NodeE');
   const spriteType = module.getExportByName('_ZTIN7cocos2d6SpriteE');
   const gameType = module.getExportByName('_ZTI10GameSprite');
-  // The final Global client adds an interactive Home ornament for Vision
-  // Cards (introduced in Global August 2020). Suppress only the decoration
-  // builders when the server's historical feature projection disables VCs;
-  // the original nonhistorical Home remains completely untouched.
+  // Home VC decoration/BGM arrived in Global September 2022; Vision Card
+  // inventory arrived in August 2020. Use the server-projected ornamental
+  // feature independently and preserve the nonhistorical native builders.
   for (const symbol of [
     '_ZN9HomeScene21setOrnamentVisionCardEPN7cocos2d15SpriteBatchNodeE',
     '_ZN9HomeScene25setNoneOrnamentVisionCardEPN7cocos2d15SpriteBatchNodeE'
@@ -87,7 +86,7 @@ export function installHomeCarousel(module, note, retained, bridge = null) {
     let original;
     const callback = new NativeCallback((scene, batch) => {
       const features = globalThis.__EXVIUS_HISTORICAL_FEATURES__;
-      if (features && features.vision_cards !== true) {
+      if (features && features.home_vision_card_ornament !== true) {
         note('HOME_HISTORIC_VISION_ORNAMENT_HIDDEN');
         return;
       }
