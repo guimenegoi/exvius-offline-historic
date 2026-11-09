@@ -71,7 +71,7 @@ class HistoricalUiSnapshotEvidence(TestCase):
         early = clients[:2]
         for client in clients:
             packs = client["cpk_evidence"]
-            self.assertEqual(len(packs), 2 if client["bundled_common_cpk"] else 1)
+            self.assertEqual(len(packs), 3 if client["bundled_common_cpk"] else 1)
             for pack in packs:
                 self.assertTrue(pack["path"].startswith("assets/cpk/"))
                 self.assertEqual(len(pack["sha256"]), 64)
@@ -89,10 +89,22 @@ class HistoricalUiSnapshotEvidence(TestCase):
                           "image/ui/header/header.plist": 8,
                           "image/ui/footer/footer.plist": 14})
         self.assertEqual(len(original["asset_sha256"]), 6)
+        pretutorial = early[0]["cpk_evidence"][1]
+        self.assertEqual(pretutorial["entry_count"], 105)
+        self.assertTrue(pretutorial["path"].endswith("resources_common_pretutorial.cpk"))
+        self.assertNotEqual(pretutorial["asset_sha256"]["layout/header/layout_header.csv"],
+                            original.get("asset_sha256", {}).get("layout/header/layout_header.csv"))
+        self.assertEqual(early[0]["cpk_evidence"][1], early[1]["cpk_evidence"][1])
         rebuilt = clients[2]["cpk_evidence"]
         self.assertFalse(any(p["path"] == original["path"] for p in rebuilt))
         self.assertNotEqual(early[1]["cpk_evidence"][-1]["sha256"], rebuilt[0]["sha256"])
         self.assertEqual(rebuilt[0]["entry_count"], 292)
+
+    def test_dated_2016_global_home_reference_is_not_assumed_capture_date(self):
+        ref = json.loads(INDEX.read_text(encoding="utf-8"))["references"]["moby-4036609"]
+        self.assertEqual(ref["archive_date"], "2016-07-12")
+        self.assertIsNone(ref["capture_date"])
+        self.assertTrue(ref["source"].endswith("/android/851459/"))
 
     def test_verified_vortex_reference_is_still_unrendered(self):
         doc = json.loads(INDEX.read_text(encoding="utf-8"))

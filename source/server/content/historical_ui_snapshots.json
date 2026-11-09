@@ -100,13 +100,13 @@
       "region": "GL",
       "surface": "home",
       "type": "archived-screenshot",
-      "source": "https://www.mobygames.com/game/79645/final-fantasy-brave-exvius/screenshots/",
+      "source": "https://www.mobygames.com/game/79645/final-fantasy-brave-exvius/screenshots/android/851459/",
       "original_image": "https://cdn.mobygames.com/screenshots/4036609-final-fantasy-brave-exvius-android-main-menu-with-most-of-the-op.jpg",
       "local_path": "data/ui-snapshots/references/global-2016-07-home-mobygames.jpg",
       "sha256": "a54c1f917d497e9bb39815ecc5472de69f9ee5f7f50cf75f5544aef33c1d11df",
       "capture_date": null,
-      "archive_date": null,
-      "provenance_note": "Candidate early Global reference; exact capture date must be corroborated before layout is approved."
+      "archive_date": "2016-07-12",
+      "provenance_note": "Screenshot added to MobyGames on July 12, 2016, showing English Home Forge/Abilities/Synthesize and original six-button footer; exact in-game capture day unknown. Does not establish every intermediate GL layout."
     },
     "upstream-final-home": {
       "region": "GL",
@@ -189,6 +189,20 @@
           }
         },
         {
+          "path": "assets/cpk/common_lang/sd/resources/resources_common_pretutorial.cpk",
+          "sha256": "47f1be786c2f6d1f98739018c824e4013dfd9f46b2bf7eb4a006193824383f9d",
+          "entry_count": 105,
+          "asset_sha256": {
+            "layout/header/layout_header.csv": "ede3eaf29707d73f96617119cfe1279c560ab4db9beb55a05bf73d46d5e6fbaf",
+            "layout/header/layout_header_640x960.csv": "0abf340d921512c35ae6f7bb344a2145aff56e985e684f8e8618e00128f274da",
+            "layout/header/layout_header_640x1024.csv": "c441dd7eca357a9a4f0314f6227583aac3137721b8312e08a86e13036e9e7b02",
+            "layout/header/layout_header_640x1136.csv": "6efeacf718f65b77fea03bd07e5e9b8230c1eb4b74bae9992f995d65e6fff60f",
+            "layout/footer/layout_footer_640x960.csv": "8591ccd6595edaa2d0cc4db5df66558f90bddb4df5b5da1488704756195b0ab0",
+            "layout/footer/layout_footer_640x1024.csv": "6cadb90a7b06238f17dc4b7609faa4c303f7b94260053344cd894ecf5f18b5fe",
+            "layout/footer/layout_footer_640x1136.csv": "defb4a8405a0f57a66cac362d0efa10e09a7b4f6f14ba9fe06e77475e3d185b2"
+          }
+        },
+        {
           "path": "assets/cpk/common_lang/sd/resources/resources_common_tutorial.cpk",
           "sha256": "c5c16acfe3eb82a1cf9beb62bcb96e236df49b39a5c6f9360098e7c32228532e",
           "entry_count": 250,
@@ -240,6 +254,20 @@
             "image/ui/common/common.plist": 119,
             "image/ui/header/header.plist": 8,
             "image/ui/footer/footer.plist": 14
+          }
+        },
+        {
+          "path": "assets/cpk/common_lang/sd/resources/resources_common_pretutorial.cpk",
+          "sha256": "47f1be786c2f6d1f98739018c824e4013dfd9f46b2bf7eb4a006193824383f9d",
+          "entry_count": 105,
+          "asset_sha256": {
+            "layout/header/layout_header.csv": "ede3eaf29707d73f96617119cfe1279c560ab4db9beb55a05bf73d46d5e6fbaf",
+            "layout/header/layout_header_640x960.csv": "0abf340d921512c35ae6f7bb344a2145aff56e985e684f8e8618e00128f274da",
+            "layout/header/layout_header_640x1024.csv": "c441dd7eca357a9a4f0314f6227583aac3137721b8312e08a86e13036e9e7b02",
+            "layout/header/layout_header_640x1136.csv": "6efeacf718f65b77fea03bd07e5e9b8230c1eb4b74bae9992f995d65e6fff60f",
+            "layout/footer/layout_footer_640x960.csv": "8591ccd6595edaa2d0cc4db5df66558f90bddb4df5b5da1488704756195b0ab0",
+            "layout/footer/layout_footer_640x1024.csv": "6cadb90a7b06238f17dc4b7609faa4c303f7b94260053344cd894ecf5f18b5fe",
+            "layout/footer/layout_footer_640x1136.csv": "defb4a8405a0f57a66cac362d0efa10e09a7b4f6f14ba9fe06e77475e3d185b2"
           }
         },
         {

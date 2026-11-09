@@ -199,6 +199,44 @@ availability, and full English localization remain **unverified**.
 The final-client carousel remains a compatibility fallback until a
 complete versioned adapter has passed visual and touch tests on Android.
 
+## Conflicting signed Global 1.2/1.4 header layouts (2026-11-09)
+
+The original CPK also contains
+common_lang/sd/resources/resources_common_pretutorial.cpk.
+The package is **byte-identical** in the signed GL 1.2.0 and 1.4.1
+APKs, with 105 entries. Its footer CSV is identical to common.cpk,
+but its header CSVs have different geometry:
+
+- Main header_stamina_info: common = (61,79,92,19);
+  pre-tutorial = (19,79,145,19).
+- Main header_stamina_time: common = (156,79,70,20);
+  pre-tutorial = (167,79,70,20).
+- 640x1024 subheader sub_header_label: common = (130,172,226,31);
+  pre-tutorial = (130,175,180,31).
+
+The pre-tutorial stamina label even requests **145-pixel width**,
+while the embedded mypage_stamina_info.png atlas frame is **92 pixels
+wide**. Rendering that alternate variant with the common atlas would
+therefore misrepresent the original client. The pre-tutorial original
+might have used different artwork, a scaling operation, or another
+runtime materialization path; none is verified. The original client
+could also select headers according to its initialization state.
+
+preview_historical_home_shell.py now validates both CPK checksums and
+records row-level differences in its JSON manifest. The static preview
+continues to show the common variant **only as a diagnostic** and
+explicitly records header_variant_selected_by_original_client: null
+and header_variant_runtime_verified: false. Neither variant is
+approved for the playable historic UI yet. Do not overlay the
+pre-tutorial header on the final client to "fix" its positioning.
+
+The archived Global Home reference in the evidence catalogue is now
+linked to its exact MobyGames screenshot page. The screenshot was
+**added on July 12, 2016**; this is the archive entry date, not a
+claim about its original capture day. The image confirms that the
+retail Home displayed English UI labels, unlike several baked Japanese
+labels in the embedded common CPK.
+
 ## Acceptance gate for an era/surface
 
 1. Obtain a dated **Global** capture, preferably a video and still images.

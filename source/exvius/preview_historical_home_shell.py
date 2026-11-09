@@ -23,6 +23,7 @@ from zipfile import ZipFile
 from audit_historical_client_apks import CATALOGUE, audit
 
 COMMON_CPK = "assets/cpk/common.cpk"
+PRETUTORIAL_CPK = "assets/cpk/common_lang/sd/resources/resources_common_pretutorial.cpk"
 ATLAS_DIRS = ("common", "header", "footer")
 RESOLUTIONS = (960, 1024, 1136)
 
@@ -106,6 +107,46 @@ def render_common_shell(apk: Path, viewport_height: int, output: Path) -> dict:
         def source(path: str) -> bytes:
             return archive.file_bytes(by_name[path])
 
+        # The same signed APK has a second, incompatible pre-tutorial
+        # header layout. Inspect and hash both rather than arbitrarily
+        # choosing the other variant or overlaying its sprites on the Home.
+        alternate_record = next(
+            row for row in original["cpk_evidence"] if row["path"] == PRETUTORIAL_CPK
+        )
+        alternate_bytes = z.read(PRETUTORIAL_CPK)
+        if hashlib.sha256(alternate_bytes).hexdigest() != alternate_record["sha256"]:
+            raise ValueError("Original pre-tutorial CPK hash mismatch")
+        alternate_file = Path(temp) / "pretutorial.cpk"
+        alternate_file.write_bytes(alternate_bytes)
+        alternate_archive = cpk.load(str(alternate_file))
+        alternate_entries = alternate_archive.file_infos()
+        if len(alternate_entries) != alternate_record["entry_count"]:
+            raise ValueError("Original pre-tutorial CPK entry count changed")
+        alternate_by_name = {row.full_path: i for i, row in enumerate(alternate_entries)}
+        if len(alternate_by_name) != len(alternate_entries):
+            raise ValueError("Duplicate pre-tutorial CPK paths")
+
+        header_conflicts = []
+        for name in ("layout/header/layout_header.csv",
+                     f"layout/header/layout_header_640x{viewport_height}.csv"):
+            candidate = alternate_archive.file_bytes(alternate_by_name[name])
+            if hashlib.sha256(candidate).hexdigest() != alternate_record["asset_sha256"][name]:
+                raise ValueError("Original pre-tutorial header layout checksum mismatch")
+            common_rows = {row.label: row for row in parse_layout(source(name))}
+            alternate_rows = {row.label: row for row in parse_layout(candidate)}
+            if set(common_rows) != set(alternate_rows):
+                raise ValueError("Header candidate control sets have changed")
+            def geometry(row):
+                return [row.x, row.y, row.width, row.height]
+            differing = [
+                {"control": label,
+                 "common": geometry(common_rows[label]),
+                 "pretutorial": geometry(alternate_rows[label])}
+                for label in common_rows
+                if common_rows[label] != alternate_rows[label]
+            ]
+            header_conflicts.append({"layout": name, "differences": differing})
+
         sprites = {}
         for group in ATLAS_DIRS:
             folder = f"image/ui/{group}/{group}"
@@ -176,6 +217,11 @@ def render_common_shell(apk: Path, viewport_height: int, output: Path) -> dict:
             "source_version": original["version"],
             "original_apk_sha256": original["apk_sha256"],
             "original_common_cpk_sha256": expected["sha256"],
+            "original_pretutorial_cpk_sha256": alternate_record["sha256"],
+            "header_variant_used_for_static_preview": "common",
+            "header_variant_selected_by_original_client": None,
+            "header_variant_runtime_verified": False,
+            "header_layout_candidate_comparison": header_conflicts,
             "viewport": [640, viewport_height],
             "surfaces": ["header", "footer"],
             "body": "transparent: original Home scene/layout not included in APK",

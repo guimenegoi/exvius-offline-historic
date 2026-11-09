@@ -73,6 +73,19 @@ class HistoricalHomeShellTests(unittest.TestCase):
             self.assertEqual(len(controls), 17)
             self.assertFalse(report["layout_verified"])
             self.assertFalse(report["global_english_localization_verified"])
+            self.assertFalse(report["header_variant_runtime_verified"])
+            self.assertIsNone(report["header_variant_selected_by_original_client"])
+            self.assertEqual(report["header_variant_used_for_static_preview"], "common")
+            comparisons = report["header_layout_candidate_comparison"]
+            self.assertEqual(len(comparisons), 2)
+            self.assertEqual(
+                [row["control"] for row in comparisons[0]["differences"]],
+                ["header_stamina_info", "header_stamina_time"])
+            self.assertEqual(comparisons[0]["differences"][0]["common"], [61, 79, 92, 19])
+            self.assertEqual(comparisons[0]["differences"][0]["pretutorial"], [19, 79, 145, 19])
+            self.assertEqual(
+                [row["control"] for row in comparisons[1]["differences"]],
+                ["sub_header_label"])
             self.assertEqual(report["source_version"], "1.2.0")
             with self.assertRaises(FileExistsError):
                 render_common_shell(apk, 1024, output)
