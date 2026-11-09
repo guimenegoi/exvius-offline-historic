@@ -156,6 +156,24 @@ and partially connected; do not count them as one of these endpoints.
   minimum_rank and/or cleared_missions. Malformed entries fail closed.
   The current event index contains no verified account prerequisites;
   never invent thresholds from the final client data.
+- **Event battle and reward transaction boundary:** the same eligible
+  Vortex events now gate exvius_repeat.begin_attempt for all known
+  archive mission IDs, and exvius_actions_modes._begin before any
+  native special-mode NRG/orb deduction. A denied mission never creates
+  a pending attempt; existing one-time normal/challenge reward paths
+  therefore refuse its credits. The 2016 original permanent chambers
+  keep the original launch exception. This is an event-only boundary:
+  uncatalogued **story** missions continue through upstream access
+  rules. It is not proof that the original campaign has a complete
+  Global story release index or that every possible client-side path
+  is unreachable; direct 2024 client resource loads require future
+  Android entry tests. See test_historical_vortex.py.
+- **Original data availability:** this checkout lacks the full decoded
+  native MST tables. The historical asset-free tests cover direct
+  attempt, maturity, legacy behaviour and no-spend refusal; the full
+  test_actions_modes.py suite still requires the original MST
+  directory, including F_LIMITBURST_MST.ndjson, and cannot be
+  reported as passed until those fixtures are restored.
 
 - **Upstream Java automatic APK prompts:** the fork's earlier
   `DataUpdates.java` correction is not included in the bytecode-overlay

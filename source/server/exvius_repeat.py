@@ -13,6 +13,12 @@ _LOCK = threading.RLock()
 def begin_attempt(player, mid, captures=None):
     if player.mode == 'frozen' or not mid:
         return False
+    if (player.data.get('meta') or {}).get('historical_preview'):
+        from event_archive import mission_available
+        if not mission_available(player, mid):
+            # No attempt receipt means normal and challenge rewards cannot
+            # credit this event through a stale or direct mission load.
+            return False
     with _LOCK:
         state = player.data.setdefault('exvius_repeat', {})
         current = state.get('attempt', {})

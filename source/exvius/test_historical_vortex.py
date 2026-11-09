@@ -75,6 +75,74 @@ class HistoricalVortexTests(unittest.TestCase):
         finally:
             event_archive._DOCUMENT = original
 
+    def test_battle_attempt_and_event_list_share_original_release_policy(self):
+        from copy import deepcopy
+        from exvius_repeat import begin_attempt, claim_mission_rewards, complete_attempt
+        player = self.make_player('2016-06')
+        player.mode = 'live'
+        future = '2220101'  # area 222: Global May 12, 2017
+        initial = deepcopy(player.data)
+        self.assertFalse(event_archive.mission_available(player, future))
+        self.assertFalse(begin_attempt(player, future))
+        self.assertFalse(claim_mission_rewards(player, future))
+        self.assertEqual(complete_attempt(player, future, True, [], {}, {})['reason'],
+                         'no pending mission load')
+        self.assertEqual(player.data, initial)
+        self.assertFalse(player.dirty)
+        # Known, authentic 2016 chambers and ordinary story missions are not
+        # collateral damage from the event-only archive check.
+        self.assertTrue(event_archive.mission_available(player, '2111001'))
+        self.assertTrue(event_archive.mission_available(player, '1110101'))
+        self.assertTrue(begin_attempt(player, '2111001'))
+        self.assertTrue(player.dirty)
+        # Introduction alone is enough for catalogue availability when no
+        # extra, sourced original-account requirement is declared.
+        player.data['meta']['historical_month'] = '2017-05'
+        self.assertTrue(event_archive.mission_available(player, future))
+        self.assertTrue(begin_attempt(player, future))
+        player.data['meta']['historical_month'] = '2024-10'
+        self.assertTrue(event_archive.mission_available(player, future))
+        # Ordinary offline saves never inherit the historical date denial.
+        legacy = self.make_player(preview=False)
+        legacy.mode = 'live'
+        self.assertTrue(begin_attempt(legacy, future))
+
+    def test_maturity_blocks_both_direct_load_and_mode_precharge(self):
+        from copy import deepcopy
+        from exvius_repeat import begin_attempt
+        from exvius_actions_modes import _begin, _Refused
+        from ffbe_state import State
+        original_document = event_archive._DOCUMENT
+        original_player = State.player
+        player = self.make_player('2016-07')
+        player.mode = 'live'
+        player.data['rank'] = {'level': 1, 'nrg': 100}
+        player.data['progress'] = {'cleared_missions': []}
+        condition = {'source': 'https://example.org/audited-global-event-requirement',
+                     'minimum_rank': 10, 'cleared_missions': ['1110101']}
+        try:
+            event_archive._DOCUMENT = {'events': [{
+                'area': '9991', 'missions': ['99910101'],
+                'release': '2016-07-08', 'account_requirements': condition}]}
+            State.player = player
+            snapshot = deepcopy(player.data)
+            self.assertFalse(begin_attempt(player, '99910101'))
+            # Special native modes charge NRG/orbs before their attempt is
+            # registered. The shared guard must refuse before that charge.
+            with patch('exvius_actions_modes._cost',
+                       side_effect=AssertionError('A locked event must not charge NRG')):
+                with self.assertRaises(_Refused):
+                    _begin('tower', {}, {'qo3PECw6': '99910101'}, {})
+            self.assertEqual(player.data, snapshot)
+            self.assertFalse(player.dirty)
+            player.data['rank']['level'] = 10
+            self.assertFalse(begin_attempt(player, '99910101'))
+            player.data['progress']['cleared_missions'] = ['1110101']
+            self.assertTrue(begin_attempt(player, '99910101'))
+        finally:
+            event_archive._DOCUMENT = original_document
+            State.player = original_player
+
     def test_empty_historical_menu_shows_filter_without_loading_clash(self):
         player = self.make_player()
         with patch('player_state._load_ndjson', return_value={}), patch(

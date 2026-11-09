@@ -48,6 +48,23 @@ def area_ids(player=None):
     return [str(event['area']) for event in events(player)]
 
 
+def mission_available(player, mission_id):
+    """Gate *known archived event missions* by the same period/account menu policy.
+
+    This is only an event-catalogue boundary, not a replacement for native
+    story/mission switches. Uncatalogued missions can be normal story quests
+    and must retain their original access rules. The 2016 original chambers
+    use the same LAUNCH_CHAMBERS exception as the visible Vortex.
+    """
+    if player is None or not (player.data.get('meta') or {}).get('historical_preview'):
+        return True
+    mission = str(mission_id)
+    for row in document()['events']:
+        if mission in row.get('missions', ()):
+            return str(row['area']) in area_ids(player)
+    return True
+
+
 def listings(player=None):
     """One tile per published campaign, with every original area retained."""
     campaigns = {}

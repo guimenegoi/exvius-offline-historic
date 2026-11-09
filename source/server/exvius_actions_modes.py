@@ -173,6 +173,9 @@ def _seeds(op):
 
 def _begin(name, f, row, op, extra=None):
     mid = str(row["qo3PECw6"])
+    from event_archive import mission_available
+    _need(mission_available(State.player, mid),
+          "event mission is not unlocked for this account and Global period")
     active = f.get("active")
     if active:
         _need(active["mission"] == mid, "another mission is already active")
