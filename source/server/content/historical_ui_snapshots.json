@@ -1,0 +1,101 @@
+{
+  "schema": 1,
+  "region": "GL",
+  "scope": "2016-06 through 2024-10; do not import JP dates as GL",
+  "status": "evidence-inventory-not-a-renderer",
+  "eras": [
+    {
+      "id": "global-launch",
+      "from": "2016-06",
+      "until_exclusive": "2017-02",
+      "confidence": "partial",
+      "notes": "Launch-era screenshots exist, but not every screen or intermediate revision is verified.",
+      "screens": {
+        "home": {
+          "status": "reference-collected",
+          "reference": "moby-4036609",
+          "layout_verified": false
+        },
+        "summons": {"status": "missing"},
+        "vortex": {"status": "missing"},
+        "units": {"status": "missing"}
+      }
+    },
+    {
+      "id": "global-v2",
+      "from": "2017-02",
+      "until_exclusive": null,
+      "confidence": "transition-only",
+      "notes": "Global v2.0 changed Home, quests and summons on 2017-02-23. Its exact visual state and subsequent transitions need dated captures.",
+      "screens": {
+        "home": {"status": "missing"},
+        "summons": {"status": "missing"},
+        "vortex": {"status": "missing"},
+        "units": {"status": "missing"}
+      }
+    },
+    {
+      "id": "global-2022-ui",
+      "from": "2022-09",
+      "until_exclusive": null,
+      "confidence": "transition-only",
+      "notes": "Global players discuss a new UI in September 2022. Exact screen layouts and transition dates remain unverified.",
+      "screens": {
+        "home": {"status": "missing"},
+        "summons": {"status": "missing"},
+        "vortex": {"status": "missing"},
+        "units": {"status": "missing"}
+      }
+    },
+    {
+      "id": "global-final-client",
+      "from": null,
+      "until_exclusive": null,
+      "confidence": "client-baseline",
+      "notes": "The preserved Global 9.0.0 client provides a final-state baseline, NOT proof of its initial release month.",
+      "screens": {
+        "home": {"status": "local-baseline", "reference": "upstream-final-home", "layout_verified": false},
+        "summons": {"status": "missing"},
+        "vortex": {"status": "missing"},
+        "units": {"status": "missing"}
+      }
+    }
+  ],
+  "references": {
+    "moby-4036609": {
+      "region": "GL",
+      "surface": "home",
+      "type": "archived-screenshot",
+      "source": "https://www.mobygames.com/game/79645/final-fantasy-brave-exvius/screenshots/",
+      "original_image": "https://cdn.mobygames.com/screenshots/4036609-final-fantasy-brave-exvius-android-main-menu-with-most-of-the-op.jpg",
+      "local_path": "data/ui-snapshots/references/global-2016-07-home-mobygames.jpg",
+      "sha256": "a54c1f917d497e9bb39815ecc5472de69f9ee5f7f50cf75f5544aef33c1d11df",
+      "capture_date": null,
+      "archive_date": null,
+      "provenance_note": "Candidate early Global reference; exact capture date must be corroborated before layout is approved."
+    },
+    "upstream-final-home": {
+      "region": "GL",
+      "surface": "home",
+      "type": "upstream-screenshot",
+      "source": "https://github.com/Elvlin/exvius-offline/blob/main/release/screenshots/home.png",
+      "local_path": "release/screenshots/home.png",
+      "capture_date": null,
+      "provenance_note": "Upstream offline screenshot; do not label as a historical-era screenshot."
+    }
+  },
+  "transition_sources": [
+    {
+      "month": "2017-02",
+      "source": "https://www.player.one/final-fantasy-brave-exvius-version-20-launches-new-story-esper-and-more-585839",
+      "kind": "release-report",
+      "proves": "Global v2.0 redesign, not pixel-accurate screen geometry"
+    },
+    {
+      "month": "2022-09",
+      "source": "https://www.reddit.com/r/FFBraveExvius/",
+      "kind": "community-lead",
+      "proves": "Research lead only; locate a dated Global screenshot and primary update notes"
+    }
+  ]
+}
