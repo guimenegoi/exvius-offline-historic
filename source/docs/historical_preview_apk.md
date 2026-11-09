@@ -56,6 +56,29 @@ version of the same package signed with a different certificate**. Do not
 uninstall an existing installation without exporting important saves. Use a
 separate test device/profile if possible.
 
+### Preserving the 14.5 GB on subsequent test builds
+
+The updater stores unpacked packs in the app's private
+`files/exvius/data/static/` folder and tracks pack id/SHA-256 in
+`files/exvius/data/installed.json`. Android updates can retain both when
+the **application ID and signing certificate stay identical** and the new
+APK has an **increased versionCode**. Do not uninstall or clear storage.
+A changed upstream pack hash can still trigger a separate data download;
+reuse is not an unconditional guarantee.
+
+The first experimental APK has the debug certificate fingerprint
+`1e08a903aef9c3a721510b64ec764d01d3d094eb954161b62544ea8f187b5953`
+(SHA-256). **Before providing the next APK**, compare its package name,
+versionCode and certificate to the installed preview and verify data
+retention on-device. Rebuilding with another temporary key without matching
+the certificate will not update the installed app.
+
+**Important:** the first preview APK was created before the fork's source
+change that stops offering the *official Elvlin APK* as an update. Until a
+new Android runtime build includes that fix, do not accept an in-app prompt
+to replace this Historic preview with the regular upstream APK. Completing
+the normal *game data* download is unaffected.
+
 On first start the game may still download the normal offline data packages,
 approximately 14.5 GB, needing about 18 GB of free space. Wi-Fi is advised.
 
