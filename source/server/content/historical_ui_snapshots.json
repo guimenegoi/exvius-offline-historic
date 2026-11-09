@@ -16,9 +16,17 @@
           "reference": "moby-4036609",
           "layout_verified": false
         },
-        "summons": {"status": "missing"},
-        "vortex": {"status": "missing"},
-        "units": {"status": "missing"}
+        "summons": {
+          "status": "missing"
+        },
+        "vortex": {
+          "status": "reference-collected",
+          "reference": "supersoluce-2016-07-vortex-002",
+          "layout_verified": false
+        },
+        "units": {
+          "status": "missing"
+        }
       }
     },
     {
@@ -28,10 +36,18 @@
       "confidence": "transition-only",
       "notes": "Global v2.0 changed Home, quests and summons on 2017-02-23. Its exact visual state and subsequent transitions need dated captures.",
       "screens": {
-        "home": {"status": "missing"},
-        "summons": {"status": "missing"},
-        "vortex": {"status": "missing"},
-        "units": {"status": "missing"}
+        "home": {
+          "status": "missing"
+        },
+        "summons": {
+          "status": "missing"
+        },
+        "vortex": {
+          "status": "missing"
+        },
+        "units": {
+          "status": "missing"
+        }
       }
     },
     {
@@ -41,10 +57,18 @@
       "confidence": "transition-only",
       "notes": "Global players discuss a new UI in September 2022. Exact screen layouts and transition dates remain unverified.",
       "screens": {
-        "home": {"status": "missing"},
-        "summons": {"status": "missing"},
-        "vortex": {"status": "missing"},
-        "units": {"status": "missing"}
+        "home": {
+          "status": "missing"
+        },
+        "summons": {
+          "status": "missing"
+        },
+        "vortex": {
+          "status": "missing"
+        },
+        "units": {
+          "status": "missing"
+        }
       }
     },
     {
@@ -54,10 +78,20 @@
       "confidence": "client-baseline",
       "notes": "The preserved Global 9.0.0 client provides a final-state baseline, NOT proof of its initial release month.",
       "screens": {
-        "home": {"status": "local-baseline", "reference": "upstream-final-home", "layout_verified": false},
-        "summons": {"status": "missing"},
-        "vortex": {"status": "missing"},
-        "units": {"status": "missing"}
+        "home": {
+          "status": "local-baseline",
+          "reference": "upstream-final-home",
+          "layout_verified": false
+        },
+        "summons": {
+          "status": "missing"
+        },
+        "vortex": {
+          "status": "missing"
+        },
+        "units": {
+          "status": "missing"
+        }
       }
     }
   ],
@@ -82,6 +116,18 @@
       "local_path": "release/screenshots/home.png",
       "capture_date": null,
       "provenance_note": "Upstream offline screenshot; do not label as a historical-era screenshot."
+    },
+    "supersoluce-2016-07-vortex-002": {
+      "region": "GL",
+      "surface": "vortex",
+      "type": "archived-screenshot",
+      "source": "https://www.supersoluce.com/soluce/final-fantasy-brave-exvius/vortex-dimensionnel",
+      "original_image": "https://www.supersoluce.com/sites/default/files/node/151252/final-fantasy-brave-exvius-soluce-vortex-dimensionnel-002.jpg",
+      "local_path": "data/ui-snapshots/references/vortex/global-2016-07-vortex-002.jpg",
+      "sha256": "b775e16c6e438e4fbcacd9ba90abaefb96f241bb1498933f27b3e0e56ed917bf",
+      "capture_date": null,
+      "article_date": "2016-07-25",
+      "provenance_note": "Global French-language Vortex guide from July 2016; the original on-screen geometry differs from late-client five-tab layout. Image is evidence, not a renderer."
     }
   },
   "transition_sources": [
@@ -96,6 +142,83 @@
       "source": "https://www.reddit.com/r/FFBraveExvius/",
       "kind": "community-lead",
       "proves": "Research lead only; locate a dated Global screenshot and primary update notes"
+    }
+  ],
+  "client_builds": [
+    {
+      "version": "1.2.0",
+      "region": "GL",
+      "archive_release_month": "2016-11",
+      "local_filename": "GL-1.2.0-2016-11.apk",
+      "apk_sha256": "bcb335b660ac9cebf84ebb9cc6b0c3aa9b858a3fe1e78884bdc6756092f4a346",
+      "signing_cert_sha1": "d3aed7cbd8f386cd56edcb749d5a2684496e52b8",
+      "x86_libgame_sha256": "90c9be12ef09984ab64f2a467d9aa51e99eba135aa459992589b5e7870cffbc8",
+      "native_evidence": {
+        "scene_export_counts": {
+          "HomeScene": 74,
+          "GateScene": 38,
+          "HomeRotateMenuList": 0
+        },
+        "home_draw_craft": true,
+        "home_rotate_menu_list": false,
+        "home_rotate_colosseum_orbs": false,
+        "gate_list_layout": true
+      },
+      "bundled_common_cpk": true,
+      "source": "https://appchive.net/apk/com.square_enix.android_googleplay.FFBEWW/ffexvius/32",
+      "independent_hash_source": null,
+      "runtime_observation": "Installed on Waydroid as independent original package with file permission denied. Initialized native x86 code but did not reach a usable game screen; no UI screenshot approved.",
+      "layout_verified": false
+    },
+    {
+      "version": "1.4.1",
+      "region": "GL",
+      "archive_release_month": "2017-01",
+      "local_filename": "GL-1.4.1-2017-01.apk",
+      "apk_sha256": "d3653b08a5dea3edbac8df151b2cc133cd752a6c9afd7737af8ef49f7f81385b",
+      "signing_cert_sha1": "d3aed7cbd8f386cd56edcb749d5a2684496e52b8",
+      "x86_libgame_sha256": "380381a1f175f372a679baf5a624446347aba2d93b7570540ed9763a9a94cce5",
+      "native_evidence": {
+        "scene_export_counts": {
+          "HomeScene": 74,
+          "GateScene": 38,
+          "HomeRotateMenuList": 0
+        },
+        "home_draw_craft": true,
+        "home_rotate_menu_list": false,
+        "home_rotate_colosseum_orbs": false,
+        "gate_list_layout": true
+      },
+      "bundled_common_cpk": true,
+      "source": "https://appchive.net/apk/com.square_enix.android_googleplay.FFBEWW/ffexvius/37",
+      "independent_hash_source": "https://mobile.softpedia.com/apk/final-fantasy-brave-exvius/1.4.1/",
+      "runtime_observation": "Static analysis only; not executed.",
+      "layout_verified": false
+    },
+    {
+      "version": "2.0.0",
+      "region": "GL",
+      "archive_release_month": "2017-02",
+      "local_filename": "GL-2.0.0-2017-02.apk",
+      "apk_sha256": "43c1cf25ff27c05c6021c38c8e201c4e4552ba22cda905a3a7414c39c2c3db08",
+      "signing_cert_sha1": "d3aed7cbd8f386cd56edcb749d5a2684496e52b8",
+      "x86_libgame_sha256": "6a62b0e8106a2a403e632cd81aff8b16bc821db08e1577eced334f6359776bde",
+      "native_evidence": {
+        "scene_export_counts": {
+          "HomeScene": 51,
+          "GateScene": 37,
+          "HomeRotateMenuList": 27
+        },
+        "home_draw_craft": false,
+        "home_rotate_menu_list": true,
+        "home_rotate_colosseum_orbs": true,
+        "gate_list_layout": true
+      },
+      "bundled_common_cpk": false,
+      "source": "https://appchive.net/apk/com.square_enix.android_googleplay.FFBEWW/ffexvius/200",
+      "independent_hash_source": "https://mobile.softpedia.com/apk/final-fantasy-brave-exvius/2.0.0/",
+      "runtime_observation": "Static analysis only; not executed.",
+      "layout_verified": false
     }
   ]
 }

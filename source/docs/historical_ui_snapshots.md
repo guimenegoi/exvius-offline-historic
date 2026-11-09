@@ -45,6 +45,70 @@ Registry: `source/server/content/historical_ui_snapshots.json`.
 This inventory intentionally does **not** alter `offline_menu.status`,
 `home_carousel.js`, `summon_menu.js`, or the APK.
 
+## Original signed client binaries (static evidence, 09 Nov 2026)
+
+Three original **Global**, not Japanese, APKs were recovered from
+[Appchive](https://appchive.net/apk/com.square_enix.android_googleplay.FFBEWW/ffexvius/36)
+into a private local test folder (never Git). Their SHA-256 values were
+verified against the archived files' identifiers. The
+[Softpedia 1.4.1](https://mobile.softpedia.com/apk/final-fantasy-brave-exvius/1.4.1/)
+and [Softpedia 2.0.0](https://mobile.softpedia.com/apk/final-fantasy-brave-exvius/2.0.0/)
+list the **same APK hashes**, independently corroborating two of the
+samples. The three APKs also share the original signing-certificate SHA-1
+d3aed7cbd8f386cd56edcb749d5a2684496e52b8, matching the
+Softpedia fingerprint. All ZIP entries passed integrity validation.
+
+| Global client | HomeScene exports | GateScene exports | HomeRotateMenuList exports | Native findings |
+| --- | ---: | ---: | ---: | --- |
+| 1.2.0, November 2016 | 74 | 38 | 0 | HomeScene::drawCraft(int) present; no native rotating menu |
+| 1.4.1, January 2017 | 74 | 38 | 0 | Same Home/Gate exported structure as 1.2 |
+| 2.0.0, February 2017 | 51 | 37 | 27 | Rotating Home menu, orb controls introduced; drawCraft absent |
+
+**Architectural implication:** the pre-2.0 Global Home and the post-2.0
+Home are **different native scene implementations**. Hiding 2024 buttons
+on the final client's Home cannot create the authentic 2016 layout.
+The early source uses Cocos2d CCArray and CCPoint methods, whereas
+the pinned final client and its Frida adapters use later types and
+layouts. Native offsets and pointer ownership **cannot** be shared
+blindly across these binaries. A versioned layout adapter or recovery
+of original native scenes is necessary.
+
+The APKs contain ELF libraries for x86 and ARM and tutorial CPK
+resources. Some main-game art historically came from additional
+downloads, so possession of the APK alone does not prove the pixels of
+every live interface. The bundled common.cpk exists in 1.2 and 1.4.1
+but not in 2.0. This is a packaging observation, **not** proof of a
+specific layout change.
+
+The original **1.2.0** was installed in Waydroid under its own package
+com.square_enix.android_googleplay.FFBEWW, separate from
+com.exvius.offline.test. It reached native startup but not a usable
+game screen; broad device-storage permission was denied, and the old
+online service is no longer functional. No historical runtime UI
+screenshot has been authenticated from that launch. The offline app's
+save and version 9085 were left unchanged.
+
+To reproduce the static symbol/signature audit, place the three
+locally obtained APKs in an external folder and run:
+
+~~~bash
+python3 -B source/exvius/audit_historical_client_apks.py \
+  --directory "$HOME/.local/share/ffbe-android-test/historical-apks" \
+  --keytool "$HOME/.local/share/ffbe-android-test/java/jdk/bin/keytool"
+~~~
+
+The version/hash/signature/scene summary is stored in
+source/server/content/historical_ui_snapshots.json under
+client_builds. **No APK bytes, client ELF or original art are tracked
+or redistributed** by this change. layout_verified: false remains
+explicit for every client build.
+
+The already-recovered July 2016 French Global
+[Vortex of Desires guide](https://www.supersoluce.com/soluce/final-fantasy-brave-exvius/vortex-dimensionnel)
+has also been registered in the same index with a local image hash.
+Its screenshot shows a continuous list, not the final client's
+multi-tab Vortex. The image is a reference, not an activated renderer.
+
 ## Acceptance gate for an era/surface
 
 1. Obtain a dated **Global** capture, preferably a video and still images.
