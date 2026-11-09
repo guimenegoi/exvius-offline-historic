@@ -146,9 +146,17 @@ and partially connected; do not count them as one of these endpoints.
   and timing of all awakening chains still need checking.
 - **2016 event exchange / premium bundles:** requires source-specific
   dated inventory and rate schedules. Stale 2024 offers must not appear.
-- **Visual fidelity:** compare screenshots and native navigation in a real
-  Android install, especially season selector, Home, Unit tabs, Shop, Vortex
-  and Colosseum.
+- **Coherent final-client UI:** suppress unavailable features without
+  dead controls or empty holes; verify Home, Units, Shop, Summons, Vortex
+  and Colosseum navigation. Historical layout reconstruction is separate
+  research, not a content-release blocker.
+- **Per-account content eligibility:** release-date gating differs from
+  real saved rank, mission progress and story unlocks. Event listings
+  and paid Shop bundles now support OPTIONAL sourced account_requirements:
+  minimum_rank and/or cleared_missions. Malformed entries fail closed.
+  The current event index contains no verified account prerequisites;
+  never invent thresholds from the final client data.
+
 - **Upstream Java automatic APK prompts:** the fork's earlier
   `DataUpdates.java` correction is not included in the bytecode-overlay
   runtime. **Do not accept a prompt to install a non-historical upstream

@@ -9,16 +9,28 @@ record earlier investigation stages and sometimes describe work that has
 since been implemented; do not treat an old "next" or "not yet shipped"
 note as the latest status.
 
-- **Scope:** authentic FFBE **Global 2016–2024**, including real UI
-  snapshots, events, summon banners, real-money Premium Shop bundles,
-  unit/ability awakenings, item acquisition and story updates. The
-  playable historical **preview currently covers June–July 2016**;
-  2016 is a starting point, not the final target.
+- **Scope:** content and mechanics of FFBE **Global 2016–2024**,
+  with the stable final FFBE Offline UI retained as the playable base.
+  Historically unavailable features are hidden or disabled; exact
+  old-client pixel layouts are **not** a release requirement.
+  UI investigation and experimental old-client renderer have been
+  archived on research/historical-ui-investigation
+  (source/docs/decisions/historical-ui-direction.md on that branch).
+  The playable historical **preview covers June–July 2016** so far.
 - **Unlock rule:** an event, summon banner or paid Shop bundle becomes
   available at its **Global start date** and remains accessible afterward.
   The original offline event/Summons dropdowns remain in use; no
   historical live-service expiry or removal dates are simulated.
   The original offline purchase limits still apply.
+- **Account maturity is independent of calendar month:** the Global
+  introduction determines when an item can first appear, but rank,
+  cleared missions, story switches, inventory and other original
+  prerequisites determine whether this account can actually use it.
+  Advancing the historical period never upgrades rank, clears missions
+  or grants units. Optional account_requirements metadata may declare
+  an evidenced HTTPS source, positive minimum_rank and/or specific
+  cleared_missions IDs. Malformed declarations fail closed. Existing
+  original game restrictions and costs remain in force.
 - **Town shops are different:** their inventories come from the original
   town/store masters; the game's story progression controls which towns
   players can reach. Server-side verification of all historical story
@@ -35,9 +47,12 @@ note as the latest status.
   this does not change the source's original cash price.
   Month-level selection uses the month-end cutoff; any later day-level
   precision must change only the first unlock, never impose an expiry.
-- **UI evidence:** `historical_ui_snapshots.md` and
-  `content/historical_ui_snapshots.json` catalog references, not finished
-  renderers. An announcement is not a pixel-accurate screenshot.
+- **Research boundary:** historical_ui_snapshots.md and the existing
+  historical UI evidence catalogue are reference material, not playable
+  renderers. The extended study is preserved on the separate research
+  branch. The playable fork uses the coherent final-client UI and
+  server-authoritative restrictions. The Season selector is an offline
+  navigation aid, not a historical Global control.
 - **Working copies (audited 2026-11-09):** the emulator and secondary
   historical checkouts are clean and synchronized at the same commit.
   The archive/Season-selector UI experiment remains isolated in
@@ -49,9 +64,10 @@ note as the latest status.
   Test APKs and screenshots remain ignored under source/build/.
   Reconcile future changes **by reviewed commits/diffs**, never blind
   directory copying. Unverified native offsets are pinned to GL 9.0.0.
-- **Release gate:** do not announce an APK as fully historical until
-  server data and native UI have been tested together on Android.
-  Preserve existing save files and upstream nonhistorical behavior.
+- **Release gate:** validate Global content dates, account maturity,
+  refusal without spending/grants, and coherent final-client navigation
+  together on Android. Historical UI replicas are not required.
+  Preserve saves and normal offline behavior.
 
 ## Player experience
 
