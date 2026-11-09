@@ -66,6 +66,34 @@ class HistoricalUiSnapshotEvidence(TestCase):
         self.assertEqual(update["native_evidence"]["scene_export_counts"]["HomeRotateMenuList"], 27)
         self.assertFalse(update["bundled_common_cpk"])
 
+    def test_original_ui_atlas_provenance_is_pinned_per_client(self):
+        clients = json.loads(INDEX.read_text(encoding="utf-8"))["client_builds"]
+        early = clients[:2]
+        for client in clients:
+            packs = client["cpk_evidence"]
+            self.assertEqual(len(packs), 2 if client["bundled_common_cpk"] else 1)
+            for pack in packs:
+                self.assertTrue(pack["path"].startswith("assets/cpk/"))
+                self.assertEqual(len(pack["sha256"]), 64)
+                self.assertGreater(pack["entry_count"], 0)
+                for asset, checksum in pack["asset_sha256"].items():
+                    self.assertFalse(asset.startswith("/"))
+                    self.assertNotIn("..", asset.split("/"))
+                    self.assertEqual(len(checksum), 64)
+            self.assertFalse(client["layout_verified"])
+        self.assertEqual(early[0]["cpk_evidence"], early[1]["cpk_evidence"])
+        original = early[0]["cpk_evidence"][0]
+        self.assertEqual(original["entry_count"], 148)
+        self.assertEqual(original["sprite_frame_counts"],
+                         {"image/ui/common/common.plist": 119,
+                          "image/ui/header/header.plist": 8,
+                          "image/ui/footer/footer.plist": 14})
+        self.assertEqual(len(original["asset_sha256"]), 6)
+        rebuilt = clients[2]["cpk_evidence"]
+        self.assertFalse(any(p["path"] == original["path"] for p in rebuilt))
+        self.assertNotEqual(early[1]["cpk_evidence"][-1]["sha256"], rebuilt[0]["sha256"])
+        self.assertEqual(rebuilt[0]["entry_count"], 292)
+
     def test_verified_vortex_reference_is_still_unrendered(self):
         doc = json.loads(INDEX.read_text(encoding="utf-8"))
         vortex = doc["eras"][0]["screens"]["vortex"]

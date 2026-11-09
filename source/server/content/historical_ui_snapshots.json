@@ -168,7 +168,36 @@
       "source": "https://appchive.net/apk/com.square_enix.android_googleplay.FFBEWW/ffexvius/32",
       "independent_hash_source": null,
       "runtime_observation": "Installed on Waydroid as independent original package with file permission denied. Initialized native x86 code but did not reach a usable game screen; no UI screenshot approved.",
-      "layout_verified": false
+      "layout_verified": false,
+      "cpk_evidence": [
+        {
+          "path": "assets/cpk/common.cpk",
+          "sha256": "4bd19d356fe3b2c5348d5d031e60f73236177634e6a2e193e25e8b13f0d4fbff",
+          "entry_count": 148,
+          "asset_sha256": {
+            "image/ui/common/common.png": "42cbbac070490a660c98e02a740d8c420411e345a234dd6d00f35b892c0cb9ad",
+            "image/ui/common/common.plist": "27a62721884b31e030874f01beb35a2ae776698b57b9b4adb1c60bfe1d89feeb",
+            "image/ui/header/header.png": "7bffe5b629b63f2f219d3e0539a165d45611309d2aff323d23d279ba4d0031e3",
+            "image/ui/header/header.plist": "5b9ad95c84b7f8b68eb30d3abf2f63acead8035f542c684f12feeee480dfdbda",
+            "image/ui/footer/footer.png": "aa035528b4375c7ebe73f568798b3675cbee2f72c7a8945c77c764cd9e85fada",
+            "image/ui/footer/footer.plist": "53e3946530d814eee0c25586752faa68396fe568a5ea94e21464576d8f8d27bb"
+          },
+          "sprite_frame_counts": {
+            "image/ui/common/common.plist": 119,
+            "image/ui/header/header.plist": 8,
+            "image/ui/footer/footer.plist": 14
+          }
+        },
+        {
+          "path": "assets/cpk/common_lang/sd/resources/resources_common_tutorial.cpk",
+          "sha256": "c5c16acfe3eb82a1cf9beb62bcb96e236df49b39a5c6f9360098e7c32228532e",
+          "entry_count": 250,
+          "asset_sha256": {
+            "layout/map/layout_world_640x960.csv": "a91e55e6c0e9606ba9f19f4dad7fd75f3f642d2325cfa99d3261da81e7416759",
+            "layout/map/layout_area_640x960.csv": "910bb42dc2e8fdf9a280216f5c7421e23ed1f3a70e47848aa5ae31340f3da789"
+          }
+        }
+      ]
     },
     {
       "version": "1.4.1",
@@ -193,7 +222,36 @@
       "source": "https://appchive.net/apk/com.square_enix.android_googleplay.FFBEWW/ffexvius/37",
       "independent_hash_source": "https://mobile.softpedia.com/apk/final-fantasy-brave-exvius/1.4.1/",
       "runtime_observation": "Static analysis only; not executed.",
-      "layout_verified": false
+      "layout_verified": false,
+      "cpk_evidence": [
+        {
+          "path": "assets/cpk/common.cpk",
+          "sha256": "4bd19d356fe3b2c5348d5d031e60f73236177634e6a2e193e25e8b13f0d4fbff",
+          "entry_count": 148,
+          "asset_sha256": {
+            "image/ui/common/common.png": "42cbbac070490a660c98e02a740d8c420411e345a234dd6d00f35b892c0cb9ad",
+            "image/ui/common/common.plist": "27a62721884b31e030874f01beb35a2ae776698b57b9b4adb1c60bfe1d89feeb",
+            "image/ui/header/header.png": "7bffe5b629b63f2f219d3e0539a165d45611309d2aff323d23d279ba4d0031e3",
+            "image/ui/header/header.plist": "5b9ad95c84b7f8b68eb30d3abf2f63acead8035f542c684f12feeee480dfdbda",
+            "image/ui/footer/footer.png": "aa035528b4375c7ebe73f568798b3675cbee2f72c7a8945c77c764cd9e85fada",
+            "image/ui/footer/footer.plist": "53e3946530d814eee0c25586752faa68396fe568a5ea94e21464576d8f8d27bb"
+          },
+          "sprite_frame_counts": {
+            "image/ui/common/common.plist": 119,
+            "image/ui/header/header.plist": 8,
+            "image/ui/footer/footer.plist": 14
+          }
+        },
+        {
+          "path": "assets/cpk/common_lang/sd/resources/resources_common_tutorial.cpk",
+          "sha256": "c5c16acfe3eb82a1cf9beb62bcb96e236df49b39a5c6f9360098e7c32228532e",
+          "entry_count": 250,
+          "asset_sha256": {
+            "layout/map/layout_world_640x960.csv": "a91e55e6c0e9606ba9f19f4dad7fd75f3f642d2325cfa99d3261da81e7416759",
+            "layout/map/layout_area_640x960.csv": "910bb42dc2e8fdf9a280216f5c7421e23ed1f3a70e47848aa5ae31340f3da789"
+          }
+        }
+      ]
     },
     {
       "version": "2.0.0",
@@ -218,7 +276,18 @@
       "source": "https://appchive.net/apk/com.square_enix.android_googleplay.FFBEWW/ffexvius/200",
       "independent_hash_source": "https://mobile.softpedia.com/apk/final-fantasy-brave-exvius/2.0.0/",
       "runtime_observation": "Static analysis only; not executed.",
-      "layout_verified": false
+      "layout_verified": false,
+      "cpk_evidence": [
+        {
+          "path": "assets/cpk/common_lang/sd/resources/resources_common_tutorial.cpk",
+          "sha256": "74e1783c36c67a21835b1f3e3c736d96fe776b07a1d0b4fc7d6969e69e0651b9",
+          "entry_count": 292,
+          "asset_sha256": {
+            "layout/map/layout_world_640x960.csv": "ed963789a5ba100e0e6007e63b7f7e71cb2f921f8981b69518ed923eda445059",
+            "layout/map/layout_area_640x960.csv": "0c51be064a9744d969d0d1207928f6022f82e67b1efe403c4de525ed3ec1fc77"
+          }
+        }
+      ]
     }
   ]
 }

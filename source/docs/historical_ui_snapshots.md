@@ -109,6 +109,52 @@ has also been registered in the same index with a local image hash.
 Its screenshot shows a continuous list, not the final client's
 multi-tab Vortex. The image is a reference, not an activated renderer.
 
+## Verified embedded original UI resources (09 Nov 2026)
+
+Using the existing CriCodecs CPK reader on the signed client APKs,
+the **Global 1.2.0 and 1.4.1 common CPKs are byte-for-byte identical**.
+The 148-entry original common package contains genuine UI resources:
+
+- image/ui/common/common.png and its plist: 119 sprites
+- image/ui/header/header.png and its plist: 8 sprites
+- image/ui/footer/footer.png and its plist: 14 sprites, including
+  original Home, Units, Items, Shop, Summon and Friends buttons
+
+These atlases, their original SHA-256 values and the original CPK
+container hashes are indexed in the client_builds cpk_evidence field.
+A private copy of the 1.2.0 atlases was extracted under the local
+historical-apks/recovered-assets directory; none is tracked in Git.
+
+The embedded tutorial resource package also matches byte-for-byte
+between versions 1.2.0 and 1.4.1 (250 files). In the 2.0.0 APK,
+the former common.cpk is no longer bundled, and the tutorial resource
+package contains **292 files** with changed area/world layout CSVs.
+This is direct evidence of file/package changes, **not proof** that
+the missing early UI atlas is absent from the game's downloadable data.
+
+An independent asset check can be run with the already-used CPK
+decoder installed outside the repository:
+
+~~~bash
+PYTHONPATH="$HOME/.local/share/ffbe-android-test/historic-cpk-deps" \
+  "$HOME/.local/bin/python3.10" -B \
+  source/exvius/audit_historical_client_apks.py \
+  --directory "$HOME/.local/share/ffbe-android-test/historical-apks" \
+  --keytool "$HOME/.local/share/ffbe-android-test/java/jdk/bin/keytool" \
+  --verify-cpk
+~~~
+
+The auditor validates the original APK SHA-256, signing certificate,
+ELF symbols, CPK hashes, selected atlas/layout bytes and plist frame
+counts. Verification is optional so the basic auditor works without
+the external CriCodecs dependency.
+
+**Development constraint:** reuse these actual atlases to restore the
+pre-2.0 Home and menu components. Do not inject the older footer
+sprites into the final client's Home in isolation and mark the scene
+historically correct: geometry, navigation and unlocks still need
+source-backed versioned reconstruction and Android validation.
+
 ## Acceptance gate for an era/surface
 
 1. Obtain a dated **Global** capture, preferably a video and still images.
