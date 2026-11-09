@@ -390,6 +390,8 @@ export function installSummonMenu(module, note, retained, bridge, homeCarousel =
   retained.push(archiveAreas);
   const retainObject = fn('_ZN7cocos2d3Ref6retainEv', 'void', ['pointer']);
   const releaseObject = fn('_ZN7cocos2d3Ref7releaseEv', 'void', ['pointer']);
+  const removeAreaAt = fn('_ZN7cocos2d7__Array19removeObjectAtIndexElb',
+    'void', ['pointer', 'long', 'bool']);
   // Factory results own one Ref, as in the original response reader. Each
   // class reads C strings synchronously; finish it before releasing that Ref.
   const responseFactory = fn('_ZN19GameResponseFactory18createResponseDataEPKcb',
@@ -814,13 +816,44 @@ export function installSummonMenu(module, note, retained, bridge, homeCarousel =
       eventTabs.set(args[0].toString(), args[1].toInt32());
     }
   }));
+  const historicalListsSeen = new Set();
   retained.push(Interceptor.attach(module.getExportByName('_ZN9GateScene13setListLayoutEbiN7cocos2d4Vec2E'), {
     onEnter(args) {
       const scene = args[0], key = scene.toString();
-      // Historical GateUtil already supplies only approved 2016 AreaMst.
-      // Never replace its scene-owned native array on tab changes: this
-      // extra ownership mutation was unsafe when opening Enhance.
-      if (eventHistorical || (eventTabs.get(key) || 0) !== 0 || !eventAreas.size) return;
+      if (eventHistorical) {
+        // GateScene rebuilds the list for each tab from its own array. The
+        // initial GateUtil filter does NOT constrain these tab rebuilds.
+        // Prune that native-owned array in place through the Cocos API:
+        // never transfer ownership by swapping the scene's array pointer.
+        try {
+          const list = scene.add(0x658).readPointer();
+          if (list.isNull()) return;
+          const data = list.add(0x30).readPointer();
+          if (data.isNull()) return;
+          const count = data.readU32();
+          if (count > 10000) throw new Error('Invalid historical Vortex list');
+          const entries = data.add(0x10).readPointer(), remove = [];
+          for (let i = 0; i < count; i++) {
+            const area = entries.add(i * Process.pointerSize).readPointer();
+            if (area.isNull()) { remove.push(i); continue; }
+            const info = cast(area, refType, areaType, 0);
+            if (info.isNull()) throw new Error('Invalid historical AreaMst row');
+            if (!eventAreas.has(info.add(0x88).readS32())) remove.push(i);
+          }
+          // Remove backwards so each original index remains valid.
+          // Frida NativeFunction bool arguments require numeric 0/1.
+          for (let i = remove.length - 1; i >= 0; i--)
+            removeAreaAt(list, remove[i], 1);
+          if (remove.length || !historicalListsSeen.has(key))
+            note('LOCAL_HISTORIC_GATE_LIST allowed=' + (count - remove.length) +
+              ' removed=' + remove.length + ' tab=' + (eventTabs.get(key) || 0));
+          historicalListsSeen.add(key);
+        } catch (error) {
+          note('LOCAL_HISTORIC_GATE_LIST_ERROR ' + error.stack);
+        }
+        return;
+      }
+      if ((eventTabs.get(key) || 0) !== 0 || !eventAreas.size) return;
       try {
         restoreEventList(scene);
         const slot = scene.add(0x658), original = slot.readPointer();

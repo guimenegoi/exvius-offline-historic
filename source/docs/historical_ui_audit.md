@@ -5,6 +5,49 @@ Classificação: diagnóstico. **Nenhuma edição funcional nesta rodada.**
 Escopo: preview Global junho/julho 2016; branch feature/historical-progression.
 Estado: **NÃO AUDITADO COMO FIEL À UI DE 2016**. A build 9066 corrige só dois sintomas.
 
+## Revalidação experimental 9080 — mesma data
+
+Uma análise da chamada compilada no APK 9079 mostrou que a exceção
+Error: expected an integer partia de removeObjectAtIndex(long, bool).
+O primeiro experimento alterou apenas int64 para long no argumento do
+índice, mas continuou passando o booleano JavaScript true. O runtime
+Frida requer o valor numérico 1 para esse argumento bool nativo.
+
+Foi restaurada a implementação experimental guardada em stash e alterado
+**apenas esse literal**, com teste de regressão. A APK 9080 foi compilada
+com Python 3.10/Frida, assinada com o mesmo certificado e instalada por
+atualização no Waydroid, sem limpar o save de junho de 2016.
+
+**Resultados observados:** Home iniciou, o fallback GL9 carregou,
+GateScene selecionou quatro áreas históricas e removeu quinze entradas
+extras (LOCAL_HISTORIC_GATE_LIST allowed=4 removed=15 tab=0).
+O erro anterior não voltou após abrir o Vortex e alternar todas as cinco
+abas; o processo permaneceu em execução. Screenshots em
+source/build/historical-preview/waydroid-9080/ (ignorado pelo Git).
+
+**A UI continua NÃO APROVADA como snapshot histórico.** Na aba Enhance,
+as quatro áreas 216/224/225/226 são os IDs históricos das Chambers of
+Riches, Creation, Awakening e Experience, mas a tela exibe imagens
+posteriores, incluindo Cressnik — Unit Intro Quest, e cadeados modernos.
+O servidor associa a essas áreas os nomes
+global_spd_bn_list_00216.png / 00224 / 00225 / 00226,
+verificados anteriormente **apenas quanto à existência do arquivo**,
+não quanto à sua imagem ou autenticidade de 2016.
+
+Já existe o mecanismo de conteúdo original source/server/event_art.json,
+com os arquivos históricos previstos event_216.png etc, referências
+de 2016 e hashes; build_event_art.py é o conversor existente e
+push_client_cache.py já transporta overlays. Contudo, os arquivos
+referenciados em data/state/backups/originals/events/ e
+data/overlay/en/sd/area/ não estão no checkout atual. A URL de origem
+da wiki devolveu HTTP 403 durante esta auditoria. **Não inventar nem
+substituir por outro banner moderno.** Primeiro recuperar e conferir os
+bytes de origem, depois validar a correspondência entre IDs, imagens,
+abas, cadeados e condições de acesso do cliente.
+
+A correção da **ABI do filtro** pode ser consolidada isoladamente;
+a camada visual permanece bloqueada até validação real dos assets.
+
 ## Bloqueio reproduzido no Waydroid — 09/11/2026
 
 Esta anotação atualiza o diagnóstico anterior, sem certificar fidelidade visual.

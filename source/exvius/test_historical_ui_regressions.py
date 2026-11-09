@@ -118,7 +118,11 @@ class HistoricalVortexUi(TestCase):
     def test_native_archive_rejects_empty_era_fallback_and_tab_mutation(self):
         js = (ROOT / 'source/exvius/summon_menu.js').read_text()
         self.assertIn('(!eventHistorical && !eventAreas.size)', js)
-        self.assertIn('if (eventHistorical ||', js)
+        self.assertIn('if (eventHistorical) {', js)
+        self.assertIn("'void', ['pointer', 'long', 'bool']", js)
+        # Frida requires a numeric native bool; passing JS true throws.
+        self.assertIn('removeAreaAt(list, remove[i], 1)', js)
+        self.assertIn('LOCAL_HISTORIC_GATE_LIST allowed=', js)
         self.assertIn('historical_preview === true', js)
 
     def test_late_survival_mode_does_not_add_2016_event_tiles(self):
