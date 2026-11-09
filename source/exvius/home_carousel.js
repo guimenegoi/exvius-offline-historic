@@ -1,8 +1,13 @@
 // Restore the original Home carousel, including visible locked entries.
 'use strict';
-export function homeMenuState(esperCount, expeditionFlag) {
+export function homeMenuState(esperCount, expeditionFlag, historicalFeatures = null) {
+  // The server already evaluated the historical month. Never maintain a
+  // second date table in native code or infer unlocks from the 2024 master.
+  const expeditionIntroduced = historicalFeatures === null ||
+    historicalFeatures.expedition === true;
   return {espers: {visible: true, open: esperCount > 0},
-    expedition: {visible: expeditionFlag !== 0, open: expeditionFlag === 2}};
+    expedition: {visible: expeditionIntroduced && expeditionFlag !== 0,
+      open: expeditionIntroduced && expeditionFlag === 2}};
 }
 export function carouselItems(position, count, width) {
   return Array.from({length: count}, (_, index) => {
@@ -478,7 +483,9 @@ export function installHomeCarousel(module, note, retained) {
       }
       if (card.bg) visible(card.bg.node, 0);
     }
-    const state = homeMenuState(beasts().add(0x30).readPointer().readS32(), expeditionFlag(expeditionManager()));
+    const historicalFeatures = globalThis.__EXVIUS_HISTORICAL_FEATURES__ || null;
+    const state = homeMenuState(beasts().add(0x30).readPointer().readS32(),
+      expeditionFlag(expeditionManager()), historicalFeatures);
     ui.cards[0].open = !!arenaOpen(ui.scene);
     ui.cards[1].open = true;
     ui.cards[2].open = state.expedition.open;
@@ -486,7 +493,8 @@ export function installHomeCarousel(module, note, retained) {
     ui.cards[4].open = state.espers.open;
     ui.cards[5].open = true;
     // The original Home touch handler checks event availability on entry.
-    ui.cards[6].open = true;
+    ui.cards[6].open = historicalFeatures === null ||
+      historicalFeatures.equipment_enhancement === true;
     const carousel = [0, 1, 5, 2, 3, 4].map(i => ui.cards[i])
       .filter(c => c.name !== 'Expedition' || state.expedition.visible);
     if (!ui.carousel || carousel.length !== ui.carousel.length) {
@@ -515,8 +523,9 @@ export function installHomeCarousel(module, note, retained) {
     const equipment = ui.cards[6];
     const equipmentX = 72 * w / 640;
     const equipmentY = 250;
-    centred(equipment.art.node, equipmentX, equipmentY, 1, 1, 255);
-    equipment.box = {x: equipmentX, y: equipmentY, w: 116, h: 92};
+    centred(equipment.art.node, equipmentX, equipmentY, 1, 1, 255,
+      equipment.open);
+    equipment.box = equipment.open ? {x: equipmentX, y: equipmentY, w: 116, h: 92} : null;
     // setOrbNumLabel owns BitmapLabelEx at +0x40 with ANCHOR_TOP_LEFT.
     // Reuse its live count at layout_home_equip_grow's authored label point.
     const equipmentOrbs = equipment.owner.add(0x40).readPointer();
@@ -528,7 +537,7 @@ export function installHomeCarousel(module, note, retained) {
         ui.orbStyle = key;
       }
       orbPosition(equipmentOrbs, equipmentX + 14, equipmentY - 24);
-      orbVisible(equipmentOrbs, 1);
+      orbVisible(equipmentOrbs, equipment.open ? 1 : 0);
     }
   }
   // Movement updates only the carousel. Ownership, feature gates and

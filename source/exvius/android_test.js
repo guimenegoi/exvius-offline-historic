@@ -391,23 +391,28 @@ rpc.exports = {
         // the normal party, lock and sacrifice-table eligibility rules.
         const materialEligibility = module.getExportByName(
           '_ZN16UnitClassupUtils25isEnableTransformMaterialEiP12UserUnitInfo');
-        if (materialEligibility.add(0x90).readU32() === 0x97e55943) {
-          retained.push(Interceptor.attach(module.getExportByName(
-            '_ZN15FunctionMstList7isValidENSt6__ndk112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEE'), {
-            onEnter(args) {
-              const key = text(args[1]);
-              this.hidePanel = key === 'FUNCTION_PANEL_QUEST';
-              this.localClassUp = this.returnAddress.equals(materialEligibility.add(0x94)) &&
-                key === 'FUNCTION_SP_CLASSUP';
-            },
-            onLeave(result) {
-              // The 2021 rookie quest board must not open in the 2016 preview.
-              if (this.hidePanel && globalThis.__EXVIUS_HISTORICAL_PREVIEW__ === true)
-                result.replace(0);
-              else if (this.localClassUp) result.replace(1);
-            },
-          }));
-        }
+        const nativeGate = module.findExportByName(
+          '_ZN15FunctionMstList7isValidENSt6__ndk112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEE');
+        if (nativeGate) retained.push(Interceptor.attach(nativeGate, {
+          onEnter(args) {
+            const key = text(args[1]);
+            const featureKeys = {
+              FUNCTION_PANEL_QUEST: 'panel_quest',
+              FUNCTION_REEL_EXPEDITION: 'expedition'
+            };
+            this.historicalFeature = featureKeys[key];
+            this.localClassUp = materialEligibility.add(0x90).readU32() === 0x97e55943 &&
+              this.returnAddress.equals(materialEligibility.add(0x94)) &&
+              key === 'FUNCTION_SP_CLASSUP';
+          },
+          onLeave(result) {
+            const features = globalThis.__EXVIUS_HISTORICAL_FEATURES__;
+            if (globalThis.__EXVIUS_HISTORICAL_PREVIEW__ === true &&
+                this.historicalFeature && features?.[this.historicalFeature] !== true)
+              result.replace(0);
+            else if (this.localClassUp) result.replace(1);
+          },
+        }));
         const sacrificeMaster = new NativeFunction(module.getExportByName('_ZN16SacrificeMstList6sharedEv'), 'pointer', []);
         // Use the pinned class's parser with an explicit path to the installed table.
         const sacrificeVtable = module.getExportByName('_ZTV16SacrificeMstList').add(0x10);

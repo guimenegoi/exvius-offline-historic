@@ -931,6 +931,11 @@ def serve_login_bonus(spec, reply_id):
     """
     if reply_id != "vw9RP3i4" or State.player is None or not isinstance(spec, dict):
         return spec
+    from historical_progression import feature_available
+    if not feature_available("modern_login_calendar", State.player.data):
+        # The existing calendar begins in 2017; the fallback is June 2021.
+        # Keep the wire envelope, but never serve or issue a future reward.
+        return dict(spec, f5bA4wFx=[], DM63p52N=[])
     month, why = _login_bonus_month()
     entry = login_calendar().get(month) or {}
     days = entry.get("days") or {}
@@ -1020,6 +1025,9 @@ def deliver_login_mail(spec, reply_id):
     """
     if reply_id != "vw9RP3i4" or State.player is None or not isinstance(spec, dict):
         return spec
+    from historical_progression import feature_available
+    if not feature_available("modern_login_calendar", State.player.data):
+        return spec
     items = spec.get("f5bA4wFx")
     if not isinstance(items, list):
         return spec
@@ -1079,6 +1087,9 @@ def deliver_anniversary_ticket(spec, reply_id):
     if (not ANNIVERSARY_TICKET or reply_id not in ANNIVERSARY_TICKET_CARRIER.split(",")
             or State.player is None or not isinstance(spec, dict)):
         return spec
+    from historical_progression import feature_available
+    if not feature_available("anniversary_ticket", State.player.data):
+        return spec
     day = time.strftime("%Y%m%d")
     if not day.isdigit():
         return spec
@@ -1128,6 +1139,9 @@ def _catchup_plan() -> dict:
     only resolves it against the shipped catalogue. A campaign id that does not exist is REPORTED and
     dropped, never replaced with an invented one -- the season rule is that a season names ids that resolve.
     """
+    from historical_progression import feature_available
+    if State.player is not None and not feature_available("catchup_rewards", State.player.data):
+        return {}
     season = getattr(st, "SEASON", None)
     if season is None or not season.catchup_on:
         return {}
@@ -2442,6 +2456,13 @@ def serve_panel_quest(spec, reply_id):
     """
     if reply_id != PANEL_QUEST_REQUEST or State.player is None:
         return spec
+    from historical_progression import feature_available
+    if not feature_available("panel_quest", State.player.data):
+        return dict(_as_spec(spec), **{
+            PANEL_QUEST_SCHEDULE_TAG: [],
+            PANEL_QUEST_STATUS_TAG: [],
+            PANEL_QUEST_INFO_TAG: [],
+        })
     # `spec` is None here, and that is NORMAL, not a bug: this request has no `responses.json` entry, so the
     # dispatcher never built a payload for it and `reply_pipeline` is handed None. A transform that ADDS groups
     # must therefore create the dict rather than require one -- and the request/API map says so in advance:
@@ -2727,6 +2748,14 @@ def serve_sp_challenge(spec, reply_id):
     """
     if reply_id != SP_CHALLENGE_REQUEST or State.player is None:
         return spec
+    from historical_progression import feature_available
+    if not feature_available("sp_challenge", State.player.data):
+        return dict(_as_spec(spec), **{
+            SP_CHALLENGE_SCHEDULE_TAG: [],
+            SP_CHALLENGE_STATUS_TAG: [],
+            SP_CHALLENGE_INFO_TAG: [],
+            SP_CHALLENGE_TICKER_TAG: [],
+        })
     spec = _as_spec(spec)
     picked = sp_challenge_picked()
     if not picked:

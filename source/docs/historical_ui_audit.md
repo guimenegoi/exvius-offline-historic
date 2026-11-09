@@ -101,3 +101,25 @@ de novembro de 2021 não prova que o sistema começou naquele ano.
 **Decisão:** bloquear nova rodada de patches isolados de UI até fechar
 a matriz por feature e definir a integração central. O APK 9066 é prova
 de runtime básico, não prova de fidelidade histórica.
+
+## Implementação inicial da política (iteraçao 1)
+
+O mapa inicial foi incorporado ao módulo preexistente
+`source/server/historical_progression.py`: `FEATURE_INTRODUCED`,
+`historical_features` e `feature_available`. Entradas sem data provada
+recebem `None` e são recusadas na prévia; saves sem histórico seguem
+intocados. O `offline_menu.status` envia a mesma projeção à interface,
+que consome os indicadores em `title_menu.js`, `home_carousel.js` e
+`android_test.js`, sem recalcular datas no JavaScript.
+
+Cobertura inicial: Expedition (UI, recurso nativo, transações), Panel Quest
+(recurso nativo, tela e requests de claim), botão de Equipment Enhancement
+na Home, calendário de login 2021, 8º aniversário, catch-up e SP Challenge.
+É bloqueio conservador da **prévia**, não supressão de funcionalidades
+historicamente comprovadas do jogo original. Datas de sistemas futuros ainda
+não auditados não são "estimadas" com base no catálogo final.
+
+**Pendente antes de entregar uma nova build:** recuperar o Colosseum original
+como modo da Home no lançamento, ajustar Arena de 2016-11, auditar as quests
+diárias originais e o resto das recompensas/loja, e validar a aparência no
+Android. A política não torna toda a UI fiel nem torna todas as rotas seguras.

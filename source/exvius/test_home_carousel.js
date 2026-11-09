@@ -11,6 +11,13 @@ const path = require('node:path');
     'Retail Expedition flag 1 means visible but locked');
   assert.deepEqual(homeMenuState(1, 2), {espers: {visible: true, open: true}, expedition: {visible: true, open: true}},
     'Owning the first Esper and the open Expedition flag enable their entries');
+  const preview = {expedition: false, equipment_enhancement: false};
+  assert.deepEqual(homeMenuState(0, 2, preview).expedition,
+    {visible: false, open: false},
+    '2016 policy hides Expedition even if the final client reports it open');
+  assert.deepEqual(homeMenuState(0, 2, {expedition: true}).expedition,
+    {visible: true, open: true},
+    'After introduction, normal native Expedition story/unlock rules remain');
   const initial = carouselItems(1, 3, 640);
   assert.equal(initial[1].x, 320, 'World starts centred');
   assert.equal(initial[1].scale, 1);

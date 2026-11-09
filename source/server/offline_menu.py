@@ -12,12 +12,15 @@ STATE_LOCK = threading.RLock()
 def status(state, state_file):
     player = state.player
     meta = (player.data.get('meta') or {}) if player else {}
+    from historical_progression import historical_features
+    features = historical_features(player.data) if player else None
     return {
         'has_save': Path(state_file).is_file() and player is not None,
         'name': player.data['identity']['handle_name'] if player else '',
         'rank': player.data['rank']['level'] if player else 1,
         'historical_month': meta.get('historical_month'),
         'historical_preview': bool(meta.get('historical_preview')),
+        'historical_features': features,
         'latest_preview_month': '2016-07',
     }
 

@@ -84,6 +84,49 @@ def is_released(release: str | None, month: str) -> bool:
     return released <= cutoff
 
 
+# First Global availability for systems, not the final client's F_FUNCTION_MST flags.
+# Sources refer to the Global release (not Japanese version) and are retained
+# here for every introduced date. None = no audited launch date; fail closed.
+FEATURE_INTRODUCED = {
+    "world": ("2016-06", "https://www.mobygames.com/game/79645/final-fantasy-brave-exvius/screenshots/"),
+    "vortex": ("2016-06", "https://www.mobygames.com/game/79645/final-fantasy-brave-exvius/screenshots/"),
+    "craft": ("2016-06", "https://www.mobygames.com/game/79645/final-fantasy-brave-exvius/screenshots/"),
+    "espers": ("2016-06", "https://www.mobygames.com/game/79645/final-fantasy-brave-exvius/screenshots/"),
+    "colosseum": ("2016-06", "https://finalfantasy.fandom.com/wiki/Colosseum_(Brave_Exvius)"),
+    "arena": ("2016-11", "https://exvius.fandom.com/wiki/News/Archives/2016_-_2021"),
+    "ability_awakening": ("2016-09", "https://exvius.fandom.com/wiki/Update_Schedule"),
+    "expedition": ("2017-06", "https://exvius.fandom.com/wiki/News/Archives/2016_-_2021"),
+    # Unlike unit awakening (launch-era), these systems have no approved
+    # Global intro date in this audit. Do not infer dates from the 2024 MST.
+    "equipment_enhancement": (None, None),
+    "panel_quest": (None, None),
+    "sp_challenge": (None, None),
+    "modern_login_calendar": (None, None),
+    "anniversary_ticket": (None, None),
+    "catchup_rewards": (None, None),
+}
+
+
+def historical_features(player_data: dict) -> dict[str, bool] | None:
+    """One server-authoritative feature projection for a historical save.
+
+    Unmarked legacy saves return None and retain upstream behavior.
+    Historical saves validate the marker before deriving any permissions.
+    A missing/uncorroborated Global release is never enabled implicitly.
+    """
+    if not (player_data.get("meta") or {}).get("historical_preview"):
+        return None
+    month = current_month(player_data)
+    return {key: is_released(introduced, month) for key, (introduced, _source) in
+            FEATURE_INTRODUCED.items()}
+
+
+def feature_available(feature: str, player_data: dict) -> bool:
+    """Use the same period policy in server routes and native UI status."""
+    features = historical_features(player_data)
+    return features is None or features.get(feature, False)
+
+
 def available_banners(banners: list[dict], month: str) -> list[dict]:
     """Exclude undated and future campaigns; permanent banners need a separately audited allowlist."""
     month_cutoff(month)

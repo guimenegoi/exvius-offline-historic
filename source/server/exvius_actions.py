@@ -389,6 +389,18 @@ def serve_actions(spec, reply_id, plaintext):
         spec = notice_state(spec, _request(plaintext), reply_id)
     if handler is None:
         return project(spec)
+    from historical_progression import feature_available
+    if not feature_available("expedition", State.player.data) and str(reply_id) in {
+            "hW0804Q9", "Ik142Ff6", "2pe3Xa8b", "r4A791RF",
+            "vTgYyHM6", "I8uq68c3", "0Fb87D0F"}:
+        # This check runs before expedition_start, refresh, finish and claims,
+        # so no historical 2016 save can be charged by a direct API call.
+        _note("historical expedition: request refused before any mutation")
+        return project({})
+    if not feature_available("panel_quest", State.player.data) and str(reply_id) in {
+            "AOY6npa3", "egJpaGtk"}:
+        _note("historical panel quests: action refused before any mutation")
+        return project({})
     req = _request(plaintext)
     if req is None:
         return project(spec)

@@ -53,6 +53,8 @@ export function installTitleMenu(module, note, retained, bridge) {
   try {
     const current = JSON.parse(bridge('titleAction', '(Ljava/lang/String;)Ljava/lang/String;', ['status']));
     globalThis.__EXVIUS_HISTORICAL_PREVIEW__ = Boolean(current.has_save && current.historical_preview);
+    globalThis.__EXVIUS_HISTORICAL_FEATURES__ = current.historical_preview ?
+      (current.historical_features || {}) : null;
     if (current.has_save && current.historical_preview)
       periodLabel = current.historical_month === '2016-06' ? 'Unlock Jul 2016' : 'History: Jul 2016';
     else if (current.has_save) periodLabel = 'Reset to Historic';
@@ -103,6 +105,8 @@ export function installTitleMenu(module, note, retained, bridge) {
         try {
           const updated = JSON.parse(bridge('titleAction', '(Ljava/lang/String;)Ljava/lang/String;', ['next']));
           globalThis.__EXVIUS_HISTORICAL_PREVIEW__ = Boolean(updated.historical_preview);
+          globalThis.__EXVIUS_HISTORICAL_FEATURES__ = updated.historical_preview ?
+            (updated.historical_features || {}) : null;
           note('LOCAL_TITLE_HISTORIC_NEXT');
         } catch (error) {
           // The save is unchanged. Keep the original Info press rather than start it.
