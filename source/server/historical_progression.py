@@ -93,6 +93,11 @@ FEATURE_INTRODUCED = {
     "craft": ("2016-06", "https://www.mobygames.com/game/79645/final-fantasy-brave-exvius/screenshots/"),
     "espers": ("2016-06", "https://www.mobygames.com/game/79645/final-fantasy-brave-exvius/screenshots/"),
     "colosseum": ("2016-06", "https://finalfantasy.fandom.com/wiki/Colosseum_(Brave_Exvius)"),
+    "colosseum_beginner": ("2016-06", "https://exvius.fandom.com/wiki/Colosseum"),
+    # Earliest directly attested Global completion (July 9), not a proved
+    # launch date. Fail closed in June pending contemporary launch evidence.
+    "colosseum_intermediate": ("2016-07", "https://www.neogaf.com/threads/final-fantasy-brave-exvius-ot-classic-sprite-based-jrpg-goodness-up-global-launch.1219944/page-89"),
+    "colosseum_advanced": ("2016-09", "https://exvius.fandom.com/wiki/News/Archives/2016_-_2021"),
     "arena": ("2016-11", "https://exvius.fandom.com/wiki/News/Archives/2016_-_2021"),
     "ability_awakening": ("2016-09", "https://exvius.fandom.com/wiki/Update_Schedule"),
     "expedition": ("2017-06", "https://exvius.fandom.com/wiki/News/Archives/2016_-_2021"),
@@ -125,6 +130,19 @@ def feature_available(feature: str, player_data: dict) -> bool:
     """Use the same period policy in server routes and native UI status."""
     features = historical_features(player_data)
     return features is None or features.get(feature, False)
+
+
+def historical_colosseum_orb_cap(player_data: dict) -> int | None:
+    """Global launch cap 3; Arena debut in November 2016 raised it to 5.
+
+    Returns None for unmarked saves, retaining upstream's runtime cap.
+    This is the last sourced historical cap; a later rise to ten is not
+    presumed without a separate dated Global announcement.
+    """
+    if not (player_data.get("meta") or {}).get("historical_preview"):
+        return None
+    month = current_month(player_data)
+    return 5 if is_released("2016-11-10", month) else 3
 
 
 def available_banners(banners: list[dict], month: str) -> list[dict]:

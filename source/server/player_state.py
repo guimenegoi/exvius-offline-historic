@@ -2861,6 +2861,12 @@ class PlayerState:
         # generates while actionPoint < actionPointMax).
         for lv in gained:
             rank["nrg"] += nrg_cap(lv)
+        if gained and (self.data.get("meta") or {}).get("historical_preview"):
+            # Original Colosseum orbs refill on a player rank-up. Keep this
+            # additional mutation historical-only: regular saves retain the
+            # upstream rank/energy behaviour.
+            self.data.setdefault("orbs", {})["clsm"] = {
+                "point": self.orb_capacity("clsm"), "anchor_utc": _now_iso()}
         if gained:
             # RECORD the rank-up, because the DAILY QUEST's completion popup is a TEAM-LEVEL-UP popup and it
             # reads the before/after through `tzCNMJ87` -> `DailyQuestInfo::parseTeamLvInfo` (`0x1d977ec`,
@@ -4543,6 +4549,16 @@ class PlayerState:
         self.dirty = True
         return settled
 
+    def orb_capacity(self, family: str) -> int:
+        """Capacity as derived from the current save, without changing the default."""
+        cap = int(ORB_FAMILIES[family]["cap"])
+        if family == "clsm":
+            from historical_progression import historical_colosseum_orb_cap
+            historical = historical_colosseum_orb_cap(self.data)
+            if historical is not None:
+                return historical
+        return cap
+
     def orb_view(self, family: str, now: float | None = None) -> tuple:
         """One orb family's current `(point, max, restTime)` at projection time (APP-34).
 
@@ -4560,7 +4576,7 @@ class PlayerState:
         """
         spec = ORB_FAMILIES[family]
         row = (self.data.get("orbs") or {}).get(family) or {}
-        cap, period = int(spec["cap"]), max(1, int(spec["recover_time"]))
+        cap, period = self.orb_capacity(family), max(1, int(spec["recover_time"]))
         try:
             point = max(0, int(row.get("point") or 0))
         except (TypeError, ValueError):
@@ -4627,12 +4643,12 @@ class PlayerState:
         if not self.spend_lapis(price):
             print(f"    orb recharge refused: shop {shop_id!r} costs {price} lapis > held {held}", flush=True)
             return None
-        spec = ORB_FAMILIES[family]
-        self.data.setdefault("orbs", {})[family] = {"point": int(spec["cap"]), "anchor_utc": _now_iso()}
+        cap = self.orb_capacity(family)
+        self.data.setdefault("orbs", {})[family] = {"point": cap, "anchor_utc": _now_iso()}
         self.dirty = True
         print(f"    orb recharge: shop {shop_id} ({row.get(SHOP_NAME_TOKEN)}) -> {family} at cap "
-              f"{spec['cap']}, spent {price} lapis", flush=True)
-        return {"shop_id": str(shop_id), "family": family, "point": int(spec["cap"]), "price": price,
+              f"{cap}, spent {price} lapis", flush=True)
+        return {"shop_id": str(shop_id), "family": family, "point": cap, "price": price,
                 "name": str(row.get(SHOP_NAME_TOKEN) or "")}
 
     def apply_shop_use(self, spec, reply_id=None, plaintext=None):

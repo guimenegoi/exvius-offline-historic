@@ -112,7 +112,37 @@ def project(spec):
 def entry(spec, req):
     if State.player is None:
         return spec
-    return _reply(spec, _state())
+    model = _state()
+    # A player may have completed the last available grade in an earlier
+    # month. When the timeline advances, expose the newly released grade on
+    # entry without charging an extra orb or granting a duplicate boss prize.
+    if (State.player.mode != "frozen" and
+            (State.player.data.get("meta") or {}).get("historical_preview") and
+            _unlock_following(model, State.player)):
+        _save(model)
+    return _reply(spec, model)
+
+
+def _unlock_following(model, player, source=None):
+    """Progress only to a sourced, released and encounter-backed next round."""
+    current = model["highest"]
+    if int((model["rounds"].get(current) or {}).get("boss_wins", 0)) < 1:
+        return False
+    masters = _mst("F_CLSM_PROGRESS_MST.ndjson", "i5pd8xr3")
+    source = source or masters.get(current) or {}
+    following = source.get("ewPqs8h6")
+    next_source = masters.get(following)
+    next_grade = {"1": "colosseum_beginner", "2": "colosseum_intermediate",
+                  "3": "colosseum_advanced"}.get(str((next_source or {}).get("3JuUWi4x")))
+    from historical_progression import feature_available
+    if (next_source is None or next_grade is None or
+            not feature_available(next_grade, player.data) or
+            not _available(following) or following in model["unlocked"]):
+        return False
+    model["unlocked"].append(following)
+    model["highest"] = following
+    _progress(model, following)
+    return True
 
 
 def _reply(spec, model, battle=None, encounter=None):
@@ -140,6 +170,11 @@ def _run(spec, req, action):
         if progress not in model['unlocked']:
             raise ValueError('Colosseum round is not unlocked')
         source, round_row = _masters(progress)
+        from historical_progression import feature_available
+        grade = {"1": "colosseum_beginner", "2": "colosseum_intermediate",
+                 "3": "colosseum_advanced"}.get(str(source.get("3JuUWi4x")))
+        if not grade or not feature_available(grade, player.data):
+            raise ValueError("Colosseum grade has not been released in this Global period")
         saved = _progress(model, progress)
         active = model.get('active')
         if action == 'lottery':
@@ -215,12 +250,7 @@ def _run(spec, req, action):
             if player._grant_items(rewards) != rewards:
                 raise ValueError('Colosseum reward was not granted completely')
             saved['boss_wins'] += 1
-            following = source.get('ewPqs8h6')
-            if (following in _mst('F_CLSM_PROGRESS_MST.ndjson', 'i5pd8xr3') and
-                    _available(following) and following not in model['unlocked']):
-                model['unlocked'].append(following)
-                model['highest'] = following
-                _progress(model, following)
+            _unlock_following(model, player, source)
         saved['selection'] = None
         model['active'] = None
         model['last_battle'] = active

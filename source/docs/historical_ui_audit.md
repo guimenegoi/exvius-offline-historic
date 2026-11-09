@@ -176,3 +176,66 @@ completos da economia, dos rounds e das batalhas do Colosseum.
 Colosseum e a equivalência exata entre a navegação visual de 2016
 e a tela nativa final. Antes de afirmar fidelidade, validar em aparelho
 real; não alterar os dados do usuário nem forçar reinstalação.
+
+## Colosseum: orbs, dificuldades e prêmios (iteraçao 3)
+
+### Evidência Global de 2016
+
+- [Anúncio Global da Arena, 10/11/2016](https://exvius.fandom.com/wiki/News/Archives/2016_-_2021):
+  quando Arena substituiu a entrada Colosseum, a capacidade compartilhada
+  aumentou de **3 para 5 orbs**. Os orbs recuperam **1 por hora**
+  (corroborado também pela [documentação Colosseum](https://exvius.fandom.com/wiki/Colosseum)).
+- [Relato Global em 09/07/2016](https://www.neogaf.com/threads/final-fantasy-brave-exvius-ot-classic-sprite-based-jrpg-goodness-up-global-launch.1219944/page-89):
+  jogador já havia completado **Intermediate S-5**. Essa é a
+  *primeira evidência contemporânea encontrada*, **não** a data comprovada
+  de implantação do Intermediate. Na prévia junho segue bloqueado por cautela,
+  julho habilita depois da conclusão de Beginner.
+- [Anúncio Global da dificuldade ADV, 29/09/2016](https://exvius.fandom.com/wiki/News/Archives/2016_-_2021):
+  Advanced passa a existir em setembro; não pode ser desbloqueada em junho/julho.
+
+### Auditado contra os masters originais do cliente final
+
+Lidas por HTTP Range com verificação CRC (sem baixar o pacote de 1,2 GB):
+`data/mst_decoded/F_CLSM_PROGRESS_MST.ndjson` e
+`data/mst_decoded/F_CLSM_ROUND_MST.ndjson` do pacote original
+`data-001` referenciado em `data/latest.json`. São arquivos
+**ignorados pelo Git**, não incluídos no commit.
+
+- 75 rounds no total: 25 Beginner (grade 1), 25 Intermediate (grade 2),
+  25 Advanced (grade 3); cada grade tem D/C/B/A/S, 5 rounds por rank.
+- Transições: `10505 -> 20101` (Beginner -> Intermediate) e
+  `20505 -> 30101` (Intermediate -> Advanced).
+- Primeiro round `10101`: uma orb por batalha, chefe após 1.000 pontos,
+  recompensa inédita `50:1:100` (100 Lapis) e recompensa repetível
+  `20:101000100:1:100` (item comum).
+- Todos os 75 registros têm as duas recompensas e um master de progressão.
+  Os tipos variam (item 20, equipamento 21, materia 22, Lapis 50,
+  receita 60). O servidor já valida se cada prêmio pode ser projetado no
+  inventário; prêmio desconhecido recusa a transação com rollback.
+
+### Implementação
+
+`historical_progression.historical_colosseum_orb_cap` estabelece 3 orbs
+entre junho e outubro/2016, 5 de novembro/2016 em diante (até que haja fonte
+para outra mudança); saves não históricos retêm capacidade 10 do upstream.
+A capacidade é derivada pelo `PlayerState.orb_capacity` e consumida pelo
+`orb_view`, gasto, recarga por Lapis e reposição ao subir rank — sem criar
+um segundo saldo nem alterar os outros três tipos de orb.
+
+`exvius_colosseum._run` recusa acesso direto a grades não lançadas, antes
+do gasto. Um boss vencido não desbloqueia uma grade futura antecipadamente.
+Ao avançar o mês, `entry` libera a próxima grade se o último chefe
+anterior já havia sido vencido; isso não reexecuta o prêmio nem consome
+outra orb. Saves comuns mantêm sua navegação padrão.
+
+### Pendências
+
+- Confirmar a data **exata** em que Intermediate entrou no Global. Julho é
+  um marco documental conservador, sujeito a correção.
+- Identificar o anúncio posterior que elevou a capacidade de 5 para 10.
+  Não antecipar 10 enquanto não houver uma data Global comprovada.
+- Validar renderização das três orbs e os botões de ranks no Android
+  físico. A suíte completa `test_actions_arena.py` requer outras tabelas
+  mestres, não disponíveis no checkout atual. Os testes isolados de
+  débito, recuperação, crédito e rollback já não dependem delas.
+- Esta implementação ainda NÃO está no APK instalado 9066.
