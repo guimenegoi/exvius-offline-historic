@@ -29,5 +29,38 @@
     "Monthly preview resolution: day-specific introductions will require a finer-grained calendar when supported"
   ],
   "premium_bundles": [],
-  "unlock_policy": "available_from_only_permanent"
+  "unlock_policy": "available_from_only_permanent",
+  "premium_bundle_candidates": [
+    {
+      "candidate_key": "gl-2016-launch-early-bird",
+      "name": "Early Bird Bundle",
+      "region": "GL",
+      "available_from": "2016-06-30",
+      "original_currency": "USD",
+      "original_price": "3.99",
+      "purchase_limit": "once",
+      "original_offer_id": null,
+      "contents": null,
+      "artwork": null,
+      "status": "candidate_not_purchasable",
+      "source": "https://digitalchumps.com/2016/06/30/final-fantasy-brave-exvius-now-available-for-mobile/",
+      "corroboration": "https://gamingcypher.com/final-fantasy-brave-exvius-now-available-for-mobile-devices/",
+      "audit_note": "Contemporaneous launch releases confirm the name, original cash price and one-time nature, but do not identify in-client shop ID, exact items/counts or artwork."
+    },
+    {
+      "candidate_key": "gl-2016-12-holiday-seasonal",
+      "name": "Holiday Seasonal Bundles",
+      "region": "GL",
+      "available_from": "2016-12-21",
+      "original_currency": null,
+      "original_price": null,
+      "purchase_limit": null,
+      "original_offer_id": null,
+      "contents": null,
+      "artwork": null,
+      "status": "candidate_not_purchasable",
+      "source": "https://exvius.fandom.com/wiki/News/Archives/2016_-_2021",
+      "audit_note": "Global archived news records the Holiday Seasonal Bundles announcement on Dec 21 2016; specific bundle identities, purchase prices and contents remain unverified."
+    }
+  ]
 }

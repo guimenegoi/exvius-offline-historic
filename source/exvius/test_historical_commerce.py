@@ -49,6 +49,28 @@ class HistoricalCommerceTests(TestCase):
             self.assertNotIn("expires", row)
             self.assertNotIn("end_date", row)
 
+    def test_launch_cash_shop_evidence_is_not_an_unverified_purchase(self):
+        catalogue = historical_commerce_catalogue()
+        candidates = catalogue["premium_bundle_candidates"]
+        self.assertEqual(len(candidates), 2)
+        self.assertEqual(candidates[0]["name"], "Early Bird Bundle")
+        self.assertEqual(candidates[0]["available_from"], "2016-06-30")
+        self.assertEqual(candidates[0]["original_price"], "3.99")
+        self.assertEqual(candidates[0]["purchase_limit"], "once")
+        for candidate in candidates:
+            self.assertEqual(candidate["region"], "GL")
+            self.assertEqual(candidate["status"], "candidate_not_purchasable")
+            self.assertTrue(candidate["source"].startswith("https://"))
+            self.assertIsNone(candidate["original_offer_id"])
+            self.assertIsNone(candidate["contents"])
+            self.assertIsNone(candidate["artwork"])
+            # Candidate keys are audit-only and must never accidentally match
+            # the original numeric offer IDs used in the native Shop.
+            self.assertNotIn("id", candidate)
+        for month in ("2016-06", "2016-12", "2024-10"):
+            self.assertEqual(historical_premium_bundle_ids(preview(month)), set())
+        self.assertEqual(catalogue["premium_bundles"], [])
+
     def test_premium_bundles_only_unlock_forward_and_never_expire(self):
         catalogue = {"schema": 1, "region": "GL", "premium_bundles": [
             BUNDLE,

@@ -69,6 +69,14 @@ note as the latest status.
   together on Android. Historical UI replicas are not required.
   Preserve saves and normal offline behavior.
 
+## Detailed content coverage audit
+
+See [the historical content audit](historical_content_audit.md) for the
+2026-11-09 Global-vs-JP source provenance review, exact coverage gaps,
+launch Early Bird/holiday Premium Shop research, and the separate
+Colosseum/Arena visual-layer cleanup gate. Research candidates do not
+authorize purchases, grants or save changes.
+
 ## Player experience
 
 - Start at the Global launch month (June 2016, through June 30).
