@@ -56,6 +56,22 @@ class HistoricalSummonUi(TestCase):
             self.assertIsInstance(standard, list)
 
 
+class HistoricHomeNative(TestCase):
+    def test_vision_card_ornament_guard_uses_server_feature(self):
+        js = (ROOT / 'source/exvius/home_carousel.js').read_text()
+        self.assertIn("'_ZN9HomeScene21setOrnamentVisionCard", js)
+        self.assertIn("'_ZN9HomeScene25setNoneOrnamentVisionCard", js)
+        self.assertIn("features && features.vision_cards !== true", js)
+        self.assertIn("Interceptor.replaceFast", js)
+
+    def test_native_orb_vector_uses_owned_maximum_not_ten_slots(self):
+        js = (ROOT / 'source/exvius/home_carousel.js').read_text()
+        self.assertIn("Math.min(10, currentOrbs(card)?.maximum || 10)", js)
+        self.assertIn("Array.from({length: maximum}", js)
+        self.assertIn("data.add(maximum * Process.pointerSize)", js)
+        self.assertIn('if (features && features.arena === false) visible(card.orbNodes[0], 0)', js)
+
+
 class HistoricalVortexUi(TestCase):
     def _serve_historical_chambers(self, source_rows, month="2016-06"):
         # Reproduce the original native reply (Experience + late Fallen) and

@@ -76,6 +76,27 @@ export function installHomeCarousel(module, note, retained, bridge = null) {
   const nodeType = module.getExportByName('_ZTIN7cocos2d4NodeE');
   const spriteType = module.getExportByName('_ZTIN7cocos2d6SpriteE');
   const gameType = module.getExportByName('_ZTI10GameSprite');
+  // The final Global client adds an interactive Home ornament for Vision
+  // Cards (introduced in Global August 2020). Suppress only the decoration
+  // builders when the server's historical feature projection disables VCs;
+  // the original nonhistorical Home remains completely untouched.
+  for (const symbol of [
+    '_ZN9HomeScene21setOrnamentVisionCardEPN7cocos2d15SpriteBatchNodeE',
+    '_ZN9HomeScene25setNoneOrnamentVisionCardEPN7cocos2d15SpriteBatchNodeE'
+  ]) {
+    let original;
+    const callback = new NativeCallback((scene, batch) => {
+      const features = globalThis.__EXVIUS_HISTORICAL_FEATURES__;
+      if (features && features.vision_cards !== true) {
+        note('HOME_HISTORIC_VISION_ORNAMENT_HIDDEN');
+        return;
+      }
+      original(scene, batch);
+    }, 'void', ['pointer', 'pointer']);
+    original = new NativeFunction(Interceptor.replaceFast(module.getExportByName(symbol), callback),
+      'void', ['pointer', 'pointer'], {exceptions: 'propagate'});
+    retained.push(callback, original);
+  }
   const types = new Map();
   function typed(object) {
     const key = object.toString();
@@ -332,12 +353,15 @@ export function installHomeCarousel(module, note, retained, bridge = null) {
       rotateButton(card.renderer, card.button);
       if (i === 0) {
         const plate = artwork(ui, 'mypage_orb_plate.png', 0, true, false);
-        const orbs = Array.from({length: 10}, () => artwork(ui, 'mypage_orb_on.png', 0, true, false));
-        const data = Memory.alloc(10 * Process.pointerSize), vector = Memory.alloc(3 * Process.pointerSize);
+        // Historical Colosseum has three orbs, while Arena uses its later
+        // maximum. Never draw ten legacy orb sprites over a three-orb save.
+        const maximum = Math.max(1, Math.min(10, currentOrbs(card)?.maximum || 10));
+        const orbs = Array.from({length: maximum}, () => artwork(ui, 'mypage_orb_on.png', 0, true, false));
+        const data = Memory.alloc(maximum * Process.pointerSize), vector = Memory.alloc(3 * Process.pointerSize);
         orbs.forEach((orb, index) => data.add(index * Process.pointerSize).writePointer(orb.node));
         vector.writePointer(data);
-        vector.add(Process.pointerSize).writePointer(data.add(10 * Process.pointerSize));
-        vector.add(2 * Process.pointerSize).writePointer(data.add(10 * Process.pointerSize));
+        vector.add(Process.pointerSize).writePointer(data.add(maximum * Process.pointerSize));
+        vector.add(2 * Process.pointerSize).writePointer(data.add(maximum * Process.pointerSize));
         // Original legacy orb-plate offset, sphere offset and spacing.
         // setClsmOrb reads this by-value vector through its ABI indirection;
         // it stores the individual sprite pointers, not the temporary vector.
@@ -590,7 +614,18 @@ export function installHomeCarousel(module, note, retained, bridge = null) {
       rotateUpdate(card.renderer, rawX, ui.cy, front ? 2000 : 1800);
       nodeOrder(card.art.node, order);
       nodeOrder(card.pressed, order + 1);
-      if (card.orbNodes) for (const node of card.orbNodes) nodeOrder(node, order + 1);
+      if (card.orbNodes) {
+        // The archived ten-slot plate is a fixed raster. Its empty slots
+        // remain visible even when Colosseum has only three orbs; keep the
+        // native positioned orbs, but not that mismatched old background.
+        const features = globalThis.__EXVIUS_HISTORICAL_FEATURES__;
+        // The 2016 three-orb Colosseum cannot use the final client's
+        // ten-hole legacy plate. Keep that plate for later/nonhistorical
+        // saves until their own UI snapshot has been verified.
+        if (features && features.arena === false) visible(card.orbNodes[0], 0);
+        else nodeOrder(card.orbNodes[0], order + 1);
+        for (const node of card.orbNodes.slice(1)) nodeOrder(node, order + 1);
+      }
       const s = snapshot(card.art.node);
       card.box = {x: s.x, y: h - s.y, w: s.w * s.sx, h: s.h * s.sy};
       if (card.orbNodes) {

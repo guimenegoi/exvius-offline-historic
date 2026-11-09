@@ -5,6 +5,45 @@ Classificação: diagnóstico. **Nenhuma edição funcional nesta rodada.**
 Escopo: preview Global junho/julho 2016; branch feature/historical-progression.
 Estado: **NÃO AUDITADO COMO FIEL À UI DE 2016**. A build 9066 corrige só dois sintomas.
 
+## Home de junho de 2016 — APK experimental 9084 (09/11/2026)
+
+Foram detectadas e corrigidas duas diferenças introduzidas pelo
+cliente Global 9.0.0 que permaneceram no layout histórico:
+
+- O botão ornamentado TAP de seleção de Vision Card é criado por
+  HomeScene::setNoneOrnamentVisionCard, ou sua variante com card.
+  Vision Cards chegaram ao Global apenas em agosto de 2020. Os dois
+  construtores nativos agora são suprimidos **somente** se a projeção
+  histórica de recursos do servidor existe e vision_cards está
+  desabilitado; saves não históricos executam as funções originais.
+- O HomeRotateMenuList reconstruído criava dez sprites de orb
+  independentemente da quantidade real. O save histórico de junho
+  informou **Colosseum: 3/3** no objeto HomeMainMenuIcon, enquanto
+  sua placa de arte fixa desenhava dez encaixes. Agora o vetor recebe
+  o máximo informado pelo cliente e a placa anacrônica é ocultada
+  apenas quando historical_features.arena === false. A Arena das
+  épocas posteriores mantém a placa original até ser auditada.
+
+A APK 9084, compilada e assinada com o certificado da APK 9081, foi
+instalada por atualização no Waydroid, preservando o save histórico.
+A Home inicializou, o log confirmou
+HOME_HISTORIC_VISION_ORNAMENT_HIDDEN, e capturas em
+source/build/historical-preview/waydroid-9084/ confirmaram o
+desaparecimento de TAP e os **três orbs únicos** com Colosseum
+centralizado. O antigo local de TAP não abriu outro menu.
+
+**Limites:** a Home ainda contém outros elementos do cliente final
+que exigem comparações com snapshots históricos. O rótulo ??? do
+Colosseum decorre do estado de bloqueio da campanha e não deve ser
+substituído por uma data presumida. Não foram realizadas regressões
+visuais em um save pós-agosto de 2020. APK 9084 não é release.
+
+O seletor Season do Vortex é **recurso criado pelo FFBE Offline**,
+não componente do Global original. Seu reposicionamento compacto
+foi isolado no branch feature/offline-archive-selector-placement
+(commit 5b15248), e não faz parte da APK 9084 nem deste patch de
+Home. Falta validar o novo posicionamento no Android.
+
 ## Artes históricas recuperadas — APK 9081 (09/11/2026)
 
 As URLs originais da wiki devolveram HTTP 403 no domínio
