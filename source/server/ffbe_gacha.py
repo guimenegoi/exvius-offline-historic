@@ -11,7 +11,7 @@ Extracted 2026-09-26 from `capture_server.py` (docs/SERVER_REFACTOR_PLAN.md, Pha
 """
 from __future__ import annotations
 
-import copy, json, os, re
+import copy, json, os, re, pkgutil
 
 from ffbe_config import *          # noqa: F401,F403 -- constants; the table has no behaviour
 import ffbe_state as st           # the REBOUND runtime state; see ffbe_state's docstring
@@ -165,9 +165,18 @@ def gacha_tutorial_award():
 def _banner_doc(path: str, *, offset: int = 0, limit: int = 0, note: str) -> list:
     """The `banners` list from one gacha doc, sliced by `offset`/`limit`; [] and a note when unreadable."""
     try:
-        with open(path, encoding="utf-8") as fh:
-            bs = [b for b in (json.load(fh).get("banners") or [])
-                  if isinstance(b, dict) and b.get("id")]
+        if os.path.isfile(path):
+            with open(path, encoding="utf-8") as fh:
+                payload = json.load(fh)
+        else:
+            # Python is imported from app.imy on Android: direct filesystem
+            # opens fail for embedded campaign JSON. Use the ZIP loader.
+            blob = pkgutil.get_data(__name__, os.path.basename(path))
+            if not blob:
+                raise FileNotFoundError(path)
+            payload = json.loads(blob.decode("utf-8"))
+        bs = [b for b in (payload.get("banners") or [])
+              if isinstance(b, dict) and b.get("id")]
     except (OSError, ValueError) as exc:  # noqa: BLE001 - a bad doc must not kill the reply
         _note(f"gacha: {path} unreadable ({exc!r}) -- {note}")
         return []
@@ -204,8 +213,12 @@ def standard_banners() -> list:
     global _STANDARD_DOC
     if _STANDARD_DOC is None:
         try:
-            with open(GACHA_STANDARD_FILE, encoding="utf-8") as fh:
-                _STANDARD_DOC = json.load(fh)
+            if os.path.isfile(GACHA_STANDARD_FILE):
+                with open(GACHA_STANDARD_FILE, encoding="utf-8") as fh:
+                    _STANDARD_DOC = json.load(fh)
+            else:
+                blob = pkgutil.get_data(__name__, os.path.basename(GACHA_STANDARD_FILE))
+                _STANDARD_DOC = json.loads(blob.decode("utf-8")) if blob else {}
         except (OSError, ValueError) as exc:  # noqa: BLE001 - a bad standard file must not kill the reply
             _note(f"gacha standard: {GACHA_STANDARD_FILE} unreadable ({exc!r}) -- serving none")
             _STANDARD_DOC = {}
@@ -538,6 +551,11 @@ def _gacha_target_info(entry: dict) -> str:
 def gacha_type_code(b: dict) -> int:
     """`GachaMst.type` (`sx4kyW0i`, +0x8c). The summon screen files each banner on a tab by it; the
     offline archive moves event, free and ticket summons to their original tabs (`gacha_archive.wire_type`)."""
+    if (State.player is not None and
+            (State.player.data.get("meta") or {}).get("historical_preview")):
+        # The native preview tabs must not depend on Android env settings:
+        # Standard FP=0, ordinary Rare=1, dated featured/limited=50.
+        return {"1": 0, "9": 1}.get(str(b.get("id")), 50)
     code = GACHA_TYPE_CODE.get(str(b.get("type", "normal")), 0)
     if os.environ.get('EXVIUS_SUMMON_ARCHIVE') == '1':
         from gacha_archive import wire_type
@@ -674,6 +692,14 @@ def serve_gacha_info(spec, reply_id: str):
         return spec
     banners = all_banners()
     if not banners:
+        if (State.player is not None and
+                (State.player.data.get("meta") or {}).get("historical_preview")):
+            # Fail closed rather than pass through captured endgame banners.
+            out = dict(spec) if isinstance(spec, dict) else {}
+            out.update({tag: [] for tag in (
+                GACHA_MST_TAG, GACHA_DETAIL_TAG, GACHA_SCHEDULE_TAG,
+                GACHA_PANEL_TAG, GACHA_PANEL_GROUP_TAG)})
+            return out
         return spec
     if os.environ.get('EXVIUS_SUMMON_ARCHIVE') == '1':
         from gacha_archive import visible_banners

@@ -233,3 +233,60 @@ Vortex season selector returns, Colosseum opens after story unlock and shows
 three starting orbs, no future banners/event tiles or modern bundle offers,
 and Continue/Unlock Jul preserves the save. Capture screenshots/logs for
 any mismatched or nonfunctional UI, including legacy friends.
+
+## Preview 9068 — first real-device issues in 9067
+
+The signed test artifact is
+`source/build/historical-preview/fix-v6/signed/historic-preview-9068-aligned-debugSigned.apk`
+in the connected workspace (not yet installed on the phone).
+It is 74,271,067 bytes / 70.83 MiB,
+SHA-256 `0cc7520f1629b2827a3f71628090633c49ff0a2514afc2f3491215117f103d58`,
+Android versionCode **9068** and the same certificate as 9066/9067:
+SHA-256 `1e08a903aef9c3a721510b64ec764d01d3d094eb954161b62544ea8f187b5953`.
+The AndroidManifest change relative to upstream APK (9064) is only
+versionCode 9064 -> 9068; Android classes and resources are byte-for-byte
+identical. The APK signature and ZIP alignment passed the v2/v3 checks.
+
+- **Panel Quest still visible:** found native
+  `sgHomeIconUtils::isDispPanelQuestIcon()`; its response is now false on
+  historical saves in the existing UI hook, rather than relying only on
+  `FunctionMstList::isValid`.
+- **Daily Login blank:** the previous historical filter intentionally produced
+  zero rows for an unavailable modern calendar. The June/July **28-day Global
+  screenshots** are now transcribed into a preview-specific calendar, selected
+  by `meta.historical_month`. Mail payout for the first day of each month
+  (June 500 Gil, July 125 Lapis) is tested with duplicate-claim prevention.
+  **Limitations:** source screenshots show NRG points, while this offline server
+  can award NRG Restore 10 items; those converted grants and an unidentified
+  June-25 icon are *provisional substitutes*, not historic exact matches.
+  No invented unit/rare ticket was granted for the unidentified icon.
+- **Rare/Standard multiple banners / Limited Time empty:** the banner loader
+  now reads embedded JSON from Chaquopy `app.imy` if no filesystem sibling
+  exists. Its historical output is fail-closed, deduplicates community aliases,
+  limits limited-time offers to their attested release month (exact end days
+  are not yet verified), and assigns native tabs independently of APK runtime
+  environment variables: June = Standard id 1 + Rare id 9; July additionally
+  has featured id 12 + id 18 in Limited Time. The account and purchase gates
+  remain independent of the visual classification.
+- **Vortex empty event frames:** the captured endgame response was retaining
+  2024 `SpDungeonCondMst` tiles even when the event archive listed none.
+  The existing gate stage now cleans the captured rows and also restricts
+  saved user policy IDs to the same dated event allowlist, preventing stale
+  policies from re-adding modern areas. The confirmed native Chamber of
+  Experience area 226 is preserved. Advanced Chamber of the Fallen entries
+  (area 899) are conservatively hidden until per-trial dates are audited.
+  The modern Survival response family is cleared for 2016.
+- **NV+ Awakening tooltip:** **NOT YET FIXED**. Its precise renderer and
+  trigger have not been objectively identified; do not hide an arbitrary UI
+  region. A screenshot and runtime trace will help localize it safely.
+
+**Checks:** 70 historical Python tests (one skipped), plus import, unit audit
+and range/CRC tests, JavaScript native Home/mission/viewport tests; signed
+Android ZIP runtime imported with Python 3.10 and verified 116 action handlers,
+81 feature gates, 75 Colosseum rounds, 28 login rows for each preview month,
+June/July banner IDs with distinct native tab codes and saved Vortex-policy
+exclusion. These are **automated tests**, not a replacement for on-device UI
+validation or proof that the 14 GB cache remains after installation.
+
+Install this APK **over** 9067; do not clear app data, uninstall or accept an
+upstream APK update. A forced uninstall prompt means abort the install.

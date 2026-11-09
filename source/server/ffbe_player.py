@@ -911,10 +911,18 @@ _LOGIN_CALENDAR: dict = {}
 def login_calendar() -> dict:
     """`{"YYYY-Mon": {"banner": ..., "days": {"1": {...}}}}`, loaded once."""
     if not _LOGIN_CALENDAR:
+        # The GL9 Android server imports from a ZIP, not a regular folder.
+        import pkgutil
         path = os.path.join(HERE, "login_calendar.json")
         if os.path.isfile(path):
             with open(path, encoding="utf-8") as fh:
                 _LOGIN_CALENDAR.update(json.load(fh).get("months") or {})
+        else:
+            payload = pkgutil.get_data(__name__, "login_calendar.json")
+            if payload:
+                _LOGIN_CALENDAR.update(json.loads(payload.decode("utf-8")).get("months") or {})
+        from historical_login_preview import MONTHS
+        _LOGIN_CALENDAR.update(MONTHS)
     return _LOGIN_CALENDAR
 def _login_bonus_month() -> tuple[str, str]:
     """The month to serve, and why: the SEASON's own month when we hold a table for it, else `LOGIN_MONTH`.
@@ -923,6 +931,12 @@ def _login_bonus_month() -> tuple[str, str]:
     follows the season with nothing restated. The community table only covers 2017-Jan..2022-Jan, so a season
     outside that window (2016-*, 2022-Sep) falls back to the default rather than serving nothing.
     """
+    if (State.player is not None and
+            (State.player.data.get("meta") or {}).get("historical_preview")):
+        from historical_progression import current_month
+        month = current_month(State.player.data)
+        original = {"2016-06": "2016-Jun", "2016-07": "2016-Jul"}
+        return original.get(month, month), "historic Global preview"
     wanted = getattr(st.SEASON, "login_month", "") if st.SEASON is not None else ""
     if wanted and wanted in login_calendar():
         return wanted, "season"
@@ -946,9 +960,8 @@ def serve_login_bonus(spec, reply_id):
     if reply_id != "vw9RP3i4" or State.player is None or not isinstance(spec, dict):
         return spec
     from historical_progression import feature_available
-    if not feature_available("modern_login_calendar", State.player.data):
-        # The existing calendar begins in 2017; the fallback is June 2021.
-        # Keep the wire envelope, but never serve or issue a future reward.
+    if (not (State.player.data.get("meta") or {}).get("historical_preview") and
+            not feature_available("modern_login_calendar", State.player.data)):
         return dict(spec, f5bA4wFx=[], DM63p52N=[])
     month, why = _login_bonus_month()
     entry = login_calendar().get(month) or {}
@@ -980,7 +993,8 @@ def serve_login_bonus(spec, reply_id):
         })
     spec = dict(spec)
     spec["f5bA4wFx"] = rows
-    spec["DM63p52N"] = [{"lO28ROQ0": LOGIN_BANNER}]
+    banner = entry.get("banner") if "banner" in entry else LOGIN_BANNER
+    spec["DM63p52N"] = ([{"lO28ROQ0": banner}] if banner else [])
     _note(f"login bonus: {month} ({why}) day {reached}/28, {len(rows)} rows + banner {LOGIN_BANNER}"
           + ("" if len(rows) == 28 else f" -- {28 - len(rows)} day(s) have no resolvable reward"))
     return spec
@@ -1040,7 +1054,8 @@ def deliver_login_mail(spec, reply_id):
     if reply_id != "vw9RP3i4" or State.player is None or not isinstance(spec, dict):
         return spec
     from historical_progression import feature_available
-    if not feature_available("modern_login_calendar", State.player.data):
+    if (not (State.player.data.get("meta") or {}).get("historical_preview") and
+            not feature_available("modern_login_calendar", State.player.data)):
         return spec
     items = spec.get("f5bA4wFx")
     if not isinstance(items, list):
@@ -1067,7 +1082,11 @@ def deliver_login_mail(spec, reply_id):
     today = str(bonus.get('last_advance') or '')
     if not today or State.player.mode == 'frozen':
         return spec
-    period = today[:7]
+    period = (str((State.player.data.get("meta") or {}).get("historical_month"))
+              if (State.player.data.get("meta") or {}).get("historical_preview")
+              else today[:7])
+    # June and July of 2016 are separate historical calendars even when
+    # their test sessions take place on the same actual device day.
     issued = bonus.setdefault('issued_rewards', {})
     if int(issued.get(period, 0)) >= day:
         return spec
@@ -2925,6 +2944,17 @@ def serve_event_gate(spec, reply_id):
     spec = native_gate_dates(spec)
     if State.player is None or reply_id not in EVENT_GATE_CARRIERS:
         return spec
+    if (State.player.data.get("meta") or {}).get("historical_preview") and isinstance(spec, dict):
+        # These captured 2024 gate rows exist *before* the event archive
+        # contributes anything. An empty dated-event set must not retain
+        # future/empty tiles from the captured response.
+        from event_archive import events
+        allowed = {"226"} | {str(row["area"]) for row in events(State.player)}
+        spec = dict(spec, **{EVENT_GATE_TAG: [
+            row for row in (spec.get(EVENT_GATE_TAG) or [])
+            if isinstance(row, dict) and str(row.get("uv60hgDW")) in allowed
+            and row.get("U9iHsau3") and row.get("qo3PECw6")
+        ]})
     try:
         policy = load_policy(DATA_ROOT, EVENT_GATE_AREAS)
         archive_events = None
@@ -2935,6 +2965,14 @@ def serve_event_gate(spec, reply_id):
             from event_archive import area_ids, events
             archive_events = events(State.player)
             policy = dict(policy, areas=area_ids(State.player), permanent=True)
+        if (State.player.data.get("meta") or {}).get("historical_preview"):
+            # A saved endgame policy must never reinstate undated 2024
+            # Vortex tiles *after* their captured rows were removed above.
+            # Keep the original Chamber of Experience plus dated areas.
+            from event_archive import events
+            permitted = {"226"} | {str(row["area"]) for row in events(State.player)}
+            policy = dict(policy, areas=[
+                area for area in policy["areas"] if str(area) in permitted])
     except (OSError, ValueError) as exc:
         _note("event policy invalid; no extra gates served: " + str(exc))
         return spec
@@ -3056,7 +3094,21 @@ def serve_survival(spec, reply_id):
     such a list, and because its lookup is a two-hop swapped-pair match that is easy to get wrong
     (SS10.4a) -- a row that silently never resolves looks identical on the wire to one that does.
     """
-    if not SURVIVAL_ON or State.player is None or reply_id not in SURVIVAL_CARRIERS:
+    if State.player is None or reply_id not in SURVIVAL_CARRIERS:
+        return spec
+    from historical_progression import feature_available
+    if not feature_available("modern_event_modes", State.player.data):
+        # As with ordinary Vortex gates, the captured final-client response
+        # can contain modern rows even when we don't append authored ones.
+        if not isinstance(spec, dict):
+            return spec
+        out = dict(spec)
+        for tag in (SURVIVAL_TAG, SURVIVAL_USER_TAG, SURVIVAL_BREAK_TAG,
+                    SURVIVAL_STATE_TAG):
+            if tag in out:
+                out[tag] = []
+        return out
+    if not SURVIVAL_ON:
         return spec
     facts = _survival_area_facts()
     if not facts:

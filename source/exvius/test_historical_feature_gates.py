@@ -126,21 +126,23 @@ class HistoricServerGates(TestCase):
 
     def test_future_calendar_and_anniversary_do_not_award_2016(self):
         import ffbe_player
-        player = SimpleNamespace(data=preview(),
-                                 advance_login_bonus=Mock(),
+        player = SimpleNamespace(data=preview(), mode="live",
+                                 advance_login_bonus=Mock(return_value=1),
                                  mark_anniversary_issued=Mock(),
                                  deliver_mail=Mock())
         with patch.object(self.state, "player", player):
             original = {"test": [], "f5bA4wFx": [{"from": "2021"}]}
             out = ffbe_player.serve_login_bonus(original, "vw9RP3i4")
-            self.assertEqual(out["f5bA4wFx"], [])
+            self.assertEqual(len(out["f5bA4wFx"]), 28)
+            self.assertEqual(out["f5bA4wFx"][0]["YWF08vZS"], "30")
+            self.assertEqual(out["f5bA4wFx"][0]["5GNDIwPX"], "500")
             self.assertEqual(out["DM63p52N"], [])
             self.assertEqual(original["f5bA4wFx"], [{"from": "2021"}])
             ffbe_player.deliver_login_mail({"f5bA4wFx": []}, "vw9RP3i4")
             route = ffbe_player.ANNIVERSARY_TICKET_CARRIER.split(",")[0]
             ffbe_player.deliver_anniversary_ticket({}, route)
             self.assertEqual(ffbe_player._catchup_plan(), {})
-            player.advance_login_bonus.assert_not_called()
+            player.advance_login_bonus.assert_called_once()
             player.mark_anniversary_issued.assert_not_called()
             player.deliver_mail.assert_not_called()
 

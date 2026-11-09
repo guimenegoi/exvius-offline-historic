@@ -420,6 +420,16 @@ rpc.exports = {
             else if (this.localClassUp) result.replace(1);
           },
         }));
+        // The Home Panel Quest icon has its OWN visibility predicate and
+        // can bypass FunctionMstList::isValid in the original client.
+        const panelVisibility = module.findExportByName(
+          '_ZN15sgHomeIconUtils20isDispPanelQuestIconEv');
+        if (panelVisibility) retained.push(Interceptor.attach(panelVisibility, {
+          onLeave(result) {
+            if (globalThis.__EXVIUS_HISTORICAL_PREVIEW__ === true)
+              result.replace(0);
+          }
+        }));
         const sacrificeMaster = new NativeFunction(module.getExportByName('_ZN16SacrificeMstList6sharedEv'), 'pointer', []);
         // Use the pinned class's parser with an explicit path to the installed table.
         const sacrificeVtable = module.getExportByName('_ZTV16SacrificeMstList').add(0x10);

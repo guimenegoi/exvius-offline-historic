@@ -2,6 +2,7 @@
 from collections import defaultdict
 from datetime import date
 import json
+import pkgutil
 from pathlib import Path
 
 
@@ -73,7 +74,8 @@ def wire_type(banner, code):
 
 
 def _standard_families():
-    doc = json.loads(Path(__file__).with_name('gacha_standard.json').read_text(encoding='utf-8'))
+    blob = pkgutil.get_data(__name__, 'gacha_standard.json')
+    doc = json.loads(blob.decode('utf-8')) if blob else {}
     return {str(row['id']) for row in doc.get('banners', [])}
 
 

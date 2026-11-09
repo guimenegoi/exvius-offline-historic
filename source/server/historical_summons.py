@@ -72,7 +72,9 @@ def banner_allowed(banner: dict, month: str) -> bool:
     if str(banner.get("id")) in ("1", "9"):
         return True
     release = (banner.get("community") or {}).get("release") or banner.get("release")
-    return is_released(release, month)
+    # The historical preview has no verified end-date catalogue. A release
+    # month is *not* proof that a limited offer remains on sale forever.
+    return bool(is_released(release, month) and str(release)[:7] == month)
 
 
 def visible_banners(banners: list[dict], player) -> list[dict]:
@@ -82,7 +84,13 @@ def visible_banners(banners: list[dict], player) -> list[dict]:
         return banners
     from historical_progression import current_month
     month = current_month(player.data)
-    return [banner for banner in banners if banner_allowed(banner, month)]
+    # Catalogue rows represent the shipped banner IDs. Community aliases
+    # point to the SAME campaign; showing both created double banners.
+    represented_aliases = {str(alias) for banner in banners
+                           if banner_allowed(banner, month)
+                           for alias in (banner.get("alias_ids") or [])}
+    return [banner for banner in banners if
+            banner_allowed(banner, month) and str(banner.get("id")) not in represented_aliases]
 
 
 def _unit_allowed(unit_id, releases: dict, month: str, rarity=None) -> bool:

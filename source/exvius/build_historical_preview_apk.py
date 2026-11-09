@@ -30,11 +30,13 @@ REPLACED = {
     "exvius_colosseum.pyc": "source/server/exvius_colosseum.py",
     "exvius_actions_shops.pyc": "source/server/exvius_actions_shops.py",
     "ffbe_friends.pyc": "source/server/ffbe_friends.py",
+    "gacha_archive.pyc": "source/server/gacha_archive.py",
 }
 ADDED = {
     "historical_progression.pyc": "source/server/historical_progression.py",
     "historical_summons.pyc": "source/server/historical_summons.py",
     "historical_preview_data.pyc": "source/server/historical_preview_data.py",
+    "historical_login_preview.pyc": "source/server/historical_login_preview.py",
 }
 EXPECTED_MAGIC = bytes.fromhex("6f0d0d0a")  # Python 3.10 Chaquopy runtime
 
