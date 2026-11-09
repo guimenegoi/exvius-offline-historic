@@ -584,6 +584,16 @@ class Handler(BaseHTTPRequestHandler):
             if hit:
                 data = open(hit, "rb").read()
                 how = how_art + " (" + os.path.relpath(hit, os.path.dirname(WORK)) + ")"
+        if (data is None and rel and "/login/" in rel and
+                os.path.basename(rel) == "daily_login_banner_dailylogin_00.png"):
+            # Source checkout has a loose PNG. Android's Chaquopy runtime
+            # keeps that same shipped atlas frame inside app.imy instead.
+            # Serve its existing resource instead of a false CDN 404.
+            import pkgutil
+            data = pkgutil.get_data(
+                __name__, "assets/banner_art/daily_login_banner_dailylogin_00.png")
+            if data:
+                how = "bundled daily login banner (app.imy)"
         n = len(data) if data is not None else 0
         verdict = f"200 {n} B ({how})" if data is not None else f"404 ({how or 'not in the CDN root'})"
         print(f"CDN  {self.command} {self.path}  host={self.headers.get('Host')}  "

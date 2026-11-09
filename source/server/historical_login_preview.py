@@ -55,7 +55,10 @@ def build_calendar(rows: list[tuple[str, int]]) -> dict:
                           "name": name, "how": "approximate-NRG" if kind in
                           ("nrg", "unknown") else "2016-Global-screenshot",
                           "screenshot_count": raw_amount}
-    return {"days": days, "banner": ""}
+    # The endgame client will not construct the calendar banner UI when the
+    # DailyLoginBonusBannerResponse is absent. Reuse its shipped atlas frame
+    # as a *visual compatibility fallback*, not the original 2016 artwork.
+    return {"days": days, "banner": "daily_login_banner_dailylogin_00.png"}
 
 
 MONTHS = {"2016-Jun": build_calendar(_JUNE), "2016-Jul": build_calendar(_JULY)}

@@ -29,6 +29,8 @@ class ManifestVersionTests(unittest.TestCase):
                          "source/server/exvius_actions.py")
         self.assertEqual(REPLACED.get("exvius_colosseum.pyc"),
                          "source/server/exvius_colosseum.py")
+        self.assertEqual(REPLACED.get("capture_server.pyc"),
+                         "source/server/capture_server.py")
 
     def test_invalid_versions_fail_closed(self):
         for code in (0, 9064, 9000, -1, 2 ** 31):

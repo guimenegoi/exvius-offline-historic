@@ -42,7 +42,9 @@ export function carouselHit(cards, point) {
     .sort((a, b) => b.order - a.order || cards.indexOf(b) - cards.indexOf(a))[0];
 }
 
-export function installHomeCarousel(module, note, retained) {
+import { refreshHistoricalStatus } from './title_menu.js';
+
+export function installHomeCarousel(module, note, retained, bridge = null) {
   const native = (name, result, args) => new NativeFunction(module.getExportByName(name), result, args,
     {exceptions: 'propagate'});
   const getIconAddress = module.getExportByName('_ZNK16HomeMainMenuIcon7getIconEv');
@@ -624,6 +626,9 @@ export function installHomeCarousel(module, note, retained) {
     note('HOME_CAROUSEL_FOCUS mode=' + (card ? card.name : 'unknown'));
   }
   function setup(scene) {
+    // A saved account is definitely initialized by the time Home is laid
+    // out; refresh the marker again to recover a late Title/Chaquopy start.
+    if (bridge) refreshHistoricalStatus(bridge, note);
     // Keep one renderer reference to each original mode sprite while Home
     // is visible. Replacement and scene exit release those references.
     types.clear();
@@ -662,6 +667,10 @@ export function installHomeCarousel(module, note, retained) {
       (typed(c.icon.node).game.isNull() ? 'sprite' : 'game') + '/bg:' +
       (c.bg && !typed(c.bg.node).game.isNull() ? 'game' : 'sprite')).join(','));
   }
+  if (bridge) retained.push(Interceptor.attach(
+    module.getExportByName('_ZN9HomeScene10initializeEv'), {
+      onEnter() { refreshHistoricalStatus(bridge, note); }
+    }));
   retained.push(Interceptor.attach(module.getExportByName('_ZN9HomeScene9setLayoutEv'), {
     onEnter(args) { this.scene = args[0]; },
     onLeave() {

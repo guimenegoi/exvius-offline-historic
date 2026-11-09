@@ -2921,9 +2921,27 @@ _EVENT_GATE_ART_CACHE = {}
 
 
 def event_gate_art(area):
+    # These basenames were verified against the original Global
+    # data-001 ZIP central directory, under cpk_extract/en/area/
+    # Ver461_spdungeon1/. They are already in the downloaded game data;
+    # the 2024 overlay aliases event_<id>.png are not.
+    original_chamber_art = {
+        '216': 'global_spd_bn_list_00216.png',
+        '224': 'global_spd_bn_list_00224.png',
+        '225': 'global_spd_bn_list_00225.png',
+        '226': 'global_spd_bn_list_00226.png',
+    }
+    if (State.player is not None and
+            (State.player.data.get('meta') or {}).get('historical_preview')
+            and str(area) in original_chamber_art):
+        return original_chamber_art[str(area)]
     if not _EVENT_GATE_ART_CACHE:
-        with open(os.path.join(HERE, 'event_art.json'), encoding='utf-8') as source:
-            _EVENT_GATE_ART_CACHE.update(json.load(source)['events'])
+        # The original client reads bundled resources from app.imy, a ZIP.
+        import pkgutil
+        payload = pkgutil.get_data(__name__, 'event_art.json')
+        if not payload:
+            raise FileNotFoundError('Original Vortex banner index is absent')
+        _EVENT_GATE_ART_CACHE.update(json.loads(payload.decode('utf-8'))['events'])
     return _EVENT_GATE_ART_CACHE.get(str(area), {}).get('filename')
 
 
@@ -2949,30 +2967,30 @@ def serve_event_gate(spec, reply_id):
         # contributes anything. An empty dated-event set must not retain
         # future/empty tiles from the captured response.
         from event_archive import events
-        allowed = {"226"} | {str(row["area"]) for row in events(State.player)}
+        allowed = {str(row["area"]) for row in events(State.player)}
         spec = dict(spec, **{EVENT_GATE_TAG: [
             row for row in (spec.get(EVENT_GATE_TAG) or [])
             if isinstance(row, dict) and str(row.get("uv60hgDW")) in allowed
             and row.get("U9iHsau3") and row.get("qo3PECw6")
         ]})
     try:
-        policy = load_policy(DATA_ROOT, EVENT_GATE_AREAS)
-        archive_events = None
-        from exvius_events import policy_path
-        saved_policy = policy_path(DATA_ROOT)
-        if (os.environ.get('EXVIUS_EVENT_ARCHIVE') == '1' and
-                not (saved_policy is not None and saved_policy.exists())):
+        if (State.player.data.get('meta') or {}).get('historical_preview'):
+            # Persisted test/event policies and environment defaults from
+            # the endgame client must never override the saved 2016 period.
             from event_archive import area_ids, events
             archive_events = events(State.player)
-            policy = dict(policy, areas=area_ids(State.player), permanent=True)
-        if (State.player.data.get("meta") or {}).get("historical_preview"):
-            # A saved endgame policy must never reinstate undated 2024
-            # Vortex tiles *after* their captured rows were removed above.
-            # Keep the original Chamber of Experience plus dated areas.
-            from event_archive import events
-            permitted = {"226"} | {str(row["area"]) for row in events(State.player)}
-            policy = dict(policy, areas=[
-                area for area in policy["areas"] if str(area) in permitted])
+            policy = {'version': 1, 'areas': area_ids(State.player),
+                      'permanent': True}
+        else:
+            policy = load_policy(DATA_ROOT, EVENT_GATE_AREAS)
+            archive_events = None
+            from exvius_events import policy_path
+            saved_policy = policy_path(DATA_ROOT)
+            if (os.environ.get('EXVIUS_EVENT_ARCHIVE') == '1' and
+                    not (saved_policy is not None and saved_policy.exists())):
+                from event_archive import area_ids, events
+                archive_events = events(State.player)
+                policy = dict(policy, areas=area_ids(State.player), permanent=True)
     except (OSError, ValueError) as exc:
         _note("event policy invalid; no extra gates served: " + str(exc))
         return spec
@@ -3011,7 +3029,10 @@ def serve_event_gate(spec, reply_id):
             "uv60hgDW": area,             # SubRegionId -- THE key the tile lookups match
             "U9iHsau3": dungeon,          # the dungeon the tile opens
             "qo3PECw6": mission,          # its first mission
-            "qnUhs32P": EVENT_GATE_TAB,   # 1-BASED tab: 1 = Event
+            "qnUhs32P": ("2" if
+                (State.player.data.get('meta') or {}).get('historical_preview')
+                and str(area) in {'216', '224', '225', '226'} else EVENT_GATE_TAB),
+            # The four original 2016 chambers belong to Enhance, native tab 2.
             "Z0EN6jSh": EVENT_GATE_KIND,  # +0x100 -- the 1/2 selector getAreaIdWithBannerTouch reads
             "VjJQ51uG": EVENT_GATE_WINDOW_START,   # AcceptedDate
             "m8ivD4NX": EVENT_GATE_WINDOW_END,     # CompletedDate

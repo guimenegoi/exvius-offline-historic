@@ -31,6 +31,7 @@ REPLACED = {
     "exvius_actions_shops.pyc": "source/server/exvius_actions_shops.py",
     "ffbe_friends.pyc": "source/server/ffbe_friends.py",
     "gacha_archive.pyc": "source/server/gacha_archive.py",
+    "capture_server.pyc": "source/server/capture_server.py",
 }
 ADDED = {
     "historical_progression.pyc": "source/server/historical_progression.py",

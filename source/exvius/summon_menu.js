@@ -64,6 +64,7 @@ export function installSummonMenu(module, note, retained, bridge, homeCarousel =
   const eventTab = fn('_ZN9GateScene6setTabENS_8GATE_TABE', 'void', ['pointer', 'int']);
   const refreshEvents = fn('_ZN9GateScene13refreshLayoutEb', 'void', ['pointer', 'bool']);
   let eventAreas = new Set(), visibleEvents = new Set();
+  let eventHistorical = false;
   const eventLists = new Map(), eventTabs = new Map(), eventAnchors = new Map();
   let eventAliases = {};
   let eventModes = {}, eventDungeons = {}, dungeonNames = {}, modeDungeonIds = new Set();
@@ -138,7 +139,7 @@ export function installSummonMenu(module, note, retained, bridge, homeCarousel =
   const headerW = ui => ui.kind === 'event' ? 112 : 190;
   const headerH = ui => ui.kind === 'event' ? 70 : 50;
   const rowH = 28;
-  let skin, eventMenu;
+  let skin;
   function archiveData(method, selection) {
     return JSON.parse(bridge(method, '(Ljava/lang/String;)Ljava/lang/String;', [selection]));
   }
@@ -219,10 +220,11 @@ export function installSummonMenu(module, note, retained, bridge, homeCarousel =
         Math.abs(other.y - point.y) < 0.01) === index);
   }
   function readMenu(selection = '', kind = 'summon') {
-    const result = kind === 'event' && !selection && eventMenu ? eventMenu :
-      archiveData(kind === 'event' ? 'eventArchive' : 'summonArchive', selection);
+    // A new GateScene must read the current save month. The old cache
+    // kept an earlier event list when "Unlock Jul 2016" was selected.
+    const result = archiveData(kind === 'event' ? 'eventArchive' : 'summonArchive', selection);
     if (kind === 'event') {
-      eventMenu = result;
+      eventHistorical = result.historical_preview === true;
       eventAliases = result.area_aliases || {};
       eventModes = result.native_modes || {};
       eventDungeons = result.native_dungeons || {};
@@ -365,7 +367,10 @@ export function installSummonMenu(module, note, retained, bridge, homeCarousel =
   let gateInitializeThread = null;
   let originalAreas;
   const archiveAreas = new NativeCallback(function (display) {
-    if (gateInitializeThread !== Process.getCurrentThreadId() || !eventAreas.size) return originalAreas(display);
+    // A historically empty archive is NOT an invitation to expose the
+    // original endgame list. An empty native Array is a valid result.
+    if (gateInitializeThread !== Process.getCurrentThreadId() ||
+        (!eventHistorical && !eventAreas.size)) return originalAreas(display);
     const started = Date.now(), all = worldAreas(areaMasters(), 2);
     const data = all.add(0x30).readPointer(), count = data.readU32();
     const entries = data.add(0x10).readPointer(), result = makeArray();
@@ -812,7 +817,10 @@ export function installSummonMenu(module, note, retained, bridge, homeCarousel =
   retained.push(Interceptor.attach(module.getExportByName('_ZN9GateScene13setListLayoutEbiN7cocos2d4Vec2E'), {
     onEnter(args) {
       const scene = args[0], key = scene.toString();
-      if ((eventTabs.get(key) || 0) !== 0 || !eventAreas.size) return;
+      // Historical GateUtil already supplies only approved 2016 AreaMst.
+      // Never replace its scene-owned native array on tab changes: this
+      // extra ownership mutation was unsafe when opening Enhance.
+      if (eventHistorical || (eventTabs.get(key) || 0) !== 0 || !eventAreas.size) return;
       try {
         restoreEventList(scene);
         const slot = scene.add(0x658), original = slot.readPointer();

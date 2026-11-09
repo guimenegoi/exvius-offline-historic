@@ -136,7 +136,8 @@ class HistoricServerGates(TestCase):
             self.assertEqual(len(out["f5bA4wFx"]), 28)
             self.assertEqual(out["f5bA4wFx"][0]["YWF08vZS"], "30")
             self.assertEqual(out["f5bA4wFx"][0]["5GNDIwPX"], "500")
-            self.assertEqual(out["DM63p52N"], [])
+            self.assertEqual(out["DM63p52N"], [
+                {"lO28ROQ0": "daily_login_banner_dailylogin_00.png"}])
             self.assertEqual(original["f5bA4wFx"], [{"from": "2021"}])
             ffbe_player.deliver_login_mail({"f5bA4wFx": []}, "vw9RP3i4")
             route = ffbe_player.ANNIVERSARY_TICKET_CARRIER.split(",")[0]

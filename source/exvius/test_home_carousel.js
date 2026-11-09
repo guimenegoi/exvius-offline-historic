@@ -3,7 +3,10 @@ const fs = require('node:fs');
 const path = require('node:path');
 
 (async () => {
-  const source = fs.readFileSync(path.join(__dirname, 'home_carousel.js'), 'utf8');
+  const raw = fs.readFileSync(path.join(__dirname, 'home_carousel.js'), 'utf8');
+  assert.match(raw, /import \{ refreshHistoricalStatus \} from '\.\/title_menu\.js'/,
+    'Home must refresh the server-owned historical marker');
+  const source = raw.replace(/^import \{ refreshHistoricalStatus \} from '\.\/title_menu\.js';\s*/m, '');
   const {carouselItems, carouselRelease, carouselHit, homeMenuState} = await import('data:text/javascript;base64,' + Buffer.from(source).toString('base64'));
   assert.deepEqual(homeMenuState(0, 0), {espers: {visible: true, open: false}, expedition: {visible: false, open: false}, competitive: null},
     'No owned Esper keeps its locked icon visible; a disabled Expedition feature stays hidden');

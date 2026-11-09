@@ -24,15 +24,23 @@ def document():
     return _DOCUMENT
 
 
+# Contemporaneous May–June 2016 Global banners and the shipped GL9 native
+# masters both confirm these four original Enhancement chambers and their
+# area/dungeon/mission IDs. This is a narrow historical exception, not a
+# blanket waiver for every undated permanent trial in the endgame index.
+LAUNCH_CHAMBERS = frozenset({'216', '224', '225', '226'})
+
+
 def events(player=None):
     rows = document()['events']
     if player is None or not (player.data.get('meta') or {}).get('historical_preview'):
         return rows
-    # No native archive event has a verified June/July 2016 debut in the
-    # recovered index; do not turn future/undated events into empty tiles.
+    # Keep the four original 2016 Enhancement chambers while other undated
+    # permanent trials and newer event campaigns remain locked.
     from historical_progression import is_released, current_month
     month = current_month(player.data)
-    return [row for row in rows if is_released(row.get('release'), month)]
+    return [row for row in rows if str(row['area']) in LAUNCH_CHAMBERS
+            or is_released(row.get('release'), month)]
 
 
 def area_ids(player=None):
@@ -105,6 +113,8 @@ def menu(player, selection=''):
         names[entry] = (cow[row['area']]['name'] if row.get('native_mode') == 'tfa' else
                         'Dark Visions ' + str(numbered[row['area']]) if row['area'] in numbered else row['name'])
     return {'groups': groups, 'selected': group, 'area_ids': area_ids(player),
+            'historical_preview': bool(player and
+                (player.data.get('meta') or {}).get('historical_preview')),
             'native_modes': modes, 'native_dungeons': dungeons, 'dungeon_names': names,
             'mode_dungeon_ids': mode_dungeon_ids,
             'area_aliases': {str(row['area']): aliases for row, aliases in campaigns if aliases}}

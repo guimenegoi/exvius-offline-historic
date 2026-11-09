@@ -197,7 +197,7 @@ rpc.exports = {
         let homeCarousel = null;
         let modeChooserName = () => null;
         startupStage('Home carousel', () => {
-          homeCarousel = installHomeCarousel(module, note, retained);
+          homeCarousel = installHomeCarousel(module, note, retained, bridge);
         });
         startupStage('summon menu', () => {
           modeChooserName = installSummonMenu(module, note, retained, bridge, homeCarousel);
@@ -420,16 +420,43 @@ rpc.exports = {
             else if (this.localClassUp) result.replace(1);
           },
         }));
-        // The Home Panel Quest icon has its OWN visibility predicate and
-        // can bypass FunctionMstList::isValid in the original client.
-        const panelVisibility = module.findExportByName(
-          '_ZN15sgHomeIconUtils20isDispPanelQuestIconEv');
-        if (panelVisibility) retained.push(Interceptor.attach(panelVisibility, {
-          onLeave(result) {
-            if (globalThis.__EXVIUS_HISTORICAL_PREVIEW__ === true)
-              result.replace(0);
+        // Home has independent predicate methods bypassing F_FUNCTION_MST.
+        // Reuse the same server-owned month capability map for these paths.
+        // Do not alter Daily Login, ordinary Quests, or download prompts.
+        const homeIconPredicates = [
+          ['20isDispPanelQuestIconEv', 'panel_quest'],
+          ['14isDispExpdIconEv', 'expedition'],
+          ['13isDispTfaIconEv', 'modern_event_modes'],
+          ['14isDispRaidIconEv', 'modern_event_modes'],
+          ['14isDispSlotIconEv', 'modern_event_modes'],
+          ['15isDispAbyssIconEv', 'modern_event_modes'],
+          ['15isDispGloryIconEv', 'modern_event_modes'],
+          ['16isDispEmblemIconEv', 'emblem_event'],
+          ['16isDispParadeIconEv', 'modern_event_modes'],
+          ['18isDispAdsGachaIconEv', 'modern_gacha_selection'],
+          ['23isDispComebackQuestIconEv', 'comeback_quest']
+        ];
+        const seenHistoricalIcons = new Set();
+        for (const [suffix, feature] of homeIconPredicates) {
+          const predicate = module.findExportByName(
+            '_ZN15sgHomeIconUtils' + suffix);
+          if (!predicate) {
+            note('HISTORIC_ICON_SYMBOL_MISSING ' + suffix);
+            continue;
           }
-        }));
+          retained.push(Interceptor.attach(predicate, {
+            onLeave(result) {
+              if (globalThis.__EXVIUS_HISTORICAL_PREVIEW__ !== true) return;
+              const allowed = globalThis.__EXVIUS_HISTORICAL_FEATURES__?.[feature] === true;
+              if (!seenHistoricalIcons.has(suffix)) {
+                seenHistoricalIcons.add(suffix);
+                note('HISTORIC_HOME_ICON feature=' + feature +
+                  ' native=' + suffix + ' allow=' + allowed);
+              }
+              if (!allowed) result.replace(0);
+            }
+          }));
+        }
         const sacrificeMaster = new NativeFunction(module.getExportByName('_ZN16SacrificeMstList6sharedEv'), 'pointer', []);
         // Use the pinned class's parser with an explicit path to the installed table.
         const sacrificeVtable = module.getExportByName('_ZTV16SacrificeMstList').add(0x10);

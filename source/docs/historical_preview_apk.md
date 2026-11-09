@@ -290,3 +290,93 @@ validation or proof that the 14 GB cache remains after installation.
 
 Install this APK **over** 9067; do not clear app data, uninstall or accept an
 upstream APK update. A forced uninstall prompt means abort the install.
+
+## Preview 9069 — 2016 Vortex native scene + Home status repair
+
+**Reason:** The first on-device test of signed 9068 on Nov 9, 2026
+showed still-empty NEW tiles on Vortex/Event, a native crash after tapping
+Enhance, a late-client Home with Panel Quest, Anniversary and Expedition,
+and non-working Daily Login. The additional 50 KB asset prompt is an
+independent symptom, not proof that the 2016 calendar loaded.
+
+**Objective causes found and addressed in source:**
+
+1. `summon_menu.js` previously returned the whole final-client
+   `GateUtil::getInSessionAreaList` when historical event area count was
+   zero. It also kept a cached event menu and manipulated a scene-owned
+   Cocos array when switching tabs. The historical path now uses the native
+   area allowlist even if empty; it does not mutate scene-owned arrays on
+   tab switches. **This reduces one identifiable crash risk, but does not
+   prove why Enhance crashed on Android.**
+2. `event_archive.events` had **zero** 2016 areas, despite 2016 Global
+   references and native original data verifying the classic Enhancement
+   chambers: Riches (216 / 21110 / 2111001), Creation
+   (224 / 21102 / 2110201), Awakening (225 / 21103 / 2110391),
+   Experience (226 / 21104 / 2110401). They use native Enhancement tab 2;
+   later permanent missions remain restricted. The native master
+   `F_MISSION_MST.ndjson` and `F_DUNGEON_MST.ndjson` were checked through
+   byte-range extraction of the original `data-001` pack.
+3. The historic event server stage once filtered the captured 2024
+   policy only *partially* and could re-add endgame areas on later
+   responses. It now uses the current saved month to build one complete
+   four-area policy, ignoring unrelated persistent endgame event policies.
+4. The four custom `event_216.png` etc aliases were **absent** from the
+   verified game's original data ZIP. Original usable banners are already
+   shipped under `cpk_extract/en/area/Ver461_spdungeon1/`, with basenames
+   `global_spd_bn_list_00216.png`, `...00224.png`, `...00225.png`,
+   `...00226.png`. Only historical saves use those shipped basenames.
+   No 14 GB re-download or invented raster art is needed.
+5. `title_menu.js` cached the historical feature flags too early.
+   `home_carousel.js` now requests the existing server
+   `titleAction('status')` on Home initialize and setup. The native
+   Home-icon predicates for Panel Quests, Expedition, modern events,
+   Emblems, Comeback Quests and ads summon share that same feature
+   projection. Original Daily Login, Quests and downloads are untouched.
+6. `historical_login_preview.py` supplied a blank `banner` field,
+   which removed the `DailyLoginBonusBannerResponse` despite 28 valid
+   reward rows. The historical calendar now uses the **existing bundled
+   daily_login_banner_dailylogin_00.png** image as a visual fallback.
+   This is **not verified original June/July 2016 calendar art**.
+
+**Automated validation:** 71 historical Python tests (1 skipped) +
+15 audit/import/master-table tests; Node.js Home carousel, historical
+status, native mission and adaptive layout tests; Frida compilation;
+signed ZIP import with the embedded Python 3.10 runtime verified 116
+handlers, 81 feature gates, exact 4 Vortex chambers + tab 2 and
+original CPK artwork names in BOTH 2016-06/2016-07 replies, 28 login
+days and a nonempty calendar banner. No real Android Enhance crash
+test was possible from the connected workspace.
+
+**Important pending issues:** Android native backtrace of Enhance crash;
+50 KB original game asset prompt; whether the native Daily Login dialog
+appears at all; late-client Anniversary visual and precise tooltip
+NV+ renderer; full historical visuals / missions / event exchange.
+These are NOT marked fixed without device evidence.
+
+**For installation:** VersionCode 9069, same Android package and
+signer certificate SHA-256
+`1e08a903aef9c3a721510b64ec764d01d3d094eb954161b62544ea8f187b5953`.
+Install **over** 9068; never uninstall or wipe the 14 GB. If Android
+requests uninstall, abort. Do not accept an upstream APK replacement.
+
+### Extra fix after signed-ZIP audit: calendar PNG CDN 404
+
+The first 9069 candidate failed a targeted embedded-resource audit:
+`assets/banner_art/daily_login_banner_dailylogin_00.png` **was**
+present in `app.imy` (100,451 bytes), while
+`ffbe_gacha.banner_art_index()` only walks filesystem directories.
+Because Chaquopy's source path is a ZIP archive, the login CDN request
+would still return **404** despite the nonempty banner response.
+
+The existing CDN image-response branch in `capture_server.py`
+now falls back, for **only that exact /login/ PNG**, to
+`pkgutil.get_data(__name__, 'assets/banner_art/daily_login_banner_dailylogin_00.png')`.
+The patch is included in `capture_server.pyc` of the updated APK.
+This serves the same shipped atlas artwork; it does not replace
+original 2016 calendar art or add a new downloader. The user's original
+14 GB game data is untouched.
+
+The original 50 KB asset download prompt shown on Home remains a
+separate, unconfirmed path, and the Daily Login native scene still
+needs an on-device test. If Enhance still crashes, retrieve Android
+logcat/bugreport before further native changes.

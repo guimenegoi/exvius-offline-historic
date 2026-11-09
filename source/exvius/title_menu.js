@@ -3,6 +3,32 @@
 // starts the game through the original Tap to Start path. The online-only
 // Delete Account, Support and Login Options buttons are not created: their
 // builders take their own early exits. No native calls.
+// Refresh the *same* server-owned marker whenever the native game leaves
+// Title for Home. The first title lookup may run before Chaquopy starts or
+// before the save exists; caching that early failure hid all later UI gates.
+export function applyHistoricalStatus(current, note = () => {}) {
+  if (!current || typeof current !== 'object') throw new Error('Invalid local status');
+  const preview = current.historical_preview === true;
+  globalThis.__EXVIUS_HISTORICAL_PREVIEW__ = preview;
+  globalThis.__EXVIUS_HISTORICAL_FEATURES__ = preview ?
+    (current.historical_features || {}) : null;
+  note('HISTORIC_STATUS preview=' + preview + ' month=' +
+    (current.historical_month || 'none') + ' features=' +
+    Object.keys(globalThis.__EXVIUS_HISTORICAL_FEATURES__ || {}).length);
+  return current;
+}
+
+export function refreshHistoricalStatus(bridge, note = () => {}) {
+  try {
+    const current = JSON.parse(bridge('titleAction',
+      '(Ljava/lang/String;)Ljava/lang/String;', ['status']));
+    return applyHistoricalStatus(current, note);
+  } catch (error) {
+    note('HISTORIC_STATUS_REFRESH_FAILED ' + error);
+    return null;
+  }
+}
+
 export function installTitleMenu(module, note, retained, bridge) {
   // Keep the original publisher cards, but shorten only their introductory
   // waits and fades. No gameplay or story actions use these temporary hooks.
@@ -51,10 +77,8 @@ export function installTitleMenu(module, note, retained, bridge) {
   // No new Android overlay is required for the 2016 launch/July test slice.
   let periodLabel = 'Start Historic';
   try {
-    const current = JSON.parse(bridge('titleAction', '(Ljava/lang/String;)Ljava/lang/String;', ['status']));
-    globalThis.__EXVIUS_HISTORICAL_PREVIEW__ = Boolean(current.has_save && current.historical_preview);
-    globalThis.__EXVIUS_HISTORICAL_FEATURES__ = current.historical_preview ?
-      (current.historical_features || {}) : null;
+    const current = refreshHistoricalStatus(bridge, note);
+    if (!current) throw new Error('The status was not ready at Title startup');
     if (current.has_save && current.historical_preview)
       periodLabel = current.historical_month === '2016-06' ? 'Unlock Jul 2016' : 'History: Jul 2016';
     else if (current.has_save) periodLabel = 'Reset to Historic';
@@ -104,9 +128,7 @@ export function installTitleMenu(module, note, retained, bridge) {
       } else {
         try {
           const updated = JSON.parse(bridge('titleAction', '(Ljava/lang/String;)Ljava/lang/String;', ['next']));
-          globalThis.__EXVIUS_HISTORICAL_PREVIEW__ = Boolean(updated.historical_preview);
-          globalThis.__EXVIUS_HISTORICAL_FEATURES__ = updated.historical_preview ?
-            (updated.historical_features || {}) : null;
+          applyHistoricalStatus(updated, note);
           note('LOCAL_TITLE_HISTORIC_NEXT');
         } catch (error) {
           // The save is unchanged. Keep the original Info press rather than start it.

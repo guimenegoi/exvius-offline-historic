@@ -57,37 +57,69 @@ class HistoricalSummonUi(TestCase):
 
 
 class HistoricalVortexUi(TestCase):
-    def test_captured_2024_event_tiles_cannot_survive_empty_2016_archive(self):
-        rows = [
-            {'uv60hgDW': '226', 'U9iHsau3': '21104', 'qo3PECw6': '2110401'},
-            {'uv60hgDW': '899', 'U9iHsau3': '89601', 'qo3PECw6': '8960101'},
-            {'uv60hgDW': '990999', 'U9iHsau3': '99901', 'qo3PECw6': '9990101'},
-        ]
-        player = SimpleNamespace(data=marked(), dirty=False)
+    def _serve_historical_chambers(self, source_rows, month="2016-06"):
+        # Reproduce the original native reply (Experience + late Fallen) and
+        # verify the full downstream response, including artwork and tab IDs.
+        from event_archive import events
+        player = SimpleNamespace(data=marked(month), dirty=False)
+        historic = events(player)
+        mission_rows = [{"uv60hgDW": r["area"],
+                         "U9iHsau3": r["first_dungeon"],
+                         "qo3PECw6": r["first_mission"]}
+                        for r in historic]
         with patch.object(ffbe_state.State, 'player', player), patch.object(
-                ffbe_player, 'load_policy', return_value={
-                    'version': 1, 'areas': [], 'permanent': True}):
+                ffbe_player, 'load_policy',
+                side_effect=AssertionError("Endgame saved policy must not be consulted")), patch.object(
+                ffbe_player, '_event_area_facts',
+                side_effect=AssertionError("Historical archive already supplies its own masters")), patch.object(
+                ffbe_player, '_load_mst_rows', return_value={"__rows__": mission_rows}), patch(
+                'exvius_raid_progress.personal_event', return_value=None), patch.object(
+                ffbe_player, 'apply_availability', side_effect=lambda spec, *_a, **_kw: spec), patch.object(
+                ffbe_player, 'serve_switches', side_effect=lambda spec: spec):
             reply = ffbe_player.serve_event_gate(
-                {'0xkoNP8U': rows}, ffbe_player.EVENT_GATE_CARRIERS[0])
-        self.assertEqual([r['uv60hgDW'] for r in reply['0xkoNP8U']], ['226'])
-        self.assertEqual([r['uv60hgDW'] for r in rows], ['226', '899', '990999'])
+                {'0xkoNP8U': source_rows}, ffbe_player.EVENT_GATE_CARRIERS[0])
         self.assertFalse(player.dirty)
+        return reply
 
-    def test_persisted_endgame_policy_cannot_readd_unreleased_tiles(self):
+    def test_only_four_original_enhancement_chambers_reach_client(self):
         rows = [
-            {'uv60hgDW': '226', 'U9iHsau3': '21104', 'qo3PECw6': '2110401'},
-            {'uv60hgDW': '899', 'U9iHsau3': '89601', 'qo3PECw6': '8960101'},
+            {'uv60hgDW': '226', 'qnUhs32P': '2',
+             'U9iHsau3': '21104', 'qo3PECw6': '2110401'},
+            {'uv60hgDW': '899', 'qnUhs32P': '3',
+             'U9iHsau3': '89601', 'qo3PECw6': '8960101'},
+            {'uv60hgDW': '990999', 'qnUhs32P': '1',
+             'U9iHsau3': '99901', 'qo3PECw6': '9990101'},
         ]
-        player = SimpleNamespace(data=marked(), dirty=False)
-        with patch.object(ffbe_state.State, 'player', player), patch.object(
-                ffbe_player, 'load_policy', return_value={
-                    'version': 1, 'areas': ['899', '970'], 'permanent': True}), patch.object(
-                ffbe_player, '_event_area_facts', return_value=[]) as lookup:
-            out = ffbe_player.serve_event_gate(
-                {'0xkoNP8U': rows}, ffbe_player.EVENT_GATE_CARRIERS[0])
-        lookup.assert_called_once_with([])
-        self.assertEqual([r['uv60hgDW'] for r in out['0xkoNP8U']], ['226'])
-        self.assertFalse(player.dirty)
+        reply = self._serve_historical_chambers(rows)
+        areas = {str(row["uv60hgDW"]) for row in reply['0xkoNP8U']}
+        self.assertEqual(areas, {'216', '224', '225', '226'})
+        self.assertTrue(all(row['qnUhs32P'] == '2'
+                            for row in reply['0xkoNP8U']))
+        art = {row['uv60hgDW']: row['4yT7FUqj']
+               for row in reply['0xkoNP8U']}
+        self.assertEqual(art, {
+            '216': 'global_spd_bn_list_00216.png',
+            '224': 'global_spd_bn_list_00224.png',
+            '225': 'global_spd_bn_list_00225.png',
+            '226': 'global_spd_bn_list_00226.png',
+        })
+        self.assertEqual([r['uv60hgDW'] for r in rows],
+                         ['226', '899', '990999'])
+
+    def test_old_saved_endgame_policy_does_not_reintroduce_tiles(self):
+        # The same four chambers are served regardless of a stale endgame
+        # policy. The source-stage test above rejects any load_policy call.
+        result = self._serve_historical_chambers([
+            {'uv60hgDW': '899', 'U9iHsau3': '89601',
+             'qo3PECw6': '8960101'}], month="2016-07")
+        self.assertEqual({r['uv60hgDW'] for r in result['0xkoNP8U']},
+                         {'216', '224', '225', '226'})
+
+    def test_native_archive_rejects_empty_era_fallback_and_tab_mutation(self):
+        js = (ROOT / 'source/exvius/summon_menu.js').read_text()
+        self.assertIn('(!eventHistorical && !eventAreas.size)', js)
+        self.assertIn('if (eventHistorical ||', js)
+        self.assertIn('historical_preview === true', js)
 
     def test_late_survival_mode_does_not_add_2016_event_tiles(self):
         player = SimpleNamespace(data=marked(), dirty=False)
@@ -107,6 +139,12 @@ class Original2016DailyLogin(TestCase):
             self.assertEqual(set(map(int, month['days'])), set(range(1, 29)))
         june = months['2016-Jun']['days']
         july = months['2016-Jul']['days']
+        self.assertEqual(months['2016-Jun']['banner'],
+                         'daily_login_banner_dailylogin_00.png')
+        self.assertEqual(months['2016-Jul']['banner'],
+                         'daily_login_banner_dailylogin_00.png')
+        self.assertTrue((ROOT / 'source/server/assets/banner_art' /
+                         months['2016-Jun']['banner']).is_file())
         self.assertEqual((june['1']['type'], june['1']['count']), (30, 500))
         self.assertEqual((june['3']['type'], june['3']['count']), (51, 200))
         self.assertEqual((june['7']['type'], june['7']['count']), (50, 100))
