@@ -73,6 +73,22 @@ class HistoricalUiSnapshotEvidence(TestCase):
             "Chamber of Creation",
             doc["references"]["ushi-2016-05-22-vortex-245"]["visible_controls"])
 
+    def test_late_home_craft_candidate_does_not_mark_2016_ui_verified(self):
+        doc = json.loads(INDEX.read_text(encoding="utf-8"))
+        candidate = doc["legacy_layout_candidates"]["home-craft-pre2"]
+        self.assertEqual(candidate["era_hypothesis"], "global-launch")
+        self.assertEqual(candidate["control_ids"], [
+            "home_btn_blacksmith", "home_btn_ability", "home_btn_prepare"])
+        self.assertEqual(candidate["source_pack_date"], "2024-07-10")
+        self.assertFalse(candidate["original_2016_pack_available"])
+        self.assertFalse(candidate["original_english_sprite_frames_available"])
+        self.assertFalse(candidate["layout_verified"])
+        self.assertEqual(candidate["coordinates"], "craft-panel-local-not-screen")
+        self.assertEqual(len(candidate["source_pack_sha256"]), 64)
+        self.assertEqual(len(candidate["layout_sha256"]), 64)
+        self.assertIn("ushi-2016-05-22-home-010", candidate["source_evidence"])
+        self.assertFalse(doc["eras"][0]["screens"]["home"]["layout_verified"])
+
     def test_2022_global_home_update_is_separate_from_vision_card_items(self):
         doc = json.loads(INDEX.read_text(encoding="utf-8"))
         milestone = next(item for item in doc["transition_sources"]

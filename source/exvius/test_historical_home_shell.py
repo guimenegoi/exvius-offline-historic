@@ -4,7 +4,9 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from preview_historical_home_shell import frame_rectangle, parse_layout, render_common_shell
+from preview_historical_home_shell import (frame_rectangle, parse_layout,
+    render_common_shell, inspect_preserved_craft_layout, LATE_ARCHIVE_COMMON_SHA256,
+    LATE_CRAFT_LAYOUT_SHA256)
 
 
 class HistoricalHomeShellTests(unittest.TestCase):
@@ -52,6 +54,36 @@ class HistoricalHomeShellTests(unittest.TestCase):
                 render_common_shell(file, 1024, Path(directory) / "output.png")
             with self.assertRaisesRegex(ValueError, "Unsupported"):
                 render_common_shell(file, 1080, Path(directory) / "output.png")
+
+    def test_late_archive_cannot_be_treated_as_2016_without_pinned_bytes(self):
+        with tempfile.TemporaryDirectory() as directory:
+            fake = Path(directory) / "Ver273_resources_common.cpk"
+            fake.write_bytes(b"arbitrary archive does not establish historical art")
+            with self.assertRaisesRegex(ValueError, "refusing layout attribution"):
+                inspect_preserved_craft_layout(fake)
+        self.assertEqual(len(LATE_ARCHIVE_COMMON_SHA256), 64)
+        self.assertEqual(len(LATE_CRAFT_LAYOUT_SHA256), 64)
+
+    @unittest.skipUnless(os.environ.get("FFBE_LATE_COMMON_CPK"),
+                         "Optional authentic late Global CPK integration")
+    def test_late_archive_survives_with_three_original_craft_button_rows(self):
+        candidate = inspect_preserved_craft_layout(
+            Path(os.environ["FFBE_LATE_COMMON_CPK"]))
+        self.assertEqual(candidate["source_pack_year"], 2024)
+        self.assertFalse(candidate["original_2016_geometry_verified"])
+        self.assertFalse(candidate["panel_origin_verified"])
+        self.assertFalse(candidate["original_english_artwork_recovered"])
+        self.assertEqual(candidate["coordinate_system"], "craft-panel-local")
+        self.assertIsNone(candidate["original_2016_pack_matches"])
+        self.assertEqual([row["name"] for row in candidate["buttons"]], [
+            "home_btn_blacksmith", "home_btn_ability", "home_btn_prepare"])
+        self.assertEqual([row["rect"] for row in candidate["buttons"]], [
+            [0, 0, 324, 128], [0, 144, 324, 128], [0, 288, 324, 128]])
+        self.assertEqual([row["sprite"] for row in candidate["buttons"]], [
+            "mypage_center_blacksmith1.png", "mypage_center_ability1.png",
+            "mypage_center_prepare1.png"])
+        self.assertEqual(len(candidate["timer_overlays"]), 9)
+        self.assertEqual(candidate["layout_sha256"], LATE_CRAFT_LAYOUT_SHA256)
 
     @unittest.skipUnless(os.environ.get("FFBE_HISTORIC_APK"), "Original signed APK integration")
     def test_actual_2016_era_atlas_and_layout_are_verified(self):

@@ -444,5 +444,31 @@
         }
       ]
     }
-  ]
+  ],
+  "legacy_layout_candidates": {
+    "home-craft-pre2": {
+      "surface": "home",
+      "era_hypothesis": "global-launch",
+      "status": "later-pack-surviving-legacy-layout-unverified-for-2016",
+      "source": "https://archive.org/details/ffbe-eos-contentserver-archive",
+      "source_pack": "common_lang/sd/resources/Ver273_resources_common.cpk",
+      "source_pack_sha256": "ae6af108e2d7597b03b7b71b7b019558f06e6049dafc074de550b75dc43fb649",
+      "source_pack_date": "2024-07-10",
+      "layout": "layout/home/layout_home_craft.csv",
+      "layout_sha256": "bc91fd7617b96c8c8cb8ae578aede73acf2c1ab990ab921d69a076195145e06e",
+      "control_ids": [
+        "home_btn_blacksmith",
+        "home_btn_ability",
+        "home_btn_prepare"
+      ],
+      "source_evidence": [
+        "GL 1.2.0 HomeScene::drawCraft(int)",
+        "ushi-2016-05-22-home-010"
+      ],
+      "coordinates": "craft-panel-local-not-screen",
+      "original_2016_pack_available": false,
+      "original_english_sprite_frames_available": false,
+      "layout_verified": false
+    }
+  }
 }

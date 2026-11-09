@@ -301,6 +301,58 @@ Any completed UI snapshot still requires validated art, geometry,
 navigation, server action gating, and Android screenshot regressions.
 Until then the status remains evidence-inventory-not-a-renderer.
 
+## Recovered three-button Home Craft layout from retained 2024 data
+
+A read-only check of the Global end-of-service content server archive
+found an obsolete CSV in the late 2024
+Ver273_resources_common.cpk (2024-07-10). The archive retains
+layout/home/layout_home_craft.csv although its Home was redesigned.
+The CPK SHA-256 is
+ae6af108e2d7597b03b7b71b7b019558f06e6049dafc074de550b75dc43fb649;
+the original 757-byte CSV SHA-256 is
+bc91fd7617b96c8c8cb8ae578aede73acf2c1ab990ab921d69a076195145e06e.
+
+Its three **panel-local** rows are:
+
+| Internal control | Referenced sprite | Cocos local rectangle |
+| --- | --- | --- |
+| home_btn_blacksmith | mypage_center_blacksmith1.png | (0, 0, 324, 128) |
+| home_btn_ability | mypage_center_ability1.png | (0, 144, 324, 128) |
+| home_btn_prepare | mypage_center_prepare1.png | (0, 288, 324, 128) |
+
+Each also references three 40x40 timer sprites, with nine additional
+relative rows. The 144-unit vertical spacing supports the visual order
+in the May 22, 2016 gameplay footage
+(https://www.youtube.com/watch?v=imdaYmRWe8s&t=10s),
+where the old Home presents Forge, Abilities, Synthesize.
+The signed GL 1.2.0 native library exports HomeScene::drawCraft(int)
+and HomeScene::setCraftLayout(), confirming a dedicated old scene.
+
+**This is a surviving layout candidate, not a verified 2016 snapshot.**
+The resource is from the final 2024 archive, not the missing 2016
+Ver24_resources_common.cpk. The coordinates are relative to an internal
+craft panel; the screen-level panel anchor has not been verified.
+The matching English button sprites are not in the signed
+GL 1.2.0 common atlas or the two examined end-of-service CPK atlases.
+Do not substitute late art, Japanese embedded footer labels or
+unverified panel coordinates and then call the scene historically correct.
+
+To validate the source geometry and attach it to an existing *private*
+diagnostic manifest, without changing gameplay:
+
+~~~bash
+PYTHONPATH="$HOME/.local/share/ffbe-android-test/historic-cpk-deps"  "$HOME/.local/bin/python3.10" -B  source/exvius/preview_historical_home_shell.py  --apk "$HOME/.local/share/ffbe-android-test/historical-apks/GL-1.2.0-2016-11.apk"  --late-common-cpk "$HOME/.local/share/ffbe-android-test/historical-apks/late-client-reference/Ver273_resources_common.cpk"  --output "$HOME/.local/share/ffbe-android-test/historical-apks/recovered-assets/pre2-shell-with-craft-diagnostic.png"
+~~~
+
+The preview remains the original embedded header/footer, transparent
+in its body. A companion JSON field legacy_craft_candidate reports
+the preserved three-button layout and its unverified status.
+Both original package and CSV checksums are verified.
+The installed signed GL 1.2.0 client reaches a disconnected-network
+initialization blocker; no executable Home layout has independently
+validated the original craft-panel screen origin. The offline 9086
+package and save are separate from that original installation.
+
 ## Acceptance gate for an era/surface
 
 1. Obtain a dated **Global** capture, preferably a video and still images.

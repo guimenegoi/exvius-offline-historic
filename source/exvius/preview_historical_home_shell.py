@@ -26,6 +26,12 @@ COMMON_CPK = "assets/cpk/common.cpk"
 PRETUTORIAL_CPK = "assets/cpk/common_lang/sd/resources/resources_common_pretutorial.cpk"
 ATLAS_DIRS = ("common", "header", "footer")
 RESOLUTIONS = (960, 1024, 1136)
+# A late-2024 CPK retains three obsolete craft button rows that resemble the
+# 2016 Global UI. It is NOT the original Ver24_resources_common.cpk and its
+# contents cannot be substituted for the missing 2016 localized asset pack.
+LATE_ARCHIVE_COMMON_SHA256 = "ae6af108e2d7597b03b7b71b7b019558f06e6049dafc074de550b75dc43fb649"
+LATE_CRAFT_LAYOUT_SHA256 = "bc91fd7617b96c8c8cb8ae578aede73acf2c1ab990ab921d69a076195145e06e"
+LATE_CRAFT_LAYOUT_NAME = "layout/home/layout_home_craft.csv"
 
 
 @dataclass(frozen=True)
@@ -55,6 +61,69 @@ def parse_layout(data: bytes) -> list[LayoutRow]:
         seen.add(label)
         rows.append(LayoutRow(x, y, width, height, font, label, sprite))
     return rows
+
+
+def inspect_preserved_craft_layout(archive_path: Path) -> dict:
+    """Inspect legacy geometry retained in the later archive; never authenticate it as 2016.
+
+    The coordinates are local to the craft panel, *not* global Home points.
+    Sprite filenames are provenance clues, not proof that artwork is available.
+    """
+    if hashlib.sha256(archive_path.read_bytes()).hexdigest() != LATE_ARCHIVE_COMMON_SHA256:
+        raise ValueError("Unrecognized late Global CPK; refusing layout attribution")
+    from cricodecs import cpk
+    archive = cpk.load(str(archive_path))
+    infos = archive.file_infos()
+    paths = {item.full_path: i for i, item in enumerate(infos)}
+    if len(infos) != 1616 or len(paths) != len(infos):
+        raise ValueError("Unexpected late Global CPK entry catalogue")
+    csv_data = archive.file_bytes(paths[LATE_CRAFT_LAYOUT_NAME])
+    if hashlib.sha256(csv_data).hexdigest() != LATE_CRAFT_LAYOUT_SHA256:
+        raise ValueError("Late Global Home craft layout checksum mismatch")
+    rows = parse_layout(csv_data)
+    if len(rows) != 12:
+        raise ValueError("Unexpected late Global craft control count")
+    names = ("blacksmith", "ability", "prepare")
+    buttons = [row for row in rows if row.label.startswith("home_btn_")]
+    if [row.label for row in buttons] != [f"home_btn_{name}" for name in names]:
+        raise ValueError("Unexpected late Global craft button order")
+    if [(row.x, row.y, row.width, row.height) for row in buttons] != [
+        (0, 0, 324, 128), (0, 144, 324, 128), (0, 288, 324, 128),
+    ]:
+        raise ValueError("Unexpected late Global legacy craft button geometry")
+    expected = {
+        f"home_{name}_icon_{suffix}" for name in names
+        for suffix in ("bg", "gauge", "front")
+    }
+    if {row.label for row in rows if row not in buttons} != expected:
+        raise ValueError("Unexpected late Global craft timer overlays")
+    return {
+        "type": "late-archive-surviving-legacy-layout-candidate",
+        "source_pack_version": "Ver273_resources_common.cpk",
+        "source_pack_year": 2024,
+        "source_pack_sha256": LATE_ARCHIVE_COMMON_SHA256,
+        "layout_path": LATE_CRAFT_LAYOUT_NAME,
+        "layout_sha256": LATE_CRAFT_LAYOUT_SHA256,
+        "original_2016_pack_matches": None,
+        "original_2016_geometry_verified": False,
+        "panel_origin_verified": False,
+        "coordinate_system": "craft-panel-local",
+        "original_english_artwork_recovered": False,
+        "candidate_supported_by": [
+            "GL 1.2.0 HomeScene::drawCraft(int) export",
+            "May 22 2016 dated gameplay video, Home 00:10",
+        ],
+        "buttons": [
+            {"name": row.label, "sprite": row.sprite,
+             "rect": [row.x, row.y, row.width, row.height]}
+            for row in buttons
+        ],
+        "timer_overlays": [
+            {"name": row.label, "sprite": row.sprite,
+             "rect": [row.x, row.y, row.width, row.height]}
+            for row in rows if row not in buttons
+        ],
+    }
 
 
 def frame_rectangle(metadata: dict) -> tuple[int, int, int, int]:
@@ -235,8 +304,14 @@ def main() -> None:
     parser.add_argument("--apk", required=True, type=Path)
     parser.add_argument("--output", required=True, type=Path)
     parser.add_argument("--height", type=int, default=1024, choices=RESOLUTIONS)
+    parser.add_argument("--late-common-cpk", type=Path,
+                        help="Optional verified 2024 CPK to audit surviving craft rows; "
+                             "never substitute its art for 2016")
     args = parser.parse_args()
     report = render_common_shell(args.apk, args.height, args.output)
+    if args.late_common_cpk:
+        report["legacy_craft_candidate"] = inspect_preserved_craft_layout(
+            args.late_common_cpk)
     args.output.with_suffix(".json").write_text(
         json.dumps(report, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     print(json.dumps({
