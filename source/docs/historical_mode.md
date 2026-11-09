@@ -38,11 +38,17 @@ note as the latest status.
 - **UI evidence:** `historical_ui_snapshots.md` and
   `content/historical_ui_snapshots.json` catalog references, not finished
   renderers. An announcement is not a pixel-accurate screenshot.
-- **Working copies:** the emulator checkout contains ongoing uncommitted
-  Frida/Waydroid experiments; the other historical checkout contains
-  separate uncommitted launch-roster research. Reconcile **by reviewed
-  commits/diffs**, never by blind directory copying or simultaneous
-  editing. Unverified native offsets are pinned to Global 9.0.0.
+- **Working copies (audited 2026-11-09):** the emulator and secondary
+  historical checkouts are clean and synchronized at the same commit.
+  The archive/Season-selector UI experiment remains isolated in
+  feature/offline-archive-selector-placement (commit 5b15248).
+  Two identified legacy stashes preserve superseded GateScene and
+  launch-roster experiments; do not automatically reapply them.
+  The disposable combined-preview worktree has been removed after
+  verifying that its only diff matches the committed selector branch.
+  Test APKs and screenshots remain ignored under source/build/.
+  Reconcile future changes **by reviewed commits/diffs**, never blind
+  directory copying. Unverified native offsets are pinned to GL 9.0.0.
 - **Release gate:** do not announce an APK as fully historical until
   server data and native UI have been tested together on Android.
   Preserve existing save files and upstream nonhistorical behavior.
