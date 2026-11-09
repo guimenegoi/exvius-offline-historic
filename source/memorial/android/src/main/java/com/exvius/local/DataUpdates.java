@@ -508,9 +508,9 @@ public final class DataUpdates {
                         // Running games keep their current files. Apply updates on the next launch.
                         }
                     }
-                    JSONObject app = manifest.optJSONObject("app");
-                    if (app != null && app.optInt("versionCode") > appVersion(context))
-                        downloadApp(context, app);
+                    // The historical fork may reuse official DATA manifests, but it must
+                    // never offer the official APK as an upgrade for a differently signed
+                    // historical client. Fork APKs are updated separately by the user.
                 }
                 Progress current = listener;
                 if (mandatory && ready(context) && current != null) current.complete();
