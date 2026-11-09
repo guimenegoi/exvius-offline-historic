@@ -155,6 +155,50 @@ sprites into the final client's Home in isolation and mark the scene
 historically correct: geometry, navigation and unlocks still need
 source-backed versioned reconstruction and Android validation.
 
+## Pre-2.0 Home shell — isolated evidence prototype (2026-11-09)
+
+Branch: feature/historic-pre2-home-shell. The optional offline command
+
+~~~bash
+PYTHONPATH="$HOME/.local/share/ffbe-android-test/historic-cpk-deps" \
+  "$HOME/.local/bin/python3.10" -B \
+  source/exvius/preview_historical_home_shell.py \
+  --apk "$HOME/.local/share/ffbe-android-test/historical-apks/GL-1.2.0-2016-11.apk" \
+  --height 1024 \
+  --output "$HOME/.local/share/ffbe-android-test/historical-apks/recovered-assets/pre2-shell-1024.png"
+~~~
+
+reads the actual 1.2.0 CPK and renders the embedded header and footer
+from their **original CSV layout coordinates and original plist
+sprite rectangles**, leaving the Home body transparent. Variants 640x960
+and 640x1136 are supported with --height. The original atlas/container
+hashes are verified against the existing client evidence inventory;
+unverified clients are rejected. A companion JSON manifest records
+each control and position and explicitly rejects historical fidelity.
+
+All three 1.2.0 viewport previews were rendered. The 640x1024 preview
+is byte-identical when rebuilt from the 1.4.1 APK (SHA-256
+e21a584077e14b9eaefd521f63e5bf6448b570d8b600c54c23ef6916d5156ce3).
+
+**Important localization blocker:** some text baked into the original
+APK's embedded header/footer sprites is **Japanese**, whereas the
+archived Global screenshot displays **English** Home, Units, Shop and
+energy labels. Being included in a *signed GL APK* therefore does not
+prove the image was selected at runtime. The client also ships an
+en/sd/resources/resources_pretutorial.cpk with localized common/menu
+resources, but **no English footer or header replacements** in that
+embedded pack. The English retail images may have been delivered by
+the additional content updater. The prototype is intentionally NOT
+installed in the final client, and its manifest sets
+global_english_localization_verified: false.
+
+No original sprite PNG, original-layout CSV, or APK is committed. The
+preview remains outside Git in the private historical-apks test folder.
+The Home's central craft menu, character scene, touch targets, feature
+availability, and full English localization remain **unverified**.
+The final-client carousel remains a compatibility fallback until a
+complete versioned adapter has passed visual and touch tests on Android.
+
 ## Acceptance gate for an era/surface
 
 1. Obtain a dated **Global** capture, preferably a video and still images.
