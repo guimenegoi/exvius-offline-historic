@@ -171,6 +171,12 @@ export function installAdaptiveDisplay(module, retained, note, bridge) {
   const mapRows = native('_ZNK7MapData12getMapHeightEv', 'int', ['pointer']);
   const mapId = native('_ZNK7MapData8getMapIdEv', 'int', ['pointer']);
   const aliasTexture = native('_ZN7cocos2d9Texture2D21setAliasTexParametersEv', 'void', ['pointer']);
+  // Frida's ARM64 NativeFunction crosses Houdini when libgame.so is mapped
+  // outside its module list. Calling this GL mutator from an interceptor
+  // repeatedly faults in the translator while entering the World scene.
+  // Preserve the original texture path on native ARM64 clients.
+  const translatedArm = Process.findModuleByName('libgame.so') === null;
+  if (translatedArm) note('WAYDROID_TEXTURE_ALIAS_BYPASS');
   let view = null;
   let layoutReady = false;
   let reference = { width: 640, height: 1136 };
@@ -534,7 +540,7 @@ export function installAdaptiveDisplay(module, retained, note, bridge) {
           try { replacement = addImage(textureCache(director()), value); }
           finally { freeString(value); }
           if (replacement.isNull() || textureWidth(replacement) !== 986) continue;
-          aliasTexture(replacement);
+          if (!translatedArm) aliasTexture(replacement);
           replaceTexture(manager.add(0x2548).readPointer(), i, replacement, 1);
           note('MAP_ATLAS_RECOVERED resource=' + resource + ' image=' + filename + ' width=986');
         } catch (error) { note('MAP_ATLAS_RECOVERY_ERROR ' + error); }
@@ -593,7 +599,7 @@ export function installAdaptiveDisplay(module, retained, note, bridge) {
   }));
   retained.push(Interceptor.attach(module.getExportByName('_ZN10GameSprite4initEPN7cocos2d9Texture2DE'), {
     onEnter(args) {
-      if (areaMapDepth && !args[1].isNull()) aliasTexture(args[1]);
+      if (!translatedArm && areaMapDepth && !args[1].isNull()) aliasTexture(args[1]);
     }
   }));
 }

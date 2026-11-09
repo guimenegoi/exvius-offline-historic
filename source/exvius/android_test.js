@@ -1,5 +1,6 @@
 'use strict';
 import { createNativeBridge } from './native_bridge.js';
+import { findMappedGameModule } from './mapped_game_module.js';
 // android_offline.py routes the game's Java callers to LocalGameBridge in the
 // APK itself. Do not install the redundant URL.openConnection Java hooks:
 // replacement ArtMethods in frida-java-bridge 7.0.13 crash Android 16 GC walks.
@@ -81,7 +82,12 @@ rpc.exports = {
     let installed = false;
     function installGameHook() {
         if (installed) return;
-        const module = Process.findModuleByName('libgame.so');
+        // The Android ARM64 normal loader remains the preferred resolver.
+        // Under x86 Waydroid/Houdini, Frida's module list omits libgame.so
+        // even though its ARM64 mappings and code are present. Resolve the
+        // exact pinned GL9 ELF through the existing mapping on that path.
+        const module = Process.findModuleByName('libgame.so') ||
+          findMappedGameModule(note);
         if (!module) return;
         // The native startup also initializes Firebase directly, independently
         // of the disabled Java bridge. Offline builds have no messaging service.
@@ -535,6 +541,20 @@ rpc.exports = {
     }
     const missingAudioModule = Memory.allocUtf8String('/nonexistent/libaudioclientimpl.so');
     retained.push(missingAudioModule);
+    if (typeof Process.attachModuleObserver === 'function') {
+      try {
+        retained.push(Process.attachModuleObserver({
+          onAdded(loaded) {
+            if (loaded.name !== 'libgame.so') return;
+            note('STARTUP_MODULE_OBSERVED path=' + loaded.path);
+            installGameHook();
+          }
+        }));
+        note('STARTUP_MODULE_OBSERVER_READY');
+      } catch (error) {
+        note('STARTUP_MODULE_OBSERVER_FAILED error=' + error);
+      }
+    }
     // Android loads native game libraries through the dynamic linker's inner
     // entry points. Hooking the public wrappers loses the vendor caller
     // namespace on affected Android 8+ devices, so keep both loader exports
@@ -564,6 +584,20 @@ rpc.exports = {
       note('STARTUP_LOADER_HOOK_READY symbol=' + symbol);
     }
     installGameHook();
+    // Frida's observer cannot report Houdini's translated game mapping.
+    // A bounded bootstrap retry only runs before our existing installer is
+    // active; it never rebuilds or duplicates the native UI hooks.
+    if (typeof setTimeout === 'function')
+      for (const delay of [900, 1800, 3600, 7200])
+        setTimeout(() => {
+          if (installed) return;
+          try {
+            installGameHook();
+          } catch (error) {
+            installed = true;  // Never layer partially installed hooks.
+            note('STARTUP_MAPPED_INSTALL_FAILED error=' + error);
+          }
+        }, delay);
     note('initialized stage=' + stage + ' speed=' + scale);
   }
 };

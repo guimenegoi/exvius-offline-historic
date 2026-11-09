@@ -3,6 +3,11 @@ const fs = require('node:fs');
 
 (async () => {
 const source = fs.readFileSync(require('node:path').join(__dirname, 'android_display.js'), 'utf8');
+// Houdini's GL texture call is not safe through ARM64 NativeFunction callbacks.
+// Native ARM64 must retain the original alias filtering.
+assert.match(source, /const translatedArm = Process\.findModuleByName\('libgame\.so'\) === null/);
+assert.match(source, /if \(!translatedArm\) aliasTexture\(replacement\)/);
+assert.match(source, /if \(!translatedArm && areaMapDepth && !args\[1\]\.isNull\(\)\)/);
 const { fitMovie, chooseResolution, responsiveDelta, anchorLayout, collapseCampaignBanner, clampMapScroll, clampAnimationFrame, isDarknessSprite } = await import('data:text/javascript;base64,' + Buffer.from(source).toString('base64'));
 
 // Movies retain their source proportions within portrait, landscape and square viewports.

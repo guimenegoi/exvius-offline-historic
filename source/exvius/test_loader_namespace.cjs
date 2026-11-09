@@ -27,6 +27,7 @@ function start(resolution = 'linker') {
   const hooks = new Map();
   const logs = [];
   let gameLookups = 0;
+  let moduleObserver = null;
   const valid = new Set(['__loader_dlopen', '__loader_android_dlopen_ext']);
   const linker = {
     findExportByName: name => resolution === 'linker' && valid.has(name) ? new Ptr(name) : null,
@@ -43,6 +44,10 @@ function start(resolution = 'linker') {
         : null,
     },
     Process: {
+      attachModuleObserver(callbacks) {
+        moduleObserver = callbacks;
+        return {detach() {}};
+      },
       findModuleByName(name) {
         if (name === 'libgame.so') {
           gameLookups++;
@@ -52,6 +57,7 @@ function start(resolution = 'linker') {
         return null;
       },
     },
+    findMappedGameModule: () => null,
     NativeFunction: function () {
       return (_priority, _tag, message) => logs.push(String(message));
     },
@@ -64,7 +70,8 @@ function start(resolution = 'linker') {
   };
   vm.runInNewContext(source, context, {filename: path});
   context.rpc.exports.init('early', {testSpeed: 1});
-  return {hooks, logs, lookups: () => gameLookups};
+  return {hooks, logs, lookups: () => gameLookups,
+    moduleObserver: () => moduleObserver};
 }
 
 const tests = [];
@@ -74,6 +81,18 @@ function test(name, callback) {
 }
 
 const run = start();
+test('Observes libgame.so even if private linker symbols do not exist', () => {
+  const missing = start('missing');
+  const observer = missing.moduleObserver();
+  assert.equal(typeof observer.onAdded, 'function');
+  assert(missing.logs.includes('STARTUP_MODULE_OBSERVER_READY'));
+  const before = missing.lookups();
+  observer.onAdded({name: 'libc.so', path: '/system/lib64/libc.so'});
+  assert.equal(missing.lookups(), before);
+  observer.onAdded({name: 'libgame.so', path: '/data/app/lib/arm64/libgame.so'});
+  assert.equal(missing.lookups(), before + 1);
+  assert(missing.logs.some(x => x.startsWith('STARTUP_MODULE_OBSERVED path=')));
+});
 test('Registers both inner loader exports, never public wrappers', () => {
   assert(run.hooks.has('__loader_dlopen'));
   assert(run.hooks.has('__loader_android_dlopen_ext'));
