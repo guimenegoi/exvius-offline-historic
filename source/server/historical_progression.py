@@ -116,6 +116,9 @@ FEATURE_INTRODUCED = {
     # https://na.finalfantasy.com/news/1462
     "neo_vision": ("2020-08", "https://na.finalfantasy.com/news/1462"),
     "vision_cards": ("2020-08", "https://na.finalfantasy.com/news/1462"),
+    # Global v7.5.0 home redesign (not the 2020 inventory VC release).
+    # https://exvius.fandom.com/wiki/Update_Schedule (22-Sept-2022 feature)
+    "home_vision_card_ornament": ("2022-09", "https://exvius.fandom.com/wiki/Update_Schedule"),
     # Steel Castle Melfikya was introduced after 2016; exact first Global
     # date remains to be verified before its UI is enabled.
     "item_world": (None, None),

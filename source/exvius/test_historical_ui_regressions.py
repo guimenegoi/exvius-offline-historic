@@ -61,8 +61,19 @@ class HistoricHomeNative(TestCase):
         js = (ROOT / 'source/exvius/home_carousel.js').read_text()
         self.assertIn("'_ZN9HomeScene21setOrnamentVisionCard", js)
         self.assertIn("'_ZN9HomeScene25setNoneOrnamentVisionCard", js)
-        self.assertIn("features && features.vision_cards !== true", js)
+        self.assertIn("features && features.home_vision_card_ornament !== true", js)
         self.assertIn("Interceptor.replaceFast", js)
+
+    def test_card_items_precede_home_decorative_ui_by_two_years(self):
+        from historical_progression import historical_features
+        august_2020 = historical_features(marked('2020-08'))
+        august_2022 = historical_features(marked('2022-08'))
+        september_2022 = historical_features(marked('2022-09'))
+        self.assertTrue(august_2020['vision_cards'])
+        self.assertFalse(august_2020['home_vision_card_ornament'])
+        self.assertTrue(august_2022['vision_cards'])
+        self.assertFalse(august_2022['home_vision_card_ornament'])
+        self.assertTrue(september_2022['home_vision_card_ornament'])
 
     def test_native_orb_vector_uses_owned_maximum_not_ten_slots(self):
         js = (ROOT / 'source/exvius/home_carousel.js').read_text()
