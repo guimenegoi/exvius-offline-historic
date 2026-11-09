@@ -1389,7 +1389,9 @@ def serve_feature_state(spec, reply_id=None):
     # The native automatic conversion screen can stall before sending its
     # request. Bank EXP when inventory is refreshed, leaving fresh summon
     # awards in the roster so their reveal can resolve the awarded instance.
+    from historical_progression import feature_available
     if (reply_id != '9fVIioy1' and ('LhVz6aD2' in spec or UNIT_GROUP in spec)
+            and feature_available("modern_unit_growth", State.player.data)
             and convert_material_units(State.player)):
         spec = dict(spec, z36FApms=_point_rows())
     if reply_id not in {'75fYdNxq', 'X07iYtp5', '6H1R9WID', 'u7Id4bMg',
@@ -1413,8 +1415,11 @@ def serve_feature_state(spec, reply_id=None):
             _store('craft', craft)
     out['PmR4z1S7'] = list(_service_master('gifts').values())
     out['h5XGny0N'] = list(_feature('gift').get('receipts', {}).values())
-    out['z36FApms'] = _point_rows()
-    out['E4r63ukD'] = list(_service_master('trust_exchange').values())
+    from historical_progression import feature_available
+    out['z36FApms'] = (_point_rows() if feature_available(
+        "modern_unit_growth", State.player.data) else [])
+    out['E4r63ukD'] = (list(_service_master('trust_exchange').values())
+                       if feature_available("modern_exchange", State.player.data) else [])
     out['ibt8aCI7'] = [{'d9gKeu0T': str(i), '0zBQbX4N': str(count)}
                       for i, count in _feature('exchange').get('counts', {}).items()]
     out['gy84FjCA'] = [_slot_row({'gak9Gb3N': category, '6ukvMSg9': number}, slot)

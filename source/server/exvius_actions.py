@@ -377,10 +377,66 @@ def _all_handlers():
     return HANDLERS
 
 
+# The dispatcher's one centralized calendar check, rather than individual
+# "future feature" patches inside shop/mission/mode handlers. IDs are the
+# original Global endpoints; missing release evidence fails closed *only*
+# for explicit historical saves (normal upstream saves are unaffected).
+HISTORICAL_ACTION_FEATURES = {
+    # 2016-11 Arena; the four original Colosseum ids are deliberately absent.
+    **dict.fromkeys(("f8kXGWy0", "DgG4Cy0F", "eHY7X8Nn", "os4k7C0b",
+                     "6ZNY3zAm", "kcW85SfU", "hqzU9Qc5"), "arena"),
+    **dict.fromkeys(("hW0804Q9", "Ik142Ff6", "2pe3Xa8b", "r4A791RF",
+                     "vTgYyHM6", "I8uq68c3", "0Fb87D0F"), "expedition"),
+    **dict.fromkeys(("AOY6npa3", "egJpaGtk"), "panel_quest"),
+    # Modern activity modes, all missing a confirmed Global 2016 introduction.
+    "U8F0Q25i": "equipment_enhancement",
+    **dict.fromkeys(("VfEh2wD0", "dZA90j5s", "fBN47X2b", "9Z3jCWfF",
+                     "MTuX7ai2", "UDb5Je1j", "oj76TPS2", "BQG1rm3y",
+                     "YAF1wt9J", "7Bt6HTw0", "67tFRKyo", "3cuPF20R",
+                     "p02YN1JA", "yW35iC40", "Ge2ZLDC1", "Q46YTgWo",
+                     "4cACW7y3", "wx5sg9ye", "7FyJS3Zn", "fyp10Rrc",
+                     "yh21MTaG", "e0R3iDm1", "R5mWbQ3M", "WaPC2T6i",
+                     "C0Lne0I7", "BSq28mwY", "JiglLZx6", "v51PM7wj",
+                     "JO2zA1Jy", "4qVA8LFK", "fcPxKx8M", "Bg1cbQV7"),
+                    "modern_event_modes"),
+    **dict.fromkeys(("68RQ9GwN", "HaJp14F6", "1IOdaWOW"),
+                    "modern_quest_rewards"),
+    # NV EX and other modern unit systems are not classical unit awakening.
+    **dict.fromkeys(("x94MnujU", "a54L9CKY", "s48Qzvhd", "nsxUW3Y7",
+                     "Pf5C8xjJ", "V8GtMQ2q", "k6NI9Tm1"), "neo_vision"),
+    **dict.fromkeys(("5J14x3Qz", "TmS3EjZ8", "23fbcXt4"),
+                    "vision_cards"),
+    **dict.fromkeys(("PIv7u8jU", "LiM9Had2", "i0woEP4B", "qxUUaS8s"),
+                    "modern_exchange"),
+    **dict.fromkeys(("6nTcSp4R", "xio14KrL", "bgast6dR",
+                     "W58vo4Hp", "xa9uR3pI"), "modern_gacha_selection"),
+    # Ordinary 2016 unit awakenings existed, but the preview catalogue only
+    # certifies base rarity. Until awakening releases are audited, refuse.
+    "zf49XKg8": "historic_awakening_index",
+    # The 2016 King Mog exchange existed, but the current exchange catalogue
+    # is from the final client. Do not expose future inventory until indexed.
+    **dict.fromkeys(("I7fmVX3R", "syKz34cE", "xD5b6PqQ",
+                     "Vgi7j68T"), "unverified_exchange_catalogue"),
+    **dict.fromkeys(("Q7jV6pno", "CE98eghN"),
+                    "unverified_party_presets"),
+    "g0BjrU5D": "modern_event_modes",
+    **dict.fromkeys(("D9xphQ8X", "dzU2t3HA"), "modern_quest_rewards"),
+}
+
+
 def serve_actions(spec, reply_id, plaintext):
     handler = _all_handlers().get(str(reply_id))
     if State.player is None:
         return spec
+    # A missing optional runtime module must NOT make a future endpoint
+    # bypass its calendar gate and receive the modern default response.
+    from historical_progression import feature_available
+    required_feature = HISTORICAL_ACTION_FEATURES.get(str(reply_id))
+    if required_feature and not feature_available(required_feature, State.player.data):
+        _note("historical feature " + required_feature +
+              ": request refused before any mutation")
+        from exvius_colosseum import project
+        return project({})
     if reply_id in ('75fYdNxq', 'X07iYtp5') and State.player.data.get('user_options'):
         spec = option_reply(spec)
     from exvius_colosseum import project
@@ -389,25 +445,6 @@ def serve_actions(spec, reply_id, plaintext):
         spec = notice_state(spec, _request(plaintext), reply_id)
     if handler is None:
         return project(spec)
-    from historical_progression import feature_available
-    if not feature_available("arena", State.player.data) and str(reply_id) in {
-            "f8kXGWy0", "DgG4Cy0F", "eHY7X8Nn", "os4k7C0b",
-            "6ZNY3zAm", "kcW85SfU", "hqzU9Qc5"}:
-        # Arena was introduced in Global November 2016. Colosseum requests
-        # (5g0vWZFq/4uCSA3ko/3zgbapQ7/Un16HuNI) must remain available.
-        _note("historical Arena: request refused before any mutation")
-        return project({})
-    if not feature_available("expedition", State.player.data) and str(reply_id) in {
-            "hW0804Q9", "Ik142Ff6", "2pe3Xa8b", "r4A791RF",
-            "vTgYyHM6", "I8uq68c3", "0Fb87D0F"}:
-        # This check runs before expedition_start, refresh, finish and claims,
-        # so no historical 2016 save can be charged by a direct API call.
-        _note("historical expedition: request refused before any mutation")
-        return project({})
-    if not feature_available("panel_quest", State.player.data) and str(reply_id) in {
-            "AOY6npa3", "egJpaGtk"}:
-        _note("historical panel quests: action refused before any mutation")
-        return project({})
     req = _request(plaintext)
     if req is None:
         return project(spec)

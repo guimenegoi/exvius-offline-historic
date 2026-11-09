@@ -2308,6 +2308,9 @@ class PlayerState:
 
     def grant_unit(self, master_id: str, granted_rarity=None, first_get_unit_id=None,
                    instance_id=None) -> dict | None:
+        from historical_progression import historical_unit_reward_allowed
+        if not historical_unit_reward_allowed(master_id, self.data):
+            return None
         if unit_mst(master_id) is None:
             raise ValueError(f"grant_unit: {master_id!r} is not an F_UNIT_MST id")
         if not self._mutate():
@@ -3554,6 +3557,9 @@ class PlayerState:
             kind, iid, count = int(it["kind"]), int(it.get("id", 0) or 0), int(it.get("count", 0) or 0)
             if count <= 0:
                 continue
+            from historical_progression import historical_reward_allowed
+            if not historical_reward_allowed(it, self.data):
+                continue
             cur = STORAGE_CURRENCY.get(kind)
             if cur:
                 self.add_currency(cur, count)
@@ -3761,6 +3767,9 @@ class PlayerState:
         kind, iid, count = (int(row.get("kind", 0) or 0), int(row.get("id", 0) or 0),
                             int(row.get("count", 0) or 0))
         if count <= 0:
+            return False
+        from historical_progression import historical_reward_allowed
+        if not historical_reward_allowed(row, self.data):
             return False
         if kind in STORAGE_CURRENCY:
             return True

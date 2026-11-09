@@ -23,7 +23,13 @@ from __future__ import annotations
 import os
 import time
 
-import yaml
+try:
+    import yaml
+except ImportError:
+    # The Chaquopy 0.1.24 host did not ship PyYAML. Its curated friends.yaml
+    # is not a filesystem path in the ZIP either. Keep the original project
+    # YAML workflow when installed; offline APK can safely have zero friends.
+    yaml = None
 
 from player_state import (STAT_TOKENS, TEAM_NEED_EXP, UNIT_KEY, beast_stats, unit_stats,
                           vision_card_mst, limit_burst)
@@ -132,6 +138,9 @@ def _entry(index: int, raw: dict) -> dict:
 def load_friends(path: str | None = None) -> list:
     """friends.yaml, re-read whenever its mtime changes. A missing file means no friends, not an error."""
     p = path or FRIENDS_FILE
+    if yaml is None:
+        _cache.update(mtime=None, friends=[])
+        return []
     try:
         mtime = os.path.getmtime(p)
     except OSError:

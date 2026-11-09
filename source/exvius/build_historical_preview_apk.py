@@ -28,6 +28,8 @@ REPLACED = {
     "ffbe_player.pyc": "source/server/ffbe_player.py",
     "exvius_actions.pyc": "source/server/exvius_actions.py",
     "exvius_colosseum.pyc": "source/server/exvius_colosseum.py",
+    "exvius_actions_shops.pyc": "source/server/exvius_actions_shops.py",
+    "ffbe_friends.pyc": "source/server/ffbe_friends.py",
 }
 ADDED = {
     "historical_progression.pyc": "source/server/historical_progression.py",

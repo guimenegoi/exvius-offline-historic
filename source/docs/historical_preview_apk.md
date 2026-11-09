@@ -163,3 +163,73 @@ This test wrapper has not rebuilt the Android Java runtime: the earlier
 `DataUpdates.java` fork fix for automatic *official app* update offers is not
 included here. Do not accept an automatic APK replacement by the official
 upstream application. Game-data downloads and repairs remain separate.
+
+## Preview 9067 — Historical UI / action safety sweep
+
+**Current install-test APK on Mene-Notebook:**
+
+`~/Downloads/FFBE-Global-Historic-Preview-9067-TEST.apk`
+
+APK SHA-256:
+`757086b6039d3e3aa2b4daba50d031aa0cf2adcd7372bead718ded351c42d573`
+(74,266,971 bytes / 70.83 MiB).
+
+The install manifest has the **same package name and every byte unchanged**
+from 9066 except Android `versionCode` (9066 -> **9067**). The signature
+remains the previously installed debug certificate SHA-256
+`1e08a903aef9c3a721510b64ec764d01d3d094eb954161b62544ea8f187b5953`;
+zip alignment and signature v2/v3 were independently verified.
+
+**UPDATE over the installed Historic APK. Do not uninstall, clear
+storage or agree to install a differently signed upstream APK.**
+Game assets and `installed.json` are app-private, so this update is
+designed to retain all previously downloaded game data and saves. An
+on-device installation and real UI test are **still required** to confirm
+this, and changes to upstream pack hashes can independently download assets.
+
+What changed relative to preview 9066:
+
+- Source includes all post-9066 Colosseum work: original `ClsmVsCpuEntryScene`
+  route before Arena, three starting orbs, five beginning November 2016,
+  1 orb/hour recovery, rank-up refills, and Beginner/Intermediate/Advanced
+  month gates with deferred progress promotion on the title timeline.
+- 22 native `F_FUNCTION_MST` controls and all 116 dispatcher routes were
+  inventoried in `source/docs/historical_gate_matrix.md`. 81 request IDs
+  now have centrally resolved period gates, evaluated before handlers.
+- Story Rain/Lasswell/Fina and dated candidate summon units remain
+  obtainable; future/unknown unit rewards, late event emblems, Vision Cards
+  and EX growth rewards are refused by the shared grant path.
+- Non-period-certified premium bundles and exchange catalogues cannot
+  charge historical saves; native future-world/menu functions also hide
+  their entries when the preview marker is active.
+- The final APK's Chaquopy runtime does **not ship PyYAML**, but old
+  `ffbe_friends.py` imported it eagerly and prevented the entire Arena
+  family from loading. Its optional import now safely returns an empty
+  curated friends list inside the APK, preserving the normal YAML loader
+  when PyYAML is installed in a source checkout. This is an **authored
+  companion-list omission**, not proof that 2016 lacked friends.
+- The event archive ZIP loader and original Colosseum encounter ZIP loader
+  remain fixed from earlier patches.
+
+Validation:
+- 78 Python tests (63 historic, 6 import-history, 5 roster audit, 4 master-table
+  Range/CRC tests) and JavaScript Home, repeat, adaptive layout and syntax tests.
+- 13 Python 3.10 modules compiled into the actual APK.
+- Signed `app.imy` was imported in Python 3.10. All **116 handlers** registered,
+  including the 7 Arena and 4 Colosseum routes; 81 central gates evaluated;
+  69 preview units and 75 Colosseum encounters loaded.
+- SHA-256 of the copy in Downloads equals the signed artifact.
+- No phone test, full historic UI parity, complete story/event chronology,
+  Arena economy suite or 14.5 GB retention test has been claimed.
+
+The installed download's own embedded Java APK updater is still based on
+upstream **0.1.24**. The fork's later `DataUpdates.java` Java-level fix is
+not present in this overlay APK. **Never accept an offer to replace the
+Historic APK with a regular Elvlin update.** Game-data downloads are separate.
+
+**First Android checks:** verify the installation upgrades in place; resume
+the same campaign and inspect stored assets; check Grid Quest is absent,
+Vortex season selector returns, Colosseum opens after story unlock and shows
+three starting orbs, no future banners/event tiles or modern bundle offers,
+and Continue/Unlock Jul preserves the save. Capture screenshots/logs for
+any mismatched or nonfunctional UI, including legacy friends.

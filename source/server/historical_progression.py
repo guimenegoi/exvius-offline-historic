@@ -109,6 +109,26 @@ FEATURE_INTRODUCED = {
     "modern_login_calendar": (None, None),
     "anniversary_ticket": (None, None),
     "catchup_rewards": (None, None),
+    # Square Enix's Global debut notice, 20 August 2020:
+    # https://na.finalfantasy.com/news/1462
+    "neo_vision": ("2020-08", "https://na.finalfantasy.com/news/1462"),
+    "vision_cards": ("2020-08", "https://na.finalfantasy.com/news/1462"),
+    # Steel Castle Melfikya was introduced after 2016; exact first Global
+    # date remains to be verified before its UI is enabled.
+    "item_world": (None, None),
+    "modern_event_modes": (None, None),
+    "modern_gacha_selection": (None, None),
+    "modern_exchange": (None, None),
+    "modern_unit_growth": (None, None),
+    "modern_quest_rewards": (None, None),
+    "world_season_selector": (None, None),
+    "historic_awakening_index": (None, None),
+    "emblem_event": (None, None),
+    "comeback_quest": (None, None),
+    "modern_lapis_bundles": (None, None),
+    "late_shop_magic_key": (None, None),
+    "unverified_exchange_catalogue": (None, None),
+    "unverified_party_presets": (None, None),
 }
 
 
@@ -130,6 +150,43 @@ def feature_available(feature: str, player_data: dict) -> bool:
     """Use the same period policy in server routes and native UI status."""
     features = historical_features(player_data)
     return features is None or features.get(feature, False)
+
+
+# These three native Global roots appear in the early roster as *story*
+# acquisition, not as Rare or Friend Point summons. Preserve the original
+# campaign grants. Nothing else is admitted without a dated preview entry.
+STORY_ROOTS = frozenset({"100000102", "100000202", "100000302"})
+
+
+def historical_unit_reward_allowed(master_id, player_data: dict) -> bool:
+    """Fail closed for undated grants outside the preview summon catalogue."""
+    if not (player_data.get("meta") or {}).get("historical_preview"):
+        return True
+    from historical_preview_data import DOCUMENT
+    unit_id = str(master_id)
+    if unit_id in STORY_ROOTS:
+        return True
+    record = DOCUMENT["units"].get(unit_id)
+    if not record:
+        return False
+    return any(is_released(release, current_month(player_data))
+               for release in (record.get("rarities") or {}).values())
+
+
+def historical_reward_allowed(row: dict, player_data: dict) -> bool:
+    """Common grant gate for mail, quest, boss, shop and direct reward paths."""
+    if not (player_data.get("meta") or {}).get("historical_preview"):
+        return True
+    kind = int(row.get("kind", 0) or 0)
+    if kind == 10:
+        return historical_unit_reward_allowed(row.get("id"), player_data)
+    if kind == 26:  # late player emblems
+        return False
+    if kind == 27:  # Vision Cards only from Global 2020-08
+        return feature_available("vision_cards", player_data)
+    if kind == 28:  # later unit series points
+        return feature_available("modern_unit_growth", player_data)
+    return True
 
 
 def historical_colosseum_orb_cap(player_data: dict) -> int | None:

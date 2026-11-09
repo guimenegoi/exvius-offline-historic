@@ -127,5 +127,6 @@ DOCUMENT = {'latest_month': '2016-07',
                          'rarities': {'2': '2016-06-30'}}},
  'warnings': ['UNVERIFIED TEST ONLY: June 30 debut assumption for launch roster',
               'Only original base rarity available, not historically reconstructed rarity ceilings',
-              'Does not gate rewards outside summons, story, quests, shops, awakenings or events',
+              'Preview gates dated summons and selected routes/rewards; it does NOT reconstruct '
+              'all historical story, quest, shop or event inventories',
               'Rates are authored by upstream, not authenticated historical 2016 odds']}

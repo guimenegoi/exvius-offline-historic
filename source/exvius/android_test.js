@@ -398,7 +398,14 @@ rpc.exports = {
             const key = text(args[1]);
             const featureKeys = {
               FUNCTION_PANEL_QUEST: 'panel_quest',
-              FUNCTION_REEL_EXPEDITION: 'expedition'
+              FUNCTION_REEL_EXPEDITION: 'expedition',
+              FUNCTION_COMEBACK_QUEST: 'comeback_quest',
+              FUNCTION_EMBLEM_EVENT: 'emblem_event',
+              FUNCTION_SP_CLASSUP: 'modern_unit_growth',
+              FUNCTION_SELECT_WORLD_DIVISION: 'world_season_selector',
+              FUNCTION_THIRDWORLD_CHANGE: 'world_season_selector',
+              FUNCTION_WORLD_CHANGE: 'world_season_selector',
+              FUNCTION_SHOP_MAGIC_KEY: 'late_shop_magic_key'
             };
             this.historicalFeature = featureKeys[key];
             this.localClassUp = materialEligibility.add(0x90).readU32() === 0x97e55943 &&

@@ -65,6 +65,20 @@ def serve_lapis_shop(spec, reply_id, plaintext=None):
     """Use the existing bundle price fields and purchase route for local Lapis."""
     bundle_tag, item_tag = 'fMohhKK8', 'pcjqhOI8'
     status_id, purchase_id = 'uLXAMvCT', 'w6Z9a6tD'
+    # Upstream local bundles and Friend Point purchase are 2024-authored
+    # stand-ins. Never display or charge these in a 2016 historical save.
+    from historical_progression import feature_available
+    if (State.player is not None and
+            not feature_available("modern_lapis_bundles", State.player.data)):
+        if reply_id == purchase_id:
+            return {}
+        if not isinstance(spec, dict):
+            return spec
+        out = dict(spec)
+        out[bundle_tag] = []
+        out[item_tag] = []
+        out['3VS1Bhmf'] = []
+        return out
     # The client never sends BundleStatusRequest when the Bundles screen opens: BundleMst is read from
     # whichever reply carries it, so the login user-info reply delivers the offers too.
     user_info_id = 'X07iYtp5'
@@ -3425,6 +3439,9 @@ def deliver_emblem_tier_mail() -> list:
     """
     if State.player is None:
         return []
+    from historical_progression import feature_available
+    if not feature_available("emblem_event", State.player.data):
+        return []
     added = []
     for tier in State.player.emblem_pending_tiers():
         items = []
@@ -3458,6 +3475,13 @@ def serve_emblem_event(spec, reply_id):
     """
     if reply_id != EMBLEM_EVENT_REQUEST or State.player is None:
         return spec
+    from historical_progression import feature_available
+    if not feature_available("emblem_event", State.player.data):
+        return dict(_as_spec(spec), **{
+            EMBLEM_MONTHLY_GROUP: [],
+            EMBLEM_WEEKLY_GROUP: [],
+            EMBLEM_MILESTONE_GROUP: [],
+        })
     out = _as_spec(spec)
     objectives = State.player.emblem_objectives()
     start, end = _emblem_window(time.time())
@@ -3498,6 +3522,9 @@ def credit_emblem_objectives(plaintext, spec, reply_id=None):
     even if they never open the Adventurer Crests screen.
     """
     if State.player is None or not plaintext:
+        return spec
+    from historical_progression import feature_available
+    if not feature_available("emblem_event", State.player.data):
         return spec
     if reply_id is not None and str(reply_id) != "x5Unqg2d":
         return spec
