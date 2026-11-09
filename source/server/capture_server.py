@@ -594,6 +594,23 @@ class Handler(BaseHTTPRequestHandler):
                 __name__, "assets/banner_art/daily_login_banner_dailylogin_00.png")
             if data:
                 how = "bundled daily login banner (app.imy)"
+        # Preserve the genuine pre-2017 Vortex chamber pictures within the
+        # existing Chaquopy resource bundle. The native file materializer
+        # copies them into its own cache when the local path is absent.
+        if (data is None and rel.startswith('en/sd/area/event_')
+                and State.player is not None
+                and (State.player.data.get('meta') or {}).get('historical_preview')):
+            chamber_art = {'event_216.png', 'event_224.png',
+                           'event_225.png', 'event_226.png'}
+            basename = os.path.basename(rel)
+            if basename in chamber_art and rel == 'en/sd/area/' + basename:
+                try:
+                    import pkgutil
+                    data = pkgutil.get_data(__name__, 'assets/area_art/' + basename)
+                except (FileNotFoundError, OSError):
+                    data = None
+                if data:
+                    how = 'bundled original Global chamber art (app.imy)'
         n = len(data) if data is not None else 0
         verdict = f"200 {n} B ({how})" if data is not None else f"404 ({how or 'not in the CDN root'})"
         print(f"CDN  {self.command} {self.path}  host={self.headers.get('Host')}  "

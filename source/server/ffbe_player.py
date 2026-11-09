@@ -2932,15 +2932,14 @@ _EVENT_GATE_ART_CACHE = {}
 
 
 def event_gate_art(area):
-    # These basenames were verified against the original Global
-    # data-001 ZIP central directory, under cpk_extract/en/area/
-    # Ver461_spdungeon1/. They are already in the downloaded game data;
-    # the 2024 overlay aliases event_<id>.png are not.
+    # Recovered original 2016 chamber pictures, verified against their
+    # source hashes and bundled in the historical APK's existing CDN path.
+    # Do not use similarly numbered late-client spd_bn_list_* artwork.
     original_chamber_art = {
-        '216': 'global_spd_bn_list_00216.png',
-        '224': 'global_spd_bn_list_00224.png',
-        '225': 'global_spd_bn_list_00225.png',
-        '226': 'global_spd_bn_list_00226.png',
+        '216': 'event_216.png',
+        '224': 'event_224.png',
+        '225': 'event_225.png',
+        '226': 'event_226.png',
     }
     if (State.player is not None and
             (State.player.data.get('meta') or {}).get('historical_preview')

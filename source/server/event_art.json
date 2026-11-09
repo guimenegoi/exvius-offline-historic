@@ -280,7 +280,7 @@
       "source_file": "data/state/backups/originals/events/d720f0667d8c1d277fab2a94b5d83e859f69c0ce.image",
       "source_sha256": "78b3afe8a2fd2bb1d983b11099ec943fdd746796918a41392881693cb7355134",
       "runtime_file": "data/overlay/en/sd/area/event_225.png",
-      "runtime_sha256": "49f1b85fc0edfb37bab85d273a6dfee915c9376c51752906695522e61f2c946c",
+      "runtime_sha256": "201a1c63836a44db508c719fe25b8befeef0c66a3d6b80f28ec4f21daab15da3",
       "size": [
         640,
         240
@@ -430,7 +430,7 @@
       "source_file": "data/state/backups/originals/events/5b10e2939015c11eec9b493161e4e4c39e94344b.image",
       "source_sha256": "de094880f61e88af690da5a15a37078222b84ce3f7b325ef888dea75d51a5eb7",
       "runtime_file": "data/overlay/en/sd/area/event_224.png",
-      "runtime_sha256": "a3845b38ae516904f01cb33bf895ba5fc0e48bbb9ea2b42547b5807bd2c07713",
+      "runtime_sha256": "969c1dfc34e68174cccfe77acce12e9db480e757da4d23b0ef37fe81c1636942",
       "size": [
         640,
         240
@@ -505,7 +505,7 @@
       "source_file": "data/state/backups/originals/events/cb03518e47eedce8bf1c07a0e3f98fa5095cd1fd.image",
       "source_sha256": "fd585670f1a70e6c88b056b2882e9241992a615617f7976f145aaf354cc1047e",
       "runtime_file": "data/overlay/en/sd/area/event_226.png",
-      "runtime_sha256": "97ae476934c9b3375f7463155267f57c9f31e50daeb605fc2383764e8bb97c4e",
+      "runtime_sha256": "014ea31fbd4d1f53c96a83381ffa9d9cd799c3031fbad63ce09ea489ab30a888",
       "size": [
         640,
         240
@@ -535,7 +535,7 @@
       "source_file": "data/state/backups/originals/events/971b0193528b32d9d9b38fec9bcd9a5c529f61ad.image",
       "source_sha256": "506421d57d553456b490b06e42e8f644d55060ca989f9893ab2aa54e8077833b",
       "runtime_file": "data/overlay/en/sd/area/event_216.png",
-      "runtime_sha256": "d01971707ad4036f2c59921671994f7b3cfc2591192cb5c1140fc65abfaf1dda",
+      "runtime_sha256": "5bbf7e6808cd268f6976319d4bf67a7041c30f1c7e4958c32cb48d680bdcce94",
       "size": [
         640,
         240

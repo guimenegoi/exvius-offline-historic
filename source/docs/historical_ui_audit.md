@@ -5,6 +5,68 @@ Classificação: diagnóstico. **Nenhuma edição funcional nesta rodada.**
 Escopo: preview Global junho/julho 2016; branch feature/historical-progression.
 Estado: **NÃO AUDITADO COMO FIEL À UI DE 2016**. A build 9066 corrige só dois sintomas.
 
+## Artes históricas recuperadas — APK 9081 (09/11/2026)
+
+As URLs originais da wiki devolveram HTTP 403 no domínio
+static.wikia.nocookie.net. O domínio legado images.wikia.com, com o
+mesmo caminho das URLs já indexadas em source/server/event_art.json,
+entregou **os quatro arquivos originais com SHA-256 idêntico** à
+procedência registrada. O conteúdo foi validado antes de salvar.
+
+A rotina já existente build_event_art.runtime_banner transformou as
+imagens em PNG com **pixels RGBA idênticos** e dimensões 640x240.
+Os bytes dos PNGs ficaram diferentes de uma conversão mais antiga,
+então os quatro runtime_sha256 foram atualizados somente após verificar
+a equivalência de pixels. Os originais e a conversão local ficam em
+data/state/backups/originals/events/ e data/overlay/en/sd/area/.
+Esses diretórios são ignorados pelo Git.
+
+Para recuperar os mesmos quatro arquivos em outro checkout, utilizar
+o catálogo e o conversor existentes, com curl e Pillow:
+
+~~~bash
+python3 - <<'PYRECOVER'
+import hashlib, json, subprocess, sys
+from pathlib import Path
+from urllib.parse import urlsplit
+sys.path.insert(0, 'source/exvius')
+from build_event_art import runtime_banner
+from PIL import Image
+entries = json.loads(Path('source/server/event_art.json').read_text())['events']
+for area in ('216', '224', '225', '226'):
+    row = entries[area]
+    url = 'https://images.wikia.com' + urlsplit(row['source_url']).path
+    original, output = Path(row['source_file']), Path(row['runtime_file'])
+    original.parent.mkdir(parents=True, exist_ok=True)
+    output.parent.mkdir(parents=True, exist_ok=True)
+    if not original.exists():
+        original.write_bytes(subprocess.check_output(['curl', '-fsSL', url]))
+    assert hashlib.sha256(original.read_bytes()).hexdigest() == row['source_sha256']
+    runtime_banner(original, output)
+    with Image.open(original) as source, Image.open(output) as png:
+        assert source.convert('RGBA').tobytes() == png.convert('RGBA').tobytes()
+        assert png.size == (640, 240)
+    checksum = hashlib.sha256(output.read_bytes()).hexdigest()
+    print(area, checksum, 'matches PNG index:', checksum == row['runtime_sha256'])
+PYRECOVER
+~~~
+
+**Validação Android 9081:** os quatro PNGs foram empacotados no ZIP
+app.imy e expostos pelo mecanismo existente de CDN + materialização
+nativa (sem root, sem novo instalador). A APK foi assinada e instalada
+por atualização no Waydroid, preservando o save de junho de 2016.
+O log LOCAL_MENU_IMAGE_SUPPLIED confirmou event_216.png,
+event_224.png, event_225.png e event_226.png. Capturas após rolagem,
+em source/build/historical-preview/waydroid-9081/ (ignorado pelo Git),
+mostram as artes originais das câmaras Riches, Creation, Awakening e
+Experience. O filtro nativo permaneceu estável.
+
+**Pendente:** a UI ainda usa abas, dropdown Season 1, correntes e
+cadeados do cliente final. É necessário comparar com capturas datadas
+do Global e validar requisitos de acesso antes de aprovar o snapshot
+histórico completo. A 9081 é só uma APK experimental no Waydroid;
+nenhuma release foi publicada.
+
 ## Revalidação experimental 9080 — mesma data
 
 Uma análise da chamada compilada no APK 9079 mostrou que a exceção

@@ -42,6 +42,8 @@ ADDED = {
 # These are read through pkgutil.get_data from Chaquopy's ZIP, never Path(__file__).
 RESOURCE_FILES = {
     "content/historical_commerce.json": "source/server/content/historical_commerce.json",
+    **{f"assets/area_art/event_{area}.png": f"data/overlay/en/sd/area/event_{area}.png"
+       for area in ("216", "224", "225", "226")},
 }
 EXPECTED_MAGIC = bytes.fromhex("6f0d0d0a")  # Python 3.10 Chaquopy runtime
 

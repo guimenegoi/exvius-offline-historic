@@ -320,12 +320,14 @@ independent symptom, not proof that the 2016 calendar loaded.
    policy only *partially* and could re-add endgame areas on later
    responses. It now uses the current saved month to build one complete
    four-area policy, ignoring unrelated persistent endgame event policies.
-4. The four custom `event_216.png` etc aliases were **absent** from the
-   verified game's original data ZIP. Original usable banners are already
-   shipped under `cpk_extract/en/area/Ver461_spdungeon1/`, with basenames
-   `global_spd_bn_list_00216.png`, `...00224.png`, `...00225.png`,
-   `...00226.png`. Only historical saves use those shipped basenames.
-   No 14 GB re-download or invented raster art is needed.
+4. **Superseded by APK 9081 (09/11/2026).** The earlier workaround
+   reused the last client's numbered spd_bn_list artwork: those files
+   existed, but contained **later-era images**, not the authentic original
+   chamber banners. The 2016 originals were recovered and validated against
+   the stored source hashes, then encoded with the existing overlay converter
+   as event_216.png, event_224.png, event_225.png and event_226.png.
+   The APK now supplies them through the existing native file materializer.
+   No invented art or 14 GB data redownload was needed.
 5. `title_menu.js` cached the historical feature flags too early.
    `home_carousel.js` now requests the existing server
    `titleAction('status')` on Home initialize and setup. The native

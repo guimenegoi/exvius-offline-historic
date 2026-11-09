@@ -98,13 +98,69 @@ class HistoricalVortexUi(TestCase):
         art = {row['uv60hgDW']: row['4yT7FUqj']
                for row in reply['0xkoNP8U']}
         self.assertEqual(art, {
-            '216': 'global_spd_bn_list_00216.png',
-            '224': 'global_spd_bn_list_00224.png',
-            '225': 'global_spd_bn_list_00225.png',
-            '226': 'global_spd_bn_list_00226.png',
+            '216': 'event_216.png',
+            '224': 'event_224.png',
+            '225': 'event_225.png',
+            '226': 'event_226.png',
         })
         self.assertEqual([r['uv60hgDW'] for r in rows],
                          ['226', '899', '990999'])
+
+    def test_four_pinned_chamber_art_resources(self):
+        import hashlib
+        from PIL import Image
+        from build_historical_preview_apk import RESOURCE_FILES
+        records = json.loads((ROOT / 'source/server/event_art.json').read_text())['events']
+        for area in ('216', '224', '225', '226'):
+            entry = records[area]
+            name = 'event_' + area + '.png'
+            self.assertEqual(entry['filename'], name)
+            self.assertEqual(entry['size'], [640, 240])
+            self.assertTrue(entry['source_url'].startswith(
+                'https://static.wikia.nocookie.net/exvius_gamepedia_en/'))
+            self.assertEqual(RESOURCE_FILES['assets/area_art/' + name],
+                             entry['runtime_file'])
+            source, runtime = ROOT / entry['source_file'], ROOT / entry['runtime_file']
+            if not source.is_file() or not runtime.is_file():
+                continue  # licensed third-party source images are not tracked in Git
+            self.assertEqual(hashlib.sha256(source.read_bytes()).hexdigest(),
+                             entry['source_sha256'])
+            self.assertEqual(hashlib.sha256(runtime.read_bytes()).hexdigest(),
+                             entry['runtime_sha256'])
+            with Image.open(source) as original, Image.open(runtime) as conversion:
+                self.assertEqual(conversion.size, (640, 240))
+                self.assertEqual(original.convert('RGBA').tobytes(),
+                                 conversion.convert('RGBA').tobytes())
+
+    def test_historical_native_cdn_fallback_for_bundled_original_art(self):
+        import io
+        import pkgutil
+        import capture_server
+        def attempt(state):
+            output = io.BytesIO()
+            handler = capture_server.Handler.__new__(capture_server.Handler)
+            handler.command = 'GET'
+            handler.path = '/en/sd/area/event_216.png'
+            handler.request_version = 'HTTP/1.1'
+            handler.requestline = 'GET /en/sd/area/event_216.png HTTP/1.1'
+            handler.headers = {'Host': 'local-test'}
+            handler.wfile = output
+            handler.close_connection = True
+            with patch.object(capture_server.State, 'player', state), patch.object(
+                    capture_server.State, 'cdn_overlay', '/no-such-overlay'), patch.object(
+                    capture_server.State, 'cdn_root', '/no-such-data'), patch.object(
+                    capture_server, 'area_art_index', return_value={}), patch.object(
+                    capture_server, 'banner_art_index', return_value={}), patch.object(
+                    pkgutil, 'get_data', return_value=b'test-original-image') as embedded:
+                handler._cdn_fetch()
+            return output.getvalue(), embedded
+        historical, lookup = attempt(SimpleNamespace(data=marked()))
+        self.assertIn(b'200 OK', historical)
+        self.assertTrue(historical.endswith(b'test-original-image'))
+        lookup.assert_called_once_with('capture_server', 'assets/area_art/event_216.png')
+        modern, lookup = attempt(SimpleNamespace(data={'meta': {}}))
+        self.assertIn(b'404', modern)
+        lookup.assert_not_called()
 
     def test_old_saved_endgame_policy_does_not_reintroduce_tiles(self):
         # The same four chambers are served regardless of a stale endgame
