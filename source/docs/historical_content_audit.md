@@ -58,6 +58,27 @@ PY
 These counts are *current deficiencies*, not target final totals.
 Update the baseline consciously as verified Global records are added.
 
+## Reproducible 2016 summon cross-index audit
+
+Run python3 -B source/exvius/audit_historical_2016.py to generate a
+machine-readable, audit-only JSON report without changing game data.
+The 2026-11-09 baseline is 21 community banners and 81 featured-name
+mentions, with 20 review flags:
+
+- 19 mentions lack a matching row in the editorial debut index.
+  This is an incomplete cross-reference, NOT proof of unavailability.
+- One identity mismatch: November 25, 2016, authored banner 9100016,
+  lists Gilgamesh, Bartz, Exdeath, Faris but has only three
+  community.unit_ids (205000103, 205000403, 205000703).
+  Do NOT assume positional mapping or manufacture a fourth ID.
+- No 2016 featured-name mention had an explicitly later editorial debut.
+  This does not validate rates, pools, rewards or acquisition paths.
+
+The audit cross-references existing evidence, without creating a second
+approval system or changing any runtime master, gacha catalogue, or
+unit-release preview. Its regression test protects the known November
+discrepancy until original source reconciliation.
+
 ## Premium Cash Shop audit
 
 **Launch offer — Early Bird Bundle:** contemporary June 30, 2016
