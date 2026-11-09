@@ -78,11 +78,16 @@ class HistoricalSummonTests(unittest.TestCase):
         self.assertTrue(banner_allowed(start, "2016-06"))
         self.assertFalse(banner_allowed(july, "2016-06"))
         self.assertTrue(banner_allowed(july, "2016-07"))
+        self.assertTrue(banner_allowed(july, "2016-08"))
+        self.assertTrue(banner_allowed(july, "2024-10"))
         self.assertFalse(banner_allowed(august, "2016-07"))
         state = SimpleNamespace(data={"meta": {"historical_month": "2016-07",
                                                 "historical_preview": True}})
         self.assertEqual(visible_banners([start, rare, july, august, undated], state),
                          [start, rare, july])
+        state.data["meta"]["historical_month"] = "2016-08"
+        self.assertEqual(visible_banners([start, rare, july, august, undated], state),
+                         [start, rare, july, august])
         self.assertEqual(visible_banners([start, august], None), [start, august])
 
     def test_preview_catalogue_is_explicitly_opt_in(self):

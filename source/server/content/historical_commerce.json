@@ -2,24 +2,7 @@
   "schema": 1,
   "region": "GL",
   "status": "partial-evidence-first",
-  "description": "Sourced individual town-shop stock; never extrapolate the final client's stock to earlier months.",
-  "town_stock": [
-    {
-      "town_id": "1101",
-      "town": "Town of Mitra",
-      "kind": 20,
-      "item_id": "101000100",
-      "name": "Potion",
-      "price_gil": 100,
-      "from": "2016-06",
-      "until_exclusive": null,
-      "status": "approved",
-      "source": "https://playerassist.com/ffbe-town-of-mitra-quest-guide/",
-      "source_type": "contemporary-Global-guide",
-      "note": "2016 guide identifies the Town of Mitra item shop, Potion and 100 gil. Town ID and item ID are native Global client IDs. Other products remain unverified."
-    }
-  ],
-  "limited_bundles": [],
+  "description": "Global real-money Shop bundles: first availability only; original offline purchase logic handles pricing, rewards and purchase limits. Town shops remain story/unlock-driven.",
   "awakening_material_shops": [],
   "unit_awakening_steps": [],
   "item_release_dates": [],
@@ -38,11 +21,13 @@
     }
   ],
   "unresolved": [
-    "Town stock in other locations and later shop inventory revisions",
-    "Global Premium Bundles: names, reward composition, cost, daily/once limits and exact start/end dates",
-    "Unit awakening: each target form, rarity date, source master and material/gil cost version",
-    "Item, recipe, equipment and materia release dates and acquisition channels",
-    "Past King Mog, trust, medal and exchange-shop schedules and expiration",
-    "Mid-month events need a day-level clock; monthly preview is not proof of day-specific availability"
-  ]
+    "Paid Global Shop bundles: first launch date, real-money original price/currency, contents, art and authored offer ID mapping",
+    "Shop bundle purchase quotas are handled by FFBE Offline; historical live-service expiration is intentionally ignored",
+    "Unit and ability awakening: original Global rarity/skill release dates and verified material recipes",
+    "Event, summon and exchange-shop introduction dates; access via preserved offline archives after unlock",
+    "Items/recipes/equipment: acquisition channels and story requirements, not independent town item expiration calendars",
+    "Monthly preview resolution: day-specific introductions will require a finer-grained calendar when supported"
+  ],
+  "premium_bundles": [],
+  "unlock_policy": "available_from_only_permanent"
 }

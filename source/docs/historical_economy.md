@@ -1,68 +1,64 @@
-# FFBE Global economy: shops, bundles, items and awakenings (2016–2024)
+# FFBE Global economic archive — first availability, not expiry
 
-The objective is authentic **Global** availability at the selected point in
-history, not a modern client with items hidden. Economic snapshots and visual
-snapshots are separate, but must use the same historical date.
+**Scope:** Premium Shop bundles sold for real-world money, other archived
+event/exchange offers, item introduction, and unit/ability awakening.
+The existing FFBE Offline project provides persistent historical access.
+The calendar decides only **when each offer is introduced**.
 
-## Required scope and evidence
+## Historical release contract
 
-| Surface | Historical data required | Current state |
-| --- | --- | --- |
-| Town shops | Town and store ID, product kind/master ID, original gil price, first/last dates | First approved Mitra Potion entry; other stock unknown |
-| Premium bundles | Offer ID, original art, exact start/end day, currency/price, contents, limits | Unverified local stand-ins already hidden |
-| King Mog/event/exchange shops | Event window, currency, products, reset schedule and limits | Final client offers gated; archived stock not restored |
-| Unit awakening | Unit source/target master IDs, each GL rarity date, gil, materials | Classical awakening blocked until each transition is audited |
-| Ability awakening | Skill, unit, GL awakening release, material ranks and prices | System gate exists; per-skill records missing |
-| NV/EX awakening | Form, fragments, pearls, EX level and related feature date | First Global NV release gated, item details missing |
-| Items and crafting | Item/equipment/materia/recipe ID, acquisition channel and validity | Common reward gate incomplete for historic stock |
-| Quests, drops, mail | Original reward set per event and date | Incomplete historical audits |
+1. Every Global event, summon banner and premium Shop offer has an
+   introduction date. Before it, the offer is unavailable; from that month
+   onward it stays accessible for the rest of the historical progression.
+   The historical archive does **not** model live-service expiration.
+2. Reuse the original FFBE Offline **event/Summons dropdowns**. Original
+   offline purchase quotas and acquisition state remain active (a once-only
+   bundle cannot be bought repeatedly), but no calendar-driven removal.
+3. Premium bundles require an authentic Global launch date, product identity,
+   original real-money amount/currency, contents, art and source. FFBE
+   Offline already converts cash packs to local Lapis cost for offline use;
+   do not present this conversion as the historic cash price.
+4. Unverified or JP-only offers never appear automatically in historical
+   mode simply because the last Global client contains them. Existing
+   nonhistorical saves retain upstream behavior unchanged.
+5. **Town shops are not Premium Shop:** the original town/store masters
+   govern their products. Town access is a story/unlock concern, not an
+   independent time gate per item. The previous Potion-only restriction
+   was reverted.
+6. The save currently has month resolution. A future day-level history
+   position can improve **first unlock precision**, not add end dates.
 
-## First checked stock
+## Current implementation
 
-The [contemporary Town of Mitra guide](https://playerassist.com/ffbe-town-of-mitra-quest-guide/)
-and [Global item-shop entry](https://exvius.fandom.com/wiki/Town_of_Mitra)
-both list Potion at 100 gil. Town 1101 and kind 20 / item 101000100
-are linked to the original native client. The new transaction guard checks
-town, item, kind, price and current period *before* charging gil.
-Unlisted stock remains unavailable in historical preview until audited.
-Existing nonhistorical saves remain unchanged.
+- source/server/historical_progression.py: approved Global paid-bundle IDs,
+  authorized from their start date onward; unverified index remains closed.
+- source/server/historical_summons.py: dated banners remain in subsequent
+  months instead of vanishing one month after release.
+- source/server/event_archive.py: existing persistent event archive and
+  dropdown remain unchanged.
+- source/server/ffbe_player.py: premium Shop uses the approved historical
+  whitelist while retaining original offline cost/reward/purchase-limit logic.
+  Local Friend Points Shop stand-in is not inserted into historical mode.
+- source/server/exvius_actions_shops.py: reverted to original town-shop
+  purchase validation, which uses native town/store master records.
+- source/server/content/historical_commerce.json: evidence and introductions
+  for real-money Shop offers. There are **no approved offers yet**, pending
+  original GL evidence and a validated master-to-offer mapping.
+- source/exvius/build_historical_preview_apk.py: carries the catalogue
+  inside the Chaquopy ZIP for an eventual runtime build.
 
-- Runtime catalogue: source/server/content/historical_commerce.json
-- Calendar and eligibility: source/server/historical_progression.py
-- Transaction gate: source/server/exvius_actions_shops.py
-- APK inclusion: source/exvius/build_historical_preview_apk.py
+## Follow-up evidence work
 
-**Known limitation:** the current native town store may still draw stock
-from the final client even when the server refuses its purchase. A later UI
-adapter must project the approved catalogue into the actual shop list.
+Recover original Global Shop screenshots and notices and correlate original
+bundle art, contents, original price, currency and identity with the offline
+offer implementation. Once audited, approve each start date and test its
+display, purchase limits and rewards in Android.
 
-## Global source milestones
+Awakening rarity/skill dates, materials, recipes and items' original
+acquisition channels remain separate historical research tasks, and have not
+been claimed complete by this patch.
 
-- [August 20, 2020 — Square Enix](https://na.finalfantasy.com/topics/183):
-  newly introduced Special Shops include a gil awakening-material shop for
-  units up to 5-star rarity. This proves the system milestone **not** each
-  inventory row, permanent duration or price.
-- [August 20, 2020 — Square Enix](https://na.finalfantasy.com/news/1462):
-  Neo Vision and EX Awakening launched in Global. These must not be confused
-  with ordinary rarity awakenings that already existed in earlier years.
+Contextual GL milestones (not individual bundle approval):
 
-A general FFBE Update Schedule may describe **JP**, not Global. Never
-import a JP shop, event or awakening date without corroboration.
-
-## Time precision and safe progression
-
-The current save advances monthly, and the preview currently reaches July
-2016. A limited-time bundle may start or expire mid-month, so monthly
-progression is not precise enough to reproduce timed commerce. No limited
-bundle or individual awakening recipe is approved in this catalogue yet.
-A future day-level model should explicitly handle intra-month availability,
-expiry and resets without changing normal upstream saves.
-
-Before activating each historical offer: verify screenshot, Global
-announcement, actual source unit/item IDs, price, currency, contents, start
-and end **dates**, per-account limit, and atomic purchase/reward behavior.
-Item availability also needs its **acquisition channel**, so a prize
-obtainable through an event is not automatically sold everywhere.
-
-This patch is a deliberately narrow first step, not a claim that the whole
-2016–2024 economy has been reconstructed.
+- https://na.finalfantasy.com/topics/183 — Special Shops, August 2020
+- https://na.finalfantasy.com/news/1462 — Neo Vision, August 2020

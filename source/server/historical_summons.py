@@ -72,9 +72,10 @@ def banner_allowed(banner: dict, month: str) -> bool:
     if str(banner.get("id")) in ("1", "9"):
         return True
     release = (banner.get("community") or {}).get("release") or banner.get("release")
-    # The historical preview has no verified end-date catalogue. A release
-    # month is *not* proof that a limited offer remains on sale forever.
-    return bool(is_released(release, month) and str(release)[:7] == month)
+    # Offline archive rule: once introduced in Global, a banner remains
+    # accessible through the preserved Summons dropdown in all later months.
+    # Its original live-service expiry is intentionally not simulated.
+    return is_released(release, month)
 
 
 def visible_banners(banners: list[dict], player) -> list[dict]:

@@ -65,11 +65,11 @@ def serve_lapis_shop(spec, reply_id, plaintext=None):
     """Use the existing bundle price fields and purchase route for local Lapis."""
     bundle_tag, item_tag = 'fMohhKK8', 'pcjqhOI8'
     status_id, purchase_id = 'uLXAMvCT', 'w6Z9a6tD'
-    # Upstream local bundles and Friend Point purchase are 2024-authored
-    # stand-ins. Never display or charge these in a 2016 historical save.
-    from historical_progression import feature_available
-    if (State.player is not None and
-            not feature_available("modern_lapis_bundles", State.player.data)):
+    # Only historically approved paid offers appear after their Global debut.
+    # Upstream's authored local offers remain available to ordinary saves.
+    from historical_progression import historical_premium_bundle_ids
+    historical_offers = historical_premium_bundle_ids(State.player.data) if State.player else None
+    if historical_offers is not None and not historical_offers:
         if reply_id == purchase_id:
             return {}
         if not isinstance(spec, dict):
@@ -93,7 +93,11 @@ def serve_lapis_shop(spec, reply_id, plaintext=None):
     base = diamonds.get('100', {})
     rate = Decimal(str(base.get('FBjo93gK') or '120')) / Decimal(str(base.get('AOHRcCC2') or '0.99'))
     out = copy.deepcopy(spec) if isinstance(spec, dict) else {}
-    if reply_id == user_info_id:
+    if historical_offers is not None:
+        # Do not carry unrelated final-client exchange-shop schedules into
+        # historical player info merely because one paid bundle is approved.
+        out['3VS1Bhmf'] = []
+    if reply_id == user_info_id and historical_offers is None:
         from exvius_actions_shops import archived_store_schedules
         existing = {str(row.get('Z20mNDvL')): dict(row) for row in out.get('3VS1Bhmf', [])}
         existing.update({row['Z20mNDvL']: dict(row) for row in archived_store_schedules()})
@@ -103,9 +107,13 @@ def serve_lapis_shop(spec, reply_id, plaintext=None):
         if not isinstance(payload, dict):
             continue
         for row in payload.get(bundle_tag, []):
-            definitions[str(row.get('EzXXHtTY'))] = dict(row)
+            bid = str(row.get('EzXXHtTY'))
+            if historical_offers is None or bid in historical_offers:
+                definitions[bid] = dict(row)
         for row in payload.get(item_tag, []):
-            items[(str(row.get('EzXXHtTY')), str(row.get('4FF0gz8P')))] = dict(row)
+            bid = str(row.get('EzXXHtTY'))
+            if historical_offers is None or bid in historical_offers:
+                items[(bid, str(row.get('4FF0gz8P')))] = dict(row)
     for row in definitions.values():
         if str(row.get('pRYHbNN5')) == '9999':
             try:
@@ -130,22 +138,25 @@ def serve_lapis_shop(spec, reply_id, plaintext=None):
     # BundleMstResponse::readParam: VjJQ51uG/m8ivD4NX start/end date text, gzWIBU0I the purchase
     # limit (BundleInfo::canPurchase refuses a limit below 1), fW193id7 the countdown flag.
     friend_id = '990000001'
-    definitions[friend_id] = {
-        'EzXXHtTY': friend_id, '3GtkuMJ1': '2,000 Friend Points',
-        'yZxOduZT': '0', 'pRYHbNN5': '50', 'AOHRcCC2': '100',
-        'VjJQ51uG': '2016-01-01 00:00:00', 'm8ivD4NX': '2099-12-31 23:59:59', 'QvqubbO7': '0',
-        'gzWIBU0I': '99999', 'fW193id7': '0', 'TzvJwA60': '',
-        'cSUSxGZA': 'IronChestofAbundanceUpdatedicon.png', 'hJs2B3X5': '',
-    }
-    items[(friend_id, friend_id)] = {
-        'EzXXHtTY': friend_id, '4FF0gz8P': friend_id,
-        'jsvoa0I2': '51:1:2000', '6tSP4s8J': '0', '52KBR9qV': '0', 'ZwpMzQWR': '0',
-    }
+    if historical_offers is None:
+        definitions[friend_id] = {
+            'EzXXHtTY': friend_id, '3GtkuMJ1': '2,000 Friend Points',
+            'yZxOduZT': '0', 'pRYHbNN5': '50', 'AOHRcCC2': '100',
+            'VjJQ51uG': '2016-01-01 00:00:00', 'm8ivD4NX': '2099-12-31 23:59:59', 'QvqubbO7': '0',
+            'gzWIBU0I': '99999', 'fW193id7': '0', 'TzvJwA60': '',
+            'cSUSxGZA': 'IronChestofAbundanceUpdatedicon.png', 'hJs2B3X5': '',
+        }
+        items[(friend_id, friend_id)] = {
+            'EzXXHtTY': friend_id, '4FF0gz8P': friend_id,
+            'jsvoa0I2': '51:1:2000', '6tSP4s8J': '0', '52KBR9qV': '0', 'ZwpMzQWR': '0',
+        }
     # The Global Premium Bundles (global_bundles.json, from the FFBE wiki). Cash prices use the same
     # rate as above; a bundle past its once/daily limit is left out, so the client stops listing it.
     limits = {}
     for bundle in _global_bundles():
         bid = str(bundle['id'])
+        if historical_offers is not None and bid not in historical_offers:
+            continue
         limits[bid] = bundle.get('limit')
         if _bundle_bought(bid, bundle.get('limit')):
             continue

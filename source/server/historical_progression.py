@@ -209,34 +209,23 @@ def historical_commerce_catalogue() -> dict:
     return catalogue
 
 
-def historical_town_purchase_allowed(player_data: dict, town_id, products: list[dict]) -> bool:
-    """Check the entire original town-shop basket before any gil is spent.
 
-    Each product must have its own sourced GL stock/price tuple; an undated
-    row in the preserved final client's F_STORE_ITEM_MST is not proof that
-    this town sold the item in 2016. Ordinary, unmarked saves are unchanged.
+def historical_premium_bundle_ids(player_data: dict) -> set[str] | None:
+    """Paid Shop offers unlock permanently at their first evidenced Global release.
+
+    None retains the ordinary nonhistorical offline catalogue. Historical
+    offers require explicit approval; a later month never removes a bundle.
+    Frequency and purchase limits are still handled by the original Shop.
     """
     if not (player_data.get("meta") or {}).get("historical_preview"):
-        return True
+        return None
     month = current_month(player_data)
     catalogue = historical_commerce_catalogue()
-    if not products:
-        return False
-    approved = {
-        (str(row["town_id"]), int(row["kind"]), str(row["item_id"])): row
-        for row in catalogue["town_stock"]
-        if row.get("status") == "approved" and row.get("source")
-    }
-    for product in products:
-        row = approved.get((str(town_id), int(product["kind"]), str(product["id"])))
-        if not row or not is_released(row.get("from"), month):
-            return False
-        # The cutoff is exclusive; no premature persistence of retired stock.
-        if row.get("until_exclusive") and is_released(row["until_exclusive"], month):
-            return False
-        if int(product["price_gil"]) != int(row["price_gil"]):
-            return False
-    return True
+    return {str(row["id"]) for row in catalogue["premium_bundles"]
+            if row.get("status") == "approved" and row.get("source")
+            and row.get("currency") and row.get("original_price") is not None
+            and isinstance(row.get("contents"), list) and row["contents"]
+            and is_released(row.get("available_from"), month)}
 
 def historical_colosseum_orb_cap(player_data: dict) -> int | None:
     """Global launch cap 3; Arena debut in November 2016 raised it to 5.
