@@ -2,6 +2,7 @@
 from collections import defaultdict
 from copy import deepcopy
 import json
+import pkgutil
 from pathlib import Path
 
 GROUPS = (('all', 'All Events'), ('permanent', 'Permanent'),
@@ -14,23 +15,34 @@ _DOCUMENT = None
 def document():
     global _DOCUMENT
     if _DOCUMENT is None:
-        path = Path(__file__).with_name('event_archive.json')
-        _DOCUMENT = json.loads(path.read_text(encoding='utf-8'))
+        # Android Chaquopy imports modules from app.imy (a ZIP), where
+        # Path(__file__).with_name(...) is not a filesystem path.
+        payload = pkgutil.get_data(__name__, 'event_archive.json')
+        if not payload:
+            raise FileNotFoundError('Event archive is absent from the bundled runtime.')
+        _DOCUMENT = json.loads(payload.decode('utf-8'))
     return _DOCUMENT
 
 
-def events():
-    return document()['events']
+def events(player=None):
+    rows = document()['events']
+    if player is None or not (player.data.get('meta') or {}).get('historical_preview'):
+        return rows
+    # No native archive event has a verified June/July 2016 debut in the
+    # recovered index; do not turn future/undated events into empty tiles.
+    from historical_progression import is_released, current_month
+    month = current_month(player.data)
+    return [row for row in rows if is_released(row.get('release'), month)]
 
 
-def area_ids():
-    return [str(event['area']) for event in events()]
+def area_ids(player=None):
+    return [str(event['area']) for event in events(player)]
 
 
-def listings():
+def listings(player=None):
     """One tile per published campaign, with every original area retained."""
     campaigns = {}
-    for row in events():
+    for row in events(player):
         identity = (row.get('source_page'), row.get('banner_title'),
                     row.get('release'), row.get('group'))
         # Unidentified records must never collapse merely because fields are empty.
@@ -45,7 +57,8 @@ def menu(player, selection=''):
     if ':' in selection:
         return activate_mode(player, selection)
     members = defaultdict(list)
-    campaigns = listings()
+    campaigns = listings(player)
+    filtered_events = events(player)
     rows = [row for row, _aliases in campaigns]
     permanent = [str(row['area']) for row in rows if row['group'] == 'permanent']
     for row in rows:
@@ -67,18 +80,22 @@ def menu(player, selection=''):
     group = next((row for row in groups if row['id'] == selected), groups[0])
     from player_state import _load_ndjson
     missions = _load_ndjson('F_MISSION_MST.ndjson', 'qo3PECw6')
-    modes = {str(row['area']): row['native_mode'] for row in events() if row.get('native_mode')}
+    modes = {str(row['area']): row['native_mode'] for row in filtered_events if row.get('native_mode')}
     mode_dungeon_ids = sorted({str(m['U9iHsau3']) for m in missions.values()
                                if str(m.get('uv60hgDW')) in modes})
     dungeons = {str(m['U9iHsau3']): {'mode': modes[str(m['uv60hgDW'])], 'area': str(m['uv60hgDW'])}
                 for m in missions.values() if str(m.get('uv60hgDW')) in modes
                 and str(m.get('gQR24kST')) in ('12', '50')}
     names = {}
-    from exvius_fortuna import level_rewards
-    cow = level_rewards()
-    dark = sorted((r for r in events() if r['name'] == 'Dark Visions'), key=lambda r: int(r['area']))
+    # Clash reward tables are a later-game archive, and the 2016 menu
+    # must not try to load them from a filesystem path inside app.imy.
+    cow = {}
+    if any(row.get('native_mode') == 'tfa' for row in filtered_events):
+        from exvius_fortuna import level_rewards
+        cow = level_rewards()
+    dark = sorted((r for r in filtered_events if r['name'] == 'Dark Visions'), key=lambda r: int(r['area']))
     numbered = {r['area']: n for n, r in enumerate(dark, 1)}
-    for row in events():
+    for row in filtered_events:
         candidates = [did for did in row['dungeons'] if did in dungeons]
         if not candidates:
             continue
@@ -87,7 +104,7 @@ def menu(player, selection=''):
             dungeons[did]['entry'] = did == entry
         names[entry] = (cow[row['area']]['name'] if row.get('native_mode') == 'tfa' else
                         'Dark Visions ' + str(numbered[row['area']]) if row['area'] in numbered else row['name'])
-    return {'groups': groups, 'selected': group, 'area_ids': area_ids(),
+    return {'groups': groups, 'selected': group, 'area_ids': area_ids(player),
             'native_modes': modes, 'native_dungeons': dungeons, 'dungeon_names': names,
             'mode_dungeon_ids': mode_dungeon_ids,
             'area_aliases': {str(row['area']): aliases for row, aliases in campaigns if aliases}}
@@ -98,7 +115,7 @@ def activate_mode(player, selection):
     from exvius_actions_modes import _tfa, _parade
     from player_state import _load_ndjson
     mode, did = selection.split(':', 1)
-    allowed = {str(row['area']): row.get('native_mode') for row in events()}
+    allowed = {str(row['area']): row.get('native_mode') for row in events(player)}
     rows = [r for r in _load_ndjson('F_MISSION_MST.ndjson', 'qo3PECw6').values()
             if str(r.get('U9iHsau3')) == did and str(r.get('gQR24kST')) in ('12', '50')]
     if (player is None or player.mode == 'frozen' or not rows or mode not in ('tfa', 'parade')

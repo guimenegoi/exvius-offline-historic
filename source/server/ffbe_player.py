@@ -2890,8 +2890,8 @@ def serve_event_gate(spec, reply_id):
         if (os.environ.get('EXVIUS_EVENT_ARCHIVE') == '1' and
                 not (saved_policy is not None and saved_policy.exists())):
             from event_archive import area_ids, events
-            archive_events = events()
-            policy = dict(policy, areas=area_ids(), permanent=True)
+            archive_events = events(State.player)
+            policy = dict(policy, areas=area_ids(State.player), permanent=True)
     except (OSError, ValueError) as exc:
         _note("event policy invalid; no extra gates served: " + str(exc))
         return spec

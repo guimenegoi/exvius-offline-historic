@@ -112,7 +112,7 @@ Build components:
 - `source/exvius/build_historical_preview.py` generates
   `historical_unit_releases_preview.json` and importable
   `historical_preview_data.py` from the audit-only native crosswalk.
-- Python **3.10** compiles the seven changed `.py` modules to `.pyc`.
+- Python **3.10** compiles the source modules to `.pyc` (nine in the Vortex fix).
   Use exactly this version: the embedded Chaquopy importer rejects 3.12.
 - `frida-compile 19.1.0 -S -c -T none` bundles
   `source/exvius/android_test.js`; the wrapper strips its progress header.
@@ -126,3 +126,40 @@ Build components:
 All build outputs remain in gitignored `source/build/historical-preview/`.
 Use the original source-controlled scripts and tests to reproduce builds;
 never commit Android private signing keys or raw extracted master tables.
+
+## June/July 2016 preview: Vortex and Panel Quest test update (9066)
+
+APK: `~/Downloads/FFBE-Global-Historic-Preview-9066-Vortex-Fix-TEST.apk`
+
+This patch addresses the first confirmed on-device defects:
+
+- `event_archive.py` loads its JSON with `pkgutil.get_data` from the bundled
+  Chaquopy ZIP (`app.imy`). A normal `Path(__file__)` failed on Android, so
+  the original Vortex season selector could not be initialized.
+- The existing eight-group season dropdown remains intact. The native
+  event archive has **no audited 2016 release rows**; future/unknown events
+  are hidden until they have reliable dates. Some native permanent chambers
+  are still supplied by the original client, separately from that archive.
+- Clash of Wills' later-game rewards are not loaded when the selected era has
+  no Clash events.
+- The original native function `FUNCTION_PANEL_QUEST` is disabled only while
+  the saved account is tagged `historical_preview`, keeping the 2021+ rookie
+  panel grid out of the 2016 opening era.
+
+The APK changes **only** Android manifest `versionCode` from the original
+`9064` to **`9066`**; its package name, underlying client and certificate
+are unchanged. The v2/v3 signer certificate fingerprint matches the first
+preview, SHA-256:
+`1e08a903aef9c3a721510b64ec764d01d3d094eb954161b62544ea8f187b5953`.
+
+**Install as an UPDATE over the current Historic APK. Do not uninstall it or
+clear app data.** The downloaded game-data directory and existing player save
+should survive this version upgrade. If Android refuses the update, STOP
+instead of uninstalling; capture the error so the signature/package can be
+compared with the installed APK. On-device install and Vortex appearance still
+require a user test.
+
+This test wrapper has not rebuilt the Android Java runtime: the earlier
+`DataUpdates.java` fork fix for automatic *official app* update offers is not
+included here. Do not accept an automatic APK replacement by the official
+upstream application. Game-data downloads and repairs remain separate.

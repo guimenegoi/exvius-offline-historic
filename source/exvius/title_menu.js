@@ -52,6 +52,7 @@ export function installTitleMenu(module, note, retained, bridge) {
   let periodLabel = 'Start Historic';
   try {
     const current = JSON.parse(bridge('titleAction', '(Ljava/lang/String;)Ljava/lang/String;', ['status']));
+    globalThis.__EXVIUS_HISTORICAL_PREVIEW__ = Boolean(current.has_save && current.historical_preview);
     if (current.has_save && current.historical_preview)
       periodLabel = current.historical_month === '2016-06' ? 'Unlock Jul 2016' : 'History: Jul 2016';
     else if (current.has_save) periodLabel = 'Reset to Historic';
@@ -100,7 +101,8 @@ export function installTitleMenu(module, note, retained, bridge) {
         note('LOCAL_TITLE_CONTINUE');
       } else {
         try {
-          bridge('titleAction', '(Ljava/lang/String;)Ljava/lang/String;', ['next']);
+          const updated = JSON.parse(bridge('titleAction', '(Ljava/lang/String;)Ljava/lang/String;', ['next']));
+          globalThis.__EXVIUS_HISTORICAL_PREVIEW__ = Boolean(updated.historical_preview);
           note('LOCAL_TITLE_HISTORIC_NEXT');
         } catch (error) {
           // The save is unchanged. Keep the original Info press rather than start it.

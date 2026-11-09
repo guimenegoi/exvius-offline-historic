@@ -15,6 +15,7 @@ from pathlib import Path
 from zipfile import ZipFile, ZIP_DEFLATED
 import hashlib
 import json
+import struct
 
 ROOT = Path(__file__).resolve().parents[2]
 OLD_APK = ROOT / "release/exvius-offline-v0.1.24.apk"
@@ -23,6 +24,8 @@ REPLACED = {
     "offline_menu.pyc": "source/server/offline_menu.py",
     "ffbe_gacha.pyc": "source/server/ffbe_gacha.py",
     "android_game.pyc": "source/memorial/android/src/main/python/android_game.py",
+    "event_archive.pyc": "source/server/event_archive.py",
+    "ffbe_player.pyc": "source/server/ffbe_player.py",
 }
 ADDED = {
     "historical_progression.pyc": "source/server/historical_progression.py",
@@ -61,7 +64,51 @@ def script_body(path: Path) -> bytes:
     raise ValueError("Frida compiled bundle contains no executable JavaScript.")
 
 
-def package(base: Path, compiled: Path, js: Path, destination: Path) -> dict:
+def update_manifest_version_code(manifest: bytes, next_code: int) -> tuple[bytes, int]:
+    """Patch only android:versionCode in the already-installed package's AXML.
+
+    The original bytecode-host APK stores versionCode as TYPE_INT_DEC. Preserve
+    every other binary-manifest byte, especially the application/package name.
+    """
+    if len(manifest) < 8 or struct.unpack_from("<H", manifest)[0] != 0x0003:
+        raise ValueError("Not a binary Android XML manifest.")
+    if not 0 < next_code < 2 ** 31:
+        raise ValueError("Invalid Android version code.")
+    offset, names = 8, None
+    candidate = None
+    while offset + 8 <= len(manifest):
+        kind, header, length = struct.unpack_from("<HHI", manifest, offset)
+        if length < header or length < 8 or offset + length > len(manifest):
+            raise ValueError("Invalid Android XML chunk.")
+        if kind == 0x0180:
+            names = [struct.unpack_from("<I", manifest, i)[0]
+                     for i in range(offset + header, offset + length, 4)]
+        if kind == 0x0102 and names is not None:
+            start, width, count = struct.unpack_from("<HHH", manifest, offset + 24)
+            if width != 20:
+                raise ValueError("Unexpected Android XML attribute width.")
+            for i in range(count):
+                attribute = offset + 16 + start + i * width
+                if attribute + width > offset + length:
+                    raise ValueError("Truncated Android manifest attribute.")
+                name = struct.unpack_from("<I", manifest, attribute + 4)[0]
+                if name < len(names) and names[name] == 0x0101021b:
+                    if manifest[attribute + 15] != 0x10 or candidate is not None:
+                        raise ValueError("Unsupported or repeated Android version code.")
+                    candidate = attribute + 16
+            break
+        offset += length
+    if candidate is None:
+        raise ValueError("Android manifest versionCode was not found.")
+    previous = struct.unpack_from("<I", manifest, candidate)[0]
+    if next_code <= previous:
+        raise ValueError("Updatable APK needs a versionCode greater than its base.")
+    revised = bytearray(manifest)
+    struct.pack_into("<I", revised, candidate, next_code)
+    return bytes(revised), previous
+
+
+def package(base: Path, compiled: Path, js: Path, destination: Path, version_code: int | None = None) -> dict:
     files = {**REPLACED, **ADDED}
     updates = {}
     for archive_name, source in files.items():
@@ -72,7 +119,7 @@ def package(base: Path, compiled: Path, js: Path, destination: Path) -> dict:
         if blob[:4] != EXPECTED_MAGIC:
             raise ValueError(f"Wrong Python bytecode version: {pyc}")
         updates[archive_name] = blob
-    assert len(updates) == 7
+    assert len(updates) == len(files)
 
     with ZipFile(base) as original:
         original_members = set(original.namelist())
@@ -86,6 +133,10 @@ def package(base: Path, compiled: Path, js: Path, destination: Path) -> dict:
                 raise ValueError("Base APK does not embed the expected Python 3.10 runtime.")
         archive_blob = zip_with_replacements(pyarchive, updates)
         replacements = {archive_file: archive_blob, frida_script: script_body(js)}
+        previous_code = None
+        if version_code is not None:
+            replacements["AndroidManifest.xml"], previous_code = update_manifest_version_code(
+                original.read("AndroidManifest.xml"), version_code)
         destination.parent.mkdir(parents=True, exist_ok=True)
         with ZipFile(destination, "w") as output:
             for info in original.infolist():
@@ -106,6 +157,8 @@ def package(base: Path, compiled: Path, js: Path, destination: Path) -> dict:
         "unsigned_apk_sha256": hashlib.sha256(destination.read_bytes()).hexdigest(),
         "preview_index_sha256": hashlib.sha256((ROOT / "source/server/historical_preview_data.py").read_bytes()).hexdigest(),
         "python_modules": sorted(updates),
+        "android_base_version_code": previous_code,
+        "android_updated_version_code": version_code,
         "script_bytes": len(replacements[frida_script]),
         "signing": "REQUIRED, not an installable APK until signed",
     }
@@ -117,8 +170,10 @@ def main():
     parser.add_argument("--compiled", type=Path, default=ROOT / "source/build/historical-preview/pyc")
     parser.add_argument("--js", type=Path, default=ROOT / "source/build/historical-preview/android_test.bundle.js")
     parser.add_argument("--output", type=Path, default=ROOT / "source/build/historical-preview/historic-preview-unsigned.apk")
+    parser.add_argument("--version-code", type=int, help="Upgrade code (must exceed base APK).")
     args = parser.parse_args()
-    print(json.dumps(package(args.base, args.compiled, args.js, args.output), indent=2))
+    print(json.dumps(package(args.base, args.compiled, args.js, args.output,
+                             version_code=args.version_code), indent=2))
 
 
 if __name__ == "__main__":

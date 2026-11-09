@@ -395,10 +395,17 @@ rpc.exports = {
           retained.push(Interceptor.attach(module.getExportByName(
             '_ZN15FunctionMstList7isValidENSt6__ndk112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEE'), {
             onEnter(args) {
+              const key = text(args[1]);
+              this.hidePanel = key === 'FUNCTION_PANEL_QUEST';
               this.localClassUp = this.returnAddress.equals(materialEligibility.add(0x94)) &&
-                text(args[1]) === 'FUNCTION_SP_CLASSUP';
+                key === 'FUNCTION_SP_CLASSUP';
             },
-            onLeave(result) { if (this.localClassUp) result.replace(1); },
+            onLeave(result) {
+              // The 2021 rookie quest board must not open in the 2016 preview.
+              if (this.hidePanel && globalThis.__EXVIUS_HISTORICAL_PREVIEW__ === true)
+                result.replace(0);
+              else if (this.localClassUp) result.replace(1);
+            },
           }));
         }
         const sacrificeMaster = new NativeFunction(module.getExportByName('_ZN16SacrificeMstList6sharedEv'), 'pointer', []);
