@@ -237,6 +237,70 @@ claim about its original capture day. The image confirms that the
 retail Home displayed English UI labels, unlike several baked Japanese
 labels in the embedded common CPK.
 
+## Four original Global UI surfaces in a 2016 gameplay video
+
+An early Global gameplay video, "Final Fantasy Brave Exvius Gameplay
+Introduction" by Ushi Gaming Channel, was published on **2016-05-22**.
+Source: https://www.youtube.com/watch?v=imdaYmRWe8s
+
+A private 1280x720 H.264 copy (11 min 02 sec) has SHA-256
+17754414096a28dc707edf0b4b44ab087fb7eadf20eb181508359b90d63210a2.
+The actual Global client occupies the left 360x720 portion of the
+recording; the right side shows the presenter. Four unretouched crops
+are stored privately in data/ui-snapshots/references/video-global-2016-05-22/
+with source timestamps and SHA-256 pinned by the existing JSON catalogue.
+Neither video nor copyrighted frames are tracked in Git.
+
+| Surface | Timecode | Directly observed original controls |
+| --- | --- | --- |
+| Home | 00:10 | Forge, Abilities, Synthesize at left; Colosseum/World/Vortex across center; six-button footer |
+| Units | 00:35 | Cloud of Darkness; Equip, Trait, Magic, Special; resistance and Limit Burst detail |
+| Summons | 01:20 | Galuf/Rakshasa Featured Summon; Lapis and ticket summon choices; six-button footer |
+| Vortex | 04:05 | Creation, Awakening, Experience, Riches chambers in a continuous list, no five-tab control |
+
+All four surfaces of the global-launch era now have early Global
+references; previous MobyGames Home and SuperSoluce Vortex screenshots
+remain independent references. This is **not** approval of a playable
+historical layout. May 22 is the VIDEO UPLOAD DATE; the original
+capture date remains unverified. The Galuf/Rakshasa banner and values
+in the footage are not assumed to remain current for subsequent
+historical months.
+
+The video composites the native game at 360x720. It proves the visible
+screen hierarchy and labels, not the original Cocos pixel coordinates.
+Do not recover native layout geometry by scaling these video crops
+without reconciling against original GL client resources and touch
+behavior. Tests validate the timestamps, linked sources and frame hashes.
+
+### Distinct Global UI transitions, not one worldwide layout toggle
+
+- Pre-2017-02 Global: the older HomeScene native implementation
+  with Forge/Abilities/Synthesize controls and a continuous Vortex.
+- 2017-02-23 Global 2.0: new HomeRotateMenuList implementation,
+  improved Summons and quest menu. The signed APK 2.0.0 symbols and
+  contemporary Global release notes confirm this boundary.
+- 2022-09-22 Global 7.5.0: Home Vision Card/BGM display, new Unit
+  Enhance/Awaken workflow, and Shop, Friends, and Results redesign.
+  https://exvius.fandom.com/wiki/Update_Schedule
+
+Vision Card ITEMS were available starting 2020-08. The new Home
+Vision Card ornament was introduced in 2022-09. The historic server
+feature projection now exposes these independently; a pre-2022
+historic save cannot accidentally show the final client's ornament.
+
+The original Global end-of-service content archive offers later
+resources such as Ver273_resources_common.cpk and
+Ver202_resources.cpk. These have 2024-era assets and cannot be
+silently substituted for the dated July 2016 resource pack references
+Ver24_resources_common.cpk and Ver20_resources.cpk. The complete
+English 2016 Home body atlases are still missing. Local APK-sourced
+header/footer CPKs and the dated video do not solve the missing
+runtime assets; source-backed reconstruction remains necessary.
+
+Any completed UI snapshot still requires validated art, geometry,
+navigation, server action gating, and Android screenshot regressions.
+Until then the status remains evidence-inventory-not-a-renderer.
+
 ## Acceptance gate for an era/surface
 
 1. Obtain a dated **Global** capture, preferably a video and still images.

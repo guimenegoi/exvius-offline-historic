@@ -14,18 +14,28 @@
         "home": {
           "status": "reference-collected",
           "reference": "moby-4036609",
-          "layout_verified": false
+          "layout_verified": false,
+          "secondary_references": [
+            "ushi-2016-05-22-home-010"
+          ]
         },
         "summons": {
-          "status": "missing"
+          "status": "reference-collected",
+          "reference": "ushi-2016-05-22-summons-080",
+          "layout_verified": false
         },
         "vortex": {
           "status": "reference-collected",
           "reference": "supersoluce-2016-07-vortex-002",
-          "layout_verified": false
+          "layout_verified": false,
+          "secondary_references": [
+            "ushi-2016-05-22-vortex-245"
+          ]
         },
         "units": {
-          "status": "missing"
+          "status": "reference-collected",
+          "reference": "ushi-2016-05-22-units-035",
+          "layout_verified": false
         }
       }
     },
@@ -55,7 +65,7 @@
       "from": "2022-09",
       "until_exclusive": null,
       "confidence": "transition-only",
-      "notes": "Global players discuss a new UI in September 2022. Exact screen layouts and transition dates remain unverified.",
+      "notes": "Global v7.5.0 on September 22, 2022 introduced Home Vision Card/BGM ornament, moved Esper and Crafting menus, and overhauled Unit Enhance/Awaken, Shop, and Friends UIs. These are per-surface transitions and do not establish final-client 9.0 pixel geometry.",
       "screens": {
         "home": {
           "status": "missing"
@@ -128,6 +138,115 @@
       "capture_date": null,
       "article_date": "2016-07-25",
       "provenance_note": "Global French-language Vortex guide from July 2016; the original on-screen geometry differs from late-client five-tab layout. Image is evidence, not a renderer."
+    },
+    "ushi-2016-05-22-home-010": {
+      "region": "GL",
+      "surface": "home",
+      "type": "dated-video-frame",
+      "source": "https://www.youtube.com/watch?v=imdaYmRWe8s&t=10s",
+      "video_source": "https://www.youtube.com/watch?v=imdaYmRWe8s",
+      "video_title": "Final Fantasy Brave Exvius Gameplay Introduction",
+      "video_author": "Ushi Gaming Channel",
+      "video_upload_date": "2016-05-22",
+      "video_full_sha256": "17754414096a28dc707edf0b4b44ab087fb7eadf20eb181508359b90d63210a2",
+      "frame_second": 10,
+      "local_path": "data/ui-snapshots/references/video-global-2016-05-22/home-010.png",
+      "sha256": "477d3520d343edfe56ed8f637059b5fe9db5d469b9a07b1629f26799bdfffe9a",
+      "capture_date": null,
+      "visible_controls": [
+        "Forge",
+        "Abilities",
+        "Synthesize",
+        "Colosseum",
+        "World",
+        "Vortex",
+        "Home",
+        "Units",
+        "Items",
+        "Shop",
+        "Summon",
+        "Friends"
+      ],
+      "provenance_note": "Original static left-side Craft buttons and central World/Colosseum/Vortex navigation; no 2017 rotating Home menu, modern home VC ornament, or five-tab Vortex controls. Film date is not independently verified; May 22 is upload date."
+    },
+    "ushi-2016-05-22-units-035": {
+      "region": "GL",
+      "surface": "units",
+      "type": "dated-video-frame",
+      "source": "https://www.youtube.com/watch?v=imdaYmRWe8s&t=35s",
+      "video_source": "https://www.youtube.com/watch?v=imdaYmRWe8s",
+      "video_title": "Final Fantasy Brave Exvius Gameplay Introduction",
+      "video_author": "Ushi Gaming Channel",
+      "video_upload_date": "2016-05-22",
+      "video_full_sha256": "17754414096a28dc707edf0b4b44ab087fb7eadf20eb181508359b90d63210a2",
+      "frame_second": 35,
+      "local_path": "data/ui-snapshots/references/video-global-2016-05-22/units-035.png",
+      "sha256": "c5a6d63e86c07af650fc867a9ecb322b62d26b795613ea0e97a727f0a8395820",
+      "capture_date": null,
+      "visible_controls": [
+        "Back",
+        "Equip",
+        "Trait",
+        "Magic",
+        "Special",
+        "Element Resistance",
+        "Status Resistance",
+        "Limit Burst",
+        "Trust Master Rewards"
+      ],
+      "provenance_note": "Actual soft-launch Cloud of Darkness unit detail with dark background, trait/skill tabs, elemental/status resistances and Limit Burst. Film date is not independently verified; May 22 is upload date."
+    },
+    "ushi-2016-05-22-summons-080": {
+      "region": "GL",
+      "surface": "summons",
+      "type": "dated-video-frame",
+      "source": "https://www.youtube.com/watch?v=imdaYmRWe8s&t=80s",
+      "video_source": "https://www.youtube.com/watch?v=imdaYmRWe8s",
+      "video_title": "Final Fantasy Brave Exvius Gameplay Introduction",
+      "video_author": "Ushi Gaming Channel",
+      "video_upload_date": "2016-05-22",
+      "video_full_sha256": "17754414096a28dc707edf0b4b44ab087fb7eadf20eb181508359b90d63210a2",
+      "frame_second": 80,
+      "local_path": "data/ui-snapshots/references/video-global-2016-05-22/summons-080.png",
+      "sha256": "32b05ec36cb65ddf5a2d42a9ed73df6f2d731014e65d103e4270b63b453f3eee",
+      "capture_date": null,
+      "visible_controls": [
+        "Back",
+        "Featured Summon",
+        "Summon 500",
+        "Ticket Summon",
+        "Home",
+        "Units",
+        "Items",
+        "Shop",
+        "Summon",
+        "Friends"
+      ],
+      "provenance_note": "Actual soft-launch Galuf/Rakshasa New Allies featured banner, one draw for 500 lapis and ticket draw; costs and banner are video-specific, not assumed for all months. Film date is not independently verified; May 22 is upload date."
+    },
+    "ushi-2016-05-22-vortex-245": {
+      "region": "GL",
+      "surface": "vortex",
+      "type": "dated-video-frame",
+      "source": "https://www.youtube.com/watch?v=imdaYmRWe8s&t=245s",
+      "video_source": "https://www.youtube.com/watch?v=imdaYmRWe8s",
+      "video_title": "Final Fantasy Brave Exvius Gameplay Introduction",
+      "video_author": "Ushi Gaming Channel",
+      "video_upload_date": "2016-05-22",
+      "video_full_sha256": "17754414096a28dc707edf0b4b44ab087fb7eadf20eb181508359b90d63210a2",
+      "frame_second": 245,
+      "local_path": "data/ui-snapshots/references/video-global-2016-05-22/vortex-245.png",
+      "sha256": "bc7845a71a9661d16b8f09765a915294e9f2780127d24d9d86dd9308dc650137",
+      "capture_date": null,
+      "visible_controls": [
+        "Back",
+        "Vortex of Desires",
+        "Chamber of Creation",
+        "Chamber of Awakening",
+        "Chamber of Experience",
+        "Chamber of Riches"
+      ],
+      "provenance_note": "Actual soft-launch continuous Vortex list, without five-tab modern navigation. Chained/locked state and 'In 20 h' labels are runtime state, not unconditional layout geometry. Film date is not independently verified; May 22 is upload date."
     }
   },
   "transition_sources": [
@@ -142,6 +261,14 @@
       "source": "https://www.reddit.com/r/FFBraveExvius/",
       "kind": "community-lead",
       "proves": "Research lead only; locate a dated Global screenshot and primary update notes"
+    },
+    {
+      "date": "2022-09-22",
+      "month": "2022-09",
+      "region": "GL",
+      "source": "https://exvius.fandom.com/wiki/Update_Schedule",
+      "kind": "archived-update-changelog",
+      "proves": "Global version 7.5.0 overhauled Home (VC/BGM), Unit Enhance/Awaken, Shop, Friends and Results UI; the availability of Vision Card items itself began August 2020, not September 2022."
     }
   ],
   "client_builds": [

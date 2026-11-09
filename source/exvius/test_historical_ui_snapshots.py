@@ -33,6 +33,58 @@ class HistoricalUiSnapshotEvidence(TestCase):
             if path.is_file() and "sha256" in ref:
                 self.assertEqual(hashlib.sha256(path.read_bytes()).hexdigest(), ref["sha256"])
 
+    def test_single_original_global_softlaunch_video_supports_all_four_surfaces(self):
+        doc = json.loads(INDEX.read_text(encoding="utf-8"))
+        epoch = doc["eras"][0]
+        times = {"home": 10, "units": 35, "summons": 80, "vortex": 245}
+        original_video = None
+        for surface, second in times.items():
+            rec = epoch["screens"][surface]
+            self.assertEqual(rec["status"], "reference-collected")
+            self.assertFalse(rec["layout_verified"])
+            ref_id = f"ushi-2016-05-22-{surface}-{second:03d}"
+            linked = [rec["reference"]] + rec.get("secondary_references", [])
+            self.assertIn(ref_id, linked)
+            source = doc["references"][ref_id]
+            self.assertEqual(source["surface"], surface)
+            self.assertEqual(source["region"], "GL")
+            self.assertEqual(source["type"], "dated-video-frame")
+            self.assertEqual(source["video_upload_date"], "2016-05-22")
+            self.assertIsNone(source["capture_date"])
+            self.assertEqual(source["frame_second"], second)
+            self.assertTrue(source["source"].endswith(f"&t={second}s"))
+            self.assertTrue(source["local_path"].startswith(
+                "data/ui-snapshots/references/video-global-2016-05-22/"))
+            self.assertEqual(len(source["sha256"]), 64)
+            self.assertGreater(len(source["visible_controls"]), 3)
+            if original_video is None:
+                original_video = source["video_full_sha256"]
+            else:
+                self.assertEqual(original_video, source["video_full_sha256"])
+            file = ROOT / source["local_path"]
+            if file.is_file():
+                self.assertEqual(hashlib.sha256(file.read_bytes()).hexdigest(),
+                                 source["sha256"])
+        self.assertEqual(
+            {"Forge", "Abilities", "Synthesize"},
+            set(doc["references"]["ushi-2016-05-22-home-010"]["visible_controls"])
+            & {"Forge", "Abilities", "Synthesize"})
+        self.assertIn(
+            "Chamber of Creation",
+            doc["references"]["ushi-2016-05-22-vortex-245"]["visible_controls"])
+
+    def test_2022_global_home_update_is_separate_from_vision_card_items(self):
+        doc = json.loads(INDEX.read_text(encoding="utf-8"))
+        milestone = next(item for item in doc["transition_sources"]
+                         if item.get("date") == "2022-09-22")
+        self.assertEqual(milestone["region"], "GL")
+        self.assertEqual(milestone["month"], "2022-09")
+        self.assertTrue(milestone["source"].startswith("https://"))
+        self.assertIn("Unit Enhance/Awaken", milestone["proves"])
+        self.assertFalse(next(era for era in doc["eras"]
+                         if era["id"] == "global-2022-ui")["screens"]["home"]
+                         .get("layout_verified", False))
+
     def test_archived_global_clients_are_evidence_not_active_layouts(self):
         doc = json.loads(INDEX.read_text(encoding="utf-8"))
         clients = doc["client_builds"]
