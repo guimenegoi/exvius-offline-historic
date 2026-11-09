@@ -25,6 +25,8 @@ REPLACED = {
     "ffbe_gacha.pyc": "source/server/ffbe_gacha.py",
     "android_game.pyc": "source/memorial/android/src/main/python/android_game.py",
     "event_archive.pyc": "source/server/event_archive.py",
+    "exvius_repeat.pyc": "source/server/exvius_repeat.py",
+    "exvius_actions_modes.pyc": "source/server/exvius_actions_modes.py",
     "ffbe_player.pyc": "source/server/ffbe_player.py",
     "exvius_actions.pyc": "source/server/exvius_actions.py",
     "exvius_colosseum.pyc": "source/server/exvius_colosseum.py",

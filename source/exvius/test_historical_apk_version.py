@@ -32,6 +32,19 @@ class ManifestVersionTests(unittest.TestCase):
         self.assertEqual(REPLACED.get("capture_server.pyc"),
                          "source/server/capture_server.py")
 
+    def test_event_battle_transaction_guards_are_included_in_preview_apk(self):
+        # A source-only historical gate is not effective if the original
+        # app.imy still imports its older exvius_repeat/actions_modes bytecode.
+        for module in ("event_archive", "exvius_repeat", "exvius_actions_modes"):
+            self.assertEqual(REPLACED.get(module + ".pyc"),
+                             "source/server/" + module + ".py")
+        with ZipFile(ROOT / 'release/exvius-offline-v0.1.24.apk') as source:
+            from io import BytesIO
+            with ZipFile(BytesIO(source.read('assets/chaquopy/app.imy'))) as python:
+                self.assertTrue(all(module + ".pyc" in python.namelist()
+                                    for module in ("event_archive", "exvius_repeat",
+                                                   "exvius_actions_modes")))
+
     def test_invalid_versions_fail_closed(self):
         for code in (0, 9064, 9000, -1, 2 ** 31):
             with self.subTest(code=code), self.assertRaises(ValueError):
