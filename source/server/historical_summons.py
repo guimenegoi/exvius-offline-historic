@@ -12,16 +12,23 @@ from pathlib import Path
 from historical_progression import UnavailableContent, eligible_pool, is_released, month_cutoff
 
 VERIFIED_INDEX = Path(__file__).resolve().parent / "content/historical_unit_releases.json"
+PREVIEW_INDEX = VERIFIED_INDEX.with_name("historical_unit_releases_preview.json")
 
 
-def load_verified_unit_releases(path: Path = VERIFIED_INDEX) -> dict[str, dict]:
-    """Never load the provisional candidate crosswalk as the playable allowlist."""
-    try:
-        document = json.loads(path.read_text(encoding="utf-8"))
-    except (OSError, ValueError) as error:
-        raise UnavailableContent("Verified Global unit release catalogue is not available.") from error
+def load_verified_unit_releases(path: Path = VERIFIED_INDEX, *, preview: bool = False) -> dict[str, dict]:
+    """Preview is an explicit opt-in; verified mode never reads provisional IDs."""
+    if preview and path == VERIFIED_INDEX:
+        # In the Android build, Chaquopy imports .pyc from app.imy rather
+        # than exposing neighbouring JSON files as filesystem Paths.
+        from historical_preview_data import DOCUMENT
+        document = DOCUMENT
+    else:
+        try:
+            document = json.loads(path.read_text(encoding="utf-8"))
+        except (OSError, ValueError) as error:
+            raise UnavailableContent("Verified Global unit release catalogue is not available.") from error
     if (not isinstance(document, dict) or document.get("schema") != 1 or
-            document.get("status") != "verified" or
+            document.get("status") != ("preview" if preview else "verified") or
             not document.get("sources") or not isinstance(document.get("units"), dict) or
             not document["units"]):
         raise UnavailableContent("Global unit release catalogue has not been approved.")
@@ -60,6 +67,24 @@ def summon_channel(banner: dict, cost: dict) -> str:
     raise UnavailableContent("Summon purchase method is not historically classified.")
 
 
+def banner_allowed(banner: dict, month: str) -> bool:
+    """Only the 2016 permanent Rare/Friend entries or explicitly dated banners."""
+    if str(banner.get("id")) in ("1", "9"):
+        return True
+    release = (banner.get("community") or {}).get("release") or banner.get("release")
+    return is_released(release, month)
+
+
+def visible_banners(banners: list[dict], player) -> list[dict]:
+    """Hide undated/future banners when a save explicitly opts into history."""
+    meta = (player.data.get("meta") or {}) if player else {}
+    if not meta.get("historical_preview"):
+        return banners
+    from historical_progression import current_month
+    month = current_month(player.data)
+    return [banner for banner in banners if banner_allowed(banner, month)]
+
+
 def _unit_allowed(unit_id, releases: dict, month: str, rarity=None) -> bool:
     spec = releases.get(str(unit_id))
     if not isinstance(spec, dict):
@@ -87,6 +112,7 @@ def prepare_historical_summon(
     bonus_rewards: list[dict],
     bonus_choices: list[dict],
     channel: str,
+    banner: dict | None = None,
 ) -> tuple[list[dict], list[dict], list[tuple[int, list[dict]]], dict]:
     """Restrict *every possible* unit grant before Lapis or tickets are spent.
 
@@ -95,6 +121,8 @@ def prepare_historical_summon(
     future guarantees and unverified bonus paths fail before the purchase.
     """
     month_cutoff(month)
+    if banner is not None and not banner_allowed(banner, month):
+        raise UnavailableContent("The banner is from a later or undated period.")
     if channel not in ("rare", "friend"):
         raise UnavailableContent("Unknown historical summon channel.")
     releases = {unit_id: spec for unit_id, spec in releases.items()

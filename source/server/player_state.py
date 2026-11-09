@@ -4258,9 +4258,10 @@ class PlayerState:
                                             summon_channel)
             try:
                 pool, guaranteed_pool, extra_slots, guarantee = prepare_historical_summon(
-                    current_month(self.data), load_verified_unit_releases(),
+                    current_month(self.data), load_verified_unit_releases(
+                        preview=bool(self.data["meta"].get("historical_preview"))),
                     pool, guaranteed_pool, extra_slots, guarantee, bonus_rewards, choices,
-                    channel=summon_channel(banner, cost))
+                    channel=summon_channel(banner, cost), banner=banner)
             except (UnavailableContent, ValueError, TypeError) as error:
                 print(f'    gacha refused: historical availability: {error}', flush=True)
                 return None

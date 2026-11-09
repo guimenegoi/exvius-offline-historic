@@ -1,0 +1,640 @@
+{
+  "schema": 1,
+  "status": "preview",
+  "latest_month": "2016-07",
+  "warnings": [
+    "UNVERIFIED TEST ONLY: June 30 debut assumption for launch roster",
+    "Only original base rarity available, not historically reconstructed rarity ceilings",
+    "Does not gate rewards outside summons, story, quests, shops, awakenings or events",
+    "Rates are authored by upstream, not authenticated historical 2016 odds"
+  ],
+  "sources": [
+    "https://gamefaqs.gamespot.com/boards/182206-final-fantasy-brave-exvius/73963629",
+    "https://exvius.fandom.com/wiki/Unit_List",
+    "https://exvius.fandom.com/wiki/Update_Schedule",
+    "Original Global F_UNIT_MST and F_TEXT_UNITS_NAME"
+  ],
+  "units": {
+    "100000901": {
+      "base_rarity": "1",
+      "channels": [
+        "friend"
+      ],
+      "rarities": {
+        "1": "2016-06-30"
+      }
+    },
+    "100001001": {
+      "base_rarity": "1",
+      "channels": [
+        "friend"
+      ],
+      "rarities": {
+        "1": "2016-06-30"
+      }
+    },
+    "100001101": {
+      "base_rarity": "1",
+      "channels": [
+        "friend"
+      ],
+      "rarities": {
+        "1": "2016-06-30"
+      }
+    },
+    "100001201": {
+      "base_rarity": "1",
+      "channels": [
+        "friend"
+      ],
+      "rarities": {
+        "1": "2016-06-30"
+      }
+    },
+    "100001301": {
+      "base_rarity": "1",
+      "channels": [
+        "friend"
+      ],
+      "rarities": {
+        "1": "2016-06-30"
+      }
+    },
+    "100001401": {
+      "base_rarity": "1",
+      "channels": [
+        "friend"
+      ],
+      "rarities": {
+        "1": "2016-06-30"
+      }
+    },
+    "100001501": {
+      "base_rarity": "1",
+      "channels": [
+        "friend"
+      ],
+      "rarities": {
+        "1": "2016-06-30"
+      }
+    },
+    "100001601": {
+      "base_rarity": "1",
+      "channels": [
+        "friend"
+      ],
+      "rarities": {
+        "1": "2016-06-30"
+      }
+    },
+    "100001702": {
+      "base_rarity": "2",
+      "channels": [
+        "friend"
+      ],
+      "rarities": {
+        "2": "2016-06-30"
+      }
+    },
+    "100001802": {
+      "base_rarity": "2",
+      "channels": [
+        "friend"
+      ],
+      "rarities": {
+        "2": "2016-06-30"
+      }
+    },
+    "100001902": {
+      "base_rarity": "2",
+      "channels": [
+        "friend"
+      ],
+      "rarities": {
+        "2": "2016-06-30"
+      }
+    },
+    "100002002": {
+      "base_rarity": "2",
+      "channels": [
+        "friend"
+      ],
+      "rarities": {
+        "2": "2016-06-30"
+      }
+    },
+    "100002103": {
+      "base_rarity": "3",
+      "channels": [
+        "rare"
+      ],
+      "rarities": {
+        "3": "2016-06-30"
+      }
+    },
+    "100002203": {
+      "base_rarity": "3",
+      "channels": [
+        "rare"
+      ],
+      "rarities": {
+        "3": "2016-06-30"
+      }
+    },
+    "100002303": {
+      "base_rarity": "3",
+      "channels": [
+        "rare"
+      ],
+      "rarities": {
+        "3": "2016-06-30"
+      }
+    },
+    "100002403": {
+      "base_rarity": "3",
+      "channels": [
+        "rare"
+      ],
+      "rarities": {
+        "3": "2016-06-30"
+      }
+    },
+    "100002503": {
+      "base_rarity": "3",
+      "channels": [
+        "rare"
+      ],
+      "rarities": {
+        "3": "2016-06-30"
+      }
+    },
+    "100002603": {
+      "base_rarity": "3",
+      "channels": [
+        "rare"
+      ],
+      "rarities": {
+        "3": "2016-06-30"
+      }
+    },
+    "100002703": {
+      "base_rarity": "3",
+      "channels": [
+        "rare"
+      ],
+      "rarities": {
+        "3": "2016-06-30"
+      }
+    },
+    "100002803": {
+      "base_rarity": "3",
+      "channels": [
+        "rare"
+      ],
+      "rarities": {
+        "3": "2016-06-30"
+      }
+    },
+    "100002901": {
+      "base_rarity": "1",
+      "channels": [
+        "friend"
+      ],
+      "rarities": {
+        "1": "2016-06-30"
+      }
+    },
+    "100003002": {
+      "base_rarity": "2",
+      "channels": [
+        "friend"
+      ],
+      "rarities": {
+        "2": "2016-06-30"
+      }
+    },
+    "100003202": {
+      "base_rarity": "2",
+      "channels": [
+        "friend"
+      ],
+      "rarities": {
+        "2": "2016-06-30"
+      }
+    },
+    "100003302": {
+      "base_rarity": "2",
+      "channels": [
+        "friend"
+      ],
+      "rarities": {
+        "2": "2016-06-30"
+      }
+    },
+    "100003402": {
+      "base_rarity": "2",
+      "channels": [
+        "friend"
+      ],
+      "rarities": {
+        "2": "2016-06-30"
+      }
+    },
+    "100003502": {
+      "base_rarity": "2",
+      "channels": [
+        "friend"
+      ],
+      "rarities": {
+        "2": "2016-06-30"
+      }
+    },
+    "100003602": {
+      "base_rarity": "2",
+      "channels": [
+        "friend"
+      ],
+      "rarities": {
+        "2": "2016-06-30"
+      }
+    },
+    "100003703": {
+      "base_rarity": "3",
+      "channels": [
+        "rare"
+      ],
+      "rarities": {
+        "3": "2016-06-30"
+      }
+    },
+    "100003803": {
+      "base_rarity": "3",
+      "channels": [
+        "rare"
+      ],
+      "rarities": {
+        "3": "2016-06-30"
+      }
+    },
+    "100003903": {
+      "base_rarity": "3",
+      "channels": [
+        "rare"
+      ],
+      "rarities": {
+        "3": "2016-06-30"
+      }
+    },
+    "100004003": {
+      "base_rarity": "3",
+      "channels": [
+        "rare"
+      ],
+      "rarities": {
+        "3": "2016-06-30"
+      }
+    },
+    "100004103": {
+      "base_rarity": "3",
+      "channels": [
+        "rare"
+      ],
+      "rarities": {
+        "3": "2016-06-30"
+      }
+    },
+    "100004403": {
+      "base_rarity": "3",
+      "channels": [
+        "rare"
+      ],
+      "rarities": {
+        "3": "2016-07-22"
+      }
+    },
+    "100004604": {
+      "base_rarity": "4",
+      "channels": [
+        "rare"
+      ],
+      "rarities": {
+        "4": "2016-07-08"
+      }
+    },
+    "100004703": {
+      "base_rarity": "3",
+      "channels": [
+        "rare"
+      ],
+      "rarities": {
+        "3": "2016-07-22"
+      }
+    },
+    "201000203": {
+      "base_rarity": "3",
+      "channels": [
+        "rare"
+      ],
+      "rarities": {
+        "3": "2016-06-30"
+      }
+    },
+    "201000302": {
+      "base_rarity": "2",
+      "channels": [
+        "friend"
+      ],
+      "rarities": {
+        "2": "2016-06-30"
+      }
+    },
+    "202000103": {
+      "base_rarity": "3",
+      "channels": [
+        "rare"
+      ],
+      "rarities": {
+        "3": "2016-06-30"
+      }
+    },
+    "202000203": {
+      "base_rarity": "3",
+      "channels": [
+        "rare"
+      ],
+      "rarities": {
+        "3": "2016-06-30"
+      }
+    },
+    "202001402": {
+      "base_rarity": "2",
+      "channels": [
+        "friend"
+      ],
+      "rarities": {
+        "2": "2016-06-30"
+      }
+    },
+    "203000803": {
+      "base_rarity": "3",
+      "channels": [
+        "rare"
+      ],
+      "rarities": {
+        "3": "2016-06-30"
+      }
+    },
+    "204000103": {
+      "base_rarity": "3",
+      "channels": [
+        "rare"
+      ],
+      "rarities": {
+        "3": "2016-06-30"
+      }
+    },
+    "204000203": {
+      "base_rarity": "3",
+      "channels": [
+        "rare"
+      ],
+      "rarities": {
+        "3": "2016-06-30"
+      }
+    },
+    "204000403": {
+      "base_rarity": "3",
+      "channels": [
+        "rare"
+      ],
+      "rarities": {
+        "3": "2016-06-30"
+      }
+    },
+    "204001302": {
+      "base_rarity": "2",
+      "channels": [
+        "friend"
+      ],
+      "rarities": {
+        "2": "2016-06-30"
+      }
+    },
+    "204001403": {
+      "base_rarity": "3",
+      "channels": [
+        "rare"
+      ],
+      "rarities": {
+        "3": "2016-07-08"
+      }
+    },
+    "205000103": {
+      "base_rarity": "3",
+      "channels": [
+        "rare"
+      ],
+      "rarities": {
+        "3": "2016-06-30"
+      }
+    },
+    "205000303": {
+      "base_rarity": "3",
+      "channels": [
+        "rare"
+      ],
+      "rarities": {
+        "3": "2016-06-30"
+      }
+    },
+    "205000503": {
+      "base_rarity": "3",
+      "channels": [
+        "rare"
+      ],
+      "rarities": {
+        "3": "2016-06-30"
+      }
+    },
+    "205000703": {
+      "base_rarity": "3",
+      "channels": [
+        "rare"
+      ],
+      "rarities": {
+        "3": "2016-06-30"
+      }
+    },
+    "206000103": {
+      "base_rarity": "3",
+      "channels": [
+        "rare"
+      ],
+      "rarities": {
+        "3": "2016-06-30"
+      }
+    },
+    "206000203": {
+      "base_rarity": "3",
+      "channels": [
+        "rare"
+      ],
+      "rarities": {
+        "3": "2016-07-22"
+      }
+    },
+    "206000303": {
+      "base_rarity": "3",
+      "channels": [
+        "rare"
+      ],
+      "rarities": {
+        "3": "2016-06-30"
+      }
+    },
+    "206000403": {
+      "base_rarity": "3",
+      "channels": [
+        "rare"
+      ],
+      "rarities": {
+        "3": "2016-06-30"
+      }
+    },
+    "206000503": {
+      "base_rarity": "3",
+      "channels": [
+        "rare"
+      ],
+      "rarities": {
+        "3": "2016-06-30"
+      }
+    },
+    "206000603": {
+      "base_rarity": "3",
+      "channels": [
+        "rare"
+      ],
+      "rarities": {
+        "3": "2016-06-30"
+      }
+    },
+    "206000703": {
+      "base_rarity": "3",
+      "channels": [
+        "rare"
+      ],
+      "rarities": {
+        "3": "2016-06-30"
+      }
+    },
+    "206001502": {
+      "base_rarity": "2",
+      "channels": [
+        "friend"
+      ],
+      "rarities": {
+        "2": "2016-06-30"
+      }
+    },
+    "206001602": {
+      "base_rarity": "2",
+      "channels": [
+        "friend"
+      ],
+      "rarities": {
+        "2": "2016-06-30"
+      }
+    },
+    "206001703": {
+      "base_rarity": "3",
+      "channels": [
+        "rare"
+      ],
+      "rarities": {
+        "3": "2016-07-08"
+      }
+    },
+    "206001803": {
+      "base_rarity": "3",
+      "channels": [
+        "rare"
+      ],
+      "rarities": {
+        "3": "2016-06-30"
+      }
+    },
+    "209000103": {
+      "base_rarity": "3",
+      "channels": [
+        "rare"
+      ],
+      "rarities": {
+        "3": "2016-06-30"
+      }
+    },
+    "209000203": {
+      "base_rarity": "3",
+      "channels": [
+        "rare"
+      ],
+      "rarities": {
+        "3": "2016-06-30"
+      }
+    },
+    "209001003": {
+      "base_rarity": "3",
+      "channels": [
+        "rare"
+      ],
+      "rarities": {
+        "3": "2016-06-30"
+      }
+    },
+    "211000103": {
+      "base_rarity": "3",
+      "channels": [
+        "rare"
+      ],
+      "rarities": {
+        "3": "2016-06-30"
+      }
+    },
+    "212000103": {
+      "base_rarity": "3",
+      "channels": [
+        "rare"
+      ],
+      "rarities": {
+        "3": "2016-06-30"
+      }
+    },
+    "212000403": {
+      "base_rarity": "3",
+      "channels": [
+        "rare"
+      ],
+      "rarities": {
+        "3": "2016-06-30"
+      }
+    },
+    "212000603": {
+      "base_rarity": "3",
+      "channels": [
+        "rare"
+      ],
+      "rarities": {
+        "3": "2016-06-30"
+      }
+    },
+    "212000702": {
+      "base_rarity": "2",
+      "channels": [
+        "friend"
+      ],
+      "rarities": {
+        "2": "2016-06-30"
+      }
+    }
+  }
+}

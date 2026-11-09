@@ -279,7 +279,8 @@ def all_banners() -> list:
             _ONLY_LOGGED[0] = True
             _note(f"gacha ONLY: serving {len(kept)} of {len(by_id)} banner(s) "
                   f"({', '.join(sorted(kept))})" + (f" -- UNKNOWN ids: {', '.join(missing)}" if missing else ""))
-        return list(kept.values())
+        from historical_summons import visible_banners
+        return visible_banners(list(kept.values()), State.player)
     sel = campaign_selection()
     if sel:
         std, ids, label = sel
@@ -306,7 +307,8 @@ def all_banners() -> list:
             _note(f"gacha standard: serving {len(added)} standard banner(s) "
                   f"({len(std_banners)} available, {len(fams)} families) on top of {len(result)}")
         result = result + added
-    return [with_global_buttons(b) for b in result]
+    from historical_summons import visible_banners
+    return visible_banners([with_global_buttons(b) for b in result], State.player)
 _GOLD_MAX = 11
 def _gold_button(cost: dict, draws) -> str:
     """The client's own Global summon button (`gacha_btns_gold_*`, 204x96, label baked in, price drawn in its

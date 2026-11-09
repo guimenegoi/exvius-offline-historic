@@ -47,7 +47,16 @@ export function installTitleMenu(module, note, retained, bridge) {
     value.add(1).writeUtf8String(text);
     return value;
   };
-  const labels = { BTN_INFO: shortString('New Game'), BTN_RESTORE: shortString('Continue') };
+  // The existing two original buttons remain: Continue and the period action.
+  // No new Android overlay is required for the 2016 launch/July test slice.
+  let periodLabel = 'Start Historic';
+  try {
+    const current = JSON.parse(bridge('titleAction', '(Ljava/lang/String;)Ljava/lang/String;', ['status']));
+    if (current.has_save && current.historical_preview)
+      periodLabel = current.historical_month === '2016-06' ? 'Unlock Jul 2016' : 'History: Jul 2016';
+    else if (current.has_save) periodLabel = 'Reset to Historic';
+  } catch (error) { note('HISTORIC_TITLE_STATUS_UNAVAILABLE ' + error); }
+  const labels = { BTN_INFO: shortString(periodLabel), BTN_RESTORE: shortString('Continue') };
   const empty = shortString('');
   const read = value => {
     const flag = value.readU8();
@@ -91,8 +100,8 @@ export function installTitleMenu(module, note, retained, bridge) {
         note('LOCAL_TITLE_CONTINUE');
       } else {
         try {
-          bridge('titleAction', '(Ljava/lang/String;)Ljava/lang/String;', ['new']);
-          note('LOCAL_TITLE_NEW_GAME');
+          bridge('titleAction', '(Ljava/lang/String;)Ljava/lang/String;', ['next']);
+          note('LOCAL_TITLE_HISTORIC_NEXT');
         } catch (error) {
           // The save is unchanged. Keep the original Info press rather than start it.
           note('LOCAL_TITLE_NEW_GAME_ERROR ' + error);

@@ -96,13 +96,15 @@ def raid_action(game, actor, skill, party):
 
 
 def title_action(game, action):
-    from offline_menu import new_game, status
+    from offline_menu import new_game, status, next_historical_update
     server = game.server
     with server.STATE_LOCK:
         if action == 'new':
             result = new_game(server.State, server.st.STATE_FILE, server.st.STATE_SLOT)
         elif action == 'status':
             result = status(server.State, server.st.STATE_FILE)
+        elif action == 'next':
+            result = next_historical_update(server.State, server.st.STATE_FILE, server.st.STATE_SLOT)
         else:
             raise ValueError('Unknown title action: ' + str(action))
     return json.dumps(result)

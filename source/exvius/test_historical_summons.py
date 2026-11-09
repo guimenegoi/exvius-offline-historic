@@ -66,6 +66,33 @@ class HistoricalSummonTests(unittest.TestCase):
             with self.subTest(banner=banner, cost=cost), self.assertRaises(UnavailableContent):
                 summon_channel(banner, cost)
 
+    def test_period_rejects_undated_or_future_banners(self):
+        from historical_summons import banner_allowed, visible_banners
+        from types import SimpleNamespace
+
+        start = {"id": "1", "name": "Friend Points"}
+        rare = {"id": "9", "name": "Rare"}
+        july = {"id": "7001", "community": {"release": "2016-07-08"}}
+        august = {"id": "8001", "community": {"release": "2016-08-05"}}
+        undated = {"id": "8002"}
+        self.assertTrue(banner_allowed(start, "2016-06"))
+        self.assertFalse(banner_allowed(july, "2016-06"))
+        self.assertTrue(banner_allowed(july, "2016-07"))
+        self.assertFalse(banner_allowed(august, "2016-07"))
+        state = SimpleNamespace(data={"meta": {"historical_month": "2016-07",
+                                                "historical_preview": True}})
+        self.assertEqual(visible_banners([start, rare, july, august, undated], state),
+                         [start, rare, july])
+        self.assertEqual(visible_banners([start, august], None), [start, august])
+
+    def test_preview_catalogue_is_explicitly_opt_in(self):
+        index = load_verified_unit_releases(preview=True)
+        self.assertEqual(len(index), 69)
+        self.assertIn("206001703", index)
+        self.assertEqual(index["206001703"]["rarities"]["3"], "2016-07-08")
+        with self.assertRaises(UnavailableContent):
+            load_verified_unit_releases()  # no verified index yet
+
     def test_future_awakening_rarity_does_not_unlock_with_unit(self):
         pool, _, _, _ = self.prepare(pool=[
             {"unit_id": "101", "rarity": 6, "rate": 0.8},
@@ -202,7 +229,7 @@ class HistoricalSummonTests(unittest.TestCase):
             roll_gacha = PlayerState.roll_gacha
 
         def banner(guarantee=None):
-            return {"id": "9800102", "name": "Historical test",
+            return {"id": "9", "name": "Historical test",
                     "cost": {"kind": "lapis", "amount": 500},
                     "draws": 1, "guarantee": guarantee or {},
                     "pool": [{"unit_id": "101", "rarity": 3, "rate": 0.5},
