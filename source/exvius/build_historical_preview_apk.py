@@ -26,6 +26,8 @@ REPLACED = {
     "android_game.pyc": "source/memorial/android/src/main/python/android_game.py",
     "event_archive.pyc": "source/server/event_archive.py",
     "ffbe_player.pyc": "source/server/ffbe_player.py",
+    "exvius_actions.pyc": "source/server/exvius_actions.py",
+    "exvius_colosseum.pyc": "source/server/exvius_colosseum.py",
 }
 ADDED = {
     "historical_progression.pyc": "source/server/historical_progression.py",

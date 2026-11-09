@@ -7,7 +7,7 @@ Only a recorded start can settle, and a repeated End never pays twice.
 import copy
 from functools import lru_cache
 import json
-from pathlib import Path
+import pkgutil
 import secrets
 
 from exvius_actions import _node, _refresh, _mst
@@ -16,7 +16,12 @@ from ffbe_state import State, _note
 
 @lru_cache(maxsize=1)
 def _encounters():
-    document = json.loads(Path(__file__).with_name('colosseum_encounters.json').read_text(encoding='utf8'))
+    # The Android runtime imports Python bytecode from the app.imy ZIP.
+    # pkgutil works with both the bundled archive and regular source checkout.
+    payload = pkgutil.get_data(__name__, 'colosseum_encounters.json')
+    if not payload:
+        raise FileNotFoundError('Colosseum encounters are missing from the runtime.')
+    document = json.loads(payload.decode('utf-8'))
     if document.get('version') != 1:
         raise ValueError('Unsupported Colosseum encounter format')
     return document['rounds']

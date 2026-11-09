@@ -5,9 +5,18 @@ export function homeMenuState(esperCount, expeditionFlag, historicalFeatures = n
   // second date table in native code or infer unlocks from the 2024 master.
   const expeditionIntroduced = historicalFeatures === null ||
     historicalFeatures.expedition === true;
+  // The native Home owner at +0x700 is called Arena in the final client.
+  // Before November 2016 it represented Colosseum. The client's original
+  // GameSceneFactory maps 11000 -> ClsmVsCpuEntryScene (back returns Home).
+  const competitive = historicalFeatures === null ? null :
+    historicalFeatures.arena === true ?
+      {name: 'Arena', open: true, sceneId: null} :
+      {name: 'Colosseum', open: historicalFeatures.colosseum === true,
+        sceneId: historicalFeatures.colosseum === true ? 11000 : null};
   return {espers: {visible: true, open: esperCount > 0},
     expedition: {visible: expeditionIntroduced && expeditionFlag !== 0,
-      open: expeditionIntroduced && expeditionFlag === 2}};
+      open: expeditionIntroduced && expeditionFlag === 2},
+    competitive};
 }
 export function carouselItems(position, count, width) {
   return Array.from({length: count}, (_, index) => {
@@ -486,7 +495,11 @@ export function installHomeCarousel(module, note, retained) {
     const historicalFeatures = globalThis.__EXVIUS_HISTORICAL_FEATURES__ || null;
     const state = homeMenuState(beasts().add(0x30).readPointer().readS32(),
       expeditionFlag(expeditionManager()), historicalFeatures);
-    ui.cards[0].open = !!arenaOpen(ui.scene);
+    ui.cards[0].name = state.competitive?.name || 'Arena';
+    ui.cards[0].historicSceneId = state.competitive?.sceneId || null;
+    // Preserve the original Grandshelt/story unlock rule for Colosseum.
+    ui.cards[0].open = !!arenaOpen(ui.scene) &&
+      (state.competitive === null || state.competitive.open);
     ui.cards[1].open = true;
     ui.cards[2].open = state.expedition.open;
     ui.cards[3].open = true;
@@ -687,6 +700,13 @@ export function installHomeCarousel(module, note, retained) {
   function dispatch(ui, card, touch, event) {
     if (!routeAllowed(ui.scene) || !touchEnabled(ui.scene) || !ui.cards.includes(card)) return;
     if (!card.open) { note('HOME_LOCKED mode=' + card.name); return; }
+    if (card === ui.cards[0] && card.historicSceneId === 11000) {
+      // Reuse the GL9 native factory and its proper request-owning scene;
+      // never navigate through the Arena entry page in pre-Arena months.
+      changeScene(ui.scene, card.historicSceneId);
+      note('HOME_CAROUSEL_OPEN mode=Colosseum nativeScene=11000');
+      return;
+    }
     if (!card.owner) {
       if (card.name === 'Expedition') {
         // Original HomeScene::iconTouchEnded(19), after its availability gate.

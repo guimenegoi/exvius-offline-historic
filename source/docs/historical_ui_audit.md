@@ -123,3 +123,56 @@ não auditados não são "estimadas" com base no catálogo final.
 como modo da Home no lançamento, ajustar Arena de 2016-11, auditar as quests
 diárias originais e o resto das recompensas/loja, e validar a aparência no
 Android. A política não torna toda a UI fiel nem torna todas as rotas seguras.
+
+## Transição Colosseum / Arena — navegação reconstruída (iteraçao 2)
+
+As capturas Android de julho/2016 e o comunicado Global de novembro/2016
+confirmam Colosseum como a entrada original da Home; Arena substituiu seu
+nome/rota quando estreou, mantendo Colosseum acessível internamente.
+O acesso original ao Colosseum continua condicionado a alcançar Grandshelt.
+
+A inspeção do binário *exato* embutido no APK 0.1.24 localizou
+`GameSceneFactory::createGameScene`: a tabela nativa aponta
+`sceneId=11000` para `ClsmVsCpuEntryScene` e `11001` para
+`ClsmVsCpuMyPageScene`. `ClsmVsCpuEntryScene::backScene` retorna ao
+identificador nativo 100 (Home). Nenhuma classe/tela paralela foi criada.
+
+`home_carousel.js` agora reutiliza o artwork antigo
+`mypage_colosseum`, o estado de desbloqueio da história e o
+`changeSceneWithSceneID(11000)` já importado para abrir Colosseum
+antes de Arena. No mês de estreia de Arena (2016-11), a Home mantém
+a transição nativa moderna. O mesmo marcador mensal determina a
+autorização no `exvius_actions.py`: sete requests `Rb*` são recusados
+antes de custos/prêmios em períodos antigos; os quatro requests
+`Clsm*` não são bloqueados por essa regra.
+
+`build_historical_preview_apk.py` foi atualizado para incluir o bytecode
+de `exvius_actions.py` na próxima build. Testes da projeção da Home,
+requisições aceitas/recusadas e manifest do pacote foram adicionados.
+
+**Ainda pendente:** confirmação da abertura e do retorno no Android real,
+da renderização do rótulo da Home e da manutenção das orbs/ranks de 2016.
+A prévia instalada 9066 **não** contém essa correção. Não reemitir
+o APK até a validação geral da UI e da compatibilidade incremental.
+
+### Verificações adicionais do Colosseum
+
+Foi encontrado mais um problema no APK 9066: `exvius_colosseum.py`
+abria `colosseum_encounters.json` por `Path(__file__)`, incompatível
+com o bytecode carregado de `app.imy`. A implementação agora reutiliza
+`pkgutil.get_data`, como o carregador já existente do Vortex.
+O arquivo está presente no APK-base e na prévia 9066; o teste de
+`zipimport` com Python 3.10 carregou **75 grupos de encontros**.
+`exvius_colosseum.pyc` também entra no empacotador da próxima prévia.
+
+A suíte upstream `test_actions_arena.py` não pôde executar no notebook:
+o fixture de `PlayerState.load` depende de tabelas em
+`mst_decoded/` na raiz, ausentes no checkout atual. Os casos específicos
+com o dispatcher simulado passaram, mas não substituem os testes
+completos da economia, dos rounds e das batalhas do Colosseum.
+
+**Ainda não autenticados para 2016:** capacidade e regeneração de orbs
+(3 antes da Arena, 5 a partir do lançamento de Arena), ranks de
+Colosseum e a equivalência exata entre a navegação visual de 2016
+e a tela nativa final. Antes de afirmar fidelidade, validar em aparelho
+real; não alterar os dados do usuário nem forçar reinstalação.

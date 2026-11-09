@@ -88,6 +88,42 @@ class HistoricServerGates(TestCase):
                 {}, "I8uq68c3", "{}"), {"legacy": True})
             called.assert_called_once()
 
+    def test_arena_refused_but_colosseum_kept_in_2016(self):
+        import exvius_actions
+        arena_ids = ("f8kXGWy0", "DgG4Cy0F", "eHY7X8Nn", "os4k7C0b",
+                     "6ZNY3zAm", "kcW85SfU", "hqzU9Qc5")
+        colosseum_ids = ("5g0vWZFq", "4uCSA3ko", "3zgbapQ7", "Un16HuNI")
+        for request in (*arena_ids, *colosseum_ids):
+            with self.subTest(request=request):
+                handler = Mock(return_value={"would_mutate": True})
+                player = SimpleNamespace(data=preview("2016-06"), mode="live")
+                with patch.object(self.state, "player", player), patch.object(
+                        exvius_actions, "_all_handlers", return_value={request: handler}), patch(
+                        "exvius_colosseum.project", side_effect=lambda spec: spec):
+                    result = exvius_actions.serve_actions({}, request, "{}")
+                    if request in arena_ids:
+                        self.assertEqual(result, {})
+                        handler.assert_not_called()
+                    else:
+                        self.assertEqual(result, {"would_mutate": True})
+                        handler.assert_called_once()
+        # Transition: Arena is introduced in November 2016; older saves and
+        # the original Colosseum request path remain unchanged.
+        handler = Mock(return_value={"allowed": True})
+        with patch.object(self.state, "player", SimpleNamespace(
+                data=preview("2016-11"), mode="live")), patch.object(
+                exvius_actions, "_all_handlers", return_value={arena_ids[0]: handler}), patch(
+                "exvius_colosseum.project", side_effect=lambda spec: spec):
+            self.assertEqual(exvius_actions.serve_actions(
+                {}, arena_ids[0], "{}"), {"allowed": True})
+            handler.assert_called_once()
+
+    def test_colosseum_encounters_load_without_filesystem_specific_paths(self):
+        from exvius_colosseum import _encounters
+        source = _encounters()
+        self.assertIsInstance(source, dict)
+        self.assertTrue(source, 'Original Colosseum encounters must be available')
+
     def test_future_calendar_and_anniversary_do_not_award_2016(self):
         import ffbe_player
         player = SimpleNamespace(data=preview(),

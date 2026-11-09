@@ -5,11 +5,11 @@ const path = require('node:path');
 (async () => {
   const source = fs.readFileSync(path.join(__dirname, 'home_carousel.js'), 'utf8');
   const {carouselItems, carouselRelease, carouselHit, homeMenuState} = await import('data:text/javascript;base64,' + Buffer.from(source).toString('base64'));
-  assert.deepEqual(homeMenuState(0, 0), {espers: {visible: true, open: false}, expedition: {visible: false, open: false}},
+  assert.deepEqual(homeMenuState(0, 0), {espers: {visible: true, open: false}, expedition: {visible: false, open: false}, competitive: null},
     'No owned Esper keeps its locked icon visible; a disabled Expedition feature stays hidden');
   assert.deepEqual(homeMenuState(0, 1).expedition, {visible: true, open: false},
     'Retail Expedition flag 1 means visible but locked');
-  assert.deepEqual(homeMenuState(1, 2), {espers: {visible: true, open: true}, expedition: {visible: true, open: true}},
+  assert.deepEqual(homeMenuState(1, 2), {espers: {visible: true, open: true}, expedition: {visible: true, open: true}, competitive: null},
     'Owning the first Esper and the open Expedition flag enable their entries');
   const preview = {expedition: false, equipment_enhancement: false};
   assert.deepEqual(homeMenuState(0, 2, preview).expedition,
@@ -18,6 +18,17 @@ const path = require('node:path');
   assert.deepEqual(homeMenuState(0, 2, {expedition: true}).expedition,
     {visible: true, open: true},
     'After introduction, normal native Expedition story/unlock rules remain');
+  const beforeArena = homeMenuState(1, 2, {arena: false, colosseum: true, expedition: false});
+  assert.deepEqual(beforeArena.competitive,
+    {name: 'Colosseum', open: true, sceneId: 11000},
+    'The original Colosseum native entry, not Arena, opens in June 2016');
+  const sinceNovember = homeMenuState(1, 2, {arena: true, colosseum: true, expedition: false});
+  assert.deepEqual(sinceNovember.competitive,
+    {name: 'Arena', open: true, sceneId: null},
+    'Global November 2016 moves Colosseum under the new Arena entry');
+  assert.deepEqual(homeMenuState(1, 2, {}).competitive,
+    {name: 'Colosseum', open: false, sceneId: null},
+    'Missing historical data never makes the competition mode usable');
   const initial = carouselItems(1, 3, 640);
   assert.equal(initial[1].x, 320, 'World starts centred');
   assert.equal(initial[1].scale, 1);

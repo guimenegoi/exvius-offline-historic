@@ -390,6 +390,13 @@ def serve_actions(spec, reply_id, plaintext):
     if handler is None:
         return project(spec)
     from historical_progression import feature_available
+    if not feature_available("arena", State.player.data) and str(reply_id) in {
+            "f8kXGWy0", "DgG4Cy0F", "eHY7X8Nn", "os4k7C0b",
+            "6ZNY3zAm", "kcW85SfU", "hqzU9Qc5"}:
+        # Arena was introduced in Global November 2016. Colosseum requests
+        # (5g0vWZFq/4uCSA3ko/3zgbapQ7/Un16HuNI) must remain available.
+        _note("historical Arena: request refused before any mutation")
+        return project({})
     if not feature_available("expedition", State.player.data) and str(reply_id) in {
             "hW0804Q9", "Ik142Ff6", "2pe3Xa8b", "r4A791RF",
             "vTgYyHM6", "I8uq68c3", "0Fb87D0F"}:
