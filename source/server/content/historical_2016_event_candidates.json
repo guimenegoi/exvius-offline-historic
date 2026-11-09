@@ -1,0 +1,126 @@
+{
+  "schema": 1,
+  "region": "GL",
+  "purpose": "research_only_not_imported_by_runtime",
+  "source_notes": "Global column of the event schedule, NOT the Japanese column. Archived area IDs are candidates for identity investigation, not proof of original 2016 missions.",
+  "candidates": [
+    {
+      "event": "The Giant of Babel",
+      "global_first_release": "2016-10-14",
+      "source": "https://finalfantasy.fandom.com/wiki/Event_(Brave_Exvius)",
+      "archived_area_candidates": [
+        {
+          "area": "705",
+          "archive_release": "2017-06-05",
+          "archive_kind": "Final Fantasy IV - Exploration Event (Rerun)<br>New missions have been added to this event!",
+          "archive_missions": [
+            "7050101",
+            "7050102",
+            "7050103",
+            "7050104",
+            "7050105"
+          ]
+        }
+      ],
+      "status": "original_identity_unverified_do_not_unlock",
+      "blocking_evidence": "Archived 2017 rerun/update area and mission IDs may not match original 2016 stages, rewards, artwork or unlock conditions."
+    },
+    {
+      "event": "The Crystal Tower",
+      "global_first_release": "2016-11-04",
+      "source": "https://finalfantasy.fandom.com/wiki/Event_(Brave_Exvius)",
+      "archived_area_candidates": [
+        {
+          "area": "707",
+          "archive_release": "2017-05-22",
+          "archive_kind": "Final Fantasy III - Exploration Event (Rerun)<br>New missions have been added to this event!",
+          "archive_missions": [
+            "7070101",
+            "7070102",
+            "7070103",
+            "7070104",
+            "7070105"
+          ]
+        }
+      ],
+      "status": "original_identity_unverified_do_not_unlock",
+      "blocking_evidence": "Archived 2017 rerun/update area and mission IDs may not match original 2016 stages, rewards, artwork or unlock conditions."
+    },
+    {
+      "event": "Grand Gaia Chronicles",
+      "global_first_release": "2016-11-11",
+      "source": "https://finalfantasy.fandom.com/wiki/Event_(Brave_Exvius)",
+      "archived_area_candidates": [
+        {
+          "area": "720",
+          "archive_release": "2017-06-16",
+          "archive_kind": "Brave Frontier - Exchange Event",
+          "archive_missions": [
+            "7200101",
+            "7200102",
+            "7200103"
+          ]
+        },
+        {
+          "area": "913",
+          "archive_release": "2017-06-16",
+          "archive_kind": "Brave Frontier - Exchange Event",
+          "archive_missions": [
+            "9001401",
+            "9001402",
+            "9001403"
+          ]
+        }
+      ],
+      "status": "original_identity_unverified_do_not_unlock",
+      "blocking_evidence": "Archived 2017 rerun/update area and mission IDs may not match original 2016 stages, rewards, artwork or unlock conditions."
+    },
+    {
+      "event": "Trial of the Creator",
+      "global_first_release": "2016-11-18",
+      "source": "https://finalfantasy.fandom.com/wiki/Event_(Brave_Exvius)",
+      "archived_area_candidates": [
+        {
+          "area": "721",
+          "archive_release": "2017-06-23",
+          "archive_kind": "Brave Frontier - Challenge Event",
+          "archive_missions": [
+            "7210101",
+            "7210102"
+          ]
+        }
+      ],
+      "status": "original_identity_unverified_do_not_unlock",
+      "blocking_evidence": "Archived 2017 rerun/update area and mission IDs may not match original 2016 stages, rewards, artwork or unlock conditions."
+    },
+    {
+      "event": "The Big Bridge",
+      "global_first_release": "2016-11-24",
+      "source": "https://finalfantasy.fandom.com/wiki/Event_(Brave_Exvius)",
+      "archived_area_candidates": [
+        {
+          "area": "709",
+          "archive_release": "2017-06-19",
+          "archive_kind": "Final Fantasy V - Exploration Event (Rerun)",
+          "archive_missions": [
+            "7090101",
+            "7090102",
+            "7090103",
+            "7090104",
+            "7090105"
+          ]
+        },
+        {
+          "area": "6193",
+          "archive_release": "2017-06-19",
+          "archive_kind": "Final Fantasy V - Exploration Event (Rerun)",
+          "archive_missions": [
+            "61930101"
+          ]
+        }
+      ],
+      "status": "original_identity_unverified_do_not_unlock",
+      "blocking_evidence": "Archived 2017 rerun/update area and mission IDs may not match original 2016 stages, rewards, artwork or unlock conditions."
+    }
+  ]
+}

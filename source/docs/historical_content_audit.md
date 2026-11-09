@@ -79,6 +79,32 @@ approval system or changing any runtime master, gacha catalogue, or
 unit-release preview. Its regression test protects the known November
 discrepancy until original source reconciliation.
 
+## First-release Global events versus archived reruns
+
+A separate research-only file,
+source/server/content/historical_2016_event_candidates.json,
+records **five Global events** with a verified 2016 first-release
+date and **seven archived 2017 area candidates**:
+
+| Event | First Global appearance | Archived area IDs | Archive dates |
+| --- | --- | --- | --- |
+| The Giant of Babel | 2016-10-14 | 705 | 2017-06-05 |
+| The Crystal Tower | 2016-11-04 | 707 | 2017-05-22 |
+| Grand Gaia Chronicles | 2016-11-11 | 720, 913 | 2017-06-16 |
+| Trial of the Creator | 2016-11-18 | 721 | 2017-06-23 |
+| The Big Bridge | 2016-11-24 | 709, 6193 | 2017-06-19 |
+
+First-release dates: Global column of
+https://finalfantasy.fandom.com/wiki/Event_(Brave_Exvius)
+and Global event listings in
+https://exvius.fandom.com/wiki/Category:Events .
+**The archived missions may be 2017 reruns with extra difficulties or
+rewards.** For example, the archive explicitly labels Giant of Babel,
+Crystal Tower and Big Bridge as reruns with new missions. Do not move
+these area IDs to 2016 until a native-original mission/reward comparison
+proves that doing so does not give a 2016 account later rewards.
+The candidate file is not imported by event_archive.py.
+
 ## Premium Cash Shop audit
 
 **Launch offer — Early Bird Bundle:** contemporary June 30, 2016
