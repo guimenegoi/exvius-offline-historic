@@ -37,10 +37,11 @@ def events(player=None):
         return rows
     # Keep the four original 2016 Enhancement chambers while other undated
     # permanent trials and newer event campaigns remain locked.
-    from historical_progression import is_released, current_month
+    from historical_progression import is_released, current_month, historical_account_ready
     month = current_month(player.data)
-    return [row for row in rows if str(row['area']) in LAUNCH_CHAMBERS
-            or is_released(row.get('release'), month)]
+    return [row for row in rows if (str(row['area']) in LAUNCH_CHAMBERS
+            or is_released(row.get('release'), month))
+            and historical_account_ready(row, player.data)]
 
 
 def area_ids(player=None):

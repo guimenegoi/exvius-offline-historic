@@ -52,6 +52,54 @@ class HistoricalProgressionTests(unittest.TestCase):
         for value in (None, "", "unknown", "2016-99-01", "2020-01-01"):
             self.assertFalse(history.is_released(value, "2016-06"))
 
+    def test_sourced_account_maturity_uses_existing_rank_and_cleared_missions(self):
+        requirements = {"account_requirements": {
+            "source": "https://example.org/original-global-account-requirement",
+            "minimum_rank": 10, "cleared_missions": ["1110101"]}}
+        data = {"meta": {"historical_preview": True, "historical_month": "2016-07"},
+                "rank": {"level": 1}, "progress": {"cleared_missions": []}}
+        snapshot = {"rank": dict(data["rank"]), "progress": dict(data["progress"])}
+        self.assertFalse(history.historical_account_ready(requirements, data))
+        data["rank"]["level"] = 10
+        self.assertFalse(history.historical_account_ready(requirements, data))
+        data["progress"]["cleared_missions"] = ["1110101"]
+        self.assertTrue(history.historical_account_ready(requirements, data))
+        data["meta"]["historical_month"] = "2017-01"
+        self.assertTrue(history.historical_account_ready(requirements, data))
+        # The check never rewrites a user's rank, cleared quests or currencies.
+        self.assertEqual(snapshot["rank"]["level"], 1)
+        self.assertEqual(data["rank"]["level"], 10)
+        self.assertEqual(data["progress"]["cleared_missions"], ["1110101"])
+        # Old nonhistorical mode keeps its original visibility even if a
+        # historical-only catalogue metadata extension is invalid.
+        self.assertTrue(history.historical_account_ready(
+            {"account_requirements": False}, {"meta": {}}))
+        self.assertTrue(history.historical_account_ready({}, data))
+
+    def test_unverified_account_conditions_fail_closed_only_when_declared(self):
+        data = {"meta": {"historical_preview": True}, "rank": {"level": 99},
+                "progress": {"cleared_missions": ["1110101"]}}
+        for bad in (
+            {"account_requirements": None},
+            {"account_requirements": {}},
+            {"account_requirements": {"source": "", "minimum_rank": 1}},
+            {"account_requirements": {"minimum_rank": 1}},
+            {"account_requirements": {"source": "https://example.org", "minimum_rank": True}},
+            {"account_requirements": {"source": "https://example.org", "minimum_rank": 0}},
+            {"account_requirements": {"source": "https://example.org", "minimum_rank": "10"}},
+            {"account_requirements": {"source": "https://example.org", "cleared_missions": []}},
+            {"account_requirements": {"source": "https://example.org", "cleared_missions": ["?"]}},
+            {"account_requirements": {"source": "https://example.org",
+                                      "minimum_rank": 1, "invented_unlock": True}},
+        ):
+            with self.subTest(bad=bad):
+                self.assertFalse(history.historical_account_ready(bad, data))
+        # Undocumented rank or story requirements must not be fabricated.
+        self.assertTrue(history.historical_account_ready({}, data))
+        self.assertFalse(history.historical_account_ready({
+            "account_requirements": {"source": "https://example.org",
+                                     "cleared_missions": ["1110102"]}}, data))
+
     def test_pool_filters_all_future_units_including_standard(self):
         rows = [{"unit_id": "old", "rate": 0.2, "rarity": 3},
                 {"unit_id": "future", "rate": 0.7, "rarity": 5},

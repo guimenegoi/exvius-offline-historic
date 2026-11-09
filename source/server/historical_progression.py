@@ -138,6 +138,55 @@ FEATURE_INTRODUCED = {
 }
 
 
+def historical_account_ready(row: dict, player_data: dict) -> bool:
+    """Apply explicitly evidenced account prerequisites alongside the release date.
+
+    The period filter remains a separate mandatory check at the call site.
+    This helper never manufactures rank/story thresholds and does not replace
+    the original client's town, story, currency or battle prerequisites.
+
+    A catalogue may declare account_requirements with a source URL and any
+    combination of minimum_rank and cleared_missions. Missing requirements
+    mean there is no *additional* audited account gate. A malformed declared
+    requirement fails closed for historical saves only.
+    """
+    if not (player_data.get("meta") or {}).get("historical_preview"):
+        return True
+    if not isinstance(row, dict):
+        return False
+    if "account_requirements" not in row:
+        return True
+    requirements = row["account_requirements"]
+    if not isinstance(requirements, dict):
+        return False
+    allowed = {"source", "minimum_rank", "cleared_missions"}
+    if (set(requirements) - allowed or
+            not any(key in requirements for key in ("minimum_rank", "cleared_missions")) or
+            not isinstance(requirements.get("source"), str) or
+            not requirements["source"].startswith("https://")):
+        return False
+    if "minimum_rank" in requirements:
+        minimum = requirements["minimum_rank"]
+        if type(minimum) is not int or minimum < 1:
+            return False
+        rank = (player_data.get("rank") or {}).get("level")
+        if (isinstance(rank, bool) or not str(rank).isdigit() or
+                int(rank) < minimum):
+            return False
+    if "cleared_missions" in requirements:
+        missions = requirements["cleared_missions"]
+        if (not isinstance(missions, list) or not missions or
+                any(not isinstance(mid, str) or not mid.isdigit() or
+                    int(mid) < 1 for mid in missions)):
+            return False
+        cleared = (player_data.get("progress") or {}).get("cleared_missions")
+        if not isinstance(cleared, (list, tuple, set)):
+            return False
+        if not set(missions).issubset(set(map(str, cleared))):
+            return False
+    return True
+
+
 def historical_features(player_data: dict) -> dict[str, bool] | None:
     """One server-authoritative feature projection for a historical save.
 
@@ -228,7 +277,8 @@ def historical_premium_bundle_ids(player_data: dict) -> set[str] | None:
             if row.get("status") == "approved" and row.get("source")
             and row.get("currency") and row.get("original_price") is not None
             and isinstance(row.get("contents"), list) and row["contents"]
-            and is_released(row.get("available_from"), month)}
+            and is_released(row.get("available_from"), month)
+            and historical_account_ready(row, player_data)}
 
 
 def historical_colosseum_orb_cap(player_data: dict) -> int | None:

@@ -67,6 +67,27 @@ class HistoricalCommerceTests(TestCase):
             with self.assertRaises(ValueError):
                 historical_premium_bundle_ids(preview("bad month"))
 
+    def test_sourced_premium_offer_respects_both_date_and_account_progress(self):
+        gated = {**BUNDLE, "id": "990000111", "account_requirements": {
+            "source": "https://example.org/verified-original-paid-offer",
+            "minimum_rank": 5, "cleared_missions": ["1110101"]}}
+        catalogue = {"schema": 1, "region": "GL", "premium_bundles": [gated]}
+        player = preview("2016-06")
+        player["rank"] = {"level": 1}
+        player["progress"] = {"cleared_missions": []}
+        with patch("historical_progression.historical_commerce_catalogue",
+                   return_value=catalogue):
+            self.assertEqual(historical_premium_bundle_ids(player), set())
+            player["meta"]["historical_month"] = "2016-07"
+            self.assertEqual(historical_premium_bundle_ids(player), set())
+            player["rank"]["level"] = 5
+            self.assertEqual(historical_premium_bundle_ids(player), set())
+            player["progress"]["cleared_missions"].append("1110101")
+            self.assertEqual(historical_premium_bundle_ids(player), {gated["id"]})
+            player["meta"]["historical_month"] = "2024-10"
+            self.assertEqual(historical_premium_bundle_ids(player), {gated["id"]})
+            self.assertEqual(player["progress"]["cleared_missions"], ["1110101"])
+
     def test_historical_shop_only_lists_unlocked_cash_bundles(self):
         original_player = State.player
         State.player = SimpleNamespace(data=preview("2016-07"), dirty=False)

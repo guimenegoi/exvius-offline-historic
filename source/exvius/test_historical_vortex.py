@@ -45,6 +45,36 @@ class HistoricalVortexTests(unittest.TestCase):
         finally:
             event_archive._DOCUMENT = original
 
+    def test_released_event_can_still_require_account_maturity(self):
+        original = event_archive._DOCUMENT
+        late = {
+            'area': '9001', 'release': '2016-07-08',
+            'account_requirements': {
+                'source': 'https://example.org/verified-original-event-rank',
+                'minimum_rank': 10, 'cleared_missions': ['1110101']}}
+        try:
+            event_archive._DOCUMENT = {'events': [
+                {'area': '9000', 'release': '2016-06-30'},
+                late, {'area': '9002', 'release': None}]}
+            player = self.make_player('2016-06')
+            player.data['rank'] = {'level': 1}
+            player.data['progress'] = {'cleared_missions': []}
+            self.assertEqual(event_archive.area_ids(player), ['9000'])
+            player.data['meta']['historical_month'] = '2016-07'
+            self.assertEqual(event_archive.area_ids(player), ['9000'])
+            player.data['rank']['level'] = 10
+            self.assertEqual(event_archive.area_ids(player), ['9000'])
+            player.data['progress']['cleared_missions'].append('1110101')
+            self.assertEqual(event_archive.area_ids(player), ['9000', '9001'])
+            player.data['meta']['historical_month'] = '2016-08'
+            self.assertEqual(event_archive.area_ids(player), ['9000', '9001'])
+            self.assertFalse(player.dirty)
+            self.assertEqual(player.data['rank']['level'], 10)
+            legacy = self.make_player(preview=False)
+            self.assertEqual(event_archive.area_ids(legacy), ['9000', '9001', '9002'])
+        finally:
+            event_archive._DOCUMENT = original
+
     def test_empty_historical_menu_shows_filter_without_loading_clash(self):
         player = self.make_player()
         with patch('player_state._load_ndjson', return_value={}), patch(
