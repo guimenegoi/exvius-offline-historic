@@ -5,6 +5,43 @@ Classificação: diagnóstico. **Nenhuma edição funcional nesta rodada.**
 Escopo: preview Global junho/julho 2016; branch feature/historical-progression.
 Estado: **NÃO AUDITADO COMO FIEL À UI DE 2016**. A build 9066 corrige só dois sintomas.
 
+## Bloqueio reproduzido no Waydroid — 09/11/2026
+
+Esta anotação atualiza o diagnóstico anterior, sem certificar fidelidade visual.
+
+- **APK experimental 9078:** instalada no Waydroid e executando o save
+  histórico em junho de 2016. O carregador nativo encontrou o GL9.0.0
+  mapeado, e a Home abriu.
+- **APK experimental 9079:** criada a partir do código local, assinada com
+  o mesmo certificado e instalada com atualização do pacote, sem limpar
+  dados. O GL9 mapeado voltou a inicializar; Home abriu e o período
+  histórico continuou em 2016-06.
+- **Defeito confirmado nas duas builds:** GateUtil informou 4 áreas
+  históricas no Vortex; a aba Event inicialmente mostrava lista vazia,
+  e a troca para Enhance permaneceu sem os quatro conteúdos esperados.
+  O log registrou repetidamente
+  LOCAL_HISTORIC_GATE_LIST_ERROR Error: expected an integer em
+  /libexviustest.js:8:958018 (9078) e :8:958017 (9079).
+- A origem é a tentativa experimental de alterar em tempo de execução
+  o array Cocos pertencente à cena GateScene::setListLayout.
+  A hipótese de incompatibilidade do argumento de índice, mudando
+  a assinatura Frida de int64 para long, **não resolveu** a falha.
+  Não considerar esses hooks estáveis nem continuar encadeando patches
+  sem inspeção objetiva da ABI, tipo de índice e ownership do array.
+- **Parte verificada separadamente:** o fallback do carregador GL9 no
+  Waydroid, a inicialização dos hooks e o bypass de texture alias na
+  tradução ARM foram confirmados por logs de runtime e incluídos no
+  commit 19e1d23. Isso não valida o Vortex nem a autenticidade visual.
+- **Reprodução local:** screenshots e APK 9079 ficam sob
+  source/build/historical-preview/waydroid-9079/ (ignorado pelo Git),
+  especialmente vortex-ready.png e vortex-enhance.png. A compilação e
+  os testes de Frida simulados passaram, mas o defeito foi reproduzido
+  no aplicativo real. As mudanças experimentais de summon_menu.js e do
+  teste de regressão foram preservadas em um stash identificado; não
+  fazem parte do histórico aprovado.
+- **Estado de release:** 9079 é somente APK de teste no Waydroid, não
+  foi enviada ao GitHub ou publicada como release.
+
 ## Critério de aceitação
 
 A progressão deve controlar duas dimensões: (1) disponibilidades reais de botões,
