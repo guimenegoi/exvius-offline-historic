@@ -1,16 +1,23 @@
-/logs/
-/tools/vendor/
-/repository snapshots/
-/source/build/
-/source/out/
-.gradle/
-__pycache__/
-*.pyc
+# Research notes only — no binaries, game payloads or generated builds
 *.apk
-!/release/*.apk
+*.aab
+*.so
+*.obb
+*.dex
+*.jar
 *.zip
-*.jks
-*.keystore
-*.part
-.env
-local.properties
+*.tar
+*.7z
+*.png
+*.jpg
+*.jpeg
+*.webp
+*.mp3
+*.ogg
+*.pyc
+__pycache__/
+node_modules/
+build/
+dist/
+source/
+release/

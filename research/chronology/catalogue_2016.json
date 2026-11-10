@@ -1,0 +1,358 @@
+{
+  "schema_version": 1,
+  "region": "GL",
+  "status": "research_only",
+  "description": "Global historical evidence; not an executable release gate or a guarantee of native content equivalence",
+  "entries": [
+    {
+      "key": "banner:9100000",
+      "kind": "banner",
+      "name": "Kefka, Golbez, Chizuru Featured Summon",
+      "release": "2016-07-08",
+      "confidence": "C",
+      "source": "source/server/gacha_community.json",
+      "native_id": "9100000",
+      "status": "catalogue_candidate"
+    },
+    {
+      "key": "banner:9100001",
+      "kind": "banner",
+      "name": "Hayate, Locke, Artemios Featured Summon",
+      "release": "2016-07-22",
+      "confidence": "C",
+      "source": "source/server/gacha_community.json",
+      "native_id": "9100001",
+      "status": "catalogue_candidate"
+    },
+    {
+      "key": "event:Demons Unleashed",
+      "kind": "event",
+      "name": "Demons Unleashed",
+      "release": "2016-08-01",
+      "confidence": "B",
+      "source": "https://exvius.fandom.com/wiki/Special:Redirect/revision/16775",
+      "native_id": null,
+      "status": "identity_unresolved"
+    },
+    {
+      "key": "banner:9100002",
+      "kind": "banner",
+      "name": "Lenna, Warrior of Light, Tellah Featured Summon",
+      "release": "2016-08-05",
+      "confidence": "C",
+      "source": "source/server/gacha_community.json",
+      "native_id": "9100002",
+      "status": "catalogue_candidate"
+    },
+    {
+      "key": "banner:9100003",
+      "kind": "banner",
+      "name": "Kuja, Amarant, Zidane, Lani, Vivi Featured Summon",
+      "release": "2016-08-19",
+      "confidence": "C",
+      "source": "source/server/gacha_community.json",
+      "native_id": "9100003",
+      "status": "catalogue_candidate"
+    },
+    {
+      "key": "event:Into the Abyss",
+      "kind": "event",
+      "name": "Into the Abyss",
+      "release": "2016-08-19",
+      "confidence": "B",
+      "source": "https://exvius.fandom.com/wiki/Special:Redirect/revision/34649",
+      "native_id": null,
+      "status": "identity_unresolved"
+    },
+    {
+      "key": "banner:9100004",
+      "kind": "banner",
+      "name": "Kuja, Amarant, Garnet, Zidane, Freya, Lani, Vivi Featured Summon",
+      "release": "2016-08-26",
+      "confidence": "C",
+      "source": "source/server/gacha_community.json",
+      "native_id": "9100004",
+      "status": "catalogue_candidate"
+    },
+    {
+      "key": "event:Festival of the Autumn Moon",
+      "kind": "event",
+      "name": "Festival of the Autumn Moon",
+      "release": "2016-09-01",
+      "confidence": "B",
+      "source": "https://exvius.fandom.com/wiki/Special:Redirect/revision/33034",
+      "native_id": null,
+      "status": "identity_unresolved"
+    },
+    {
+      "key": "banner:9100005",
+      "kind": "banner",
+      "name": "Leo, Terra, Celes, Locke Featured Summon",
+      "release": "2016-09-02",
+      "confidence": "C",
+      "source": "source/server/gacha_community.json",
+      "native_id": "9100005",
+      "status": "catalogue_candidate"
+    },
+    {
+      "key": "banner:9100006",
+      "kind": "banner",
+      "name": "Fencer, Juggler, Thief Featured Summon",
+      "release": "2016-09-09",
+      "confidence": "C",
+      "source": "source/server/gacha_community.json",
+      "native_id": "9100006",
+      "status": "catalogue_candidate"
+    },
+    {
+      "key": "banner:9100007",
+      "kind": "banner",
+      "name": "Chizuru, Warrior of Light, Cloud of Darkness, Kefka, Lenna Featured Summon",
+      "release": "2016-09-16",
+      "confidence": "C",
+      "source": "source/server/gacha_community.json",
+      "native_id": "9100007",
+      "status": "catalogue_candidate"
+    },
+    {
+      "key": "event:Lands of Plenty",
+      "kind": "event",
+      "name": "Lands of Plenty",
+      "release": "2016-09-18",
+      "confidence": "B",
+      "source": "https://exvius.fandom.com/wiki/Special:Redirect/revision/17499",
+      "native_id": null,
+      "status": "identity_unresolved"
+    },
+    {
+      "key": "banner:9100008",
+      "kind": "banner",
+      "name": "Lightning, Ludmille, Charlotte Featured Summon",
+      "release": "2016-09-23",
+      "confidence": "C",
+      "source": "source/server/gacha_community.json",
+      "native_id": "9100008",
+      "status": "catalogue_candidate"
+    },
+    {
+      "key": "banner:9100009",
+      "kind": "banner",
+      "name": "Delita, Gaffgarion, Alma Featured Summon",
+      "release": "2016-09-30",
+      "confidence": "C",
+      "source": "source/server/gacha_community.json",
+      "native_id": "9100009",
+      "status": "catalogue_candidate"
+    },
+    {
+      "key": "event:Orbonne Monastery Vaults",
+      "kind": "event",
+      "name": "Orbonne Monastery Vaults",
+      "release": "2016-09-30",
+      "confidence": "B",
+      "source": "https://exvius.fandom.com/wiki/Special:Redirect/revision/33032",
+      "native_id": null,
+      "status": "identity_unresolved"
+    },
+    {
+      "key": "banner:9100010",
+      "kind": "banner",
+      "name": "Ramza, Agrias, Mustadio Featured Summon",
+      "release": "2016-10-07",
+      "confidence": "C",
+      "source": "source/server/gacha_community.json",
+      "native_id": "9100010",
+      "status": "catalogue_candidate"
+    },
+    {
+      "key": "banner:9100011",
+      "kind": "banner",
+      "name": "Dark Knight Cecil, Rosa, Cecil, Edge Featured Summon",
+      "release": "2016-10-14",
+      "confidence": "C",
+      "source": "source/server/gacha_community.json",
+      "native_id": "9100011",
+      "status": "catalogue_candidate"
+    },
+    {
+      "key": "event:The Giant of Babel",
+      "kind": "event",
+      "name": "The Giant of Babel",
+      "release": "2016-10-14",
+      "confidence": "B",
+      "source": "https://exvius.fandom.com/wiki/Special:Redirect/revision/28799",
+      "native_id": null,
+      "status": "identity_unresolved"
+    },
+    {
+      "key": "banner:9100012",
+      "kind": "banner",
+      "name": "Demon Rain, Dracu Lasswell, White Witch Fina, Black Cat Lid Featured Summon",
+      "release": "2016-10-21",
+      "confidence": "C",
+      "source": "source/server/gacha_community.json",
+      "native_id": "9100012",
+      "status": "catalogue_candidate"
+    },
+    {
+      "key": "event:Halloween - Night of the Pumpkin",
+      "kind": "event",
+      "name": "Halloween - Night of the Pumpkin",
+      "release": "2016-10-21",
+      "confidence": "B",
+      "source": "https://exvius.fandom.com/wiki/Special:Redirect/revision/33035",
+      "native_id": null,
+      "status": "identity_unresolved"
+    },
+    {
+      "key": "banner:9100013",
+      "kind": "banner",
+      "name": "Luneth, Refia, Arc, Ingus Featured Summon",
+      "release": "2016-11-04",
+      "confidence": "C",
+      "source": "source/server/gacha_community.json",
+      "native_id": "9100013",
+      "status": "catalogue_candidate"
+    },
+    {
+      "key": "event:The Crystal Tower",
+      "kind": "event",
+      "name": "The Crystal Tower",
+      "release": "2016-11-04",
+      "confidence": "B",
+      "source": "https://exvius.fandom.com/wiki/Special:Redirect/revision/32478",
+      "native_id": null,
+      "status": "identity_unresolved"
+    },
+    {
+      "key": "banner:9100014",
+      "kind": "banner",
+      "name": "Elza, Tilith, Seria, Karl Featured Summon",
+      "release": "2016-11-11",
+      "confidence": "C",
+      "source": "source/server/gacha_community.json",
+      "native_id": "9100014",
+      "status": "catalogue_candidate"
+    },
+    {
+      "key": "event:Grand Gaia Chronicles",
+      "kind": "event",
+      "name": "Grand Gaia Chronicles",
+      "release": "2016-11-11",
+      "confidence": "B",
+      "source": "https://exvius.fandom.com/wiki/Special:Redirect/revision/37756",
+      "native_id": null,
+      "status": "identity_unresolved"
+    },
+    {
+      "key": "banner:9100015",
+      "kind": "banner",
+      "name": "Dark Knight Cecil, Gaffgarion, Cloud of Darkness, Garland, Duane Featured Summon",
+      "release": "2016-11-18",
+      "confidence": "C",
+      "source": "source/server/gacha_community.json",
+      "native_id": "9100015",
+      "status": "catalogue_candidate"
+    },
+    {
+      "key": "event:Trial of the Creator",
+      "kind": "event",
+      "name": "Trial of the Creator",
+      "release": "2016-11-18",
+      "confidence": "B",
+      "source": "https://exvius.fandom.com/wiki/Special:Redirect/revision/32992",
+      "native_id": null,
+      "status": "identity_unresolved"
+    },
+    {
+      "key": "event:The Big Bridge",
+      "kind": "event",
+      "name": "The Big Bridge",
+      "release": "2016-11-24",
+      "confidence": "B",
+      "source": "https://exvius.fandom.com/wiki/Special:Redirect/revision/36153",
+      "native_id": null,
+      "status": "identity_unresolved"
+    },
+    {
+      "key": "banner:9100016",
+      "kind": "banner",
+      "name": "Gilgamesh, Bartz, Exdeath, Faris Featured Summon",
+      "release": "2016-11-25",
+      "confidence": "C",
+      "source": "source/server/gacha_community.json",
+      "native_id": "9100016",
+      "status": "pool_inconsistent"
+    },
+    {
+      "key": "banner:9100017",
+      "kind": "banner",
+      "name": "Snow, Vanille, Sazh Featured Summon",
+      "release": "2016-12-02",
+      "confidence": "C",
+      "source": "source/server/gacha_community.json",
+      "native_id": "9100017",
+      "status": "catalogue_candidate"
+    },
+    {
+      "key": "event:The Hanging Edge",
+      "kind": "event",
+      "name": "The Hanging Edge",
+      "release": "2016-12-02",
+      "confidence": "B",
+      "source": "https://exvius.fandom.com/wiki/Special:Redirect/revision/36152",
+      "native_id": null,
+      "status": "identity_unresolved"
+    },
+    {
+      "key": "banner:9100018",
+      "kind": "banner",
+      "name": "Lightning, Fang, Hope Featured Summon",
+      "release": "2016-12-09",
+      "confidence": "C",
+      "source": "source/server/gacha_community.json",
+      "native_id": "9100018",
+      "status": "catalogue_candidate"
+    },
+    {
+      "key": "banner:9100019",
+      "kind": "banner",
+      "name": "Noctis, Mercedes, Chizuru, Charlotte Featured Summon",
+      "release": "2016-12-16",
+      "confidence": "C",
+      "source": "source/server/gacha_community.json",
+      "native_id": "9100019",
+      "status": "catalogue_candidate"
+    },
+    {
+      "key": "banner:9100020",
+      "kind": "banner",
+      "name": "Cerius, Santa Roselia, White Knight Noel, Medius Featured Summon",
+      "release": "2016-12-23",
+      "confidence": "C",
+      "source": "source/server/gacha_community.json",
+      "native_id": "9100020",
+      "status": "catalogue_candidate"
+    },
+    {
+      "key": "event:A Frosty Offensive",
+      "kind": "event",
+      "name": "A Frosty Offensive",
+      "release": "2016-12-23",
+      "confidence": "B",
+      "source": "https://exvius.fandom.com/wiki/Special:Redirect/revision/38543",
+      "native_id": null,
+      "status": "identity_unresolved"
+    },
+    {
+      "key": "event:Dread Frost Arrives!",
+      "kind": "event",
+      "name": "Dread Frost Arrives!",
+      "release": "2016-12-30",
+      "confidence": "C",
+      "source": "https://finalfantasy.fandom.com/wiki/Event_(Brave_Exvius",
+      "native_id": null,
+      "status": "identity_unresolved"
+    }
+  ]
+}

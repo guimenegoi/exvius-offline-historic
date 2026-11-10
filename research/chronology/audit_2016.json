@@ -1,0 +1,802 @@
+{
+  "schema_version": 1,
+  "status": "research_only",
+  "method": "Exact name matches and source fields; NOT original ID equivalence",
+  "counts": {
+    "original_events": 14,
+    "events_with_archived_name_matches": 6,
+    "archived_variants": 8,
+    "banners": 21,
+    "banners_with_featured_mismatch": 1,
+    "cash_shop_bundles_in_offline_index": 13
+  },
+  "events": [
+    {
+      "name": "Demons Unleashed",
+      "original_global_debut": "2016-08-01",
+      "contemporary_source": "https://exvius.fandom.com/wiki/Special:Redirect/revision/16775",
+      "confidence": "B",
+      "original_native_id": null,
+      "original_mission_and_reward_identity_verified": false,
+      "archive_name_matches": [],
+      "decision": "original_content_not_identified"
+    },
+    {
+      "name": "Into the Abyss",
+      "original_global_debut": "2016-08-19",
+      "contemporary_source": "https://exvius.fandom.com/wiki/Special:Redirect/revision/34649",
+      "confidence": "B",
+      "original_native_id": null,
+      "original_mission_and_reward_identity_verified": false,
+      "archive_name_matches": [],
+      "decision": "original_content_not_identified"
+    },
+    {
+      "name": "Festival of the Autumn Moon",
+      "original_global_debut": "2016-09-01",
+      "contemporary_source": "https://exvius.fandom.com/wiki/Special:Redirect/revision/33034",
+      "confidence": "B",
+      "original_native_id": null,
+      "original_mission_and_reward_identity_verified": false,
+      "archive_name_matches": [],
+      "decision": "original_content_not_identified"
+    },
+    {
+      "name": "Lands of Plenty",
+      "original_global_debut": "2016-09-18",
+      "contemporary_source": "https://exvius.fandom.com/wiki/Special:Redirect/revision/17499",
+      "confidence": "B",
+      "original_native_id": null,
+      "original_mission_and_reward_identity_verified": false,
+      "archive_name_matches": [],
+      "decision": "original_content_not_identified"
+    },
+    {
+      "name": "Orbonne Monastery Vaults",
+      "original_global_debut": "2016-09-30",
+      "contemporary_source": "https://exvius.fandom.com/wiki/Special:Redirect/revision/33032",
+      "confidence": "B",
+      "original_native_id": null,
+      "original_mission_and_reward_identity_verified": false,
+      "archive_name_matches": [],
+      "decision": "original_content_not_identified"
+    },
+    {
+      "name": "The Giant of Babel",
+      "original_global_debut": "2016-10-14",
+      "contemporary_source": "https://exvius.fandom.com/wiki/Special:Redirect/revision/28799",
+      "confidence": "B",
+      "original_native_id": null,
+      "original_mission_and_reward_identity_verified": false,
+      "archive_name_matches": [
+        {
+          "area": "705",
+          "archive_release": "2017-06-05",
+          "missions": [
+            "7050101",
+            "7050102",
+            "7050103",
+            "7050104",
+            "7050105"
+          ],
+          "kind": "Final Fantasy IV - Exploration Event (Rerun)<br>New missions have been added to this event!",
+          "source_page": "https://exvius.fandom.com/wiki/The_Giant_of_Babel",
+          "later_than_original_debut": true
+        }
+      ],
+      "decision": "original_content_not_identified"
+    },
+    {
+      "name": "Halloween - Night of the Pumpkin",
+      "original_global_debut": "2016-10-21",
+      "contemporary_source": "https://exvius.fandom.com/wiki/Special:Redirect/revision/33035",
+      "confidence": "B",
+      "original_native_id": null,
+      "original_mission_and_reward_identity_verified": false,
+      "archive_name_matches": [],
+      "decision": "original_content_not_identified"
+    },
+    {
+      "name": "The Crystal Tower",
+      "original_global_debut": "2016-11-04",
+      "contemporary_source": "https://exvius.fandom.com/wiki/Special:Redirect/revision/32478",
+      "confidence": "B",
+      "original_native_id": null,
+      "original_mission_and_reward_identity_verified": false,
+      "archive_name_matches": [
+        {
+          "area": "707",
+          "archive_release": "2017-05-22",
+          "missions": [
+            "7070101",
+            "7070102",
+            "7070103",
+            "7070104",
+            "7070105"
+          ],
+          "kind": "Final Fantasy III - Exploration Event (Rerun)<br>New missions have been added to this event!",
+          "source_page": "https://exvius.fandom.com/wiki/The_Crystal_Tower",
+          "later_than_original_debut": true
+        }
+      ],
+      "decision": "original_content_not_identified"
+    },
+    {
+      "name": "Grand Gaia Chronicles",
+      "original_global_debut": "2016-11-11",
+      "contemporary_source": "https://exvius.fandom.com/wiki/Special:Redirect/revision/37756",
+      "confidence": "B",
+      "original_native_id": null,
+      "original_mission_and_reward_identity_verified": false,
+      "archive_name_matches": [
+        {
+          "area": "720",
+          "archive_release": "2017-06-16",
+          "missions": [
+            "7200101",
+            "7200102",
+            "7200103"
+          ],
+          "kind": "Brave Frontier - Exchange Event",
+          "source_page": "https://exvius.fandom.com/wiki/Grand_Gaia_Chronicles_(Update)",
+          "later_than_original_debut": true
+        },
+        {
+          "area": "913",
+          "archive_release": "2017-06-16",
+          "missions": [
+            "9001401",
+            "9001402",
+            "9001403"
+          ],
+          "kind": "Brave Frontier - Exchange Event",
+          "source_page": "https://exvius.fandom.com/wiki/Grand_Gaia_Chronicles_(Update)",
+          "later_than_original_debut": true
+        }
+      ],
+      "decision": "original_content_not_identified"
+    },
+    {
+      "name": "Trial of the Creator",
+      "original_global_debut": "2016-11-18",
+      "contemporary_source": "https://exvius.fandom.com/wiki/Special:Redirect/revision/32992",
+      "confidence": "B",
+      "original_native_id": null,
+      "original_mission_and_reward_identity_verified": false,
+      "archive_name_matches": [
+        {
+          "area": "721",
+          "archive_release": "2017-06-23",
+          "missions": [
+            "7210101",
+            "7210102"
+          ],
+          "kind": "Brave Frontier - Challenge Event",
+          "source_page": "https://exvius.fandom.com/wiki/Trial_of_the_Creator",
+          "later_than_original_debut": true
+        }
+      ],
+      "decision": "original_content_not_identified"
+    },
+    {
+      "name": "The Big Bridge",
+      "original_global_debut": "2016-11-24",
+      "contemporary_source": "https://exvius.fandom.com/wiki/Special:Redirect/revision/36153",
+      "confidence": "B",
+      "original_native_id": null,
+      "original_mission_and_reward_identity_verified": false,
+      "archive_name_matches": [
+        {
+          "area": "6193",
+          "archive_release": "2017-06-19",
+          "missions": [
+            "61930101"
+          ],
+          "kind": "Final Fantasy V - Exploration Event (Rerun)",
+          "source_page": "https://exvius.fandom.com/wiki/The_Big_Bridge",
+          "later_than_original_debut": true
+        },
+        {
+          "area": "709",
+          "archive_release": "2017-06-19",
+          "missions": [
+            "7090101",
+            "7090102",
+            "7090103",
+            "7090104",
+            "7090105"
+          ],
+          "kind": "Final Fantasy V - Exploration Event (Rerun)",
+          "source_page": "https://exvius.fandom.com/wiki/The_Big_Bridge",
+          "later_than_original_debut": true
+        }
+      ],
+      "decision": "original_content_not_identified"
+    },
+    {
+      "name": "The Hanging Edge",
+      "original_global_debut": "2016-12-02",
+      "contemporary_source": "https://exvius.fandom.com/wiki/Special:Redirect/revision/36152",
+      "confidence": "B",
+      "original_native_id": null,
+      "original_mission_and_reward_identity_verified": false,
+      "archive_name_matches": [
+        {
+          "area": "704",
+          "archive_release": "2018-08-17",
+          "missions": [
+            "7040101",
+            "7040102",
+            "7040103",
+            "7040104",
+            "7040105"
+          ],
+          "kind": "FFXIII - Exchange Event",
+          "source_page": "https://exvius.fandom.com/wiki/The_Hanging_Edge",
+          "later_than_original_debut": true
+        }
+      ],
+      "decision": "original_content_not_identified"
+    },
+    {
+      "name": "A Frosty Offensive",
+      "original_global_debut": "2016-12-23",
+      "contemporary_source": "https://exvius.fandom.com/wiki/Special:Redirect/revision/38543",
+      "confidence": "B",
+      "original_native_id": null,
+      "original_mission_and_reward_identity_verified": false,
+      "archive_name_matches": [],
+      "decision": "original_content_not_identified"
+    },
+    {
+      "name": "Dread Frost Arrives!",
+      "original_global_debut": "2016-12-30",
+      "contemporary_source": "https://finalfantasy.fandom.com/wiki/Event_(Brave_Exvius",
+      "confidence": "C",
+      "original_native_id": null,
+      "original_mission_and_reward_identity_verified": false,
+      "archive_name_matches": [],
+      "decision": "original_content_not_identified"
+    }
+  ],
+  "banners": [
+    {
+      "catalogue_id": "9100000",
+      "release": "2016-07-08",
+      "name": "Kefka, Golbez, Chizuru Featured Summon",
+      "community_featured_names": [
+        "Kefka",
+        "Golbez",
+        "Chizuru"
+      ],
+      "community_featured_ids": [
+        "100004604",
+        "204001403",
+        "206001703"
+      ],
+      "pool_featured_ids": null,
+      "featured_count_mismatch": false,
+      "featured_pool_mismatch": null,
+      "original_global_id_verified": false,
+      "original_rates_and_pool_verified": false,
+      "decision": "community_index_only"
+    },
+    {
+      "catalogue_id": "9100001",
+      "release": "2016-07-22",
+      "name": "Hayate, Locke, Artemios Featured Summon",
+      "community_featured_names": [
+        "Hayate",
+        "Locke",
+        "Artemios"
+      ],
+      "community_featured_ids": [
+        "100004403",
+        "100004703",
+        "206000203"
+      ],
+      "pool_featured_ids": null,
+      "featured_count_mismatch": false,
+      "featured_pool_mismatch": null,
+      "original_global_id_verified": false,
+      "original_rates_and_pool_verified": false,
+      "decision": "community_index_only"
+    },
+    {
+      "catalogue_id": "9100002",
+      "release": "2016-08-05",
+      "name": "Lenna, Warrior of Light, Tellah Featured Summon",
+      "community_featured_names": [
+        "Lenna",
+        "Warrior of Light",
+        "Tellah"
+      ],
+      "community_featured_ids": [
+        "201000104",
+        "204000503",
+        "205000203"
+      ],
+      "pool_featured_ids": null,
+      "featured_count_mismatch": false,
+      "featured_pool_mismatch": null,
+      "original_global_id_verified": false,
+      "original_rates_and_pool_verified": false,
+      "decision": "community_index_only"
+    },
+    {
+      "catalogue_id": "9100003",
+      "release": "2016-08-19",
+      "name": "Kuja, Amarant, Zidane, Lani, Vivi Featured Summon",
+      "community_featured_names": [
+        "Kuja",
+        "Amarant",
+        "Zidane",
+        "Lani",
+        "Vivi"
+      ],
+      "community_featured_ids": [
+        "209000103",
+        "209000203",
+        "209000803",
+        "209000903",
+        "209001003"
+      ],
+      "pool_featured_ids": null,
+      "featured_count_mismatch": false,
+      "featured_pool_mismatch": null,
+      "original_global_id_verified": false,
+      "original_rates_and_pool_verified": false,
+      "decision": "community_index_only"
+    },
+    {
+      "catalogue_id": "9100004",
+      "release": "2016-08-26",
+      "name": "Kuja, Amarant, Garnet, Zidane, Freya, Lani, Vivi Featured Summon",
+      "community_featured_names": [
+        "Kuja",
+        "Amarant",
+        "Garnet",
+        "Zidane",
+        "Freya",
+        "Lani",
+        "Vivi"
+      ],
+      "community_featured_ids": [
+        "209000103",
+        "209000203",
+        "209000304",
+        "209000503",
+        "209000803",
+        "209000903",
+        "209001003"
+      ],
+      "pool_featured_ids": null,
+      "featured_count_mismatch": false,
+      "featured_pool_mismatch": null,
+      "original_global_id_verified": false,
+      "original_rates_and_pool_verified": false,
+      "decision": "community_index_only"
+    },
+    {
+      "catalogue_id": "9100005",
+      "release": "2016-09-02",
+      "name": "Leo, Terra, Celes, Locke Featured Summon",
+      "community_featured_names": [
+        "Leo",
+        "Terra",
+        "Celes",
+        "Locke"
+      ],
+      "community_featured_ids": [
+        "206000103",
+        "206000203",
+        "206000703",
+        "206001803"
+      ],
+      "pool_featured_ids": null,
+      "featured_count_mismatch": false,
+      "featured_pool_mismatch": null,
+      "original_global_id_verified": false,
+      "original_rates_and_pool_verified": false,
+      "decision": "community_index_only"
+    },
+    {
+      "catalogue_id": "9100006",
+      "release": "2016-09-09",
+      "name": "Fencer, Juggler, Thief Featured Summon",
+      "community_featured_names": [
+        "Fencer",
+        "Juggler",
+        "Thief"
+      ],
+      "community_featured_ids": [
+        "255000104",
+        "255000204",
+        "255000304"
+      ],
+      "pool_featured_ids": null,
+      "featured_count_mismatch": false,
+      "featured_pool_mismatch": null,
+      "original_global_id_verified": false,
+      "original_rates_and_pool_verified": false,
+      "decision": "community_index_only"
+    },
+    {
+      "catalogue_id": "9100007",
+      "release": "2016-09-16",
+      "name": "Chizuru, Warrior of Light, Cloud of Darkness, Kefka, Lenna Featured Summon",
+      "community_featured_names": [
+        "Chizuru",
+        "Warrior of Light",
+        "Cloud of Darkness",
+        "Kefka",
+        "Lenna"
+      ],
+      "community_featured_ids": [
+        "100004604",
+        "201000104",
+        "203000803",
+        "205000203",
+        "206001703"
+      ],
+      "pool_featured_ids": null,
+      "featured_count_mismatch": false,
+      "featured_pool_mismatch": null,
+      "original_global_id_verified": false,
+      "original_rates_and_pool_verified": false,
+      "decision": "community_index_only"
+    },
+    {
+      "catalogue_id": "9100008",
+      "release": "2016-09-23",
+      "name": "Lightning, Ludmille, Charlotte Featured Summon",
+      "community_featured_names": [
+        "Lightning",
+        "Ludmille",
+        "Charlotte"
+      ],
+      "community_featured_ids": [
+        "100004203",
+        "100004303",
+        "213000105"
+      ],
+      "pool_featured_ids": null,
+      "featured_count_mismatch": false,
+      "featured_pool_mismatch": null,
+      "original_global_id_verified": false,
+      "original_rates_and_pool_verified": false,
+      "decision": "community_index_only"
+    },
+    {
+      "catalogue_id": "9100009",
+      "release": "2016-09-30",
+      "name": "Delita, Gaffgarion, Alma Featured Summon",
+      "community_featured_names": [
+        "Delita",
+        "Gaffgarion",
+        "Alma"
+      ],
+      "community_featured_ids": [
+        "253000205",
+        "253000403",
+        "253000504"
+      ],
+      "pool_featured_ids": [
+        "253000205",
+        "253000403",
+        "253000504"
+      ],
+      "featured_count_mismatch": false,
+      "featured_pool_mismatch": false,
+      "original_global_id_verified": false,
+      "original_rates_and_pool_verified": false,
+      "decision": "community_index_only"
+    },
+    {
+      "catalogue_id": "9100010",
+      "release": "2016-10-07",
+      "name": "Ramza, Agrias, Mustadio Featured Summon",
+      "community_featured_names": [
+        "Ramza",
+        "Agrias",
+        "Mustadio"
+      ],
+      "community_featured_ids": [
+        "253000105",
+        "253000304",
+        "253000603"
+      ],
+      "pool_featured_ids": [
+        "253000105",
+        "253000304",
+        "253000603"
+      ],
+      "featured_count_mismatch": false,
+      "featured_pool_mismatch": false,
+      "original_global_id_verified": false,
+      "original_rates_and_pool_verified": false,
+      "decision": "community_index_only"
+    },
+    {
+      "catalogue_id": "9100011",
+      "release": "2016-10-14",
+      "name": "Dark Knight Cecil, Rosa, Cecil, Edge Featured Summon",
+      "community_featured_names": [
+        "Dark Knight Cecil",
+        "Rosa",
+        "Cecil",
+        "Edge"
+      ],
+      "community_featured_ids": [
+        "204000103",
+        "204000115",
+        "204000304",
+        "204001103"
+      ],
+      "pool_featured_ids": [
+        "204000103",
+        "204000115",
+        "204000304",
+        "204001103"
+      ],
+      "featured_count_mismatch": false,
+      "featured_pool_mismatch": false,
+      "original_global_id_verified": false,
+      "original_rates_and_pool_verified": false,
+      "decision": "community_index_only"
+    },
+    {
+      "catalogue_id": "9100012",
+      "release": "2016-10-21",
+      "name": "Demon Rain, Dracu Lasswell, White Witch Fina, Black Cat Lid Featured Summon",
+      "community_featured_names": [
+        "Demon Rain",
+        "Dracu Lasswell",
+        "White Witch Fina",
+        "Black Cat Lid"
+      ],
+      "community_featured_ids": [
+        "401000205",
+        "401000305",
+        "401000404",
+        "401000503"
+      ],
+      "pool_featured_ids": [
+        "401000205",
+        "401000305",
+        "401000404",
+        "401000503"
+      ],
+      "featured_count_mismatch": false,
+      "featured_pool_mismatch": false,
+      "original_global_id_verified": false,
+      "original_rates_and_pool_verified": false,
+      "decision": "community_index_only"
+    },
+    {
+      "catalogue_id": "9100013",
+      "release": "2016-11-04",
+      "name": "Luneth, Refia, Arc, Ingus Featured Summon",
+      "community_featured_names": [
+        "Luneth",
+        "Refia",
+        "Arc",
+        "Ingus"
+      ],
+      "community_featured_ids": [
+        "203000205",
+        "203000303",
+        "203000404",
+        "203000503"
+      ],
+      "pool_featured_ids": [
+        "203000205",
+        "203000303",
+        "203000404",
+        "203000503"
+      ],
+      "featured_count_mismatch": false,
+      "featured_pool_mismatch": false,
+      "original_global_id_verified": false,
+      "original_rates_and_pool_verified": false,
+      "decision": "community_index_only"
+    },
+    {
+      "catalogue_id": "9100014",
+      "release": "2016-11-11",
+      "name": "Elza, Tilith, Seria, Karl Featured Summon",
+      "community_featured_names": [
+        "Elza",
+        "Tilith",
+        "Seria",
+        "Karl"
+      ],
+      "community_featured_ids": [
+        "302000104",
+        "302000204",
+        "302000304",
+        "302000605"
+      ],
+      "pool_featured_ids": [
+        "302000104",
+        "302000204",
+        "302000304",
+        "302000605"
+      ],
+      "featured_count_mismatch": false,
+      "featured_pool_mismatch": false,
+      "original_global_id_verified": false,
+      "original_rates_and_pool_verified": false,
+      "decision": "community_index_only"
+    },
+    {
+      "catalogue_id": "9100015",
+      "release": "2016-11-18",
+      "name": "Dark Knight Cecil, Gaffgarion, Cloud of Darkness, Garland, Duane Featured Summon",
+      "community_featured_names": [
+        "Dark Knight Cecil",
+        "Gaffgarion",
+        "Cloud of Darkness",
+        "Garland",
+        "Duane"
+      ],
+      "community_featured_ids": [
+        "100002503",
+        "201000203",
+        "203000803",
+        "204000115",
+        "253000504"
+      ],
+      "pool_featured_ids": [
+        "100002503",
+        "201000203",
+        "203000803",
+        "204000115",
+        "253000504"
+      ],
+      "featured_count_mismatch": false,
+      "featured_pool_mismatch": false,
+      "original_global_id_verified": false,
+      "original_rates_and_pool_verified": false,
+      "decision": "community_index_only"
+    },
+    {
+      "catalogue_id": "9100016",
+      "release": "2016-11-25",
+      "name": "Gilgamesh, Bartz, Exdeath, Faris Featured Summon",
+      "community_featured_names": [
+        "Gilgamesh",
+        "Bartz",
+        "Exdeath",
+        "Faris"
+      ],
+      "community_featured_ids": [
+        "205000103",
+        "205000403",
+        "205000703"
+      ],
+      "pool_featured_ids": [
+        "205000103",
+        "205000403",
+        "205000703"
+      ],
+      "featured_count_mismatch": true,
+      "featured_pool_mismatch": false,
+      "original_global_id_verified": false,
+      "original_rates_and_pool_verified": false,
+      "decision": "requires_pool_review"
+    },
+    {
+      "catalogue_id": "9100017",
+      "release": "2016-12-02",
+      "name": "Snow, Vanille, Sazh Featured Summon",
+      "community_featured_names": [
+        "Snow",
+        "Vanille",
+        "Sazh"
+      ],
+      "community_featured_ids": [
+        "213000204",
+        "213000304",
+        "213000403"
+      ],
+      "pool_featured_ids": [
+        "213000204",
+        "213000304",
+        "213000403"
+      ],
+      "featured_count_mismatch": false,
+      "featured_pool_mismatch": false,
+      "original_global_id_verified": false,
+      "original_rates_and_pool_verified": false,
+      "decision": "community_index_only"
+    },
+    {
+      "catalogue_id": "9100018",
+      "release": "2016-12-09",
+      "name": "Lightning, Fang, Hope Featured Summon",
+      "community_featured_names": [
+        "Lightning",
+        "Fang",
+        "Hope"
+      ],
+      "community_featured_ids": [
+        "213000105",
+        "213000504",
+        "213000603"
+      ],
+      "pool_featured_ids": [
+        "213000105",
+        "213000504",
+        "213000603"
+      ],
+      "featured_count_mismatch": false,
+      "featured_pool_mismatch": false,
+      "original_global_id_verified": false,
+      "original_rates_and_pool_verified": false,
+      "decision": "community_index_only"
+    },
+    {
+      "catalogue_id": "9100019",
+      "release": "2016-12-16",
+      "name": "Noctis, Mercedes, Chizuru, Charlotte Featured Summon",
+      "community_featured_names": [
+        "Noctis",
+        "Mercedes",
+        "Chizuru",
+        "Charlotte"
+      ],
+      "community_featured_ids": [
+        "100004303",
+        "100004604",
+        "100005104",
+        "215000105"
+      ],
+      "pool_featured_ids": [
+        "100004303",
+        "100004604",
+        "100005104",
+        "215000105"
+      ],
+      "featured_count_mismatch": false,
+      "featured_pool_mismatch": false,
+      "original_global_id_verified": false,
+      "original_rates_and_pool_verified": false,
+      "decision": "community_index_only"
+    },
+    {
+      "catalogue_id": "9100020",
+      "release": "2016-12-23",
+      "name": "Cerius, Santa Roselia, White Knight Noel, Medius Featured Summon",
+      "community_featured_names": [
+        "Cerius",
+        "Santa Roselia",
+        "White Knight Noel",
+        "Medius"
+      ],
+      "community_featured_ids": [
+        "100002603",
+        "100002803",
+        "302000705",
+        "302000804"
+      ],
+      "pool_featured_ids": [
+        "100002603",
+        "100002803",
+        "302000705",
+        "302000804"
+      ],
+      "featured_count_mismatch": false,
+      "featured_pool_mismatch": false,
+      "original_global_id_verified": false,
+      "original_rates_and_pool_verified": false,
+      "decision": "community_index_only"
+    }
+  ],
+  "cash_shop_warning": {
+    "original_2016_early_bird_usd": "3.99",
+    "offline_early_bird_usd": "1.99",
+    "equivalence": "not_established",
+    "action": "do_not_backdate_or_enable_offline_bundle"
+  }
+}

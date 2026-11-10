@@ -1,0 +1,422 @@
+# Auditoria transversal da UI histórica — FFBE Global
+
+Data: 2026-11-08
+Classificação: diagnóstico. **Nenhuma edição funcional nesta rodada.**
+Escopo: preview Global junho/julho 2016; branch feature/historical-progression.
+Estado: **NÃO AUDITADO COMO FIEL À UI DE 2016**. A build 9066 corrige só dois sintomas.
+
+## Home de junho de 2016 — APK experimental 9084 (09/11/2026)
+
+Foram detectadas e corrigidas duas diferenças introduzidas pelo
+cliente Global 9.0.0 que permaneceram no layout histórico:
+
+- O botão ornamentado TAP de seleção de Vision Card é criado por
+  HomeScene::setNoneOrnamentVisionCard, ou sua variante com card.
+  Vision Cards chegaram ao Global apenas em agosto de 2020. Os dois
+  construtores nativos agora são suprimidos **somente** se a projeção
+  histórica de recursos do servidor existe e vision_cards está
+  desabilitado; saves não históricos executam as funções originais.
+- O HomeRotateMenuList reconstruído criava dez sprites de orb
+  independentemente da quantidade real. O save histórico de junho
+  informou **Colosseum: 3/3** no objeto HomeMainMenuIcon, enquanto
+  sua placa de arte fixa desenhava dez encaixes. Agora o vetor recebe
+  o máximo informado pelo cliente e a placa anacrônica é ocultada
+  apenas quando historical_features.arena === false. A Arena das
+  épocas posteriores mantém a placa original até ser auditada.
+
+A APK 9084, compilada e assinada com o certificado da APK 9081, foi
+instalada por atualização no Waydroid, preservando o save histórico.
+A Home inicializou, o log confirmou
+HOME_HISTORIC_VISION_ORNAMENT_HIDDEN, e capturas em
+source/build/historical-preview/waydroid-9084/ confirmaram o
+desaparecimento de TAP e os **três orbs únicos** com Colosseum
+centralizado. O antigo local de TAP não abriu outro menu.
+
+**Limites:** a Home ainda contém outros elementos do cliente final
+que exigem comparações com snapshots históricos. O rótulo ??? do
+Colosseum decorre do estado de bloqueio da campanha e não deve ser
+substituído por uma data presumida. Não foram realizadas regressões
+visuais em um save pós-agosto de 2020. APK 9084 não é release.
+
+O seletor Season do Vortex é **recurso criado pelo FFBE Offline**,
+não componente do Global original. Seu reposicionamento compacto
+foi isolado no branch feature/offline-archive-selector-placement
+(commit 5b15248), e não faz parte da APK 9084 nem deste patch de
+Home. Falta validar o novo posicionamento no Android.
+
+## Artes históricas recuperadas — APK 9081 (09/11/2026)
+
+As URLs originais da wiki devolveram HTTP 403 no domínio
+static.wikia.nocookie.net. O domínio legado images.wikia.com, com o
+mesmo caminho das URLs já indexadas em source/server/event_art.json,
+entregou **os quatro arquivos originais com SHA-256 idêntico** à
+procedência registrada. O conteúdo foi validado antes de salvar.
+
+A rotina já existente build_event_art.runtime_banner transformou as
+imagens em PNG com **pixels RGBA idênticos** e dimensões 640x240.
+Os bytes dos PNGs ficaram diferentes de uma conversão mais antiga,
+então os quatro runtime_sha256 foram atualizados somente após verificar
+a equivalência de pixels. Os originais e a conversão local ficam em
+data/state/backups/originals/events/ e data/overlay/en/sd/area/.
+Esses diretórios são ignorados pelo Git.
+
+Para recuperar os mesmos quatro arquivos em outro checkout, utilizar
+o catálogo e o conversor existentes, com curl e Pillow:
+
+~~~bash
+python3 - <<'PYRECOVER'
+import hashlib, json, subprocess, sys
+from pathlib import Path
+from urllib.parse import urlsplit
+sys.path.insert(0, 'source/exvius')
+from build_event_art import runtime_banner
+from PIL import Image
+entries = json.loads(Path('source/server/event_art.json').read_text())['events']
+for area in ('216', '224', '225', '226'):
+    row = entries[area]
+    url = 'https://images.wikia.com' + urlsplit(row['source_url']).path
+    original, output = Path(row['source_file']), Path(row['runtime_file'])
+    original.parent.mkdir(parents=True, exist_ok=True)
+    output.parent.mkdir(parents=True, exist_ok=True)
+    if not original.exists():
+        original.write_bytes(subprocess.check_output(['curl', '-fsSL', url]))
+    assert hashlib.sha256(original.read_bytes()).hexdigest() == row['source_sha256']
+    runtime_banner(original, output)
+    with Image.open(original) as source, Image.open(output) as png:
+        assert source.convert('RGBA').tobytes() == png.convert('RGBA').tobytes()
+        assert png.size == (640, 240)
+    checksum = hashlib.sha256(output.read_bytes()).hexdigest()
+    print(area, checksum, 'matches PNG index:', checksum == row['runtime_sha256'])
+PYRECOVER
+~~~
+
+**Validação Android 9081:** os quatro PNGs foram empacotados no ZIP
+app.imy e expostos pelo mecanismo existente de CDN + materialização
+nativa (sem root, sem novo instalador). A APK foi assinada e instalada
+por atualização no Waydroid, preservando o save de junho de 2016.
+O log LOCAL_MENU_IMAGE_SUPPLIED confirmou event_216.png,
+event_224.png, event_225.png e event_226.png. Capturas após rolagem,
+em source/build/historical-preview/waydroid-9081/ (ignorado pelo Git),
+mostram as artes originais das câmaras Riches, Creation, Awakening e
+Experience. O filtro nativo permaneceu estável.
+
+**Pendente:** a UI ainda usa abas, dropdown Season 1, correntes e
+cadeados do cliente final. É necessário comparar com capturas datadas
+do Global e validar requisitos de acesso antes de aprovar o snapshot
+histórico completo. A 9081 é só uma APK experimental no Waydroid;
+nenhuma release foi publicada.
+
+## Revalidação experimental 9080 — mesma data
+
+Uma análise da chamada compilada no APK 9079 mostrou que a exceção
+Error: expected an integer partia de removeObjectAtIndex(long, bool).
+O primeiro experimento alterou apenas int64 para long no argumento do
+índice, mas continuou passando o booleano JavaScript true. O runtime
+Frida requer o valor numérico 1 para esse argumento bool nativo.
+
+Foi restaurada a implementação experimental guardada em stash e alterado
+**apenas esse literal**, com teste de regressão. A APK 9080 foi compilada
+com Python 3.10/Frida, assinada com o mesmo certificado e instalada por
+atualização no Waydroid, sem limpar o save de junho de 2016.
+
+**Resultados observados:** Home iniciou, o fallback GL9 carregou,
+GateScene selecionou quatro áreas históricas e removeu quinze entradas
+extras (LOCAL_HISTORIC_GATE_LIST allowed=4 removed=15 tab=0).
+O erro anterior não voltou após abrir o Vortex e alternar todas as cinco
+abas; o processo permaneceu em execução. Screenshots em
+source/build/historical-preview/waydroid-9080/ (ignorado pelo Git).
+
+**A UI continua NÃO APROVADA como snapshot histórico.** Na aba Enhance,
+as quatro áreas 216/224/225/226 são os IDs históricos das Chambers of
+Riches, Creation, Awakening e Experience, mas a tela exibe imagens
+posteriores, incluindo Cressnik — Unit Intro Quest, e cadeados modernos.
+O servidor associa a essas áreas os nomes
+global_spd_bn_list_00216.png / 00224 / 00225 / 00226,
+verificados anteriormente **apenas quanto à existência do arquivo**,
+não quanto à sua imagem ou autenticidade de 2016.
+
+Já existe o mecanismo de conteúdo original source/server/event_art.json,
+com os arquivos históricos previstos event_216.png etc, referências
+de 2016 e hashes; build_event_art.py é o conversor existente e
+push_client_cache.py já transporta overlays. Contudo, os arquivos
+referenciados em data/state/backups/originals/events/ e
+data/overlay/en/sd/area/ não estão no checkout atual. A URL de origem
+da wiki devolveu HTTP 403 durante esta auditoria. **Não inventar nem
+substituir por outro banner moderno.** Primeiro recuperar e conferir os
+bytes de origem, depois validar a correspondência entre IDs, imagens,
+abas, cadeados e condições de acesso do cliente.
+
+A correção da **ABI do filtro** pode ser consolidada isoladamente;
+a camada visual permanece bloqueada até validação real dos assets.
+
+## Bloqueio reproduzido no Waydroid — 09/11/2026
+
+Esta anotação atualiza o diagnóstico anterior, sem certificar fidelidade visual.
+
+- **APK experimental 9078:** instalada no Waydroid e executando o save
+  histórico em junho de 2016. O carregador nativo encontrou o GL9.0.0
+  mapeado, e a Home abriu.
+- **APK experimental 9079:** criada a partir do código local, assinada com
+  o mesmo certificado e instalada com atualização do pacote, sem limpar
+  dados. O GL9 mapeado voltou a inicializar; Home abriu e o período
+  histórico continuou em 2016-06.
+- **Defeito confirmado nas duas builds:** GateUtil informou 4 áreas
+  históricas no Vortex; a aba Event inicialmente mostrava lista vazia,
+  e a troca para Enhance permaneceu sem os quatro conteúdos esperados.
+  O log registrou repetidamente
+  LOCAL_HISTORIC_GATE_LIST_ERROR Error: expected an integer em
+  /libexviustest.js:8:958018 (9078) e :8:958017 (9079).
+- A origem é a tentativa experimental de alterar em tempo de execução
+  o array Cocos pertencente à cena GateScene::setListLayout.
+  A hipótese de incompatibilidade do argumento de índice, mudando
+  a assinatura Frida de int64 para long, **não resolveu** a falha.
+  Não considerar esses hooks estáveis nem continuar encadeando patches
+  sem inspeção objetiva da ABI, tipo de índice e ownership do array.
+- **Parte verificada separadamente:** o fallback do carregador GL9 no
+  Waydroid, a inicialização dos hooks e o bypass de texture alias na
+  tradução ARM foram confirmados por logs de runtime e incluídos no
+  commit 19e1d23. Isso não valida o Vortex nem a autenticidade visual.
+- **Reprodução local:** screenshots e APK 9079 ficam sob
+  source/build/historical-preview/waydroid-9079/ (ignorado pelo Git),
+  especialmente vortex-ready.png e vortex-enhance.png. A compilação e
+  os testes de Frida simulados passaram, mas o defeito foi reproduzido
+  no aplicativo real. As mudanças experimentais de summon_menu.js e do
+  teste de regressão foram preservadas em um stash identificado; não
+  fazem parte do histórico aprovado.
+- **Estado de release:** 9079 é somente APK de teste no Waydroid, não
+  foi enviada ao GitHub ou publicada como release.
+
+## Critério de aceitação
+
+A progressão deve controlar duas dimensões: (1) disponibilidades reais de botões,
+telas, sistemas, abas, missões, prêmios e ações; (2) aparência, navegação,
+hierarquia e nomenclatura da interface da época. Ocultar eventos não é suficiente.
+Nenhum botão oculto pode continuar operável por touch nativo, rota secundária
+ou requisição direta ao servidor. Desbloqueios de história/nível permanecem.
+
+## Fontes contemporâneas e limites
+
+- Square Enix, lançamento de 30/06/2016: combate, exploração, quests diárias,
+  achievements, leaderboards e summons já disponíveis:
+  https://www.prnewswire.com/news-releases/full-scale-final-fantasy-game-now-available-for-mobile-devices-300292508.html
+- Capturas Android adicionadas em julho de 2016 (referência de HOME, abas,
+  nomes e telas): https://www.mobygames.com/game/79645/final-fantasy-brave-exvius/screenshots/
+- Anúncios históricos Global: Arena introduzida em 10/11/2016, quando
+  Colosseum foi movido para dentro de Arena; Expeditions em 19/06/2017;
+  6★ em 30/09/2016:
+  https://exvius.fandom.com/wiki/News/Archives/2016_-_2021
+- Versão 2.0 (23/02/2017) reformou Home, quests e summons:
+  https://www.player.one/final-fantasy-brave-exvius-version-20-launches-new-story-esper-and-more-585839
+
+O master Global 9.0.0 registra o estado final, não o calendário de 2016.
+Datas exatas de estreia de Panel Quest, Equipment Enhancement e outros
+sistemas ainda precisam de fontes primárias. "Rookie Panel Quests Revamp"
+de novembro de 2021 não prova que o sistema começou naquele ano.
+
+## Inventário de risco por superfície
+
+| Superfície | Evidência no código | Problema | Ação |
+|---|---|---|---|
+| Home | source/exvius/home_carousel.js; Arena, World, Expedition, Craft, Espers, Vortex, Equipment Enhancement | Cards e touches próprios, sem consulta a historical_month; UI pode ser anacrônica | Gate por mês em render e touch, + reconstrução da organização de 2016 |
+| Arena/Colosseum | home_carousel.js usa rótulo Arena e isOpenedArena | Arena não existia no lançamento, Colosseum sim | Antes 10/11/2016 oferecer Colosseum, depois Arena; não ocultar os dois |
+| Expeditions | home_carousel.js cria sgExpdConnectScene diretamente | Chegou 19/06/2017, pode contornar F_FUNCTION_MST | Esconder visual e bloquear ação/rota até estreia |
+| Equipment Enhancement | home_carousel.js desenha comando separado | Conteúdo posterior sem data/habilitação verificada | Determinar data, ocultar UI e negar rota antes dela |
+| Quests | ffbe_player.py serve daily, panel, SP challenge | Quests diárias existiam no lançamento; variantes tardias não | Matriz de famílias com datas, tabs e prêmios distintos |
+| Vortex | event_archive.py / serve_event_gate / summon_menu.js | Índice preservado com 757 áreas, sem estreias de 2016 auditadas; chambers nativas entram por caminhos adicionais | Auditar early chambers, trials, tabs, missões e datas; não confundir 0 eventos auditados com 0 eventos históricos |
+| Summon | historical_summons.py e ffbe_gacha.py | Filtro parcial de pools, não de todas as ofertas, ganhos e abas | Same policy em UI, action, transaction, garantias e todos os grants |
+| Units/Espers | player_state.py / ffbe_player.py | Evoluções, raridades, materiais e sistemas posteriores potencialmente disponíveis | Gating de ações e árvores por data + progresso |
+| World/Story | mapa e F_FUNCTION_MST final; navegação nativa | Regiões, story chapters e espers futuros podem aparecer | Time gate em mapa e roteiros, preservando progressão |
+| Craft/Shop | home_carousel.js, serve_lapis_shop e shop_archive | Receitas, pacotes, moedas e trocas da era final | Filtrar UI, preço e autorização antes de comprar/receber |
+| Mail/Login | ffbe_config.py LOGIN_MONTH padrão 2021-Jun; ANNIVERSARY_TICKET=1 | Recompensas do futuro podem entrar no save de 2016 | Data de referência deve vir do save, sem fallback 2021 |
+| Economy | seasons.json default_login_bonus com 2000 Lapis, 100000 Gil e 500 FP | Valores criados para catch-up, não lançamento comprovado | Reconstruir baseline histórico, não atribuir sem evidência |
+| Season UI | ffbe_state.py SEASON_SELECTOR + seasons.json default off | Seletor do servidor é global ao processo; não segue meta.historical_month | Estado único por save para todos os consumidores |
+| Client menu | title_menu.js e android_test.js | Flag JS do save nasce do bridge de título; pode falhar ou não ser atualizada em uma UI já aberta | Estado runtime falha fechado, invalidate caches após mudança |
+
+## Mecanismos existentes a reutilizar antes de criar qualquer helper
+
+1. Native F_FUNCTION_MST tem 22 chaves, incluindo FUNCTION_PANEL_QUEST,
+   FUNCTION_COMEBACK_QUEST, FUNCTION_EMBLEM_EVENT, FUNCTION_REEL_EXPEDITION,
+   FUNCTION_REEL_COLOSSEUM, FUNCTION_REEL_DIMENSION, FUNCTION_REEL_WORLD,
+   FUNCTION_SP_CLASSUP, FUNCTION_WORLD_CHANGE e FUNCTION_REEL_BEAST. O valor
+   de 2024 não representa disponibilidade de 2016. Nem todos os modos da
+   Home passam por esse mecanismo.
+2. O sistema de season do upstream serve campanhas e badges; o seu campo
+   home_icons está documentado como ainda não dirigido pelo servidor.
+   Não é equivalente ao marcador de mês do PlayerState.
+3. LocalGame inicializa GACHA_ONLY=all, GACHA_CAMPAIGN=all,
+   GACHA_CATALOGUE=1 e EXVIUS_EVENT_ARCHIVE=1. Filtros parciais sobre
+   essas coleções são insuficientes para garantir fidelidade.
+4. O servidor pode conceder itens sem gacha (mail, tutorial, missão, loja,
+   login, evolução). Proibição na UI **não é** controle de entitlement.
+
+## Proposta arquitetural (nenhum código implementado)
+
+- Inventariar cada superfície e feature_id: primeiro mês Global documentado,
+  fontes, condições de story/rank, requisitos de cena e status de confiança.
+- Expor uma decisão única por save, com estados: available / locked /
+  not-introduced / unverified; recusar por padrão conteúdo sem fonte.
+- Consumir a decisão nos mecanismos existentes de FunctionMstList, Home,
+  menus, abas, listas, gate de ação e grants do servidor. Evitar novos
+  overrides locais duplicados.
+- Distinguir equivalência de **funcionalidades históricas** da fidelidade
+  **visual** do layout; comparar capturas de 2016 sem presumir que assets
+  do cliente Global 9.0 reproduzem seu visual original.
+- Aplicar refresh/invalidação de UI após avançar o mês, com save monotônico.
+
+## Bloqueios e testes antes do próximo APK
+
+- Matriz de render + toque + request + recompensa por mês:
+  2016-06, 2016-07, 2016-09, 2016-11 e 2017-06.
+- Cenários concretos: Colosseum sem Arena em junho; Arena em novembro;
+  Expedition ausente em 2016 e liberável em junho/2017;
+  Panel Quest diferente de daily quest; nenhuma recompensa 2021/2024.
+- Snapshot visual da Home, menu, world, units, summons, shops, quests e
+  Vortex contra screenshots contemporâneas.
+- Testes de backend: recurso indisponível não credita nem consome moeda,
+  nem deixa unlock de campanha/quest futura.
+- Verificar no Android o hook nativo; testes Python ou assinatura não
+  demonstram que o botão sumiu efetivamente.
+- Atualização incremental com mesmo pacote/certificado, versionCode maior,
+  preservando dados do usuário e o índice installed.json.
+
+**Decisão:** bloquear nova rodada de patches isolados de UI até fechar
+a matriz por feature e definir a integração central. O APK 9066 é prova
+de runtime básico, não prova de fidelidade histórica.
+
+## Implementação inicial da política (iteraçao 1)
+
+O mapa inicial foi incorporado ao módulo preexistente
+`source/server/historical_progression.py`: `FEATURE_INTRODUCED`,
+`historical_features` e `feature_available`. Entradas sem data provada
+recebem `None` e são recusadas na prévia; saves sem histórico seguem
+intocados. O `offline_menu.status` envia a mesma projeção à interface,
+que consome os indicadores em `title_menu.js`, `home_carousel.js` e
+`android_test.js`, sem recalcular datas no JavaScript.
+
+Cobertura inicial: Expedition (UI, recurso nativo, transações), Panel Quest
+(recurso nativo, tela e requests de claim), botão de Equipment Enhancement
+na Home, calendário de login 2021, 8º aniversário, catch-up e SP Challenge.
+É bloqueio conservador da **prévia**, não supressão de funcionalidades
+historicamente comprovadas do jogo original. Datas de sistemas futuros ainda
+não auditados não são "estimadas" com base no catálogo final.
+
+**Pendente antes de entregar uma nova build:** recuperar o Colosseum original
+como modo da Home no lançamento, ajustar Arena de 2016-11, auditar as quests
+diárias originais e o resto das recompensas/loja, e validar a aparência no
+Android. A política não torna toda a UI fiel nem torna todas as rotas seguras.
+
+## Transição Colosseum / Arena — navegação reconstruída (iteraçao 2)
+
+As capturas Android de julho/2016 e o comunicado Global de novembro/2016
+confirmam Colosseum como a entrada original da Home; Arena substituiu seu
+nome/rota quando estreou, mantendo Colosseum acessível internamente.
+O acesso original ao Colosseum continua condicionado a alcançar Grandshelt.
+
+A inspeção do binário *exato* embutido no APK 0.1.24 localizou
+`GameSceneFactory::createGameScene`: a tabela nativa aponta
+`sceneId=11000` para `ClsmVsCpuEntryScene` e `11001` para
+`ClsmVsCpuMyPageScene`. `ClsmVsCpuEntryScene::backScene` retorna ao
+identificador nativo 100 (Home). Nenhuma classe/tela paralela foi criada.
+
+`home_carousel.js` agora reutiliza o artwork antigo
+`mypage_colosseum`, o estado de desbloqueio da história e o
+`changeSceneWithSceneID(11000)` já importado para abrir Colosseum
+antes de Arena. No mês de estreia de Arena (2016-11), a Home mantém
+a transição nativa moderna. O mesmo marcador mensal determina a
+autorização no `exvius_actions.py`: sete requests `Rb*` são recusados
+antes de custos/prêmios em períodos antigos; os quatro requests
+`Clsm*` não são bloqueados por essa regra.
+
+`build_historical_preview_apk.py` foi atualizado para incluir o bytecode
+de `exvius_actions.py` na próxima build. Testes da projeção da Home,
+requisições aceitas/recusadas e manifest do pacote foram adicionados.
+
+**Ainda pendente:** confirmação da abertura e do retorno no Android real,
+da renderização do rótulo da Home e da manutenção das orbs/ranks de 2016.
+A prévia instalada 9066 **não** contém essa correção. Não reemitir
+o APK até a validação geral da UI e da compatibilidade incremental.
+
+### Verificações adicionais do Colosseum
+
+Foi encontrado mais um problema no APK 9066: `exvius_colosseum.py`
+abria `colosseum_encounters.json` por `Path(__file__)`, incompatível
+com o bytecode carregado de `app.imy`. A implementação agora reutiliza
+`pkgutil.get_data`, como o carregador já existente do Vortex.
+O arquivo está presente no APK-base e na prévia 9066; o teste de
+`zipimport` com Python 3.10 carregou **75 grupos de encontros**.
+`exvius_colosseum.pyc` também entra no empacotador da próxima prévia.
+
+A suíte upstream `test_actions_arena.py` não pôde executar no notebook:
+o fixture de `PlayerState.load` depende de tabelas em
+`mst_decoded/` na raiz, ausentes no checkout atual. Os casos específicos
+com o dispatcher simulado passaram, mas não substituem os testes
+completos da economia, dos rounds e das batalhas do Colosseum.
+
+**Ainda não autenticados para 2016:** capacidade e regeneração de orbs
+(3 antes da Arena, 5 a partir do lançamento de Arena), ranks de
+Colosseum e a equivalência exata entre a navegação visual de 2016
+e a tela nativa final. Antes de afirmar fidelidade, validar em aparelho
+real; não alterar os dados do usuário nem forçar reinstalação.
+
+## Colosseum: orbs, dificuldades e prêmios (iteraçao 3)
+
+### Evidência Global de 2016
+
+- [Anúncio Global da Arena, 10/11/2016](https://exvius.fandom.com/wiki/News/Archives/2016_-_2021):
+  quando Arena substituiu a entrada Colosseum, a capacidade compartilhada
+  aumentou de **3 para 5 orbs**. Os orbs recuperam **1 por hora**
+  (corroborado também pela [documentação Colosseum](https://exvius.fandom.com/wiki/Colosseum)).
+- [Relato Global em 09/07/2016](https://www.neogaf.com/threads/final-fantasy-brave-exvius-ot-classic-sprite-based-jrpg-goodness-up-global-launch.1219944/page-89):
+  jogador já havia completado **Intermediate S-5**. Essa é a
+  *primeira evidência contemporânea encontrada*, **não** a data comprovada
+  de implantação do Intermediate. Na prévia junho segue bloqueado por cautela,
+  julho habilita depois da conclusão de Beginner.
+- [Anúncio Global da dificuldade ADV, 29/09/2016](https://exvius.fandom.com/wiki/News/Archives/2016_-_2021):
+  Advanced passa a existir em setembro; não pode ser desbloqueada em junho/julho.
+
+### Auditado contra os masters originais do cliente final
+
+Lidas por HTTP Range com verificação CRC (sem baixar o pacote de 1,2 GB):
+`data/mst_decoded/F_CLSM_PROGRESS_MST.ndjson` e
+`data/mst_decoded/F_CLSM_ROUND_MST.ndjson` do pacote original
+`data-001` referenciado em `data/latest.json`. São arquivos
+**ignorados pelo Git**, não incluídos no commit.
+
+- 75 rounds no total: 25 Beginner (grade 1), 25 Intermediate (grade 2),
+  25 Advanced (grade 3); cada grade tem D/C/B/A/S, 5 rounds por rank.
+- Transições: `10505 -> 20101` (Beginner -> Intermediate) e
+  `20505 -> 30101` (Intermediate -> Advanced).
+- Primeiro round `10101`: uma orb por batalha, chefe após 1.000 pontos,
+  recompensa inédita `50:1:100` (100 Lapis) e recompensa repetível
+  `20:101000100:1:100` (item comum).
+- Todos os 75 registros têm as duas recompensas e um master de progressão.
+  Os tipos variam (item 20, equipamento 21, materia 22, Lapis 50,
+  receita 60). O servidor já valida se cada prêmio pode ser projetado no
+  inventário; prêmio desconhecido recusa a transação com rollback.
+
+### Implementação
+
+`historical_progression.historical_colosseum_orb_cap` estabelece 3 orbs
+entre junho e outubro/2016, 5 de novembro/2016 em diante (até que haja fonte
+para outra mudança); saves não históricos retêm capacidade 10 do upstream.
+A capacidade é derivada pelo `PlayerState.orb_capacity` e consumida pelo
+`orb_view`, gasto, recarga por Lapis e reposição ao subir rank — sem criar
+um segundo saldo nem alterar os outros três tipos de orb.
+
+`exvius_colosseum._run` recusa acesso direto a grades não lançadas, antes
+do gasto. Um boss vencido não desbloqueia uma grade futura antecipadamente.
+Ao avançar o mês, `entry` libera a próxima grade se o último chefe
+anterior já havia sido vencido; isso não reexecuta o prêmio nem consome
+outra orb. Saves comuns mantêm sua navegação padrão.
+
+### Pendências
+
+- Confirmar a data **exata** em que Intermediate entrou no Global. Julho é
+  um marco documental conservador, sujeito a correção.
+- Identificar o anúncio posterior que elevou a capacidade de 5 para 10.
+  Não antecipar 10 enquanto não houver uma data Global comprovada.
+- Validar renderização das três orbs e os botões de ranks no Android
+  físico. A suíte completa `test_actions_arena.py` requer outras tabelas
+  mestres, não disponíveis no checkout atual. Os testes isolados de
+  débito, recuperação, crédito e rollback já não dependem delas.
+- Esta implementação ainda NÃO está no APK instalado 9066.

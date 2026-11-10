@@ -1,0 +1,313 @@
+# Historical Global mode — development contract and evidence
+
+This fork remains narrowly based on Elvlin/exvius-offline. `main` tracks the upstream source; development is in `feature/historical-progression`.
+
+## Current contract (2026-11-09)
+
+This section is the **current implementation contract**. The audits below
+record earlier investigation stages and sometimes describe work that has
+since been implemented; do not treat an old "next" or "not yet shipped"
+note as the latest status.
+
+- **Scope:** content and mechanics of FFBE **Global 2016–2024**,
+  with the stable final FFBE Offline UI retained as the playable base.
+  Historically unavailable features are hidden or disabled; exact
+  old-client pixel layouts are **not** a release requirement.
+  UI investigation and experimental old-client renderer have been
+  archived on research/historical-ui-investigation
+  (source/docs/decisions/historical-ui-direction.md on that branch).
+  The playable historical **preview covers June–July 2016** so far.
+- **Unlock rule:** an event, summon banner or paid Shop bundle becomes
+  available at its **Global start date** and remains accessible afterward.
+  The original offline event/Summons dropdowns remain in use; no
+  historical live-service expiry or removal dates are simulated.
+  The original offline purchase limits still apply.
+- **Account maturity is independent of calendar month:** the Global
+  introduction determines when an item can first appear, but rank,
+  cleared missions, story switches, inventory and other original
+  prerequisites determine whether this account can actually use it.
+  Advancing the historical period never upgrades rank, clears missions
+  or grants units. Optional account_requirements metadata may declare
+  an evidenced HTTPS source, positive minimum_rank and/or specific
+  cleared_missions IDs. Malformed declarations fail closed. Existing
+  original game restrictions and costs remain in force.
+- **Town shops are different:** their inventories come from the original
+  town/store masters; the game's story progression controls which towns
+  players can reach. Server-side verification of all historical story
+  unlocks is still pending. No invented Potion-by-Potion date whitelist.
+- **Source of truth:** `historical_progression.py` supplies month and
+  feature policy; `historical_summons.py` handles active banner
+  eligibility; `event_archive.py` handles persistent Vortex content;
+  `ffbe_player.py` handles Premium Shop offers via the approved,
+  start-date-only `content/historical_commerce.json` catalogue.
+  **No real-money bundles have been approved in that catalogue yet.**
+  Approval needs the original Global identity, release date, source, cash
+  price/currency, artwork and exact contents. The offline purchase route
+  may convert real-money prices into Lapis, as it already does upstream;
+  this does not change the source's original cash price.
+  Month-level selection uses the month-end cutoff; any later day-level
+  precision must change only the first unlock, never impose an expiry.
+- **Research boundary:** historical_ui_snapshots.md and the existing
+  historical UI evidence catalogue are reference material, not playable
+  renderers. The extended study is preserved on the separate research
+  branch. The playable fork uses the coherent final-client UI and
+  server-authoritative restrictions. The Season selector is an offline
+  navigation aid, not a historical Global control.
+- **Working copies (audited 2026-11-09):** the emulator and secondary
+  historical checkouts are clean and synchronized at the same commit.
+  The archive/Season-selector UI experiment remains isolated in
+  feature/offline-archive-selector-placement (commit 5b15248).
+  Two identified legacy stashes preserve superseded GateScene and
+  launch-roster experiments; do not automatically reapply them.
+  The disposable combined-preview worktree has been removed after
+  verifying that its only diff matches the committed selector branch.
+  Test APKs and screenshots remain ignored under source/build/.
+  Reconcile future changes **by reviewed commits/diffs**, never blind
+  directory copying. Unverified native offsets are pinned to GL 9.0.0.
+- **Release gate:** validate Global content dates, account maturity,
+  refusal without spending/grants, and coherent final-client navigation
+  together on Android. Historical UI replicas are not required.
+  Preserve saves and normal offline behavior.
+
+## Detailed content coverage audit
+
+See [the historical content audit](historical_content_audit.md) for the
+2026-11-09 Global-vs-JP source provenance review, exact coverage gaps,
+launch Early Bird/holiday Premium Shop research, and the separate
+Colosseum/Arena visual-layer cleanup gate. Research candidates do not
+authorize purchases, grants or save changes.
+
+## Player experience
+
+- Start at the Global launch month (June 2016, through June 30).
+- At the existing Android title screen, show one compact **Historical content** control with the current period and the next unlock. Use the existing `OfflineMenu.java` button and `AlertDialog` conventions; no extra Cocos overlays.
+- Offer **Unlock next update** and **Choose later month** in the same compact dialog. Both actions require confirmation, preserve earlier content and never silently rewind.
+- Store `meta.historical_month` in the existing PlayerState save; updating the APK never resets it.
+- A period change must not delete the player's unlocked items, quests, or units.
+
+## Minimal integration points (after release-index audit)
+
+1. `player_state.expand_pool` / every guaranteed, bonus and selection-award path: filter against a **verified Global unit release index**. Do not expose a partially gated mode. Deny empty pools without spending currency.
+2. `ffbe_gacha.all_banners` and the summon archive: show dated banners up to the current month; audit any permanent exceptions separately.
+3. `event_archive`, `ffbe_player.serve_event_gate` and battle-entry actions: show and enforce only released events, with undated rows pending classification.
+4. Other grants (shops, event rewards, tickets, units, equipment), late mechanics, and story gates require additional provenance audit before claiming historical fidelity.
+5. `offline_menu` / `android_game.title_action` / `OfflineMenu.java`: small title-menu control after server-side enforcement is verified; save atomically and refresh the screen.
+
+## Evidence/known gaps in upstream 0.1.25 (2026-11-08)
+
+- `gacha_campaigns.json`: 78 monthly campaigns, first July 2016; launch month needs explicit coverage.
+- `event_archive.json`: 757 event areas; 626 dated, **131 undated**. Never treat missing dates as launch-era.
+- `gacha_community.json`: 369 dated banners. A banner's featured-unit date is evidence of *availability by that date*, not proof of the unit's earliest original Global release.
+- The current `player_state.expand_pool` expands unbounded rarity tiers from the final client master catalogue. Filtering banners alone cannot prevent future units.
+- The checkout does not bundle original decoded masters. `source/exvius/fetch_historical_tables.py` can selectively recover the original Global unit and English-name tables from the official data-001 pack (no 1.2 GB download). Full integration and Android APK validation still require additional gameplay data and build tools.
+
+## First isolated implementation
+
+`server/historical_progression.py` contains month progression, strict date checks, banner selection and pool filtering helpers. `server/historical_summons.py` now connects the summon filter to `PlayerState.roll_gacha` with a 12-line guarded pre-charge hook. This hook is active only for a save containing an explicit `meta.historical_month`; normal legacy saves remain unchanged until the June 2016 baseline and UI are ready. An intentionally absent verified catalogue makes marked saves refuse summons rather than leak future content. The provisional evidence and candidate JSON files are never accepted as verified summon unlocks.
+
+## Compatibility rule
+
+Minimize modifications to upstream files. Prefer one central policy and narrow calls to it. Review `git diff upstream/main` when syncing, run both upstream and historical tests, and never silently default an invalid policy to the full catalogue.
+
+## Personal Obsidian chronology investigation (2026-11-08)
+
+Source: `FFBE Global - Cronologia de eventos e banners (2016-2024).md`, personal vault / `A00 INBOX`.
+The note cites the [Global Update History](https://exvius.fandom.com/wiki/Update_Schedule)
+and [FFBE Summon history](https://exvius.fandom.com/wiki/Summon). The raw personal note is
+**not** copied to the public fork.
+
+- `source/exvius/import_global_history.py` parses dated **Unidades lançadas** lines.
+  `source/server/content/historical_unit_debuts.json` is the generated, source-hashed result.
+- **940** distinct name/release/rarity records spanning **98** months (July 2016–August 2024).
+- **Five** records have editorial restrictions (e.g. Fan Festa exclusives or delayed availability).
+  These are marked `access: conditional` and cannot be assumed to be normal summons.
+- **Two** repeated unit names have different debut dates (`Y'shtola`, `Aurora Fryevia`);
+  resolve actual identities via the original Global master tables instead of selecting an arbitrary date.
+- **Two** malformed note entries omit separators between adjacent units. The importer
+  logs them under `parse_warnings`, rather than inventing IDs or release dates.
+- Cross-checking all 369 community banners finds **260 reused numeric unit IDs that
+  refer to different unit names** across their authored entries. A same-name/same-day
+  match is only evidence, not an authoritative ID map.
+- The note lists no individual launch-month units; constructing an accurate June 2016
+  roster requires additional source evidence.
+- The note dates the initial Global launch to June 29, 2016, as does the community
+  wiki. Square Enix's official worldwide launch announcement and product press sheet
+  use June 30, 2016. Month-granularity availability is unaffected.
+
+Regenerate the evidence (without editing the vault note):
+
+```bash
+python3 source/exvius/import_global_history.py \
+  --note "/path/to/FFBE Global - Cronologia de eventos e banners (2016-2024).md" \
+  --community source/server/gacha_community.json \
+  --output source/server/content/historical_unit_debuts.json
+```
+
+**Safety gate:** this is source evidence, **not** an active summon allowlist.
+To activate historical mode, use the now-retrieved original Global `F_UNIT_MST` and
+`F_TEXT_UNITS_NAME` tables to verify the unit identities and rarity variants;
+reconstruct June 2016 launch availability and audit every summon award path.
+Until then the fork retains the original playable behavior; a cosmetic filter
+alone would create a false guarantee.
+
+## Original Global client master tables (third audit; current)
+
+The initial third-party GL/JP identity audit found 889 mismatched banner name/ID
+references. We then recovered the actual original Global client tables from
+Elvlin's `data-001.zip` using HTTP byte ranges, without downloading the 1.2 GB
+archive or copying its content into Git:
+
+- `F_UNIT_MST.ndjson` — 3,311 original Global unit forms (4,582,800 bytes).
+- `F_TEXT_UNITS_NAME.ndjson` — 3,095 original English-name rows (210,464 bytes).
+- Each extracted file is checked against its original ZIP CRC and uncompressed size.
+  The complete pack SHA-256 is **not** checked because the pack is not downloaded.
+- Native cross-check of 1,329 community banner name/ID references: **890** disagree
+  with the English names of their original Global unit IDs.
+
+For the 940 historical debut records, `historical_unit_candidates.json` now finds:
+
+- **668** unique original Global base-unit candidates matching initial rarity.
+- **258** with multiple matching original base-unit families (especially NV forms).
+- **4** repeated names appearing on distinct dates.
+- **3** conditional acquisition entries.
+- **3** with undocumented initial rarity.
+- **4** without a matching original English unit name.
+
+This is a review report, NOT a playable release allowlist; later awakening/EX
+rarities remain unverified even when the first root is identified. The 2016
+launch-month summonable roster is still not documented in the note.
+
+Regenerate locally:
+
+```bash
+python3 source/exvius/fetch_historical_tables.py
+python3 source/exvius/build_historical_unit_candidates.py
+```
+
+Both extracted master tables live in ignored `data/` directories, and the fork
+tracks only the minimal extraction script and derived audit JSON. **Do not**
+replace upstream banner pools from this diagnostic: verify base units and every
+possible reward/guarantee path before allowing historical summons.
+
+Next: reconstruct the exact June 2016 baseline, resolve ambiguous base IDs,
+limit awakening access by historic dates, audit the guaranteed / bonus /
+item-reward paths, and only then enable the title-screen month selector.
+Never silently fall back to all content.
+
+## Summon transaction gate (fourth implementation)
+
+`source/server/historical_summons.py` validates historical availability at
+`PlayerState.roll_gacha` **before** Lapis or tickets are charged. It filters
+regular pools, separate guaranteed pools and guaranteed slots; excludes unknown
+units, future bonus-choice results and future fixed guarantee awards. Non-unit
+summon bonuses and mixed item pools are currently refused in marked saves until
+their own historic provenance is audited. Existing unmarked saves retain
+upstream behaviour, and the APK is not yet a historical-mode build.
+
+`source/server/content/historical_unit_releases.json` is intentionally **not
+shipped**. This future manually audited allowlist must use the following shape:
+
+```json
+{
+  "schema": 1,
+  "status": "verified",
+  "sources": ["historical evidence and original Global unit tables"],
+  "units": {
+    "206001703": {
+      "base_rarity": "3",
+      "channels": ["rare"],
+      "rarities": {
+        "3": "2016-07-08",
+        "4": "2016-07-08",
+        "5": "2016-07-08",
+        "6": "2016-09-01"
+      }
+    }
+  }
+}
+```
+
+The entry above illustrates Kefka's published debut/6★ awakening periods,
+but is a **format example, not a released or approved catalogue**. An exact ID
+must be checked against `F_UNIT_MST`; each granted rarity must have its own
+effective unlock date. Each unit must also declare its audited summon channels:
+`rare` (Lapis/tickets) or `friend` (Friend Points). Unknown acquisition types
+are refused before purchase; the provisional launch-category report cannot
+be substituted for these verified channel permissions. `historical_unit_candidates.json` is audit-only and
+does not satisfy the verified-index contract.
+
+Asset-free test coverage:
+`test_historical_summons.py` validates declined purchases, future/undated
+units, rarity-based gating, guaranteed pools, fixed guarantees, special slots,
+bonus choices, index schema and a successful one-charge/one-unit transaction.
+
+**Still outside this hook:** tutorial summons, story/mail/event grants,
+unit awakenings, other non-`roll_gacha` paths, visibility of banners and
+events, and the title menu. These must be checked before labeling an APK as
+historically playable. The pre-July launch unit pool is not approved yet.
+
+## Early Global launch-roster evidence (fifth audit)
+
+An archived [GameFAQs early-Global character list](https://gamefaqs.gamespot.com/boards/182206-final-fantasy-brave-exvius/73963629)
+lists characters then present in the English client. Because it omits all three
+new July 8, 2016 featured units, it appears to predate that update, but its
+exact posting date has **not** been independently verified. It is thus useful
+as a **launch-period candidate roster**, not proof of availability on June 30.
+The special Magitek Armor Terra prerelase reward is corroborated by
+[contemporary registration coverage](https://novacrystallis.com/2016/05/final-fantasy-brave-exvius-heads-west/).
+
+- `historical_launch_snapshot.json` keeps 67 hand-transcribed character
+  names and reported initial rarities with source URL and explicit uncertainty.
+- `audit_historical_launch.py` matches those against the original Global
+  `F_UNIT_MST` and English-name files using the existing
+  `original_global_index` helper.
+- **All 67** match one native base-unit ID with the indicated starting rarity.
+- **3** are campaign characters, **1** is a pre-registration reward.
+- **63** remain **unverified by acquisition method**; their presence in the
+  roster does not establish Rare Summon vs Friend Point vs reward.
+- `historical_launch_candidates.json` is a generated review report and
+  is **not** consumed by the live summon gate.
+- Kefka and Chizuru (July 8) and Hayate and Locke (July 22) are absent from
+  the initial candidate roster, consistent with progressive releases.
+
+Regenerate:
+
+```bash
+python3 source/exvius/fetch_historical_tables.py
+python3 source/exvius/audit_historical_launch.py
+```
+
+Next investigate the 63 acquisition methods, original June 2016 summon pools
+and early dated rarity awakenings. Even with the native ID match complete,
+**do not mark all 67 as June Rare Summon units** and do not auto-enable the
+missing `historical_unit_releases.json` file until the gating coverage is
+complete and the verified release index has been audited.
+
+### Second contemporary corroboration
+
+A contemporaneous [2016 Global summon discussion](https://www.ffxiah.com/forum/topic/48879/final-fantasy-brave-exvius/63/)
+independently identifies 38 character names as available to draw at the time.
+**37** are exact or explicitly aliased matches among the 67 native-ID launch
+candidates. The remaining mention, **Klein**, is unresolved and deliberately
+left unmapped. As of this review, launch candidate classifications are:
+
+- 37 `reported_drawable_acquisition_unverified`: the independent source says
+  drawable but does **not** prove Rare Summon vs Standard/Friend Point.
+- 26 `native_identity_match_acquisition_unknown`: reported in the early roster
+  but not corroborated by the independent drawable list.
+- 3 `story_candidate_not_rare`, 1 `registration_candidate_not_rare`.
+
+The audit keeps all 67 as non-authoritative candidates and **does not generate
+the playable release index**. Confirm the exact summon category, initial 2016
+available rarities, and reference date before activating the June baseline.
+
+### Acquisition category audit (not a release gate)
+
+The [Global Unit List](https://exvius.fandom.com/wiki/Unit_List)
+is an end-of-service record of acquisition channels, not a June 2016 time capsule.
+The 67 launch-period candidates are now classified as **38 Rare Summon**, **25
+Standard/Friend Point**, **3 Story** and **1 special reward**. The imported
+category is stored separately from historical debut and initial-rarity evidence.
+The audit report retains status AUDIT_ONLY; it cannot satisfy
+historical_summons.load_verified_unit_releases. Early presence, exact day of
+availability, maximum 2016 awakening and original rates still require proof.
