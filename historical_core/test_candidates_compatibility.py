@@ -52,6 +52,13 @@ class CompatibilityTests(unittest.TestCase):
         self.assertTrue(all(x["category"] in ("other", "documentation")
                             for x in report["changes"]))
 
+    def test_fork_does_not_modify_upstream_gameplay_or_store(self):
+        report = compare_sources(ROOT, "upstream/main", "HEAD")
+        self.assertFalse(report["runtime_changed"])
+        self.assertFalse(any(x["path"].startswith(("source/server/", "source/exvius/",
+                                                   "source/memorial/", "release/"))
+                             for x in report["changes"]))
+
     def test_apk_fingerprint_detects_assets_without_claiming_compatibility(self):
         with tempfile.TemporaryDirectory() as folder:
             apk = Path(folder) / "synthetic.apk"

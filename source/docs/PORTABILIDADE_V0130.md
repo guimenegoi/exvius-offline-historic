@@ -69,8 +69,9 @@ game state and reward routines. The fork should own only:
    - direct battle attempt / energy and orb consumption;
    - summon rolls and guaranteed/selection/bonus awards;
    - first-clear and event rewards before grant;
-   - paid shop offer listing AND transaction;
    - feature availability for the saved historical period.
+   Store, bundles, prices, purchases and offline currency rules are explicitly
+   delegated to the unchanged original offline engine.
 4. One existing-style period selector, saved atomically with progress
    and never clearing rank or completed missions.
 5. Tests for denial BEFORE debit/grant, and one Android end-to-end run
@@ -123,8 +124,9 @@ DEX code is only for analysis, not a substitute for a verified native
 implementation of account-aware, transactional release enforcement.
 
 Before offering a 0.1.30-based test APK:
-- Demonstrate that a June 2016 account cannot list, launch, buy or
-  receive any later event/bundle/unit/reward even via direct requests.
+- Demonstrate that a June 2016 account cannot list, launch or
+  receive later gated events/banner units/rewards via direct requests.
+  Store and bundle behavior remains governed by Exvius Offline.
 - Verify rank/story conditions and permanent unlocks after debut.
 - Reconcile original 2016 mission rewards independently of 2017 reruns.
 - Preserve save on upgrade and verify restart and completed battles.
@@ -133,3 +135,18 @@ Before offering a 0.1.30-based test APK:
 
 See the single chronological source-of-truth research document:
 CRONOLOGIA_GLOBAL_2016_2024.md.
+
+## 6. Scope decision (November 9, 2026): upstream store is authoritative
+
+The fork's historical filter covers **events and summon banners**, not the
+offline game's cash-shop replacement. Do not reconstruct original real-money
+offers, rewrite bundle prices, gate shop transactions, or apply a historical
+release date to shop content. The separate historical bundle comparison in
+`historical_core/audit_2016.json` is archival evidence only, never a runtime
+rule. A restricted summon must still be denied at the authoritative summon
+execution boundary; this does not grant permission to alter the shop.
+
+The Python implementations under `source/server/` are retained upstream source
+and are **not** the published v0.1.30 APK's JNI rules implementation.
+Python-only integration would be deceptive: standalone policy tests passing
+does not prove that the official APK enforces historical availability.
