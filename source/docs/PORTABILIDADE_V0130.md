@@ -95,10 +95,24 @@ What is deliberately NOT copied over from the old research branch:
 - a second source-specific server for the now-native v0.1.30 engine;
 - approx. 40,000 lines of mixed research and prototype data.
 
-The historic branch, Android Preview 9088 and original local worktrees
-are preserved as a reference and rollback path. Do not delete the old
-branch or treat the new branch as playable until a native gate exists
-and has passed the same Android progression tests.
+The historical Preview 9088 and its source are preserved as rollback
+references. **After local cleanup**, there is a single active checkout at
+~/Projetos/exvius-offline-historic on feature/minimal-historical-gate-v0130;
+main matches official v0.1.30 and is kept as a clean upstream mirror.
+
+The former 9088 source remains locally at
+archive/historical-preview-9088 (and remotely at
+origin/feature/historical-progression). Previously separate UI,
+pre-2.0 Home and selector worktrees were removed: their exact commits
+and both old stashes are retained under local Git refs/archive/*.
+Unversioned GL master extracts, legacy imagery and 9088 Android smoke
+evidence are preserved outside the source checkout in
+~/.local/share/ffbe-android-test/archives/2026-11-09-fork-cleanup/.
+The signed, tested 9088 APK and checksum remain in ~/Downloads/.
+
+These archives are **not** inputs to the v0.1.30 production build.
+Do not treat the clean branch as playable until a native gate exists
+and passes the same Android progression tests.
 
 ## 5. Explicit blocker and next acceptance criteria
 
