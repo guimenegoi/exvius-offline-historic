@@ -61,3 +61,24 @@ names, and rule-asset inventory without copying the binary to the repo.
 This is a **read-only structural report**; it does not verify native ABI,
 game behavior, saves, entitlements or APK signing. A clean source diff
 does not imply the published binary uses the same engine source.
+
+## 2016 event identity and banner integrity audit
+
+Run: python3 -m historical_core.audit_2016
+
+The reproducible audit_2016.json compares 14 documented original Global
+event names against the checked-in event_archive.json. Exact-name matching
+finds eight archived area variants for six event names, **all dated after
+the original 2016 debut**. The Hanging Edge (area 704, 2018-08-17) is
+an additional later match beyond the previously documented 2017 reruns.
+These matches do not establish equivalence of missions, waves, drops,
+first-clear rewards, or native IDs. All original 2016 event identities
+remain unresolved and blocked in the standalone policy.
+
+The banner audit distinguishes early flat pools from later tiered pools.
+Banner 9100016 still has four featured names but three community unit IDs;
+the mismatch is recorded, not automatically repaired. The Offline Early
+Bird Offer is USD 1.99 versus the independently documented original 2016
+USD 3.99 offer, so it is not retroactively enabled.
+
+This audit changes no gameplay data and provides no APK integration.
