@@ -33,3 +33,31 @@ Integration prerequisites:
 Release changes should be evaluated, not automatically merged. A version
 change alone is not evidence that the JNI API, save model or request schema
 is compatible.
+
+## Research index, 2017–2024
+
+Run: python3 -m historical_core.build_candidates
+
+The generated candidates_2017_2024.json includes 348 dated community banner
+records and 637 Global-labelled community event occurrences. These are
+**unverified candidates**, not certified first-release dates, original IDs,
+reward tables, summon pools, or permissions. The community event source
+includes reruns and update-log occurrences, so it cannot be used to infer
+original debut or to grant access. Four malformed Global-labelled dates
+(2022-06-31) are explicitly rejected and recorded for investigation.
+JP-labelled/unlabelled event rows and JP/GL-mixed event_archive.json are not
+promoted. The runtime policy does not load this candidate index by default,
+and would deny its unverified statuses even if supplied explicitly.
+
+## Release compatibility diagnostic
+
+Run from the repository root:
+
+    python3 -m historical_core.compatibility --repo . \
+      --baseline upstream/main --candidate HEAD
+
+Optionally add --apk /path/to/local.apk to inspect its SHA-256, library
+names, and rule-asset inventory without copying the binary to the repo.
+This is a **read-only structural report**; it does not verify native ABI,
+game behavior, saves, entitlements or APK signing. A clean source diff
+does not imply the published binary uses the same engine source.
