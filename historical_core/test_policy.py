@@ -86,6 +86,15 @@ class HistoricalPolicyTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             HistoricalPolicy([dict(row, release="2016-13-01")])
 
+    def test_store_content_is_out_of_scope(self):
+        row = dict(key="shop:bundle", kind="shop", native_id="123",
+                   release="2016-07-01", confidence="A",
+                   status="catalogue_candidate")
+        with self.assertRaisesRegex(ValueError, "unsupported historical content kind"):
+            HistoricalPolicy([row])
+        self.assertEqual(self.policy.check("shop:bundle", "2016-07-08").reason,
+                         "unknown_content")
+
     def test_invalid_selected_date_rejected(self):
         with self.assertRaises(ValueError):
             self.policy.check("banner:9100000", "July 2016")

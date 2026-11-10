@@ -24,6 +24,9 @@ class HistoricalPolicy:
         self._entries = {}
         for entry in entries:
             key = entry["key"]
+            # Cash shop, bundles, prices and purchases belong to Exvius Offline.
+            if entry.get("kind") not in ("event", "banner", "community_event"):
+                raise ValueError("unsupported historical content kind: " + str(entry.get("kind")))
             if key in self._entries:
                 raise ValueError("duplicate historical key: " + key)
             if entry.get("confidence") not in ("A", "B", "C", "D"):

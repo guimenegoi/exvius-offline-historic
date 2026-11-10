@@ -26,8 +26,10 @@ currently enforced in-game**.
 Integration prerequisites:
 1. Obtain the current rules-engine source or prove a safe integration boundary.
 2. Validate native IDs, original Global debut, account conditions and pools.
-3. Enforce policy at listings *and* authoritative battle/summon/shop/reward
-   boundaries, before debits or grants; keep native account checks.
+3. Enforce policy for event/banner listings and authoritative event-entry /
+   summon-execution boundaries, before any gate-controlled debits or grants;
+   keep all native account, currency, and entitlement checks.
+   **Do not intercept cash-shop, bundle, price or purchase routes.**
 4. Verify save compatibility, bypass resistance and actual Android gameplay.
 
 Release changes should be evaluated, not automatically merged. A version
@@ -82,3 +84,13 @@ Bird Offer is USD 1.99 versus the independently documented original 2016
 USD 3.99 offer, so it is not retroactively enabled.
 
 This audit changes no gameplay data and provides no APK integration.
+
+## Explicit fork boundary — shop delegated to upstream
+
+HistoricalPolicy accepts only `event`, `banner`, and unverified research-only
+`community_event` catalogue entries.
+Cash shop, bundle offers, purchase prices, currencies, daily rewards, and
+monetization replacements remain entirely owned by Exvius Offline v0.1.30.
+The historical gate must neither hide nor rewrite store items, and it must not
+alter any shop or bundle data/assets. This is a scope contract, **not** an
+assertion that runtime integration has been completed.
